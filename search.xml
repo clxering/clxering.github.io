@@ -1,8 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>DataGrip-2018.3.4-数据导出配置案例</title>
+    <url>/2022/12/07/DataGrip-2018-3-4-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E9%85%8D%E7%BD%AE%E6%A1%88%E4%BE%8B/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<p>官方文档：<a href="https://www.jetbrains.com/help/datagrip">https://www.jetbrains.com/help/datagrip</a> ，该文档默认是最新版本，可手动选择旧版本。</p>
+<h1 id="1-数据导出"><a href="#1-数据导出" class="headerlink" title="1 数据导出"></a>1 数据导出</h1><p>DataGrip 导出整个数据库或单个表均支持两种方式，<code>Dump Data to File(s)</code> 以及 <code>Dump with ‘mysqldump’</code>。以下例子均采用 MySQL</p>
+<h2 id="1-1-Dump-Data-to-File-s"><a href="#1-1-Dump-Data-to-File-s" class="headerlink" title="1.1 Dump Data to File(s)"></a>1.1 Dump Data to File(s)</h2><p>导出整个数据库的菜单选项如下所示。导出单个表的菜单选项减少了 <code>Overwrite Existing Files</code> 和 <code>Single File</code>，其余相同。</p>
+<blockquote>
+<p>注：如果数据库只有一个表，菜单与导出单个表的相同</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">----------------------------------|【导出格式】</span><br><span class="line">SQL Inserts</span><br><span class="line">SQL Updates</span><br><span class="line">HTML Table</span><br><span class="line">----------------------------------|【导出格式】</span><br><span class="line">Tab-separated (TSV)</span><br><span class="line">Comma-separated (CSV)</span><br><span class="line">----------------------------------|【导出格式】</span><br><span class="line">HTML-Groovy.html.groovy</span><br><span class="line">HTML-JavaScript.html.js</span><br><span class="line">SQL-Insert-Statements.sql.groovy</span><br><span class="line">XML-Groovy.xml,groovy</span><br><span class="line">CSV-Groovy.csv.groovy</span><br><span class="line">JSON-Groovy.json.groovy</span><br><span class="line">----------------------------------|【行为】</span><br><span class="line">Skip Computed Columns (SQL)【不添加计算列】</span><br><span class="line">Skip Generated Columns (SQL)【不添加自动生成的列，如自动增长列】</span><br><span class="line">Add Table Definition (SQL)【添加表定义】</span><br><span class="line">Overwrite Existing Files【导出整个数据库时可用。若出现重名，不勾选时生成文件名后有序号，勾选则覆盖】</span><br><span class="line">Single File【导出整个数据库时可用。将各个表的 sql 合并到一个文件，否则每个表分别生成一个文件。勾选 Single File 后，Overwrite Existing Files 失效，无论是否勾选。此时若出现重名，将弹出对话框提示是否覆盖或改名】</span><br><span class="line">----------------------------------|</span><br><span class="line">Configure CSV Formats...</span><br><span class="line">Go to Scripts Directory</span><br><span class="line">----------------------------------|</span><br></pre></td></tr></table></figure>
+
+<p>创建数据库 onlytest，包含两个结构类似的表 employee、manager，其中 employee 包含计算列。创建 sql 如下：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> onlytest.employee</span><br><span class="line">(</span><br><span class="line">  ID       <span class="type">bigint</span> auto_increment</span><br><span class="line">    <span class="keyword">primary</span> key,</span><br><span class="line">  name     tinytext <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  age      <span class="type">int</span>      <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  tenyears <span class="type">int</span> <span class="keyword">as</span> ((`age` <span class="operator">+</span> <span class="number">10</span>))</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> onlytest.manager</span><br><span class="line">(</span><br><span class="line">  ID   <span class="type">bigint</span> auto_increment</span><br><span class="line">    <span class="keyword">primary</span> key,</span><br><span class="line">  name tinytext <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  age  <span class="type">int</span>      <span class="keyword">not</span> <span class="keyword">null</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-1-Add-Table-Definition-SQL"><a href="#1-1-1-Add-Table-Definition-SQL" class="headerlink" title="1.1.1 Add Table Definition (SQL)"></a>1.1.1 Add Table Definition (SQL)</h3><p>若勾选 <code>Add Table Definition (SQL)</code>、<code>Single File</code>，导出格式选择 <code>SQL Inserts</code>，则在添加数据前创建表时的定义（<code>SQL Updates</code> 结果以此类推）：</p>
+<blockquote>
+<p>注意：该选项仅对 <code>SQL Inserts</code>、<code>SQL Updates</code> 有效。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> employee</span><br><span class="line">(</span><br><span class="line">  ID       <span class="type">bigint</span> auto_increment</span><br><span class="line">    <span class="keyword">primary</span> key,</span><br><span class="line">  name     tinytext <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  age      <span class="type">int</span>      <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  tenyears <span class="type">int</span> <span class="keyword">as</span> ((`age` <span class="operator">+</span> <span class="number">10</span>))</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (ID, name, age, tenyears) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>, <span class="number">22</span>, <span class="number">32</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (ID, name, age, tenyears) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>, <span class="number">17</span>, <span class="number">27</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (ID, name, age, tenyears) <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">&#x27;three&#x27;</span>, <span class="number">20</span>, <span class="number">30</span>);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> manager</span><br><span class="line">(</span><br><span class="line">  ID   <span class="type">bigint</span> auto_increment</span><br><span class="line">    <span class="keyword">primary</span> key,</span><br><span class="line">  name tinytext <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line">  age  <span class="type">int</span>      <span class="keyword">not</span> <span class="keyword">null</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.manager (ID, name, age) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>, <span class="number">35</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.manager (ID, name, age) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>, <span class="number">36</span>);</span><br></pre></td></tr></table></figure>
+
+<p>不勾选则仅生成 insert（<code>SQL Updates</code> 结果以此类推）：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (ID, name, age, tenyears) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>, <span class="number">22</span>, <span class="number">32</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (ID, name, age, tenyears) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>, <span class="number">17</span>, <span class="number">27</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (ID, name, age, tenyears) <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">&#x27;three&#x27;</span>, <span class="number">20</span>, <span class="number">30</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.manager (ID, name, age) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>, <span class="number">35</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.manager (ID, name, age) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>, <span class="number">36</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-2-Skip-Generated-Columns-SQL"><a href="#1-1-2-Skip-Generated-Columns-SQL" class="headerlink" title="1.1.2 Skip Generated Columns (SQL)"></a>1.1.2 Skip Generated Columns (SQL)</h3><p>若勾选 <code>Skip Generated Columns (SQL)</code>、<code>Single File</code>，不勾选 <code>Add Table Definition (SQL)</code>，导出格式选择 <code>SQL Inserts</code>，则没有自动增长的 ID 列，（<code>SQL Updates</code> 结果以此类推）：</p>
+<blockquote>
+<p>注意：该选项仅对 <code>SQL Inserts</code>、<code>SQL Updates</code> 有效。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (name, age, tenyears) <span class="keyword">VALUES</span> (<span class="string">&#x27;one&#x27;</span>, <span class="number">22</span>, <span class="number">32</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (name, age, tenyears) <span class="keyword">VALUES</span> (<span class="string">&#x27;two&#x27;</span>, <span class="number">17</span>, <span class="number">27</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (name, age, tenyears) <span class="keyword">VALUES</span> (<span class="string">&#x27;three&#x27;</span>, <span class="number">20</span>, <span class="number">30</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.manager (name, age) <span class="keyword">VALUES</span> (<span class="string">&#x27;one&#x27;</span>, <span class="number">35</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.manager (name, age) <span class="keyword">VALUES</span> (<span class="string">&#x27;two&#x27;</span>, <span class="number">36</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-3-Skip-Computed-Columns-SQL"><a href="#1-1-3-Skip-Computed-Columns-SQL" class="headerlink" title="1.1.3 Skip Computed Columns (SQL)"></a>1.1.3 Skip Computed Columns (SQL)</h3><p>若勾选 <code>Skip Computed Columns (SQL)</code>、<code>Single File</code>，不勾选 <code>Add Table Definition (SQL)</code>，导出格式选择 <code>SQL Inserts</code>，则没有 tenyears 列，（<code>SQL Updates</code> 结果以此类推）：</p>
+<blockquote>
+<p>注意：该选项仅对 <code>SQL Inserts</code>、<code>SQL Updates</code> 有效。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (ID, name, age) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>, <span class="number">22</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (ID, name, age) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>, <span class="number">17</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.employee (ID, name, age) <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">&#x27;three&#x27;</span>, <span class="number">20</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.manager (ID, name, age) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>, <span class="number">35</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> onlytest.manager (ID, name, age) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>, <span class="number">36</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-Dump-with-‘mysqldump’"><a href="#1-2-Dump-with-‘mysqldump’" class="headerlink" title="1.2 Dump with ‘mysqldump’"></a>1.2 Dump with ‘mysqldump’</h2><p>经过实测发现，当数据量较大时，使用 <code>Dump Data to File(s)</code> 方式导出的 sql 文件与 <code>Dump with ‘mysqldump’</code> 方式相比会大很多，可能是由于前者重复字符量大以及换行多导致。因此推荐优先使用后者导出。</p>
+<p>导出整个数据库和单个表的菜单选项相同，故合并讨论。<code>Dump with ‘mysqldump’</code> 有如下菜单选项：</p>
+<ul>
+<li>Multiple rows inserts【将 insert 语句合并为一行】</li>
+<li>Add drop table【增加判断条件，若表存在则删除】</li>
+<li>Disable keys【禁用索引】</li>
+<li>Delay inserts【提示错误 <code>mysqldump: [ERROR] unknown option &#39;--delayed-insert&#39;.</code>，无输出结果】</li>
+<li>MySQL create table options【若不勾选，暂时未发现有明显差异】</li>
+<li>Lock tables【锁表，可能是防止有新数据在导出时进入】</li>
+<li>Add locks【导入时，在执行 insert 前添加 write 锁，完成后解除】</li>
+<li>Add drop trigger【导入时，删除对方的触发器】</li>
+</ul>
+<h3 id="案例-1"><a href="#案例-1" class="headerlink" title="案例 1"></a>案例 1</h3><p>勾选 Multiple rows inserts、Add drop table、MySQL create table options、Add drop trigger，生成结果如下：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- MySQL dump 10.13  Distrib 8.0.18, for osx10.14 (x86_64)</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Host: 127.0.0.1    Database: onlytest</span></span><br><span class="line"><span class="comment">-- ------------------------------------------------------</span></span><br><span class="line"><span class="comment">-- Server version	8.0.18</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */</span>;</span><br><span class="line"><span class="comment">/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */</span>;</span><br><span class="line"><span class="comment">/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */</span>;</span><br><span class="line"><span class="comment">/*!50503 SET NAMES utf8mb4 */</span>;</span><br><span class="line"><span class="comment">/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */</span>;</span><br><span class="line"><span class="comment">/*!40103 SET TIME_ZONE=&#x27;+00:00&#x27; */</span>;</span><br><span class="line"><span class="comment">/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */</span>;</span><br><span class="line"><span class="comment">/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */</span>;</span><br><span class="line"><span class="comment">/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=&#x27;NO_AUTO_VALUE_ON_ZERO&#x27; */</span>;</span><br><span class="line"><span class="comment">/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Table structure for table `employee`</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> `employee`;</span><br><span class="line"><span class="comment">/*!40101 SET @saved_cs_client     = @@character_set_client */</span>;</span><br><span class="line"><span class="comment">/*!50503 SET character_set_client = utf8mb4 */</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `employee` (</span><br><span class="line">  `ID` <span class="type">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `name` tinytext <span class="keyword">COLLATE</span> utf8mb4_general_ci <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `age` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `tenyears` <span class="type">int</span>(<span class="number">11</span>) GENERATED ALWAYS <span class="keyword">AS</span> ((`age` <span class="operator">+</span> <span class="number">10</span>)) VIRTUAL,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`ID`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">4</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 <span class="keyword">COLLATE</span><span class="operator">=</span>utf8mb4_general_ci;</span><br><span class="line"><span class="comment">/*!40101 SET character_set_client = @saved_cs_client */</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Dumping data for table `employee`</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `employee` (`ID`, `name`, `age`) <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="string">&#x27;one&#x27;</span>,<span class="number">22</span>),(<span class="number">2</span>,<span class="string">&#x27;two&#x27;</span>,<span class="number">17</span>),(<span class="number">3</span>,<span class="string">&#x27;three&#x27;</span>,<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Table structure for table `manager`</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> `manager`;</span><br><span class="line"><span class="comment">/*!40101 SET @saved_cs_client     = @@character_set_client */</span>;</span><br><span class="line"><span class="comment">/*!50503 SET character_set_client = utf8mb4 */</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `manager` (</span><br><span class="line">  `ID` <span class="type">bigint</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `name` tinytext <span class="keyword">COLLATE</span> utf8mb4_general_ci <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `age` <span class="type">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`ID`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB AUTO_INCREMENT<span class="operator">=</span><span class="number">3</span> <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4 <span class="keyword">COLLATE</span><span class="operator">=</span>utf8mb4_general_ci;</span><br><span class="line"><span class="comment">/*!40101 SET character_set_client = @saved_cs_client */</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Dumping data for table `manager`</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `manager` <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="string">&#x27;one&#x27;</span>,<span class="number">35</span>),(<span class="number">2</span>,<span class="string">&#x27;two&#x27;</span>,<span class="number">36</span>);</span><br><span class="line"><span class="comment">/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*!40101 SET SQL_MODE=@OLD_SQL_MODE */</span>;</span><br><span class="line"><span class="comment">/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */</span>;</span><br><span class="line"><span class="comment">/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */</span>;</span><br><span class="line"><span class="comment">/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */</span>;</span><br><span class="line"><span class="comment">/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */</span>;</span><br><span class="line"><span class="comment">/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */</span>;</span><br><span class="line"><span class="comment">/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Dump completed on 2020-02-19 20:43:57</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="案例-2"><a href="#案例-2" class="headerlink" title="案例 2"></a>案例 2</h3><p>若增加勾选 Disable keys，禁用索引，在大批量导入时先禁用索引，在完全导入后，再开启索引。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">/*!40000 ALTER TABLE `employee` DISABLE KEYS */</span>;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `employee` (`ID`, `name`, `age`) <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="string">&#x27;one&#x27;</span>,<span class="number">22</span>),(<span class="number">2</span>,<span class="string">&#x27;two&#x27;</span>,<span class="number">17</span>),(<span class="number">3</span>,<span class="string">&#x27;three&#x27;</span>,<span class="number">20</span>);</span><br><span class="line"><span class="comment">/*!40000 ALTER TABLE `employee` ENABLE KEYS */</span>;</span><br><span class="line">...</span><br><span class="line"><span class="comment">/*!40000 ALTER TABLE `manager` DISABLE KEYS */</span>;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `manager` <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="string">&#x27;one&#x27;</span>,<span class="number">35</span>),(<span class="number">2</span>,<span class="string">&#x27;two&#x27;</span>,<span class="number">36</span>);</span><br><span class="line"><span class="comment">/*!40000 ALTER TABLE `manager` ENABLE KEYS */</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例-3"><a href="#案例-3" class="headerlink" title="案例 3"></a>案例 3</h3><p>勾选 Add locks，添加了 write 锁</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">LOCK TABLES `employee` WRITE;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `employee` (`ID`, `name`, `age`) <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="string">&#x27;one&#x27;</span>,<span class="number">22</span>),(<span class="number">2</span>,<span class="string">&#x27;two&#x27;</span>,<span class="number">17</span>),(<span class="number">3</span>,<span class="string">&#x27;three&#x27;</span>,<span class="number">20</span>);</span><br><span class="line">UNLOCK TABLES;</span><br><span class="line">...</span><br><span class="line">LOCK TABLES `manager` WRITE;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `manager` <span class="keyword">VALUES</span> (<span class="number">1</span>,<span class="string">&#x27;one&#x27;</span>,<span class="number">35</span>),(<span class="number">2</span>,<span class="string">&#x27;two&#x27;</span>,<span class="number">36</span>);</span><br><span class="line">UNLOCK TABLES;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他-mysqldump-参数（待定）"><a href="#其他-mysqldump-参数（待定）" class="headerlink" title="其他 mysqldump 参数（待定）"></a>其他 mysqldump 参数（待定）</h3><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><a href="">xxx</a></td>
+<td align="center">xxx</td>
+</tr>
+</tbody></table>
+<h1 id="2-查看创建脚本"><a href="#2-查看创建脚本" class="headerlink" title="2 查看创建脚本"></a>2 查看创建脚本</h1><p>右键 SQL Script 选择 SQL Generator</p>
+<h1 id="3-执行-SQL"><a href="#3-执行-SQL" class="headerlink" title="3 执行 SQL"></a>3 执行 SQL</h1><p>右键 New 选择 Console，</p>
+]]></content>
+      <categories>
+        <category>配置案例</category>
+      </categories>
+      <tags>
+        <tag>DataGrip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IntelliJ-IDEA-快捷键及常用配置</title>
+    <url>/2022/12/07/IntelliJ-IDEA-%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<img src="/2022/12/07/IntelliJ-IDEA-%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/1.png" class="">
+
+<img src="/2022/12/07/IntelliJ-IDEA-%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/2.png" class="">
+
+<!-- 
+符号 	说明
+⌘ 	Command
+⇧ 	Shift
+⌥ 	Option
+⌃ 	Control
+↩︎ 	Return/Enter
+⌫ 	Delete
+⌦ 	向前删除键（Fn+Delete）
+↑ 	上箭头
+↓ 	下箭头
+→ 	右箭头
+← 	左箭头
+⇞ 	Page Up（Fn+↑）
+⇟ 	Page Down（Fn+↓）
+Home 	Fn + ←
+End 	Fn + →
+⇥ 	右制表符（Tab键）
+⇤ 	左制表符（Shift+Tab）
+⎋ 	Escape (Esc)
+ -->
+
+<h2 id="macOS-IDEA-默认常用快捷键"><a href="#macOS-IDEA-默认常用快捷键" class="headerlink" title="macOS IDEA 默认常用快捷键"></a>macOS IDEA 默认常用快捷键</h2><ul>
+<li>删除行 <code>⌘Y</code></li>
+<li>查看实现当前接口全部类或当前类的全部子类（Type hierarchy） <code>⌃H</code></li>
+<li>查看所有方法 <code>⌘7</code></li>
+<li>从当前行切换到下一行 <code>⇧↩︎</code></li>
+<li>全局搜索（Search everywhere） <code>Double⇧</code></li>
+<li>格式化代码（Reformat Code） <code>⌥⌘L</code></li>
+<li>往上移动代码块或行 <code>⇧⌘↑</code></li>
+<li>往下移动代码块或行 <code>⇧⌘↓</code></li>
+</ul>
+<h2 id="格式化-Java-代码时让注释不在行首"><a href="#格式化-Java-代码时让注释不在行首" class="headerlink" title="格式化 Java 代码时让注释不在行首"></a>格式化 Java 代码时让注释不在行首</h2><p>Preference → Editor → Code Style → Java，取消「Line comment at first column」和「Block comment at first column」复选即可。</p>
+<h2 id="Java-代码自动导入依赖"><a href="#Java-代码自动导入依赖" class="headerlink" title="Java 代码自动导入依赖"></a>Java 代码自动导入依赖</h2><p>Preference → Editor → General → Auto Import，「Insert imports on paste」选择「All」即可。</p>
+<h2 id="自动完成关键字时不区分大小写"><a href="#自动完成关键字时不区分大小写" class="headerlink" title="自动完成关键字时不区分大小写"></a>自动完成关键字时不区分大小写</h2><p>Preference → Editor → General → Code Completion，取消「Match case」复选即可。</p>
+]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
+      <tags>
+        <tag>未标记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MacOS-或-Win-环境下问题杂烩及备忘</title>
+    <url>/2022/12/07/MacOS-%E6%88%96-Win-%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%97%AE%E9%A2%98%E6%9D%82%E7%83%A9%E5%8F%8A%E5%A4%87%E5%BF%98/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="macOS-10-14-6-运行应用时提示「无法打开“xxxxx”，因为-Apple-无法检查其是否包含恶意软件。」"><a href="#macOS-10-14-6-运行应用时提示「无法打开“xxxxx”，因为-Apple-无法检查其是否包含恶意软件。」" class="headerlink" title="macOS 10.14.6 运行应用时提示「无法打开“xxxxx”，因为 Apple 无法检查其是否包含恶意软件。」"></a>macOS 10.14.6 运行应用时提示「无法打开“xxxxx”，因为 Apple 无法检查其是否包含恶意软件。」</h2><p>该提示与「“xxxxx”已损坏，打不开。您应该将它移到废纸娄。」解决方案相同，需要开启「允许安装软件来自任何来源」。打开终端，输入命令：<code>sudo spctl --master-disable</code>，输入密码后生效。</p>
+<h2 id="macOS-查看隐藏文件"><a href="#macOS-查看隐藏文件" class="headerlink" title="macOS 查看隐藏文件"></a>macOS 查看隐藏文件</h2><p><code>⌘+⇧+.</code></p>
+<h2 id="win10-使用-ssh-连接远程服务器"><a href="#win10-使用-ssh-连接远程服务器" class="headerlink" title="win10 使用 ssh 连接远程服务器"></a>win10 使用 ssh 连接远程服务器</h2><ul>
+<li>依次进入：开始菜单 → 设置 → 应用 → 应用和功能，选择「管理可选功能」</li>
+<li>进入添加功能，添加「OpenSSH 服务端」</li>
+<li>从开始菜单打开 Windows PowerShell 即可使用</li>
+</ul>
+<h2 id="VSCode-利用正则删除全部空行"><a href="#VSCode-利用正则删除全部空行" class="headerlink" title="VSCode 利用正则删除全部空行"></a>VSCode 利用正则删除全部空行</h2><p><code>^\s*(?=\r?$)\n</code> 匹配所有空行，替换为无字符即可</p>
+]]></content>
+      <categories>
+        <category>备忘录</category>
+      </categories>
+      <tags>
+        <tag>未标记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VSCode-常用插件及配置</title>
+    <url>/2022/12/07/VSCode-%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="Prettier-Code-formatter"><a href="#Prettier-Code-formatter" class="headerlink" title="Prettier - Code formatter"></a>Prettier - Code formatter</h2><p>代码格式化插件，支持的语言有：JavaScript、TypeScript、Flow、JSX、JSON、CSS、SCSS、Less、HTML、Vue、Angular、GraphQL、Markdown、YAML</p>
+<p>Prettier 使用 cosmiconfig 来支持配置文件。这意味着你可以通过以下方式配置 prettier（按优先级顺序）：</p>
+<ul>
+<li>在 <code>package.json</code> 文件中建立 <code>&quot;prettier&quot;</code> 键</li>
+<li>新建一个内容是 JSON 或 YAML 格式的 <code>.prettierrc</code> 文件，扩展名可选：<code>.json/.yaml/.yml</code>，不带扩展名的优先级最高。</li>
+<li>使用 <code>.prettierrc.js</code> 或 <code>prettier.config.js</code> 文件导出对象</li>
+<li>使用 <code>.prettierrc.toml</code> 文件，格式是 TOML，（ <code>.toml</code> 扩展名是必须的）</li>
+</ul>
+<p>配置文件将从正在格式化的文件的位置开始解析，并在文件树中搜索，直到找到（或没有找到）配置文件。配置文件的选项与 API 选项相同。JSON 格式的配置文件示例如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;trailingComma&quot;</span><span class="punctuation">:</span> <span class="string">&quot;es5&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tabWidth&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;semi&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;singleQuote&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h3><h4 id="jsxBracketSameLine"><a href="#jsxBracketSameLine" class="headerlink" title="jsxBracketSameLine"></a><a href="https://prettier.io/docs/en/options.html#jsx-brackets">jsxBracketSameLine</a></h4><p>将多行 JSX 元素的 <code>&gt;</code> 放在最后一行的末尾，而不是单独放在下一行（不应用于自关闭元素）。默认值为 <code>false</code>。</p>
+<h4 id="arrowParens"><a href="#arrowParens" class="headerlink" title="arrowParens"></a><a href="https://prettier.io/docs/en/options.html#arrow-function-parentheses">arrowParens</a></h4><p>箭头函数的单个参数周围包含圆括号。可选值为：<code>&quot;always&quot;</code> 和 <code>&quot;avoid&quot;</code>，默认值为 <code>&quot;avoid&quot;</code>，即单个参数周围默认不包含圆括号。</p>
+<h4 id="https-prettier-io-docs-en-options-html-bracket-spacing"><a href="#https-prettier-io-docs-en-options-html-bracket-spacing" class="headerlink" title="https://prettier.io/docs/en/options.html#bracket-spacing"></a><a href="https://prettier.io/docs/en/options.html#bracket-spacing">https://prettier.io/docs/en/options.html#bracket-spacing</a></h4><p>更多说明及示例可参看文档：<a href="https://prettier.io/docs/en/configuration.html">https://prettier.io/docs/en/configuration.html</a></p>
+]]></content>
+      <categories>
+        <category>配置案例</category>
+      </categories>
+      <tags>
+        <tag>VSCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</title>
+    <url>/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>使用 Navicat 连接阿里云远程 MySQL 数据库。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1、开放权限"><a href="#1、开放权限" class="headerlink" title="1、开放权限"></a>1、开放权限</h3><p>登录 MySql，此时用命令指定用户名 root 可以通过密码 123456 访问所有数据库，之后刷新权限。相应的命令及结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27; WITH GRANT OPTION;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、设置服务器安全组的端口放行规则"><a href="#2、设置服务器安全组的端口放行规则" class="headerlink" title="2、设置服务器安全组的端口放行规则"></a>2、设置服务器安全组的端口放行规则</h3><p><strong>ECS 云服务器安全组设置如下：</strong></p>
+<img src="/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" class="">
+
+<p><strong>轻量应用服务器防火墙设置如下：</strong></p>
+<img src="/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" class="">
+
+<h3 id="3、设置-Navicat"><a href="#3、设置-Navicat" class="headerlink" title="3、设置 Navicat"></a>3、设置 Navicat</h3><p>进入 Navicat，新建连接，在「常规」选项卡中输入开放权限时的信息，用户名：root；密码：123456</p>
+<img src="/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" class="">
+]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
+      <tags>
+        <tag>未标记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用-github+Action-部署-Hexo-博客</title>
-    <url>/2022/11/30/%E4%BD%BF%E7%94%A8-github-Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/</url>
+    <url>/2022/11/30/%E4%BD%BF%E7%94%A8-github+Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -46,6 +261,43 @@
       </categories>
       <tags>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>将-VSCode-添加到右键菜单</title>
+    <url>/2022/12/07/%E5%B0%86-VSCode-%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Windows 10 或 macOS 10.14 下安装 VSCode 后，右键快速打开选项并没有快捷启动。</p>
+<h2 id="Windows-10-解决方案"><a href="#Windows-10-解决方案" class="headerlink" title="Windows 10 解决方案"></a>Windows 10 解决方案</h2><p>通过注册表添加三个位置的快速打开选项：文件、目录、桌面（目录内）的空白位置。</p>
+<h3 id="1、添加至文件的右键菜单"><a href="#1、添加至文件的右键菜单" class="headerlink" title="1、添加至文件的右键菜单"></a>1、添加至文件的右键菜单</h3><p>定位注册表中如下位置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT\*\shell</span><br></pre></td></tr></table></figure>
+
+<p>参考以下结构，在 shell 下新建一个项 Open with VSCode</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── Open with VSCode</span><br><span class="line">    ├── (默认)（在右键菜单显示的名称）</span><br><span class="line">    ├── Icon（在右键菜单显示的图标路径）</span><br><span class="line">    └── command</span><br><span class="line">        └── (默认)（执行的命令行及应用路径）</span><br></pre></td></tr></table></figure>
+
+<p>添加相应字符串值即可实现点击文件的右键菜单进入 VSCode。导出内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Open with VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open with VSCode&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Open with VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%1\&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、添加至目录的右键菜单"><a href="#2、添加至目录的右键菜单" class="headerlink" title="2、添加至目录的右键菜单"></a>2、添加至目录的右键菜单</h3><p>定位至 <code>HKEY_CLASSES_ROOT\Directory\shell</code>，按照相同结构设置即可实现点击目录的右键菜单进入 VSCode。导出内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open Folder as VSCode Project&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%1\&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、添加至桌面（目录内）的空白位置的右键菜单"><a href="#3、添加至桌面（目录内）的空白位置的右键菜单" class="headerlink" title="3、添加至桌面（目录内）的空白位置的右键菜单"></a>3、添加至桌面（目录内）的空白位置的右键菜单</h3><p>定位至 <code>HKEY_CLASSES_ROOT\Directory\Background\shell</code>，按照相同结构设置即可实现点击桌面（目录内）的空白位置的右键菜单进入 VSCode。导出内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open Folder as VSCode Project&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%V\&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="macOS-10-14-解决方案"><a href="#macOS-10-14-解决方案" class="headerlink" title="macOS 10.14 解决方案"></a>macOS 10.14 解决方案</h2><p>通过快速操作添加两个位置的快速打开选项：文件、目录。</p>
+<h3 id="1、打开自动操作，文稿类型选取-快速操作"><a href="#1、打开自动操作，文稿类型选取-快速操作" class="headerlink" title="1、打开自动操作，文稿类型选取 快速操作"></a>1、打开自动操作，文稿类型选取 <code>快速操作</code></h3><img src="/2022/12/07/%E5%B0%86-VSCode-%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/1.png" class="">
+
+<h3 id="2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，"><a href="#2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，" class="headerlink" title="2、左侧资源库选择 文件和文件夹，对应其右侧子菜单栏双击 打开访达项目，"></a>2、左侧资源库选择 <code>文件和文件夹</code>，对应其右侧子菜单栏双击 <code>打开访达项目</code>，</h3><h3 id="3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达"><a href="#3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达" class="headerlink" title="3、在 工作流程收到当前 选择 文件或文件夹，位于 选择 访达"></a>3、在 <code>工作流程收到当前</code> 选择 <code>文件或文件夹</code>，<code>位于</code> 选择 <code>访达</code></h3><h3 id="4、在-打开方式-找到-Visual-Studio-Code-app"><a href="#4、在-打开方式-找到-Visual-Studio-Code-app" class="headerlink" title="4、在 打开方式 找到 Visual Studio Code.app"></a>4、在 <code>打开方式</code> 找到 <code>Visual Studio Code.app</code></h3><img src="/2022/12/07/%E5%B0%86-VSCode-%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/2.png" class="">
+
+<h3 id="5、完成以上设置后，cmd-S-将该快速操作保存为-Open-with-VSCode-即可"><a href="#5、完成以上设置后，cmd-S-将该快速操作保存为-Open-with-VSCode-即可" class="headerlink" title="5、完成以上设置后，cmd+S 将该快速操作保存为 Open with VSCode 即可"></a>5、完成以上设置后，<code>cmd+S</code> 将该快速操作保存为 <code>Open with VSCode</code> 即可</h3>]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
+      <tags>
+        <tag>未标记</tag>
       </tags>
   </entry>
 </search>
