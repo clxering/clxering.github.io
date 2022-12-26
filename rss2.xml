@@ -15,8 +15,298 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 14 Dec 2022 13:41:57 GMT</pubDate>
+    <pubDate>Mon, 26 Dec 2022 08:41:06 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Nginx-配置文件的结构详解及案例</title>
+      <link>http://www.dcheng.site/2022/12/26/Nginx-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%A1%88%E4%BE%8B/</link>
+      <guid>http://www.dcheng.site/2022/12/26/Nginx-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%A1%88%E4%BE%8B/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:39:07 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/Nginx-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%A1%88%E4%BE%8B/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Maven-配置阿里云中央仓库和自定义本地仓库</title>
+      <link>http://www.dcheng.site/2022/12/26/Maven-%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%AD%E5%A4%AE%E4%BB%93%E5%BA%93%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/</link>
+      <guid>http://www.dcheng.site/2022/12/26/Maven-%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%AD%E5%A4%AE%E4%BB%93%E5%BA%93%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:37:14 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/maven/">maven</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/Maven-%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%AD%E5%A4%AE%E4%BB%93%E5%BA%93%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>gradle-问题备忘</title>
+      <link>http://www.dcheng.site/2022/12/26/gradle-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</link>
+      <guid>http://www.dcheng.site/2022/12/26/gradle-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:34:53 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/gradle/">gradle</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/gradle-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>有关-Payload-在维基百科的释义</title>
+      <link>http://www.dcheng.site/2022/12/26/%E6%9C%89%E5%85%B3-Payload-%E5%9C%A8%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%9A%84%E9%87%8A%E4%B9%89/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E6%9C%89%E5%85%B3-Payload-%E5%9C%A8%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%9A%84%E9%87%8A%E4%B9%89/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:33:40 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/payload/">payload</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/%E6%9C%89%E5%85%B3-Payload-%E5%9C%A8%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%9A%84%E9%87%8A%E4%B9%89/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>修改-host-表开启-gist</title>
+      <link>http://www.dcheng.site/2022/12/26/%E4%BF%AE%E6%94%B9-host-%E8%A1%A8%E5%BC%80%E5%90%AF-gist/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E4%BF%AE%E6%94%B9-host-%E8%A1%A8%E5%BC%80%E5%90%AF-gist/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:32:15 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/github/">github</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/%E4%BF%AE%E6%94%B9-host-%E8%A1%A8%E5%BC%80%E5%90%AF-gist/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>使用多个-SSH-公钥连接多个-GitHub-远程仓库</title>
+      <link>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AA-SSH-%E5%85%AC%E9%92%A5%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA-GitHub-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AA-SSH-%E5%85%AC%E9%92%A5%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA-GitHub-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:30:27 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/github/">github</category>
+      
+      <category domain="http://www.dcheng.site/tags/git/">git</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AA-SSH-%E5%85%AC%E9%92%A5%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA-GitHub-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>使用-push-提交到远程仓库出现-The-requested-URL-returned-error-403-错误</title>
+      <link>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8-push-%E6%8F%90%E4%BA%A4%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%87%BA%E7%8E%B0-The-requested-URL-returned-error-403-%E9%94%99%E8%AF%AF/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8-push-%E6%8F%90%E4%BA%A4%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%87%BA%E7%8E%B0-The-requested-URL-returned-error-403-%E9%94%99%E8%AF%AF/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:29:30 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/github/">github</category>
+      
+      <category domain="http://www.dcheng.site/tags/git/">git</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8-push-%E6%8F%90%E4%BA%A4%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%87%BA%E7%8E%B0-The-requested-URL-returned-error-403-%E9%94%99%E8%AF%AF/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>GitHub-中使用-issues-模版和-pull-request-模版</title>
+      <link>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/</link>
+      <guid>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:26:05 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/github/">github</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>GitHub-中独立仓库与组织的权限</title>
+      <link>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/</link>
+      <guid>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:23:23 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/github/">github</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>git-常用命令</title>
+      <link>http://www.dcheng.site/2022/12/26/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <guid>http://www.dcheng.site/2022/12/26/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:20:54 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/git/">git</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>gitignore-文件通用参考版本</title>
+      <link>http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/</link>
+      <guid>http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:19:29 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>git-问题备忘</title>
+      <link>http://www.dcheng.site/2022/12/26/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</link>
+      <guid>http://www.dcheng.site/2022/12/26/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:15:34 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/git/">git</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>使用-orphan-参数创建独立空白分支</title>
+      <link>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8-orphan-%E5%8F%82%E6%95%B0%E5%88%9B%E5%BB%BA%E7%8B%AC%E7%AB%8B%E7%A9%BA%E7%99%BD%E5%88%86%E6%94%AF/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8-orphan-%E5%8F%82%E6%95%B0%E5%88%9B%E5%BB%BA%E7%8B%AC%E7%AB%8B%E7%A9%BA%E7%99%BD%E5%88%86%E6%94%AF/</guid>
+      <pubDate>Mon, 26 Dec 2022 08:09:59 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/git/">git</category>
+      
+      
+      <comments>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8-orphan-%E5%8F%82%E6%95%B0%E5%88%9B%E5%BB%BA%E7%8B%AC%E7%AB%8B%E7%A9%BA%E7%99%BD%E5%88%86%E6%94%AF/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>VSCode-常用插件及配置</title>
