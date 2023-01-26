@@ -23,25 +23,25 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
-<meta property="og:title" content="有关-Payload-在维基百科的释义">
-<meta property="og:url" content="http://www.dcheng.site/2022/12/26/%E6%9C%89%E5%85%B3-Payload-%E5%9C%A8%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%9A%84%E9%87%8A%E4%B9%89/index.html">
+<meta property="og:title" content="conda-依赖管理">
+<meta property="og:url" content="http://www.dcheng.site/2023/01/26/conda-%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="Notebook">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-26T08:33:40.000Z">
-<meta property="article:modified_time" content="2023-01-26T15:01:57.011Z">
+<meta property="article:published_time" content="2023-01-26T14:58:45.000Z">
+<meta property="article:modified_time" content="2023-01-26T15:01:57.003Z">
 <meta property="article:author" content="Mr.Dcheng">
-<meta property="article:tag" content="payload">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.dcheng.site/2022/12/26/%E6%9C%89%E5%85%B3-Payload-%E5%9C%A8%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%9A%84%E9%87%8A%E4%B9%89/">
+<link rel="canonical" href="http://www.dcheng.site/2023/01/26/conda-%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/2022/12/26/%E6%9C%89%E5%85%B3-Payload-%E5%9C%A8%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%9A%84%E9%87%8A%E4%B9%89/","path":"2022/12/26/有关-Payload-在维基百科的释义/","title":"有关-Payload-在维基百科的释义"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/2023/01/26/conda-%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/","path":"2023/01/26/conda-依赖管理/","title":"conda-依赖管理"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>有关-Payload-在维基百科的释义 | Notebook</title>
+<title>conda-依赖管理 | Notebook</title>
   
 
 
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Payload-computing"><span class="nav-number">1.</span> <span class="nav-text">Payload (computing)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security"><span class="nav-number">2.</span> <span class="nav-text">Security</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Programming"><span class="nav-number">3.</span> <span class="nav-text">Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking"><span class="nav-number">4.</span> <span class="nav-text">Networking</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96%E7%9A%84%E5%AF%BC%E5%87%BA%E5%92%8C%E6%81%A2%E5%A4%8D-environment-yaml"><span class="nav-number">2.</span> <span class="nav-text">环境依赖的导出和恢复-environment.yaml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%8E%AF%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">删除环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">其他管理方式</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/2022/12/26/%E6%9C%89%E5%85%B3-Payload-%E5%9C%A8%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%9A%84%E9%87%8A%E4%B9%89/">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/2023/01/26/conda-%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -223,12 +223,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="有关-Payload-在维基百科的释义 | Notebook">
+      <meta itemprop="name" content="conda-依赖管理 | Notebook">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header" style="margin-bottom:0">
         <h1 class="post-title" itemprop="name headline" style="text-align:left">
-          有关-Payload-在维基百科的释义
+          conda-依赖管理
         </h1>
 
         <div class="post-meta-container">
@@ -238,15 +238,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2022-12-26 16:33:40" itemprop="dateCreated datePublished" datetime="2022-12-26T16:33:40+08:00">2022-12-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-26 23:01:57" itemprop="dateModified" datetime="2023-01-26T23:01:57+08:00">2023-01-26</time>
+      <time title="Created: 2023-01-26 22:58:45 / Modified: 23:01:57" itemprop="dateCreated datePublished" datetime="2023-01-26T22:58:45+08:00">2023-01-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -279,22 +273,37 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="Payload-computing"><a href="#Payload-computing" class="headerlink" title="Payload (computing)"></a>Payload (computing)</h2><p>In computing and telecommunications, the payload is the part of transmitted data that is the actual intended message. Headers and metadata are sent only to enable payload delivery.</p>
-<p>在计算和通信中，有效载荷是传输数据的一部分，是实际要发送的消息。报头和元数据仅用于支持有效载荷的传递。</p>
-<p>In the context of a computer virus or worm, the payload is the portion of the malware which performs malicious action.</p>
-<p>在计算机病毒或蠕虫的上下文中，有效载荷是执行恶意行为的恶意软件的一部分。</p>
-<p>The term is borrowed from transportation, where payload refers to the part of the load that pays for transportation.</p>
-<p>这个术语是从「运输」一词借用而来的，「有效载荷」指的是支付运输费用的那部分载荷。</p>
-<h2 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h2><p>In computer security, the payload is the part of the private user text which could also contain malware such as worms or viruses which performs the malicious action; deleting data, sending spam or encrypting data.[3] In addition to the payload, such malware also typically has overhead code aimed at simply spreading itself, or avoiding detection.</p>
-<p>在计算机安全中，有效载荷是私人用户文本的一部分，它也可能包含恶意软件，如蠕虫或执行恶意行为的病毒；删除数据、发送垃圾邮件或加密数据。除了有效载荷，这种恶意软件通常也有一些开销代码，目的是简单地传播自己，或者避免检测。</p>
-<h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><p>In computer programming, the most common usage of the term is in the context of message protocols, to differentiate the protocol overhead from the actual data. For example, a JSON web service response might be:</p>
-<p>在计算机编程中，该术语最常见的用法是在消息协议上下文中使用，以将协议开销与实际数据区分开来。例如，JSON web 服务响应可能是：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;data&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello, world!&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>创建一个新环境：<code>conda create -n &lt;env_name&gt; &lt;python=version&gt; &lt;package_list&gt;</code></p>
+<blockquote>
+<p>例子：<code>conda create -n env python=3.10 numpy pandas</code>，创建名为<code>env</code>的环境，python 版本为 3.10，同时安装 numpy 和 pandas。</p>
+</blockquote>
+<p>进入环境：<code>conda activate &lt;env_name&gt;</code></p>
+<p>退出环境：<code>conda deavtivate</code></p>
+<p>查看所有环境：<code>conda env list</code></p>
+<p>复制环境：<code>conda create --name &lt;new_env_name&gt; --clone &lt;old_env_name&gt;</code></p>
+<p>精确查找依赖：<code>conda search --full-name &lt;package_full_name&gt;</code></p>
+<p>模糊查找依赖：<code>conda search &lt;依赖名称包含的字符串&gt;</code></p>
+<p>查看已经安装的依赖：<code>conda list</code></p>
+<p>安装依赖：<code>conda install --name &lt;env_name&gt; &lt;package_name&gt;</code></p>
+<p>在当前环境安装依赖：<code>conda install &lt;package_name&gt;</code></p>
+<p>卸载依赖：<code>conda remove --name &lt;env_name&gt; &lt;package_name&gt;</code></p>
+<p>在当前环境卸载依赖：<code>conda remove &lt;package_name&gt;</code></p>
+<p>更新全部依赖：<code>conda update --all</code></p>
+<p>更新指定依赖：<code>conda update &lt;package_name&gt;</code></p>
+<h2 id="环境依赖的导出和恢复-environment-yaml"><a href="#环境依赖的导出和恢复-environment-yaml" class="headerlink" title="环境依赖的导出和恢复-environment.yaml"></a>环境依赖的导出和恢复-environment.yaml</h2><p>导出当前环境依赖：<code>conda env export &gt; environment.yaml</code></p>
+<p>恢复依赖：<code>conda env create -f environment.yml -n &lt;envname&gt;</code></p>
+<blockquote>
+<p>注意：<code>environment.yaml</code>文件<code>name</code>属性是导出时环境的名称或绝对路径，恢复时为防止冲突，最好使用<code>-n</code>参数显示指定新名称，此时恢复的环境会出现在<code>env</code>目录下，直接按新名称引用即可。</p>
+</blockquote>
+<ul>
+<li>vscode：<code>ctrl+shift+p</code> -&gt; <code>Select Interpreter</code></li>
+<li>pycharm：<code>Settings</code> -&gt; <code>Project</code> -&gt; <code>Python Interpreter</code> -&gt; <code>Add Python Interpreter</code> -&gt; <code>Conda Environment</code></li>
+</ul>
+<h2 id="删除环境"><a href="#删除环境" class="headerlink" title="删除环境"></a>删除环境</h2><p>常规命令：<code>conda remove --name &lt;env_name&gt; --all</code>，按「Y」确认后执行删除，但<code>env</code>目录下有残余，手动清除即可；若环境没有名称，如下所示。按目前使用经验，用 vscode 插件生成的 conda 环境会出现这种情况，在源码目录下以<code>.conda</code>出现。直接删除即可，再次查看环境列表会消失。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">base                     C:\Users\pro\anaconda3</span><br><span class="line">newnewnew             *  C:\Users\pro\anaconda3\envs\newnewnew</span><br><span class="line">python                   C:\Users\pro\anaconda3\envs\python</span><br><span class="line">testquant38              C:\Users\pro\anaconda3\envs\testq</span><br><span class="line">testxquant               C:\Users\pro\anaconda3\envs\testx</span><br><span class="line">                         c:\Users\Desktop\py_mod\.conda</span><br><span class="line">                         c:\Users\Desktop\test38\.conda</span><br></pre></td></tr></table></figure>
 
-<p>The string Hello, world! is the payload, while the rest is protocol overhead.</p>
-<p>字符串 <code>Hello, world!</code> 为有效负载，其余为协议开销。</p>
-<h2 id="Networking"><a href="#Networking" class="headerlink" title="Networking"></a>Networking</h2><p>In the computer networking, data to be transmitted is the payload, but is almost always encapsulated in some type of a frame composed of framing bits and a frame check sequence.[4][5] Examples are Ethernet frames, Point-to-Point Protocol (PPP) frames, Fibre Channel frames, and V.42 modem frames.</p>
-<p>在计算机网络中，要传输的数据是有效载荷，但几乎总是封装在由帧位和帧检查序列组成的某种类型的帧中。[4][5]的例子是以太网帧、点对点协议（PPP）帧、光纤通道帧和 V.42 调制解调器帧。</p>
+<h2 id="其他管理方式"><a href="#其他管理方式" class="headerlink" title="其他管理方式"></a>其他管理方式</h2><p>管理依赖树：<code>pip install pipdeptree</code>，可查看每个依赖引用的其他依赖。</p>
+<p>整体删除依赖及其引用：<code>pip install pip-autoremove</code>，防止遗漏。</p>
 
     </div>
 
@@ -304,21 +313,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/payload/" rel="tag"># payload</a>
+              <a href="/tags/python/" rel="tag"># python</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/12/26/%E4%BF%AE%E6%94%B9-host-%E8%A1%A8%E5%BC%80%E5%90%AF-gist/" rel="prev" title="修改-host-表开启-gist">
-                  <i class="fa fa-chevron-left"></i> 修改-host-表开启-gist
+                <a href="/2022/12/26/Nginx-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%A1%88%E4%BE%8B/" rel="prev" title="Nginx-配置文件的结构详解及案例">
+                  <i class="fa fa-chevron-left"></i> Nginx-配置文件的结构详解及案例
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/12/26/gradle-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/" rel="next" title="gradle-问题备忘">
-                  gradle-问题备忘 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

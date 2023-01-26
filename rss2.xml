@@ -15,8 +15,30 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 22 Jan 2023 05:41:21 GMT</pubDate>
+    <pubDate>Thu, 26 Jan 2023 15:01:57 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>conda-依赖管理</title>
+      <link>http://www.dcheng.site/2023/01/26/conda-%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/</link>
+      <guid>http://www.dcheng.site/2023/01/26/conda-%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/</guid>
+      <pubDate>Thu, 26 Jan 2023 14:58:45 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/python/">python</category>
+      
+      
+      <comments>http://www.dcheng.site/2023/01/26/conda-%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Nginx-配置文件的结构详解及案例</title>
