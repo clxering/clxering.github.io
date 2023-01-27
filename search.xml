@@ -544,7 +544,7 @@ End 	Fn + →
 <p>在当前环境卸载依赖：<code>conda remove &lt;package_name&gt;</code></p>
 <p>更新全部依赖：<code>conda update --all</code></p>
 <p>更新指定依赖：<code>conda update &lt;package_name&gt;</code></p>
-<h2 id="环境依赖的导出和恢复-environment-yaml"><a href="#环境依赖的导出和恢复-environment-yaml" class="headerlink" title="环境依赖的导出和恢复-environment.yaml"></a>环境依赖的导出和恢复-environment.yaml</h2><p>导出当前环境依赖：<code>conda env export &gt; environment.yaml</code></p>
+<h2 id="环境依赖的导出和恢复"><a href="#环境依赖的导出和恢复" class="headerlink" title="环境依赖的导出和恢复"></a>环境依赖的导出和恢复</h2><p>导出当前环境依赖：<code>conda env export &gt; environment.yaml</code></p>
 <p>恢复依赖：<code>conda env create -f environment.yml -n &lt;envname&gt;</code></p>
 <blockquote>
 <p>注意：<code>environment.yaml</code>文件<code>name</code>属性是导出时环境的名称或绝对路径，恢复时为防止冲突，最好使用<code>-n</code>参数显示指定新名称，此时恢复的环境会出现在<code>env</code>目录下，直接按新名称引用即可。</p>
@@ -554,7 +554,7 @@ End 	Fn + →
 <li>pycharm：<code>Settings</code> -&gt; <code>Project</code> -&gt; <code>Python Interpreter</code> -&gt; <code>Add Python Interpreter</code> -&gt; <code>Conda Environment</code></li>
 </ul>
 <h2 id="删除环境"><a href="#删除环境" class="headerlink" title="删除环境"></a>删除环境</h2><p>常规命令：<code>conda remove --name &lt;env_name&gt; --all</code>，按「Y」确认后执行删除，但<code>env</code>目录下有残余，手动清除即可；若环境没有名称，如下所示。按目前使用经验，用 vscode 插件生成的 conda 环境会出现这种情况，在源码目录下以<code>.conda</code>出现。直接删除即可，再次查看环境列表会消失。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">base                     C:\Users\pro\anaconda3</span><br><span class="line">newnewnew             *  C:\Users\pro\anaconda3\envs\newnewnew</span><br><span class="line">python                   C:\Users\pro\anaconda3\envs\python</span><br><span class="line">testquant38              C:\Users\pro\anaconda3\envs\testq</span><br><span class="line">testxquant               C:\Users\pro\anaconda3\envs\testx</span><br><span class="line">                         c:\Users\Desktop\py_mod\.conda</span><br><span class="line">                         c:\Users\Desktop\test38\.conda</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">base                     C:\Users\pro\anaconda3</span><br><span class="line">new                   *  C:\Users\pro\anaconda3\envs\new</span><br><span class="line">python                   C:\Users\pro\anaconda3\envs\python</span><br><span class="line">testq                    C:\Users\pro\anaconda3\envs\testq</span><br><span class="line">testx                    C:\Users\pro\anaconda3\envs\testx</span><br><span class="line">                         c:\Users\Desktop\py_mod\.conda</span><br><span class="line">                         c:\Users\Desktop\test38\.conda</span><br></pre></td></tr></table></figure>
 
 <h2 id="其他管理方式"><a href="#其他管理方式" class="headerlink" title="其他管理方式"></a>其他管理方式</h2><p>管理依赖树：<code>pip install pipdeptree</code>，可查看每个依赖引用的其他依赖。</p>
 <p>整体删除依赖及其引用：<code>pip install pip-autoremove</code>，防止遗漏。</p>
