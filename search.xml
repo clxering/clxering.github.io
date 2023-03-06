@@ -1260,4 +1260,89 @@ End 	Fn + →
         <tag>payload</tag>
       </tags>
   </entry>
+  <entry>
+    <title>部署-ubuntu-本地服务器</title>
+    <url>/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<p>本例使用系统版本为 Ubuntu 22.04.2 LTS (GNU&#x2F;Linux 5.19.0-35-generic x86_64)</p>
+<blockquote>
+<p>提示：win 环境下最好使用 UltraISO 烧写镜像文件。经实测，按照官方文档推荐的 balenaEtcher 有损坏 U 盘风险。</p>
+</blockquote>
+<h2 id="安装-ssh"><a href="#安装-ssh" class="headerlink" title="安装 ssh"></a>安装 ssh</h2><p>执行下列命令：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>验证服务是否启动：<code>sudo systemctl status ssh</code></p>
+<h2 id="安装-Mariadb"><a href="#安装-Mariadb" class="headerlink" title="安装 Mariadb"></a>安装 Mariadb</h2><p>两种主要方式：</p>
+<p>1、Repositories 安装方式：<code>https://mariadb.org/download/?t=repo-config&amp;d=22.04+%22jammy%22&amp;v=10.11&amp;r_m=neusoft</code></p>
+<p>2、从 <code>https://archive.mariadb.org/mariadb-10.11.2/bintar-linux-systemd-x86_64/</code> 获得链接，直接下载压缩包</p>
+<blockquote>
+<p>本地二进制压缩包链接：<code>https://archive.mariadb.org/mariadb-10.11.2/bintar-linux-systemd-x86_64/mariadb-10.11.2-linux-systemd-x86_64.tar.gz</code></p>
+</blockquote>
+<p>本例采用第一种。依次执行下列命令：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">sudo apt-get install apt-transport-https curl</span><br><span class="line">sudo curl -o /etc/apt/trusted.<span class="property">gpg</span>.<span class="property">d</span>/mariadb_release_signing_key.<span class="property">asc</span> <span class="string">&#x27;https://mariadb.org/mariadb_release_signing_key.asc&#x27;</span></span><br><span class="line">sudo sh -c <span class="string">&quot;echo &#x27;deb https://mirrors.neusoft.edu.cn/mariadb/repo/10.11/ubuntu jammy main&#x27; &gt;&gt;/etc/apt/sources.list&quot;</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install mariadb-server</span><br></pre></td></tr></table></figure>
+
+<p>3、验证服务是否启动：<code>sudo systemctl status mariadb</code></p>
+<blockquote>
+<p>注意：安装完成后要执行 <code>sudo -i</code> 切换 root 再通过 <code>mariadb -u root</code> 进入设置密码</p>
+</blockquote>
+<p>4、配置文件</p>
+<p>配置文件路径为：<code>/etc/mysql/mariadb.conf.d/50-server.cnf</code></p>
+<p>5、取消 IP 限制</p>
+<p>打开配置文件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/mysql/mariadb.<span class="property">conf</span>.<span class="property">d</span>/<span class="number">50</span>-server.<span class="property">cnf</span></span><br></pre></td></tr></table></figure>
+
+<p>找到 <code>bind-address = 127.0.0.1</code> 注释掉。</p>
+<blockquote>
+<p>可能需要安装 vim 编辑器，执行 <code>sudo apt-get install vim</code></p>
+</blockquote>
+<h2 id="部署-JDK"><a href="#部署-JDK" class="headerlink" title="部署 JDK"></a>部署 JDK</h2><p>以 corretto 为例。按相应 JDK 版本依次执行命令：</p>
+<p>官方文档：<a href="https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/generic-linux-install.html">https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/generic-linux-install.html</a></p>
+<p>1、JDK11</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add -</span><br><span class="line">sudo add-apt-repository &#x27;deb https://apt.corretto.aws stable main&#x27;</span><br><span class="line">sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk</span><br></pre></td></tr></table></figure>
+
+<p>2、JDK17</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add -</span><br><span class="line">sudo add-apt-repository &#x27;deb https://apt.corretto.aws stable main&#x27;</span><br><span class="line">sudo apt-get update; sudo apt-get install -y java-17-amazon-corretto-jdk</span><br></pre></td></tr></table></figure>
+
+<p>3、卸载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo dpkg --remove java-11-amazon-corretto-jdk</span><br><span class="line">sudo dpkg --remove java-17-amazon-corretto-jdk</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改本地网络地址"><a href="#修改本地网络地址" class="headerlink" title="修改本地网络地址"></a>修改本地网络地址</h2><p>1、固定 IP</p>
+<p>通过 <code>ip a</code> 命令查看网咖信息。修改前：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ubuntu@ubuntu-virtual-<span class="attr">machine</span>:~$ ip a</span><br><span class="line"><span class="number">1</span>: <span class="attr">lo</span>: &lt;<span class="variable constant_">LOOPBACK</span>,<span class="variable constant_">UP</span>,<span class="variable constant_">LOWER_UP</span>&gt; mtu <span class="number">65536</span> qdisc noqueue state <span class="variable constant_">UNKNOWN</span> group <span class="keyword">default</span> qlen <span class="number">1000</span></span><br><span class="line">    link/loopback <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> brd <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">    inet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>/<span class="number">8</span> scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::<span class="number">1</span>/<span class="number">128</span> scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"><span class="number">2</span>: <span class="attr">ens33</span>: &lt;<span class="variable constant_">BROADCAST</span>,<span class="variable constant_">MULTICAST</span>,<span class="variable constant_">UP</span>,<span class="variable constant_">LOWER_UP</span>&gt; mtu <span class="number">1500</span> qdisc fq_codel state <span class="variable constant_">UP</span> group <span class="keyword">default</span> qlen <span class="number">1000</span></span><br><span class="line">    link/ether <span class="number">00</span>:0<span class="attr">c</span>:<span class="number">29</span>:<span class="attr">cb</span>:<span class="attr">bf</span>:c6 brd <span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:ff</span><br><span class="line">    altname enp2s1</span><br><span class="line">    inet <span class="number">192.168</span><span class="number">.160</span><span class="number">.133</span>/<span class="number">24</span> brd <span class="number">192.168</span><span class="number">.160</span><span class="number">.255</span> scope <span class="variable language_">global</span> dynamic noprefixroute ens33</span><br><span class="line">       valid_lft 1555sec preferred_lft 1555sec</span><br><span class="line">    inet6 <span class="attr">fe80</span>::85<span class="attr">bd</span>:<span class="attr">d35d</span>:<span class="attr">f025</span>:dcf4/<span class="number">64</span> scope link noprefixroute</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+
+<p>查看 <code>/etc/netplan</code> 网络配置文件：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ubuntu@ubuntu-virtual-<span class="attr">machine</span>:~$ ls /etc/netplan</span><br><span class="line"><span class="number">01</span>-network-manager-all.<span class="property">yaml</span></span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>sudo vim /etc/netplan/*.yaml</code>，添加以下内容：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Let</span> <span class="title class_">NetworkManager</span> manage all devices on <span class="variable language_">this</span> system</span><br><span class="line"><span class="attr">network</span>:</span><br><span class="line">    <span class="attr">version</span>: <span class="number">2</span></span><br><span class="line">    <span class="attr">renderer</span>: <span class="title class_">NetworkManager</span></span><br><span class="line">    <span class="attr">ethernets</span>:</span><br><span class="line">       <span class="attr">ens33</span>:</span><br><span class="line">          <span class="attr">addresses</span>: [<span class="number">192.168</span><span class="number">.160</span><span class="number">.134</span>/<span class="number">24</span>]</span><br><span class="line">          <span class="attr">routes</span>:</span><br><span class="line">            - <span class="attr">to</span>: <span class="keyword">default</span></span><br><span class="line">              <span class="attr">via</span>: <span class="number">192.168</span><span class="number">.160</span><span class="number">.2</span></span><br><span class="line">          <span class="attr">nameservers</span>:</span><br><span class="line">             <span class="attr">addresses</span>: [<span class="number">180.76</span><span class="number">.76</span><span class="number">.76</span>, <span class="number">223.5</span><span class="number">.5</span><span class="number">.5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>ens33：拟设置的网卡名称</li>
+<li>addresses：拟设置的固定 ip 和掩码。掩码 24 表示前 24 位有效，剩下的 8 位可以是 0-254 之间的任一地址（255 为广播地址），例如 255.255.255.255 是 IPv4 中最大可能的 IP 地址，每个数字（255）都是由 8 个比特位表示的，每个比特位非 0 即 1，最大值即为 11111111，因此掩码 24 表示 255.255.255.0。同理，xxx.xxx.xxx.xxx&#x2F;32，表示掩码为 192.168.0.0</li>
+<li>routes：网关地址。default 也可以写为 <code>0.0.0.0/0</code> 或 <code>0/0</code></li>
+<li>nameservers：DNS 地址</li>
+</ul>
+<blockquote>
+<p>网关若使用 <code>gateway4</code> 属性会提示 <code>** (process:9908): WARNING **: 22:03:51.792: gateway4 has been deprecated, use default routes instead. See the &#39;Default routes&#39; section of the documentation for more details.</code></p>
+</blockquote>
+<p>执行 <code>sudo netplan try</code> 使配置生效。修改后：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ubuntu@ubuntu-virtual-<span class="attr">machine</span>:~$ ip a</span><br><span class="line"><span class="number">1</span>: <span class="attr">lo</span>: &lt;<span class="variable constant_">LOOPBACK</span>,<span class="variable constant_">UP</span>,<span class="variable constant_">LOWER_UP</span>&gt; mtu <span class="number">65536</span> qdisc noqueue state <span class="variable constant_">UNKNOWN</span> group <span class="keyword">default</span> qlen <span class="number">1000</span></span><br><span class="line">    link/loopback <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> brd <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">    inet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>/<span class="number">8</span> scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::<span class="number">1</span>/<span class="number">128</span> scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"><span class="number">2</span>: <span class="attr">ens33</span>: &lt;<span class="variable constant_">BROADCAST</span>,<span class="variable constant_">MULTICAST</span>,<span class="variable constant_">UP</span>,<span class="variable constant_">LOWER_UP</span>&gt; mtu <span class="number">1500</span> qdisc fq_codel state <span class="variable constant_">UP</span> group <span class="keyword">default</span> qlen <span class="number">1000</span></span><br><span class="line">    link/ether <span class="number">00</span>:0<span class="attr">c</span>:<span class="number">29</span>:<span class="attr">cb</span>:<span class="attr">bf</span>:c6 brd <span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:ff</span><br><span class="line">    altname enp2s1</span><br><span class="line">    inet <span class="number">192.168</span><span class="number">.160</span><span class="number">.134</span>/<span class="number">24</span> brd <span class="number">192.168</span><span class="number">.160</span><span class="number">.255</span> scope <span class="variable language_">global</span> noprefixroute ens33</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 <span class="attr">fe80</span>::20<span class="attr">c</span>:29<span class="attr">ff</span>:<span class="attr">fecb</span>:bfc6/<span class="number">64</span> scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+
+<p>2、开启 dhcp</p>
+<p>无需再设置 addresses 属性（实际上 routes 属性也可以移除）。配置如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"># <span class="title class_">Let</span> <span class="title class_">NetworkManager</span> manage all devices on <span class="variable language_">this</span> system</span><br><span class="line"><span class="attr">network</span>:</span><br><span class="line">    <span class="attr">version</span>: <span class="number">2</span></span><br><span class="line">    <span class="attr">renderer</span>: <span class="title class_">NetworkManager</span></span><br><span class="line">    <span class="attr">ethernets</span>:</span><br><span class="line">       <span class="attr">ens33</span>:</span><br><span class="line">          <span class="attr">dhcp4</span>: <span class="literal">true</span></span><br><span class="line">          <span class="attr">routes</span>:</span><br><span class="line">            - <span class="attr">to</span>: <span class="keyword">default</span></span><br><span class="line">              <span class="attr">via</span>: <span class="number">192.168</span><span class="number">.160</span><span class="number">.2</span></span><br><span class="line">          <span class="attr">nameservers</span>:</span><br><span class="line">             <span class="attr">addresses</span>: [<span class="number">180.76</span><span class="number">.76</span><span class="number">.76</span>, <span class="number">223.5</span><span class="number">.5</span><span class="number">.5</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他工具或命令"><a href="#其他工具或命令" class="headerlink" title="其他工具或命令"></a>其他工具或命令</h2><p>查看 CPU、内存使用情况：<code>sudo apt-get install htop</code></p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
 </search>
