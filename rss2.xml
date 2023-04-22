@@ -15,13 +15,13 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Mon, 06 Mar 2023 14:45:56 GMT</pubDate>
+    <pubDate>Sat, 22 Apr 2023 23:28:22 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>部署-ubuntu-本地服务器</title>
-      <link>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-      <guid>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <title>部署-ubuntu-服务器</title>
+      <link>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <guid>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <pubDate>Mon, 06 Mar 2023 12:32:38 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -36,7 +36,7 @@
       <category domain="http://www.dcheng.site/tags/ubuntu/">ubuntu</category>
       
       
-      <comments>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/#disqus_thread</comments>
       
     </item>
     
