@@ -957,6 +957,217 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>logback-日志配置</title>
+    <url>/2023/04/30/logback-%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-日志级别"><a href="#1-日志级别" class="headerlink" title="1 日志级别"></a>1 日志级别</h2><table>
+<thead>
+<tr>
+<th align="center">优先级</th>
+<th align="center">日志级别</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">trace</td>
+<td align="center">追踪，指明程序运行轨迹</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">debug</td>
+<td align="center">调试，实际应用中一般将其作为最低级别</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">info</td>
+<td align="center">输出重要的信息，使用较多</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">warn</td>
+<td align="center">警告</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">error</td>
+<td align="center">错误</td>
+</tr>
+</tbody></table>
+<h2 id="2-格式"><a href="#2-格式" class="headerlink" title="2 格式"></a>2 格式</h2><table>
+<thead>
+<tr>
+<th align="right">输出格式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">%date{yyyy-MM-dd HH:mm:ss.SSS}</td>
+<td>日志生产时间，精确到毫秒</td>
+</tr>
+<tr>
+<td align="right">%-5level</td>
+<td>日志级别。例如 <code>-5</code> 表示左对齐并且固定输出 5 个字符，如果不足在右边补 0（<code>ILoggingEvent.getLevel</code>方法返回值）</td>
+</tr>
+<tr>
+<td align="right">%logger</td>
+<td>logger 的名称，例如 <code>logger&#123;36&#125;</code> 表示 logger 名字最长 36 个字符（<code>ILoggingEvent.getLoggerName</code>方法返回值）</td>
+</tr>
+<tr>
+<td align="right">%thread</td>
+<td>输出当前线程名称（<code>ILoggingEvent.getThreadName</code>方法返回值）</td>
+</tr>
+<tr>
+<td align="right">%p</td>
+<td>日志输出格式</td>
+</tr>
+<tr>
+<td align="right">%msg</td>
+<td>日志内容</td>
+</tr>
+<tr>
+<td align="right">%n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td align="right">%class</td>
+<td>输出 java 类名</td>
+</tr>
+<tr>
+<td align="right">%file</td>
+<td>输出文件名</td>
+</tr>
+<tr>
+<td align="right">%L</td>
+<td>输出错误行号</td>
+</tr>
+<tr>
+<td align="right">%method</td>
+<td>输出方法名</td>
+</tr>
+<tr>
+<td align="right">%l</td>
+<td>输出语句所在的行数, 包括类名、方法名、文件名、行数</td>
+</tr>
+<tr>
+<td align="right">hostName</td>
+<td>本地机器名</td>
+</tr>
+<tr>
+<td align="right">hostAddress</td>
+<td>本地 ip 地址</td>
+</tr>
+</tbody></table>
+<h2 id="3-配置文件"><a href="#3-配置文件" class="headerlink" title="3 配置文件"></a>3 配置文件</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 定义日志输出格式和存储路径--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;LOG_PATTERN&quot;</span> <span class="attr">value</span>=<span class="string">&quot;%date&#123;HH:mm:ss.SSS&#125;\t[%thread]\t%-5level %logger&#123;36&#125; - %msg%n&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注：如果最后打成jar包，日志将输出在logs目录下 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;INFO_PATH&quot;</span> <span class="attr">value</span>=<span class="string">&quot;logs/info.%d&#123;yyyy-MM-dd&#125;.%i.log&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;WARN_ERR_PATH&quot;</span> <span class="attr">value</span>=<span class="string">&quot;logs/warn_err.%d&#123;yyyy-MM-dd&#125;.%i.log&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 定义控制台输出 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注1：如果最后打成jar包，该部分输出会出现在jar包所在目录下的sout.log文件 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 注2：name属性命名随意，引用时对应即可 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;CONSOLE&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.ConsoleAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 打印格式 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>$&#123;LOG_PATTERN&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- info类型配置（仅显示info，过滤warn、error）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;FILE_INFO&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- LevelFilter，按日志等级过滤 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.filter.LevelFilter&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">level</span>&gt;</span>ERROR<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">onMatch</span>&gt;</span>DENY<span class="tag">&lt;/<span class="name">onMatch</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.filter.LevelFilter&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">level</span>&gt;</span>WARN<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">onMatch</span>&gt;</span>DENY<span class="tag">&lt;/<span class="name">onMatch</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 自定义过滤器 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;com.xx.LogbackFilter&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 文件名样式、保存周期、文件大小 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fileNamePattern</span>&gt;</span>$&#123;INFO_PATH&#125;<span class="tag">&lt;/<span class="name">fileNamePattern</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">maxHistory</span>&gt;</span>3<span class="tag">&lt;/<span class="name">maxHistory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">timeBasedFileNamingAndTriggeringPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">maxFileSize</span>&gt;</span>5MB<span class="tag">&lt;/<span class="name">maxFileSize</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">timeBasedFileNamingAndTriggeringPolicy</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>$&#123;LOG_PATTERN&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--WARN、ERROR类型配置（仅显示warn及其以上等级）--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;FILE_WARN_ERR&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.filter.ThresholdFilter&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">level</span>&gt;</span>WARN<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fileNamePattern</span>&gt;</span>$&#123;WARN_ERR_PATH&#125;<span class="tag">&lt;/<span class="name">fileNamePattern</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">maxHistory</span>&gt;</span>10<span class="tag">&lt;/<span class="name">maxHistory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">timeBasedFileNamingAndTriggeringPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">maxFileSize</span>&gt;</span>10MB<span class="tag">&lt;/<span class="name">maxFileSize</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">timeBasedFileNamingAndTriggeringPolicy</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>$&#123;LOG_PATTERN&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- turboFilter类型的过滤器比appender先触发 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">turboFilter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.turbo.DynamicThresholdFilter&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DefaultThreshold</span>&gt;</span>ERROR<span class="tag">&lt;/<span class="name">DefaultThreshold</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">OnHigherOrEqual</span>&gt;</span>ACCEPT<span class="tag">&lt;/<span class="name">OnHigherOrEqual</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">OnLower</span>&gt;</span>NEUTRAL<span class="tag">&lt;/<span class="name">OnLower</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Key</span>&gt;</span>cando<span class="tag">&lt;/<span class="name">Key</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">MDCValueLevelPair</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>read<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">level</span>&gt;</span>DEBUG<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">MDCValueLevelPair</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">MDCValueLevelPair</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>write<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">level</span>&gt;</span>INFO<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">MDCValueLevelPair</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">MDCValueLevelPair</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>all<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">level</span>&gt;</span>WARN<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">MDCValueLevelPair</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">turboFilter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 根目录输出等级为DEBUG --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">&quot;DEBUG&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;FILE_INFO&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;FILE_WARN_ERR&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-过滤器"><a href="#3-1-过滤器" class="headerlink" title="3.1 过滤器"></a>3.1 过滤器</h3><p>logbcak 允许给日志记录器 appender 配置一个或多个 Filter，或者给整体配置一个或多个 TurboFilter 实现当满足过滤器指定的条件时处理日志。</p>
+<table>
+<thead>
+<tr>
+<th align="center">过滤器</th>
+<th align="center">类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">LevelFilter</td>
+<td align="center">Filter</td>
+<td align="left">对等于（onMatch）或不等于（onMismatch）指定 level 的日志进行处理</td>
+</tr>
+<tr>
+<td align="center">ThresholdFilter</td>
+<td align="center">Filter</td>
+<td align="left">对大于或等于（onMatch）指定 level 的日志进行处理；小于（onMismatch）指定 level 的日志进行处理</td>
+</tr>
+<tr>
+<td align="center">EvaluatorFilter</td>
+<td align="center">Filter</td>
+<td align="left">对满足（onMatch）或不满足（onMismatch）指定表达式的日志进行处理</td>
+</tr>
+<tr>
+<td align="center">MDCFilter</td>
+<td align="center">TurboFilter</td>
+<td align="left">对等于（onMatch）或不等于（onMismatch） MDCKey 及其 Value 的日志进行处理</td>
+</tr>
+<tr>
+<td align="center">DuplicateMessageFilter</td>
+<td align="center">TurboFilter</td>
+<td align="left">不记录多余的重复的日志。有两个子标签：<code>&lt;cacheSize&gt;</code> 表示内部缓存对旧消息引用的个数上限，默认 100；<code>&lt;allowedRepetitions&gt;</code> 表示允许消息出现的重复次数上限，超过次数上限的记录请求将被丢弃</td>
+</tr>
+<tr>
+<td align="center">DynamicThresholdFilter</td>
+<td align="center">TurboFilter</td>
+<td align="left">动态版的 ThresholdFilter，根据 MDC 域中是否存在某个键，该键对应的值是否相等，可实现日志级别动态切换</td>
+</tr>
+<tr>
+<td align="center">MarkerFilter</td>
+<td align="center">TurboFilter</td>
+<td align="left">对带有指定标记的日志进行处理</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>onMatch、onMismatch 的三种取值和处理方式：</p>
+</blockquote>
+<ul>
+<li>DENY：拒绝了记录</li>
+<li>NEUTRAL：本级过滤器放行，不记录。注意，如果日志途径的所有过滤器都是 NEUTRAL，则记录</li>
+<li>ACCEPT：需要记录</li>
+</ul>
+<p><strong>EvaluatorFilter 例子</strong></p>
+<p>在 <code>&lt;appender&gt;</code> 标签中使用，需要额外引入依赖：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// https://mvnrepository.com/artifact/org.codehaus.janino/janino</span></span><br><span class="line">implementation <span class="attr">group</span>: <span class="string">&#x27;org.codehaus.janino&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;janino&#x27;</span>, <span class="attr">version</span>: <span class="string">&#x27;3.1.9&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>当前需要拒绝来自 <code>org.apache.http.wire</code> 类和 <code>org.apache.http.headers</code> 类的日志信息，其他日志记录：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.filter.EvaluatorFilter&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">evaluator</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">expression</span>&gt;</span></span><br><span class="line">            if(event.getLoggerName().contains(&quot;org.apache.http.wire&quot;) || event.getLoggerName().contains(&quot;org.apache.http.headers&quot;))&#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">expression</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">evaluator</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">OnMatch</span>&gt;</span>DENY<span class="tag">&lt;/<span class="name">OnMatch</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">OnMismatch</span>&gt;</span>ACCEPT<span class="tag">&lt;/<span class="name">OnMismatch</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>MDCFilter 例子</strong></p>
+<p>例如，仅记录 MDCKey 为 cando，Value 为 read 的日志：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">turboFilter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.turbo.MDCFilter&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">MDCKey</span>&gt;</span>cando<span class="tag">&lt;/<span class="name">MDCKey</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Value</span>&gt;</span>read<span class="tag">&lt;/<span class="name">Value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">OnMatch</span>&gt;</span>ACCEPT<span class="tag">&lt;/<span class="name">OnMatch</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">onMismatch</span>&gt;</span>DENY<span class="tag">&lt;/<span class="name">onMismatch</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">turboFilter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>DuplicateMessageFilter 例子</strong></p>
+<p>限制仅显示 1 条日志</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">turboFilter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.turbo.DuplicateMessageFilter&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">AllowedRepetitions</span>&gt;</span>1<span class="tag">&lt;/<span class="name">AllowedRepetitions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">turboFilter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>测试代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">log.info(marker, <span class="string">&quot;this is marker&quot;</span>);</span><br><span class="line">log.info(<span class="string">&quot;this is marker&quot;</span>);</span><br><span class="line">log.info(String.format(<span class="string">&quot;this is marker&quot;</span>, <span class="number">1</span>));</span><br><span class="line">log.info(String.format(<span class="string">&quot;this is marker&quot;</span>, <span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<p>测试代码中第 2-4 行判断为重复，输出结果：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">16</span>:<span class="number">52</span>:<span class="number">01.698</span>	[Test worker]	INFO  s.ApplicationTests - <span class="built_in">this</span> is marker</span><br><span class="line"><span class="number">16</span>:<span class="number">52</span>:<span class="number">01.699</span>	[Test worker]	INFO  s.ApplicationTests - <span class="built_in">this</span> is marker</span><br></pre></td></tr></table></figure>
+
+<p><strong>DynamicThresholdFilter 例子&#96;</strong></p>
+<p>测试代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">MDC.put(<span class="string">&quot;null&quot;</span>, <span class="string">&quot;none&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; TRACE &#125;&quot;</span>);</span><br><span class="line">log.debug(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; DEBUG &#125;&quot;</span>);</span><br><span class="line">log.info(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; INFO &#125;&quot;</span>);</span><br><span class="line">log.warn(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; WARN &#125;&quot;</span>);</span><br><span class="line">log.error(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; ERROR &#125;&quot;</span>);</span><br><span class="line"></span><br><span class="line">MDC.put(<span class="string">&quot;cando&quot;</span>, <span class="string">&quot;read&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; read &#125;,level=&#123; TRACE &#125;&quot;</span>);</span><br><span class="line">log.debug(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; read &#125;,level=&#123; DEBUG &#125;&quot;</span>);</span><br><span class="line">log.info(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; read &#125;,level=&#123; INFO &#125;&quot;</span>);</span><br><span class="line">log.warn(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; read &#125;,level=&#123; WARN &#125;&quot;</span>);</span><br><span class="line">log.error(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; read &#125;,level=&#123; ERROR &#125;&quot;</span>);</span><br><span class="line"></span><br><span class="line">MDC.put(<span class="string">&quot;cando&quot;</span>, <span class="string">&quot;write&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; write &#125;,level=&#123; TRACE &#125;&quot;</span>);</span><br><span class="line">log.debug(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; write &#125;,level=&#123; DEBUG &#125;&quot;</span>);</span><br><span class="line">log.info(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; write &#125;,level=&#123; INFO &#125;&quot;</span>);</span><br><span class="line">log.warn(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; write &#125;,level=&#123; WARN &#125;&quot;</span>);</span><br><span class="line">log.error(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; write &#125;,level=&#123; ERROR &#125;&quot;</span>);</span><br><span class="line"></span><br><span class="line">MDC.put(<span class="string">&quot;cando&quot;</span>, <span class="string">&quot;none&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; none &#125;,level=&#123; TRACE &#125;&quot;</span>);</span><br><span class="line">log.debug(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; none &#125;,level=&#123; DEBUG &#125;&quot;</span>);</span><br><span class="line">log.info(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; none &#125;,level=&#123; INFO &#125;&quot;</span>);</span><br><span class="line">log.warn(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; none &#125;,level=&#123; WARN &#125;&quot;</span>);</span><br><span class="line">log.error(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; none &#125;,level=&#123; ERROR &#125;&quot;</span>);</span><br><span class="line"></span><br><span class="line">MDC.put(<span class="string">&quot;cando&quot;</span>, <span class="string">&quot;all&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; all &#125;,level=&#123; TRACE &#125;&quot;</span>);</span><br><span class="line">log.debug(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; all &#125;,level=&#123; DEBUG &#125;&quot;</span>);</span><br><span class="line">log.info(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; all &#125;,level=&#123; INFO &#125;&quot;</span>);</span><br><span class="line">log.warn(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; all &#125;,level=&#123; WARN &#125;&quot;</span>);</span><br><span class="line">log.error(<span class="string">&quot;key=&#123; cando &#125;,value=&#123; all &#125;,level=&#123; ERROR &#125;&quot;</span>);</span><br><span class="line"></span><br><span class="line">MDC.put(<span class="string">&quot;null&quot;</span>, <span class="string">&quot;none&quot;</span>);</span><br><span class="line">log.trace(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; TRACE &#125;&quot;</span>);</span><br><span class="line">log.debug(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; DEBUG &#125;&quot;</span>);</span><br><span class="line">log.info(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; INFO &#125;&quot;</span>);</span><br><span class="line">log.warn(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; WARN &#125;&quot;</span>);</span><br><span class="line">log.error(<span class="string">&quot;key=&#123; null &#125;,value=&#123; none &#125;,level=&#123; ERROR &#125;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<ul>
+<li>当 key 和 value 都对应时，记录大于等于给定 level 的日志</li>
+<li>当 key 对应，value 不对应时，按<code>&lt;DefaultThreshold&gt;</code>标签处理</li>
+<li>当 key 不对应时，无论 value 是否对应，所得结果不确定：在首位调用，仅记录<code>ERROR</code>，满足<code>&lt;DefaultThreshold&gt;</code>标签限定；若紧跟其他调用，会与该调用的等级相同。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.810</span>	[Test worker]	ERROR s.ApplicationTests - key=&#123; <span class="literal">null</span> &#125;,value=&#123; none &#125;,level=&#123; ERROR &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	DEBUG s.ApplicationTests - key=&#123; cando &#125;,value=&#123; read &#125;,level=&#123; DEBUG &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	INFO  s.ApplicationTests - key=&#123; cando &#125;,value=&#123; read &#125;,level=&#123; INFO &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	WARN  s.ApplicationTests - key=&#123; cando &#125;,value=&#123; read &#125;,level=&#123; WARN &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	ERROR s.ApplicationTests - key=&#123; cando &#125;,value=&#123; read &#125;,level=&#123; ERROR &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	INFO  s.ApplicationTests - key=&#123; cando &#125;,value=&#123; write &#125;,level=&#123; INFO &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	WARN  s.ApplicationTests - key=&#123; cando &#125;,value=&#123; write &#125;,level=&#123; WARN &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	ERROR s.ApplicationTests - key=&#123; cando &#125;,value=&#123; write &#125;,level=&#123; ERROR &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	ERROR s.ApplicationTests - key=&#123; cando &#125;,value=&#123; none &#125;,level=&#123; ERROR &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	WARN  s.ApplicationTests - key=&#123; cando &#125;,value=&#123; all &#125;,level=&#123; WARN &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	ERROR s.ApplicationTests - key=&#123; cando &#125;,value=&#123; all &#125;,level=&#123; ERROR &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	WARN  s.ApplicationTests - key=&#123; <span class="literal">null</span> &#125;,value=&#123; none &#125;,level=&#123; WARN &#125;</span><br><span class="line"><span class="number">13</span>:<span class="number">41</span>:<span class="number">52.811</span>	[Test worker]	ERROR s.ApplicationTests - key=&#123; <span class="literal">null</span> &#125;,value=&#123; none &#125;,level=&#123; ERROR &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>MarkerFilter 例子</strong></p>
+<p>指定记录带有 test 标记的日志：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">turboFilter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.turbo.MarkerFilter&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Marker</span>&gt;</span>test<span class="tag">&lt;/<span class="name">Marker</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">OnMatch</span>&gt;</span>ACCEPT<span class="tag">&lt;/<span class="name">OnMatch</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">OnMismatch</span>&gt;</span>DENY<span class="tag">&lt;/<span class="name">OnMismatch</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">turboFilter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>测试代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Marker</span> <span class="variable">marker</span> <span class="operator">=</span> MarkerFactory.getMarker(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line">log.info(marker,<span class="string">&quot;this is marker&quot;</span>);</span><br><span class="line">log.info(<span class="string">&quot;a normal log&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-自定义过滤器"><a href="#3-2-自定义过滤器" class="headerlink" title="3.2 自定义过滤器"></a>3.2 自定义过滤器</h3><p>实现一个与上文相同的功能，拒绝来自 <code>org.apache.http.wire</code> 类和 <code>org.apache.http.headers</code> 类的日志信息，其他日志记录：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogbackFilter</span> <span class="keyword">extends</span> <span class="title class_">Filter</span>&lt;ILoggingEvent&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> FilterReply <span class="title function_">decide</span><span class="params">(ILoggingEvent event)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(event.getLoggerName().contains(<span class="string">&quot;org.apache.http.wire&quot;</span>) || event.getLoggerName().contains(<span class="string">&quot;org.apache.http.headers&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> FilterReply.DENY;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> FilterReply.NEUTRAL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>备忘录</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>logback</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</title>
     <url>/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
     <content><![CDATA[<blockquote>
