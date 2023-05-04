@@ -15,7 +15,7 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 02 May 2023 14:12:38 GMT</pubDate>
+    <pubDate>Thu, 04 May 2023 13:11:54 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -44,8 +44,8 @@
     
     <item>
       <title>部署-ubuntu-服务器</title>
-      <link>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-      <guid>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <link>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <guid>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <pubDate>Mon, 06 Mar 2023 12:32:38 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -59,8 +59,10 @@
       
       <category domain="http://www.dcheng.site/tags/ubuntu/">ubuntu</category>
       
+      <category domain="http://www.dcheng.site/tags/mariadb/">mariadb</category>
       
-      <comments>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/#disqus_thread</comments>
+      
+      <comments>http://www.dcheng.site/2023/03/06/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/#disqus_thread</comments>
       
     </item>
     
@@ -211,9 +213,9 @@
       <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/github/">github</category>
-      
       <category domain="http://www.dcheng.site/tags/git/">git</category>
+      
+      <category domain="http://www.dcheng.site/tags/github/">github</category>
       
       
       <comments>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AA-SSH-%E5%85%AC%E9%92%A5%E8%BF%9E%E6%8E%A5%E5%A4%9A%E4%B8%AA-GitHub-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/#disqus_thread</comments>
@@ -235,9 +237,9 @@
       <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/github/">github</category>
-      
       <category domain="http://www.dcheng.site/tags/git/">git</category>
+      
+      <category domain="http://www.dcheng.site/tags/github/">github</category>
       
       
       <comments>http://www.dcheng.site/2022/12/26/%E4%BD%BF%E7%94%A8-push-%E6%8F%90%E4%BA%A4%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%87%BA%E7%8E%B0-The-requested-URL-returned-error-403-%E9%94%99%E8%AF%AF/#disqus_thread</comments>
@@ -246,8 +248,8 @@
     
     <item>
       <title>GitHub-中使用-issues-模版和-pull-request-模版</title>
-      <link>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/</link>
-      <guid>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/</guid>
+      <link>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/</guid>
       <pubDate>Mon, 26 Dec 2022 08:26:05 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -262,14 +264,14 @@
       <category domain="http://www.dcheng.site/tags/github/">github</category>
       
       
-      <comments>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>GitHub-中独立仓库与组织的权限</title>
-      <link>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/</link>
-      <guid>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/</guid>
+      <link>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/</guid>
       <pubDate>Mon, 26 Dec 2022 08:23:23 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -284,14 +286,14 @@
       <category domain="http://www.dcheng.site/tags/github/">github</category>
       
       
-      <comments>http://www.dcheng.site/2022/12/26/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>git-常用命令</title>
-      <link>http://www.dcheng.site/2022/12/26/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
-      <guid>http://www.dcheng.site/2022/12/26/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <link>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <pubDate>Mon, 26 Dec 2022 08:20:54 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -306,14 +308,14 @@
       <category domain="http://www.dcheng.site/tags/git/">git</category>
       
       
-      <comments>http://www.dcheng.site/2022/12/26/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>gitignore-文件通用参考版本</title>
-      <link>http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/</link>
-      <guid>http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/</guid>
+      <link>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/</guid>
       <pubDate>Mon, 26 Dec 2022 08:19:29 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -322,20 +324,20 @@
       
       
       
-      <category domain="http://www.dcheng.site/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</category>
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      <category domain="http://www.dcheng.site/tags/git/">git</category>
       
       
-      <comments>http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>git-问题备忘</title>
-      <link>http://www.dcheng.site/2022/12/26/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</link>
-      <guid>http://www.dcheng.site/2022/12/26/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</guid>
+      <link>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</link>
+      <guid>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</guid>
       <pubDate>Mon, 26 Dec 2022 08:15:34 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -350,7 +352,7 @@
       <category domain="http://www.dcheng.site/tags/git/">git</category>
       
       
-      <comments>http://www.dcheng.site/2022/12/26/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/#disqus_thread</comments>
       
     </item>
     
@@ -444,8 +446,8 @@
     
     <item>
       <title>使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</title>
-      <link>http://www.dcheng.site/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
-      <guid>http://www.dcheng.site/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <link>http://www.dcheng.site/2022/12/07/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <guid>http://www.dcheng.site/2022/12/07/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <pubDate>Wed, 07 Dec 2022 02:27:09 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -454,13 +456,13 @@
       
       
       
-      <category domain="http://www.dcheng.site/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</category>
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
       
       
-      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      <category domain="http://www.dcheng.site/tags/mysql/">mysql</category>
       
       
-      <comments>http://www.dcheng.site/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/2022/12/07/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/#disqus_thread</comments>
       
     </item>
     
@@ -501,7 +503,9 @@
       <category domain="http://www.dcheng.site/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</category>
       
       
-      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      <category domain="http://www.dcheng.site/tags/macos/">macos</category>
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
       
       
       <comments>http://www.dcheng.site/2022/12/07/MacOS-%E6%88%96-Win-%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%97%AE%E9%A2%98%E6%9D%82%E7%83%A9%E5%8F%8A%E5%A4%87%E5%BF%98/#disqus_thread</comments>
@@ -510,8 +514,8 @@
     
     <item>
       <title>使用-github+Action-部署-Hexo-博客</title>
-      <link>http://www.dcheng.site/2022/11/30/%E4%BD%BF%E7%94%A8-github+Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/</link>
-      <guid>http://www.dcheng.site/2022/11/30/%E4%BD%BF%E7%94%A8-github+Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/</guid>
+      <link>http://www.dcheng.site/2022/11/30/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-github+Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/</link>
+      <guid>http://www.dcheng.site/2022/11/30/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-github+Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/</guid>
       <pubDate>Wed, 30 Nov 2022 09:03:50 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -520,13 +524,15 @@
       
       
       
-      <category domain="http://www.dcheng.site/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/">默认分类</category>
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
       
+      
+      <category domain="http://www.dcheng.site/tags/github/">github</category>
       
       <category domain="http://www.dcheng.site/tags/hexo/">hexo</category>
       
       
-      <comments>http://www.dcheng.site/2022/11/30/%E4%BD%BF%E7%94%A8-github+Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/2022/11/30/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-github+Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/#disqus_thread</comments>
       
     </item>
     

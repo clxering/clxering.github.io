@@ -83,215 +83,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub-中使用-issues-模版和-pull-request-模版</title>
-    <url>/2022/12/26/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、issues-模版"><a href="#一、issues-模版" class="headerlink" title="一、issues 模版"></a>一、issues 模版</h2><h3 id="1-1-默认模版"><a href="#1-1-默认模版" class="headerlink" title="1.1 默认模版"></a>1.1 默认模版</h3><ul>
-<li>在代码库新建目录：<code>.github</code></li>
-<li>在 <code>.github</code> 目录下添加 <code>ISSUE_TEMPLATE.md</code> 文件作为 issues 默认模版。当创建 issue 时，若未建立多模版或选择了 <code>Open a regular issue</code> 时，系统会引用该模版。</li>
-</ul>
-<p><img src="https://user-images.githubusercontent.com/36018696/65121507-e9a21400-da21-11e9-823e-808e3bfb4d09.png" alt="1"></p>
-<h3 id="1-2-多模版"><a href="#1-2-多模版" class="headerlink" title="1.2 多模版"></a>1.2 多模版</h3><ul>
-<li>在代码库新建目录：<code>.github/ISSUE_TEMPLATE</code></li>
-<li>该目录下可添加多个 <code>.md</code> 文件作为 issues 模版。当创建 issue 时，系统会展示这些模版供选择。</li>
-<li><code>.md</code> 文件参考格式如下：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">name: 该模版的名称（创建 issue 时，系统展示模版列表时会显示该名称）</span><br><span class="line">about: 该模版的描述（创建 issue 时，系统展示模版列表时会显示该描述）</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">正文内容……</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-注意事项"><a href="#1-3-注意事项" class="headerlink" title="1.3 注意事项"></a>1.3 注意事项</h3><ul>
-<li>issues 的默认模版和多模版可同时存在。</li>
-<li>关于 issues 模版的描述可详见帮助文档：<a href="https://help.github.com/articles/manually-creating-a-single-issue-template-for-your-repository/">https://help.github.com/articles/manually-creating-a-single-issue-template-for-your-repository/</a></li>
-</ul>
-<h2 id="二、pull-request-模版"><a href="#二、pull-request-模版" class="headerlink" title="二、pull request 模版"></a>二、pull request 模版</h2><h3 id="2-1-默认模版"><a href="#2-1-默认模版" class="headerlink" title="2.1 默认模版"></a>2.1 默认模版</h3><ul>
-<li>在代码库新建目录：<code>.github</code></li>
-<li>在 <code>.github</code> 目录下添加 <code>PULL_REQUEST_TEMPLATE.md</code> 文件作为 pull request 默认模版。当创建不带参数的 pull request 时，系统会引用该模版。</li>
-</ul>
-<h3 id="2-2-多模版"><a href="#2-2-多模版" class="headerlink" title="2.2 多模版"></a>2.2 多模版</h3><ul>
-<li>在代码库新建目录：<code>.github/PULL_REQUEST_TEMPLATE</code></li>
-<li>该目录下可添加多个 <code>.md</code> 文件作为 pull request 模版。</li>
-<li>pull request 模版要通过查询参数来调用。例如，要使用 <code>pr-template-1.md</code> 这个模版，可使用如下查询：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/用户名/代码库名称/compare/分支名称?expand=1&amp;template=pr-template-1.md</span><br><span class="line">或参考GitHub帮助文档的格式，如下。两者效果相同。</span><br><span class="line">https://github.com/用户名/代码库名称/compare/master...分支名称?expand=1&amp;template=pr-template-1.md</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可选查询参数<ul>
-<li><code>expand=1</code>，直接跳转到 pull request 界面。如果不带此参数会先到 compare 界面，需手动进入pull request 界面。</li>
-<li><code>template=pr-template-1.md</code>，调用名为 <code>pr-template-1.md</code> 的模版。如果不带此参数，则调用默认模版。</li>
-<li><code>title=New+bug+report</code>（或者 <code>title=New%20bug%20report</code>），指定 pull request 的标题为 <code>New bug report</code></li>
-<li>其他参数可详见帮助文档：<a href="https://help.github.com/articles/about-automation-for-issues-and-pull-requests-with-query-parameters/">https://help.github.com/articles/about-automation-for-issues-and-pull-requests-with-query-parameters/</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="2-3-注意事项"><a href="#2-3-注意事项" class="headerlink" title="2.3 注意事项"></a>2.3 注意事项</h3><ul>
-<li>pull request 的默认模版和多模版可同时存在。</li>
-<li>关于 pull request 模版的描述可详见帮助文档：<a href="https://help.github.com/articles/creating-a-pull-request-template-for-your-repository/">https://help.github.com/articles/creating-a-pull-request-template-for-your-repository/</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>通用技术</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub-中独立仓库与组织的权限</title>
-    <url>/2022/12/26/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="一、独立仓库（公开或私有）"><a href="#一、独立仓库（公开或私有）" class="headerlink" title="一、独立仓库（公开或私有）"></a>一、独立仓库（公开或私有）</h2><p>独立仓库包含 <strong>仓库拥有者和外部协作者</strong> 两种角色，相关权限如下表</p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">直接写入</th>
-<th align="center">issue 操作<br>[删除、隐藏、修改]</th>
-<th align="center">添加标签</th>
-<th align="center">分支操作<br>[删除、创建]</th>
-<th align="center">邀请校对</th>
-<th align="center">被邀请校对</th>
-<th align="center">校对操作<br>[同意、驳回、重校]</th>
-<th align="center">强制合并</th>
-<th align="center">Setting 菜单可见</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">仓库拥有者</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-</tr>
-<tr>
-<td align="center">外部协作者</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">×</td>
-<td align="center">×</td>
-</tr>
-</tbody></table>
-<p><strong>注：Setting 菜单是否可见决定了是否具备删库、设置分支规则、邀请外部协作者、密钥设置等高级权限。</strong></p>
-<h2 id="二、组织"><a href="#二、组织" class="headerlink" title="二、组织"></a>二、组织</h2><p>组织包含 <strong>组织拥有者、成员、外部协作者</strong> 三种角色，以及 <strong>Read、Write、Admin</strong> 三种权限。</p>
-<h3 id="1、Base-permissions（基本权限）"><a href="#1、Base-permissions（基本权限）" class="headerlink" title="1、Base permissions（基本权限）"></a>1、Base permissions（基本权限）</h3><p>Base permissions to the organization’s repositories apply to all members and excludes outside collaborators. Since organization members can have permissions from multiple sources, members and collaborators who have been granted a higher level of access than the base permissions will retain their higher permission privileges.</p>
-<p>组织存储库的基本权限适用于所有成员（不含外部协作者）。由于组织成员可以拥有多个库的自定义权限，因此被授予比基本权限更高级别访问权限时，成员和协作者将保留更高的权限。</p>
-<p>基本权限包含如下几种：</p>
-<ul>
-<li>None，Members will only be able to clone and pull public repositories. To give a member additional access, you’ll need to add them to teams or make them collaborators on individual repositories.</li>
-</ul>
-<p>成员只能对公共库实施 clone 和 pull 操作。要为成员提供额外的访问权限，需要将它们添加到团队中，或者让它们成为各个存储库的外部协作者。</p>
-<ul>
-<li>Read，Members will be able to clone and pull all repositories.</li>
-</ul>
-<p>成员可以对所有库实施 clone 和 pull 操作。</p>
-<ul>
-<li>Write，Members will be able to clone, pull, and push all repositories.</li>
-</ul>
-<p>成员可以对所有库实施 clone、pull 和 push 操作。</p>
-<ul>
-<li>Admin，Members will be able to clone, pull, push, and add new collaborators to all repositories.</li>
-</ul>
-<p>成员可以对所有库实施 clone、pull、push 和添加外部协作者的操作。</p>
-<h3 id="2、组织角色"><a href="#2、组织角色" class="headerlink" title="2、组织角色"></a>2、组织角色</h3><ul>
-<li>Owner，Has full administrative access to the entire organization.</li>
-</ul>
-<p>对整个组织具有完全的管理访问权限。<strong>组织角色为 Owner 时，对于组织中每一个库而言，默认权限都是 Admin。</strong></p>
-<ul>
-<li>Member，Can see every member and non-secret team in the organization, and can create new repositories.</li>
-</ul>
-<p>可以查看组织中的每个成员和非机密团队，并可以创建新的存储库。<strong>组织角色为 Member 时，对于组织中每一个库而言，默认权限都与基本权限相同。</strong></p>
-<h3 id="3、库权限"><a href="#3、库权限" class="headerlink" title="3、库权限"></a>3、库权限</h3><p>Read、Write、Admin，详见基本权限的描述。<strong>如果需要在某一个库中授予某个成员高于基本权限的权限，需要将其添加为外部协作者。</strong></p>
-<h3 id="4、组织权限总结如下"><a href="#4、组织权限总结如下" class="headerlink" title="4、组织权限总结如下"></a>4、组织权限总结如下</h3><table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">直接写入</th>
-<th align="center">issue 操作<br>[删除、隐藏、修改]</th>
-<th align="center">添加标签</th>
-<th align="center">分支操作<br>[删除、创建]</th>
-<th align="center">邀请校对</th>
-<th align="center">被邀请校对</th>
-<th align="center">校对操作<br>[同意、驳回、重校]</th>
-<th align="center">强制合并</th>
-<th align="center">库 Setting 菜单可见</th>
-<th align="center">组织 Setting 菜单可见</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">组织拥有者</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-</tr>
-<tr>
-<td align="center">Read</td>
-<td align="center">×</td>
-<td align="center">×</td>
-<td align="center">×</td>
-<td align="center">×</td>
-<td align="center">×</td>
-<td align="center">√</td>
-<td align="center">×</td>
-<td align="center">×</td>
-<td align="center">×</td>
-<td align="center">×</td>
-</tr>
-<tr>
-<td align="center">Write</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">×</td>
-<td align="center">×</td>
-<td align="center">×</td>
-</tr>
-<tr>
-<td align="center">Admin</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">×</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>通用技术</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IntelliJ-IDEA-快捷键及常用配置</title>
     <url>/2022/12/07/IntelliJ-IDEA-%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<blockquote>
@@ -370,7 +161,8 @@ End 	Fn + →
         <category>备忘录</category>
       </categories>
       <tags>
-        <tag>未标记</tag>
+        <tag>macos</tag>
+        <tag>win</tag>
       </tags>
   </entry>
   <entry>
@@ -564,318 +356,6 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git-常用命令</title>
-    <url>/2022/12/26/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<!--
-注意：在 issues 使用锚点不能使用 [title](#title) 这种方式
- -->
-
-<h1 id="git-常用命令"><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a><a name="目录">目录</a></h2><ul>
-<li><a href="#初始化仓库">初始化仓库</a></li>
-<li><a href="#全局配置用户名和邮箱地址">全局配置用户名和邮箱地址</a></li>
-<li><a href="#删除全局配置的用户名和邮箱地址">删除全局配置的用户名和邮箱地址</a></li>
-<li><a href="#对当前仓库配置用户名和邮箱地址">对当前仓库配置用户名和邮箱地址</a></li>
-<li><a href="#查看全局配置的用户名和邮箱">查看全局配置的用户名和邮箱</a></li>
-<li><a href="#查看当前仓库的用户名和邮箱">查看当前仓库的用户名和邮箱</a></li>
-<li><a href="#生成-SSH-公钥">生成-SSH-公钥</a></li>
-<li><a href="#关联远程仓库">关联远程仓库</a></li>
-<li><a href="#把本地库的所有内容推送到远程库">把本地库的所有内容推送到远程库</a></li>
-<li><a href="#从远程仓库克隆">从远程仓库克隆</a></li>
-<li><a href="#将修改的文件提交到暂存区">将修改的文件提交到暂存区</a></li>
-<li><a href="#将文件从暂存区提交到版本库">将文件从暂存区提交到版本库</a></li>
-<li><a href="#修改-commit-的注释信息">修改-commit-的注释信息</a></li>
-<li><a href="#查看当前提交状态">查看当前提交状态</a></li>
-<li><a href="#查看文件具体变更内容">查看文件具体变更内容</a></li>
-<li><a href="#查看提交的历史版本">查看提交的历史版本</a></li>
-<li><a href="#查看操作命令历史记录">查看操作命令历史记录</a></li>
-<li><a href="#版本回退">版本回退</a></li>
-<li><a href="#撤销修改或提交">撤销修改或提交</a></li>
-<li><a href="#删除文件">删除文件</a></li>
-<li><a href="#分支操作">分支操作</a></li>
-<li><a href="#对比两个分支差异">对比两个分支差异</a></li>
-<li><a href="#保存工作现场">保存工作现场</a></li>
-<li><a href="#查看已经保存工作现场">查看已经保存工作现场</a></li>
-<li><a href="#恢复工作现场">恢复工作现场</a></li>
-<li><a href="#获取远程仓库最新提交到本地">获取远程仓库最新提交到本地</a></li>
-<li><a href="#打标签">打标签</a></li>
-<li><a href="#查看所有标签">查看所有标签</a></li>
-<li><a href="#补标签">补标签</a></li>
-<li><a href="#查看标签信息">查看标签信息</a></li>
-<li><a href="#删除标签">删除标签</a></li>
-<li><a href="#将标签推送到远程">将标签推送到远程</a></li>
-<li><a href="#清空缓存">清空缓存</a></li>
-</ul>
-<h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a><a name="初始化仓库">初始化仓库</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
-
-<h2 id="全局配置用户名和邮箱地址"><a href="#全局配置用户名和邮箱地址" class="headerlink" title="全局配置用户名和邮箱地址"></a><a name="全局配置用户名和邮箱地址">全局配置用户名和邮箱地址</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email email@example.com</span><br></pre></td></tr></table></figure>
-
-<p>注意：如果一台机器需要使用多个 ssh 公钥的方式，不应使用全局配置，而是每个仓库独立配置。否则提交时，远程仓库的 commit 记录会显示是全局用户做的提交操作。</p>
-<h2 id="删除全局配置的用户名和邮箱地址"><a href="#删除全局配置的用户名和邮箱地址" class="headerlink" title="删除全局配置的用户名和邮箱地址"></a><a name="删除全局配置的用户名和邮箱地址">删除全局配置的用户名和邮箱地址</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global --unset user.name</span><br><span class="line">$ git config --global --unset user.email</span><br></pre></td></tr></table></figure>
-
-<h2 id="对当前仓库配置用户名和邮箱地址"><a href="#对当前仓库配置用户名和邮箱地址" class="headerlink" title="对当前仓库配置用户名和邮箱地址"></a><a name="对当前仓库配置用户名和邮箱地址">对当前仓库配置用户名和邮箱地址</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config user.name &quot;Your Name&quot;</span><br><span class="line">$ git config user.email email@example.com</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看全局配置的用户名和邮箱"><a href="#查看全局配置的用户名和邮箱" class="headerlink" title="查看全局配置的用户名和邮箱"></a><a name="查看全局配置的用户名和邮箱">查看全局配置的用户名和邮箱</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name</span><br><span class="line">$ git config --global user.email</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看当前仓库的用户名和邮箱"><a href="#查看当前仓库的用户名和邮箱" class="headerlink" title="查看当前仓库的用户名和邮箱"></a><a name="查看当前仓库的用户名和邮箱">查看当前仓库的用户名和邮箱</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config user.name</span><br><span class="line">$ git config user.email</span><br></pre></td></tr></table></figure>
-
-<h2 id="生成-SSH-公钥"><a href="#生成-SSH-公钥" class="headerlink" title="生成-SSH-公钥"></a><a name="生成-SSH-公钥">生成-SSH-公钥</a></h2><p>1、为 <code>git@example.com</code> 用户生成 SSH 公钥 <code>id_rsa</code> 文件，并保存在默认目录 <code>~/.ssh</code> 下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;git@example.com &quot; -f ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-
-<p>2、测试 username （默认用户名为 git）的 SSH 链接是否正常</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ssh –T &lt;username&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a><a name="关联远程仓库">关联远程仓库</a></h2><p>添加名称为 origin 的关联信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote add origin git@github.com:username/name.git</span><br></pre></td></tr></table></figure>
-
-<p>或</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote add origin https://github.com/username/name.git</span><br></pre></td></tr></table></figure>
-
-<p>查看全部关联的详细信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote -v</span><br></pre></td></tr></table></figure>
-
-<h2 id="把本地库的所有内容推送到远程库"><a href="#把本地库的所有内容推送到远程库" class="headerlink" title="把本地库的所有内容推送到远程库"></a><a name="把本地库的所有内容推送到远程库">把本地库的所有内容推送到远程库</a></h2><p>1、通常添加参数 <code>-u</code>，简化提交远程库流程。例如：把本地的 master 分支和远程的 master 分支关联：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<p>2、使用参数 -u 关联后，推送最新修改命令简化为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push</span><br></pre></td></tr></table></figure>
-
-<h2 id="从远程仓库克隆"><a href="#从远程仓库克隆" class="headerlink" title="从远程仓库克隆"></a><a name="从远程仓库克隆">从远程仓库克隆</a></h2><p>1、默认方式，克隆全部分支，并指定本地文件夹名称为 dirName</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone git@github.com:username/repositoryname.git dirName</span><br></pre></td></tr></table></figure>
-
-<p>2、克隆指定分支</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone -b branchname https://github.com/username/repositoryname.git</span><br></pre></td></tr></table></figure>
-
-<p>git 支持多种协议，包括 https，但通过 ssh 支持的原生 git 协议速度最快。</p>
-<h2 id="将修改的文件提交到暂存区"><a href="#将修改的文件提交到暂存区" class="headerlink" title="将修改的文件提交到暂存区"></a><a name="将修改的文件提交到暂存区">将修改的文件提交到暂存区</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename.xxx&gt; [-u][.][-A]</span><br></pre></td></tr></table></figure>
-
-<p><code>-u</code> 参数：提交被修改（modified）和被删除（deleted）文件，不包括新文件（new）</p>
-<p><code>.</code>参数：提交新文件（new）和被修改（modified）文件，不包括被删除（deleted）文件</p>
-<p><code>-A</code>参数：提交所有变化，包括新文件（new）、被修改（modified）文件、被删除（deleted）文件</p>
-<h2 id="将文件从暂存区提交到版本库"><a href="#将文件从暂存区提交到版本库" class="headerlink" title="将文件从暂存区提交到版本库"></a><a name="将文件从暂存区提交到版本库">将文件从暂存区提交到版本库</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;create new file&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改-commit-的注释信息"><a href="#修改-commit-的注释信息" class="headerlink" title="修改 commit 的注释信息"></a><a name="修改 commit 的注释信息">修改 commit 的注释信息</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看当前提交状态"><a href="#查看当前提交状态" class="headerlink" title="查看当前提交状态"></a><a name="查看当前提交状态">查看当前提交状态</a></h2><p>可以查看是否存在变更，但不能查看具体变更了什么内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看文件具体变更内容"><a href="#查看文件具体变更内容" class="headerlink" title="查看文件具体变更内容"></a><a name="查看文件具体变更内容">查看文件具体变更内容</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git diff &lt;fileName.xxx&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看提交的历史版本"><a href="#查看提交的历史版本" class="headerlink" title="查看提交的历史版本"></a><a name="查看提交的历史版本">查看提交的历史版本</a></h2><p>默认情况下显示的信息冗长，使用时通常 <code>--pretty=oneline</code> 参数。例子：仅显示提交的最近 3 条提交历史版本号，只能显示 head 指向的当前版本和之前的版本信息</p>
-<p>1、本地仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log --pretty=oneline -3</span><br><span class="line">或</span><br><span class="line">$ git log --oneline -3</span><br></pre></td></tr></table></figure>
-
-<p>2、远程仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log origin/master --pretty=oneline -3</span><br><span class="line">或</span><br><span class="line">$ git log origin/master --oneline -3</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看操作命令历史记录"><a href="#查看操作命令历史记录" class="headerlink" title="查看操作命令历史记录"></a><a name="查看操作命令历史记录">查看操作命令历史记录</a></h2><p>使用该命令可以某版本在执行回退后再次返回某版本，前提是不退出当前命令行窗口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
-
-<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a><a name="版本回退">版本回退</a></h2><p>1、回退到上一个版本：<code>$ git reset --hard HEAD^</code></p>
-<p>2、回退到上上一个版本：<code>$ git reset --hard HEAD^^</code></p>
-<p>3、回退到上 50 个版本：<code>$ git reset --hard HEAD~50</code></p>
-<p>4、根据版本号回退，版本号不必输入完全，可区别即可：<code>$ git reset --hard &lt;versionCode&gt;</code></p>
-<h2 id="撤销修改或提交"><a href="#撤销修改或提交" class="headerlink" title="撤销修改或提交"></a><a name="撤销修改或提交">撤销修改或提交</a></h2><p>1、修改后还没有被放到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -- &lt;fileName.xxx&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>2、修改后已经放到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reset HEAD &lt;fileName.xxx&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3、修改后已经提交到版本库。此时，使用版本回退，回退到指定版本</p>
-<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a><a name="删除文件">删除文件</a></h2><p>1、从暂存区删除文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git rm &lt;fileName.xxx&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、从暂存区恢复文件，只能恢复文件到最新版本，并丢失最近一次提交后修改的内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;fileName.xxx&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a><a name="分支操作">分支操作</a></h2><p>1、本地分支</p>
-<ul>
-<li>创建本地分支：<code>$ git branch feature-local</code></li>
-<li>切换到本地分支：<code>$ git checkout feature-local</code></li>
-<li>创建并同时切换到本地分支：<code>$ git checkout –b feature-local</code></li>
-</ul>
-<p>2、远程分支</p>
-<ul>
-<li>在远程开好分支 feature-branch，本地获取：<code>$ git checkout -b feature-local origin/feature-branch</code></li>
-<li>本地创建名为 dev 的远程分支：<code>$ git checkout -b dev origin/dev</code></li>
-<li>指定推送本地的 feature-local 分支到远程 origin 的 feature-branch 分支，若远程不存在该分支则新建：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$  git push origin feature-local:feature-branch</span><br></pre></td></tr></table></figure>
-
-<p>3、查看所有分支（本地分支和远程分支）:<code>$ git branch -a</code></p>
-<p>4、合并分支</p>
-<p>要合并 dev 分支到 master 主分支。先切换到 master 分支后，执行命令：<code>$ git merge dev</code></p>
-<p>注：通常合并分支时 git 会用 Fast forward 模式，但这种模式下，删除分支后，会丢掉分支信息。如果要强制禁用 Fast forward 模式，git 就会在 merge 时生成一个新的 commit，这样，从分支历史上就可以看出分支信息：<code>$ git merge --no-ff -m &quot;merge with no-ff&quot; dev</code></p>
-<p>5、查看分支历史：<code>$ git log --graph --pretty=oneline --abbrev-commit</code>，若内容过多，可仅显示前 10 条：<code>$ git log --oneline -10</code></p>
-<p>6、删除分支</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git branch -d &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果分支还没有合并，使用上条命令会出现提示阻止删除，此时需要强行删除</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git branch -D &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
-
-<p>7、合并远程分支到本地</p>
-<ul>
-<li>在本地新建一个 temp 分支，并将远程 origin 仓库的 master 分支代码下载到本地 temp 分支：<code>git fetch origin master:tmp</code></li>
-<li>比较本地代码与刚刚从远程下载下来的代码的区别：<code>git diff tmp</code></li>
-<li>合并 temp 分支到本地的 master 分支：<code>git merge tmp</code></li>
-<li>如果不想保留 temp 分支 可以用这步删除：<code>git branch -d temp</code></li>
-</ul>
-<p>注意：若提交历史不同，无法合并，参见「合并两个不同提交历史的分支」。</p>
-<p>8、合并两个不同提交历史的分支</p>
-<ul>
-<li>将远程仓库的更新获取到本地分支 temp：<code>git fetch origin master:temp</code></li>
-<li>此时若直接合并，因为提交历史不同，出现 fatal: refusing to merge unrelated histories 错误，需要增加参数，强制合并即可。：<code>git merge temp --allow-unrelated-histories</code></li>
-</ul>
-<p>9、切换分支时出现 “error: The following untracked working tree files……”</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">error: The following untracked working tree files would be overwritten by checkout:</span><br><span class="line">        ……（涉及的文件列表）</span><br><span class="line">Please move or remove them before you switch branches.</span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure>
-
-<p>解决方式：删除上述涉及的文件即可。执行如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clean -d -fx</span><br></pre></td></tr></table></figure>
-
-<p>git clean 参数</p>
-<ul>
-<li>-n 显示将要删除的文件和目录；</li>
-<li>-x 删除忽略文件已经对 git 来说不识别的文件</li>
-<li>-d 删除未被添加到 git 的路径中的文件</li>
-<li>-f 强制运行</li>
-</ul>
-<h2 id="对比两个分支差异"><a href="#对比两个分支差异" class="headerlink" title="对比两个分支差异"></a><a name="对比两个分支差异">对比两个分支差异</a></h2><p>有 2 个分支：master、dev。</p>
-<p>1、查看 dev 有，而 master 中没有的：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log dev ^master</span><br></pre></td></tr></table></figure>
-
-<p>2、查看 dev 中比 master 中多提交了哪些内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log master..dev</span><br></pre></td></tr></table></figure>
-
-<p>3、只比较两个分支有什么不一样：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log dev...master</span><br></pre></td></tr></table></figure>
-
-<p>在上述情况下，再显示出每个提交是在哪个分支上：<code>git log --left-right dev...master</code></p>
-<p>根据 <code>–left-right dev…master</code> 的顺序，左箭头 &lt; 表示是 dev 分支提交；右箭头 &gt; 表示 master 分支提交</p>
-<h2 id="保存工作现场"><a href="#保存工作现场" class="headerlink" title="保存工作现场"></a><a name="保存工作现场">保存工作现场</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
-
-<p>注意：要提交到暂存区才可以执行 stash，可以执行多次 stash</p>
-<h2 id="查看已经保存工作现场"><a href="#查看已经保存工作现场" class="headerlink" title="查看已经保存工作现场"></a><a name="查看已经保存工作现场">查看已经保存工作现场</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git stash list</span><br></pre></td></tr></table></figure>
-
-<h2 id="恢复工作现场"><a href="#恢复工作现场" class="headerlink" title="恢复工作现场"></a><a name="恢复工作现场">恢复工作现场</a></h2><ul>
-<li><p>使用 git stash apply 恢复：<code>$ git stash apply stash@&#123;0&#125;</code>，但这种方式恢复后 stash 内容并不删除，需要用 git stash drop 来删除：<code>$ git stash drop stash@&#123;0&#125;</code></p>
-</li>
-<li><p>另一种方式是用 git stash pop，恢复的同时把 stash 内容也删了：<code>$ git stash pop stash@&#123;0&#125;</code></p>
-</li>
-</ul>
-<h2 id="获取远程仓库最新提交到本地"><a href="#获取远程仓库最新提交到本地" class="headerlink" title="获取远程仓库最新提交到本地"></a><a name="获取远程仓库最新提交到本地">获取远程仓库最新提交到本地</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-
-<p>如果 git pull 提示 no tracking information，则说明本地分支和远程分支的链接关系没有创建，执行命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>抓取远程分支最新提交到本地分支</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git pull origin 远端分支名:本地分支名</span><br></pre></td></tr></table></figure>
-
-<h2 id="打标签"><a href="#打标签" class="headerlink" title="打标签"></a><a name="打标签">打标签</a></h2><p>切换到需要打标签的分支上执行命令：<code>$ git tag v1.0</code></p>
-<h2 id="查看所有标签"><a href="#查看所有标签" class="headerlink" title="查看所有标签"></a><a name="查看所有标签">查看所有标签</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git tag</span><br></pre></td></tr></table></figure>
-
-<h2 id="补标签"><a href="#补标签" class="headerlink" title="补标签"></a><a name="补标签">补标签</a></h2><p>查看历史提交，找到需要补标签的提交的 id，执行命令：<code>$ git tag v0.9 &lt;commitId&gt;</code>，也可以为标签添加说明，用 -a 指定标签名，-m 指定说明文字：<code>$ git tag -a v0.1 -m &quot;version 0.1&quot; &lt;commitId&gt;</code></p>
-<p>注：标签不是按时间顺序列出，而是按字母排序的</p>
-<h2 id="查看标签信息"><a href="#查看标签信息" class="headerlink" title="查看标签信息"></a><a name="查看标签信息">查看标签信息</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git show &lt;tagName&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a><a name="删除标签">删除标签</a></h2><ul>
-<li>删除本地标签</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git tag -d v0.1</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除远程标签，要先删除本地标签，再 push</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git tag -d v0.9</span><br><span class="line">$ git push origin :refs/tags/v0.9</span><br></pre></td></tr></table></figure>
-
-<h2 id="将标签推送到远程"><a href="#将标签推送到远程" class="headerlink" title="将标签推送到远程"></a><a name="将标签推送到远程">将标签推送到远程</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push origin v1.0</span><br></pre></td></tr></table></figure>
-
-<p>一次性推送全部尚未推送到远程的本地标签：<code>$ git push origin –-tags</code></p>
-<h2 id="清空缓存"><a href="#清空缓存" class="headerlink" title="清空缓存"></a><a name="清空缓存">清空缓存</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r --cached .</span><br></pre></td></tr></table></figure>
-
-<p>例如，当 ignore 文件更新时，如果不清空缓存，则不生效。</p>
-<h2 id="命令行创建空白-gitignore-文件"><a href="#命令行创建空白-gitignore-文件" class="headerlink" title="命令行创建空白 .gitignore 文件"></a><a name="命令行创建空白 .gitignore 文件">命令行创建空白 .gitignore 文件</a></h2><p>进入库目录，命令行执行 <code>touch .gitignore</code> 即可。</p>
-]]></content>
-      <categories>
-        <category>通用技术</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git-问题备忘</title>
-    <url>/2022/12/26/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="git-删除远程仓库文件"><a href="#git-删除远程仓库文件" class="headerlink" title="git 删除远程仓库文件"></a>git 删除远程仓库文件</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>git 提交到远程仓库后发现有遗漏的文件未添加到 <code>.ignore</code> 文件中</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>例如不需要提交 target 目录，可执行 <code>git rm -r --cached target</code>，重新 commit 和 push 即可</p>
-<p>说明：</p>
-<ul>
-<li><p>删除工作区文件，并且将这次删除放入暂存区，<code>git rm [file1] [file2] ...</code></p>
-</li>
-<li><p>停止追踪指定文件，但该文件会保留在工作区，<code>git rm --cached [file]</code></p>
-</li>
-</ul>
-<h2 id="git-提交时出现警告-LF-will-be-replaced-by-CRLF-in"><a href="#git-提交时出现警告-LF-will-be-replaced-by-CRLF-in" class="headerlink" title="git 提交时出现警告 LF-will-be-replaced-by-CRLF-in"></a>git 提交时出现警告 LF-will-be-replaced-by-CRLF-in</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>提交时出现警告：<code>warning: LF will be replaced by CRLF </code>，但是不影响提交。</p>
-<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
-<li>配置选项修改，把 core.autocrlf 设置成 false。其他选项如下：<ul>
-<li>git config –global core.autocrlf true #默认值</li>
-<li>git config –global core.autocrlf input #从库中迁出代码不转换</li>
-<li>git config –global core.autocrlf false  #不转换</li>
-</ul>
-</li>
-</ul>
-<h2 id="git-提交时中文文件名显示的解决方案"><a href="#git-提交时中文文件名显示的解决方案" class="headerlink" title="git 提交时中文文件名显示的解决方案"></a>git 提交时中文文件名显示的解决方案</h2><h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><p>git 提交时中文显示为乱码，有碍观瞻</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">117 files changed, 11670 insertions(+), 5 deletions(-)</span><br><span class="line"> create mode 100644 &quot;content/Excel/SUMIFS \345\207\275\346\225\260.md&quot;</span><br><span class="line"> create mode 100644 &quot;content/Excel/VBA \344\275\277\347\224\250 ReDim \345\256\236\347\216\260\344\272\214\347\273\264\345\212\250\346\200\201\346\225\260\347\273\204.md&quot;</span><br><span class="line"> create mode 100644 &quot;content/Excel/VBA \345\210\240\351\231\244\346\211\200\346\234\211\345\267\245\344\275\234\350\241\250\347\232\204\347\251\272\350\241\214.md&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><p>执行 <code>git config --global core.quotepath false</code> 即可，上述提交的文件名已经可以辨认</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">117 files changed, 11670 insertions(+), 5 deletions(-)</span><br><span class="line"> create mode 100644 content/Excel/SUMIFS 函数.md</span><br><span class="line"> create mode 100644 content/Excel/VBA 使用 ReDim 实现二维动态数组.md</span><br><span class="line"> create mode 100644 content/Excel/VBA 删除所有工作表的空行.md</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>通用技术</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>gitignore-文件通用参考版本</title>
-    <url>/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a>案例一</h2><ul>
-<li><code>/mtk/</code>，过滤整个文件夹</li>
-<li><code>*.zip</code>，过滤所有.zip 文件</li>
-<li><code>/mtk/do.c</code>，过滤某个具体文件</li>
-</ul>
-<h2 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a>案例二</h2><p>只需要管理 <code>/mtk/</code> 目录中的 one.txt 文件，这个目录中的其他文件都不需要管理：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/mtk/</span><br><span class="line">!/mtk/one.txt</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：</p>
-</blockquote>
-<ol>
-<li>git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，如果前面的规则匹配的范围更大，则后面的规则将不会生效。</li>
-<li>如果在创建 .gitignore 文件之前 push，即使在 .gitignore 文件中写入新的过滤规则，这些规则也不会起作用，Git 仍然会对所有文件进行版本管理。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># See https://help.github.com/articles/ignoring-files/ for more about ignoring files.</span><br><span class="line"></span><br><span class="line">.gradle</span><br><span class="line">!gradle/wrapper/gradle-wrapper.jar</span><br><span class="line">!**/src/main/**/build/</span><br><span class="line">!**/src/test/**/build/</span><br><span class="line">HELP.md</span><br><span class="line"></span><br><span class="line"># STS</span><br><span class="line">.apt_generated</span><br><span class="line">.classpath</span><br><span class="line">.factorypath</span><br><span class="line">.project</span><br><span class="line">.settings</span><br><span class="line">.springBeans</span><br><span class="line">.sts4-cache</span><br><span class="line"></span><br><span class="line"># IntelliJ IDEA</span><br><span class="line">.idea</span><br><span class="line">*.iws</span><br><span class="line">*.iml</span><br><span class="line">*.ipr</span><br><span class="line">out/</span><br><span class="line">!**/src/main/**/out/</span><br><span class="line">!**/src/test/**/out/</span><br><span class="line"></span><br><span class="line"># NetBeans</span><br><span class="line">/nbproject/private/</span><br><span class="line">/nbbuild/</span><br><span class="line">/dist/</span><br><span class="line">/nbdist/</span><br><span class="line">/.nb-gradle/</span><br><span class="line"></span><br><span class="line"># VS Code</span><br><span class="line">.vscode/</span><br><span class="line"></span><br><span class="line"># dependencies</span><br><span class="line">/node_modules</span><br><span class="line">/.pnp</span><br><span class="line">.pnp.js</span><br><span class="line"></span><br><span class="line"># testing</span><br><span class="line">/coverage</span><br><span class="line"></span><br><span class="line"># production</span><br><span class="line">/build</span><br><span class="line"></span><br><span class="line"># misc</span><br><span class="line">.DS_Store</span><br><span class="line">.env.local</span><br><span class="line">.env.development.local</span><br><span class="line">.env.test.local</span><br><span class="line">.env.production.local</span><br><span class="line"></span><br><span class="line">npm-debug.log*</span><br><span class="line">yarn-debug.log*</span><br><span class="line">yarn-error.log*</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>未分类</category>
-      </categories>
-      <tags>
-        <tag>未标记</tag>
       </tags>
   </entry>
   <entry>
@@ -1168,87 +648,6 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</title>
-    <url>/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>使用 Navicat 连接阿里云远程 MySQL 数据库。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1、开放权限"><a href="#1、开放权限" class="headerlink" title="1、开放权限"></a>1、开放权限</h3><p>登录 MySql，此时用命令指定用户名 root 可以通过密码 123456 访问所有数据库，之后刷新权限。相应的命令及结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27; WITH GRANT OPTION;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、设置服务器安全组的端口放行规则"><a href="#2、设置服务器安全组的端口放行规则" class="headerlink" title="2、设置服务器安全组的端口放行规则"></a>2、设置服务器安全组的端口放行规则</h3><p><strong>ECS 云服务器安全组设置如下：</strong></p>
-<img src="/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" class="">
-
-<p><strong>轻量应用服务器防火墙设置如下：</strong></p>
-<img src="/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" class="">
-
-<h3 id="3、设置-Navicat"><a href="#3、设置-Navicat" class="headerlink" title="3、设置 Navicat"></a>3、设置 Navicat</h3><p>进入 Navicat，新建连接，在「常规」选项卡中输入开放权限时的信息，用户名：root；密码：123456</p>
-<img src="/2022/12/07/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" class="">
-]]></content>
-      <categories>
-        <category>未分类</category>
-      </categories>
-      <tags>
-        <tag>未标记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用-github+Action-部署-Hexo-博客</title>
-    <url>/2022/11/30/%E4%BD%BF%E7%94%A8-github+Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为便于叙述，统一说明如下：</p>
-<ul>
-<li>博客 github 源码仓库默认分支为 main，ssh 地址：<code>git@github.com:username/blog.git</code></li>
-<li><code>username.github.io</code>：博客部署仓库，默认分支为 main</li>
-<li><code>hexo_deploy</code>：本地私钥文件</li>
-<li>&#96;hexo_deploy.pub：本地公钥文件</li>
-<li>主题以 NexT 8.13.2 为例</li>
-</ul>
-<blockquote>
-<p>本地 hexo 安装、主题部署流程较简单，步骤省略。</p>
-</blockquote>
-<h2 id="1、配置本地博客源代码库"><a href="#1、配置本地博客源代码库" class="headerlink" title="1、配置本地博客源代码库"></a>1、配置本地博客源代码库</h2><p>在本地博客源代码仓库根目录 <code>_config.yml</code> 文件中增加如下部署配置：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：github 目前仅允许 ssh 提交，部署仓库必须为 ssh 地址</p>
-</blockquote>
-<h2 id="2、配置专用密钥对"><a href="#2、配置专用密钥对" class="headerlink" title="2、配置专用密钥对"></a>2、配置专用密钥对</h2><p>本地重新生成一组密钥对，如 <code>hexo_deploy.pub</code> 与 <code>hexo_deploy</code>。私钥配置到 github 源码仓库的 <code>repository secret</code>，公钥配置到 <code>username.github.io</code> 部署仓库的 <code>Deploy keys</code>。该密钥对专用于「源码仓库」与「部署仓库」之间的 Action 自动部署。</p>
-<blockquote>
-<p>github 源码库新建后即可配置：依次进入 <code>Settings -&gt; Secrets -&gt; Actions -&gt; New repository secret</code>，名称取 <code>HEXO_DEPLOY_SECRET</code>，值取自 <code>hexo_deploy</code> 内容；<code>username.github.io.git</code> 部署仓库配置步骤略。</p>
-</blockquote>
-<p>也可以拿用户公钥 <code>SSH keys</code>（可访问全部仓库）及其对应的私钥完成该步骤，但是用户公钥不一致时（比如办公室和家里使用的用户公钥不同，除非复制同一份密钥对），Action 自动部署的私钥也要更改，使用专用密钥对可避免这个问题。</p>
-<h2 id="3、创建-Action"><a href="#3、创建-Action" class="headerlink" title="3、创建 Action"></a>3、创建 Action</h2><p>在本地博客源代码库根目录下创建 <code>.github/workflows/deploy.yml</code> 文件，参考内容如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">hexo-blog-deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">username</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="string">username@gmail.com</span></span><br><span class="line">  <span class="attr">DEPLOY_REPO:</span> <span class="string">username/username.github.io</span></span><br><span class="line">  <span class="attr">DEPLOY_BRANCH:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build</span> <span class="string">on</span> <span class="string">node</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span> <span class="string">and</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.os</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">os:</span> [<span class="string">ubuntu-latest</span>]</span><br><span class="line">        <span class="attr">node_version:</span> [<span class="number">19.</span><span class="string">x</span>]</span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">deploy</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configuration</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_SECRET:</span> <span class="string">$&#123;&#123;secrets.HEXO_DEPLOY_SECRET&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sudo timedatectl set-timezone &quot;Asia/Shanghai&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">          <span class="comment"># 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).</span></span><br><span class="line">          <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;$HEXO_DEPLOY_SECRET&quot;</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 设置用户名和邮箱，否则提示 Please tell me who you are.</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">$GIT_USER</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">$GIT_EMAIL</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string">          npm install hexo-deployer-git --save</span></span><br><span class="line"><span class="string">          # 全局搜索插件</span></span><br><span class="line"><span class="string">          npm install hexo-generator-searchdb --save</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4、其他"><a href="#4、其他" class="headerlink" title="4、其他"></a>4、其他</h2><h2 id="（可选）部署留言栏-Utterances"><a href="#（可选）部署留言栏-Utterances" class="headerlink" title="（可选）部署留言栏 Utterances"></a>（可选）部署留言栏 Utterances</h2><p>安装 github 应用： <code>https://github.com/apps/utterances</code></p>
-<p>next 最新版本已经集成 Utterances，因此不需要复制安装完成后的模板，直接在主题文件根目录下设置 <code>_config.yml</code> 文件即可：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">username/username.github.io</span> <span class="comment"># Github repository owner and name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">pathname</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="（可选）部署留言栏-giscus"><a href="#（可选）部署留言栏-giscus" class="headerlink" title="（可选）部署留言栏 giscus"></a>（可选）部署留言栏 giscus</h2><p>进入官网（<code>https://giscus.app/</code>）可拿到一段已经填充配置内容的 <code>&lt;script&gt;</code> 标签：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;https://giscus.app/client.js&quot;</span><br><span class="line">    data-repo=&quot;[在此输入仓库]&quot;</span><br><span class="line">    data-repo-id=&quot;[在此输入仓库 ID]&quot;</span><br><span class="line">    data-category=&quot;[在此输入分类名]&quot;</span><br><span class="line">    data-category-id=&quot;[在此输入分类 ID]&quot;</span><br><span class="line">    data-mapping=&quot;pathname&quot;</span><br><span class="line">    data-strict=&quot;0&quot;</span><br><span class="line">    data-reactions-enabled=&quot;1&quot;</span><br><span class="line">    data-emit-metadata=&quot;0&quot;</span><br><span class="line">    data-input-position=&quot;bottom&quot;</span><br><span class="line">    data-theme=&quot;preferred_color_scheme&quot;</span><br><span class="line">    data-lang=&quot;zh-CN&quot;</span><br><span class="line">    crossorigin=&quot;anonymous&quot;</span><br><span class="line">    async&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果要在每一篇文章后添加评论功能，以 next 主题为例，仅供参考。进入 <code>themes/next/layout/_macro/post.njk</code> 文件，找到模板中「文章末尾」（注释标志为 <code>END POST BODY</code>，如下所示），将上述片段加入。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;#####################&#125;</span><br><span class="line">&#123;### <span class="variable constant_">END</span> <span class="variable constant_">POST</span> <span class="variable constant_">BODY</span> ###&#125;</span><br><span class="line">&#123;#####################&#125;</span><br><span class="line">&lt;footer <span class="keyword">class</span>=<span class="string">&quot;post-footer&quot;</span>&gt;</span><br><span class="line">  &#123;%- <span class="keyword">if</span> is_index %&#125;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-eof&quot;</span> style=<span class="string">&quot;margin:20px auto 20px;width:100%;background: transparent;border-top: 1px solid #e2e0e0&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;&#123;- <span class="title function_">next_inject</span>(<span class="string">&#x27;postBodyEnd&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">reward_settings</span>.<span class="property">enable</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-reward.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">creative_commons</span>.<span class="property">license</span> and theme.<span class="property">creative_commons</span>.<span class="property">post</span> and post.<span class="property">copyright</span> !== <span class="literal">false</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-copyright.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">follow_me</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-followme.njk&#x27;</span>, &#123;&#125;, &#123;<span class="attr">cache</span>: theme.<span class="property">cache</span>.<span class="property">enable</span>&#125;) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line">    &#123;###   add giscus  ###&#125;</span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line"></span><br><span class="line">    &lt;script src=<span class="string">&quot;https://giscus.app/client.js&quot;</span></span><br><span class="line">        data-repo=<span class="string">&quot;[在此输入仓库]&quot;</span></span><br><span class="line">        data-repo-id=<span class="string">&quot;[在此输入仓库 ID]&quot;</span></span><br><span class="line">        data-category=<span class="string">&quot;[在此输入分类名]&quot;</span></span><br><span class="line">        data-category-id=<span class="string">&quot;[在此输入分类 ID]&quot;</span></span><br><span class="line">        data-mapping=<span class="string">&quot;pathname&quot;</span></span><br><span class="line">        data-strict=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-reactions-enabled=<span class="string">&quot;1&quot;</span></span><br><span class="line">        data-emit-metadata=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-input-position=<span class="string">&quot;bottom&quot;</span></span><br><span class="line">        data-theme=<span class="string">&quot;preferred_color_scheme&quot;</span></span><br><span class="line">        data-lang=<span class="string">&quot;zh-CN&quot;</span></span><br><span class="line">        crossorigin=<span class="string">&quot;anonymous&quot;</span></span><br><span class="line">        <span class="keyword">async</span>&gt;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">tags</span> and post.<span class="property">tags</span>.<span class="property">length</span> %&#125;</span><br><span class="line">      &#123;%- set tag_indicate = <span class="string">&#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;</span> <span class="keyword">if</span> theme.<span class="property">tag_icon</span> <span class="keyword">else</span> <span class="string">&#x27;#&#x27;</span> %&#125;</span><br><span class="line">      &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-tags&quot;</span>&gt;</span><br><span class="line">        &#123;%- <span class="keyword">for</span> tag <span class="keyword">in</span> post.<span class="property">tags</span>.<span class="title function_">toArray</span>() %&#125;</span><br><span class="line">          &lt;a href=<span class="string">&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot;</span> rel=<span class="string">&quot;tag&quot;</span>&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.<span class="property">name</span> &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="（可选）部署域名"><a href="#（可选）部署域名" class="headerlink" title="（可选）部署域名"></a>（可选）部署域名</h2><p>参考官方文档：<a href="%60https://docs.github.com/cn/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages%60">验证用户站点的域</a></p>
-<blockquote>
-<p>注意：需要在 blog 源代码库 source 目录下放置 CNAME 文件。之后步骤按官方文档进行</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>默认分类</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用-orphan-参数创建独立空白分支</title>
     <url>/2022/12/26/%E4%BD%BF%E7%94%A8-orphan-%E5%8F%82%E6%95%B0%E5%88%9B%E5%BB%BA%E7%8B%AC%E7%AB%8B%E7%A9%BA%E7%99%BD%E5%88%86%E6%94%AF/</url>
     <content><![CDATA[<blockquote>
@@ -1316,8 +715,8 @@ End 	Fn + →
         <category>通用技术</category>
       </categories>
       <tags>
-        <tag>github</tag>
         <tag>git</tag>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -1380,8 +779,8 @@ End 	Fn + →
         <category>通用技术</category>
       </categories>
       <tags>
-        <tag>github</tag>
         <tag>git</tag>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -1478,8 +877,611 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>GitHub-中使用-issues-模版和-pull-request-模版</title>
+    <url>/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、issues-模版"><a href="#一、issues-模版" class="headerlink" title="一、issues 模版"></a>一、issues 模版</h2><h3 id="1-1-默认模版"><a href="#1-1-默认模版" class="headerlink" title="1.1 默认模版"></a>1.1 默认模版</h3><ul>
+<li>在代码库新建目录：<code>.github</code></li>
+<li>在 <code>.github</code> 目录下添加 <code>ISSUE_TEMPLATE.md</code> 文件作为 issues 默认模版。当创建 issue 时，若未建立多模版或选择了 <code>Open a regular issue</code> 时，系统会引用该模版。</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/36018696/65121507-e9a21400-da21-11e9-823e-808e3bfb4d09.png" alt="1"></p>
+<h3 id="1-2-多模版"><a href="#1-2-多模版" class="headerlink" title="1.2 多模版"></a>1.2 多模版</h3><ul>
+<li>在代码库新建目录：<code>.github/ISSUE_TEMPLATE</code></li>
+<li>该目录下可添加多个 <code>.md</code> 文件作为 issues 模版。当创建 issue 时，系统会展示这些模版供选择。</li>
+<li><code>.md</code> 文件参考格式如下：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">name: 该模版的名称（创建 issue 时，系统展示模版列表时会显示该名称）</span><br><span class="line">about: 该模版的描述（创建 issue 时，系统展示模版列表时会显示该描述）</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">正文内容……</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-注意事项"><a href="#1-3-注意事项" class="headerlink" title="1.3 注意事项"></a>1.3 注意事项</h3><ul>
+<li>issues 的默认模版和多模版可同时存在。</li>
+<li>关于 issues 模版的描述可详见帮助文档：<a href="https://help.github.com/articles/manually-creating-a-single-issue-template-for-your-repository/">https://help.github.com/articles/manually-creating-a-single-issue-template-for-your-repository/</a></li>
+</ul>
+<h2 id="二、pull-request-模版"><a href="#二、pull-request-模版" class="headerlink" title="二、pull request 模版"></a>二、pull request 模版</h2><h3 id="2-1-默认模版"><a href="#2-1-默认模版" class="headerlink" title="2.1 默认模版"></a>2.1 默认模版</h3><ul>
+<li>在代码库新建目录：<code>.github</code></li>
+<li>在 <code>.github</code> 目录下添加 <code>PULL_REQUEST_TEMPLATE.md</code> 文件作为 pull request 默认模版。当创建不带参数的 pull request 时，系统会引用该模版。</li>
+</ul>
+<h3 id="2-2-多模版"><a href="#2-2-多模版" class="headerlink" title="2.2 多模版"></a>2.2 多模版</h3><ul>
+<li>在代码库新建目录：<code>.github/PULL_REQUEST_TEMPLATE</code></li>
+<li>该目录下可添加多个 <code>.md</code> 文件作为 pull request 模版。</li>
+<li>pull request 模版要通过查询参数来调用。例如，要使用 <code>pr-template-1.md</code> 这个模版，可使用如下查询：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/用户名/代码库名称/compare/分支名称?expand=1&amp;template=pr-template-1.md</span><br><span class="line">或参考GitHub帮助文档的格式，如下。两者效果相同。</span><br><span class="line">https://github.com/用户名/代码库名称/compare/master...分支名称?expand=1&amp;template=pr-template-1.md</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可选查询参数<ul>
+<li><code>expand=1</code>，直接跳转到 pull request 界面。如果不带此参数会先到 compare 界面，需手动进入pull request 界面。</li>
+<li><code>template=pr-template-1.md</code>，调用名为 <code>pr-template-1.md</code> 的模版。如果不带此参数，则调用默认模版。</li>
+<li><code>title=New+bug+report</code>（或者 <code>title=New%20bug%20report</code>），指定 pull request 的标题为 <code>New bug report</code></li>
+<li>其他参数可详见帮助文档：<a href="https://help.github.com/articles/about-automation-for-issues-and-pull-requests-with-query-parameters/">https://help.github.com/articles/about-automation-for-issues-and-pull-requests-with-query-parameters/</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-注意事项"><a href="#2-3-注意事项" class="headerlink" title="2.3 注意事项"></a>2.3 注意事项</h3><ul>
+<li>pull request 的默认模版和多模版可同时存在。</li>
+<li>关于 pull request 模版的描述可详见帮助文档：<a href="https://help.github.com/articles/creating-a-pull-request-template-for-your-repository/">https://help.github.com/articles/creating-a-pull-request-template-for-your-repository/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>通用技术</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub-中独立仓库与组织的权限</title>
+    <url>/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一、独立仓库（公开或私有）"><a href="#一、独立仓库（公开或私有）" class="headerlink" title="一、独立仓库（公开或私有）"></a>一、独立仓库（公开或私有）</h2><p>独立仓库包含 <strong>仓库拥有者和外部协作者</strong> 两种角色，相关权限如下表</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">直接写入</th>
+<th align="center">issue 操作<br>[删除、隐藏、修改]</th>
+<th align="center">添加标签</th>
+<th align="center">分支操作<br>[删除、创建]</th>
+<th align="center">邀请校对</th>
+<th align="center">被邀请校对</th>
+<th align="center">校对操作<br>[同意、驳回、重校]</th>
+<th align="center">强制合并</th>
+<th align="center">Setting 菜单可见</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">仓库拥有者</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">外部协作者</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+<p><strong>注：Setting 菜单是否可见决定了是否具备删库、设置分支规则、邀请外部协作者、密钥设置等高级权限。</strong></p>
+<h2 id="二、组织"><a href="#二、组织" class="headerlink" title="二、组织"></a>二、组织</h2><p>组织包含 <strong>组织拥有者、成员、外部协作者</strong> 三种角色，以及 <strong>Read、Write、Admin</strong> 三种权限。</p>
+<h3 id="1、Base-permissions（基本权限）"><a href="#1、Base-permissions（基本权限）" class="headerlink" title="1、Base permissions（基本权限）"></a>1、Base permissions（基本权限）</h3><p>Base permissions to the organization’s repositories apply to all members and excludes outside collaborators. Since organization members can have permissions from multiple sources, members and collaborators who have been granted a higher level of access than the base permissions will retain their higher permission privileges.</p>
+<p>组织存储库的基本权限适用于所有成员（不含外部协作者）。由于组织成员可以拥有多个库的自定义权限，因此被授予比基本权限更高级别访问权限时，成员和协作者将保留更高的权限。</p>
+<p>基本权限包含如下几种：</p>
+<ul>
+<li>None，Members will only be able to clone and pull public repositories. To give a member additional access, you’ll need to add them to teams or make them collaborators on individual repositories.</li>
+</ul>
+<p>成员只能对公共库实施 clone 和 pull 操作。要为成员提供额外的访问权限，需要将它们添加到团队中，或者让它们成为各个存储库的外部协作者。</p>
+<ul>
+<li>Read，Members will be able to clone and pull all repositories.</li>
+</ul>
+<p>成员可以对所有库实施 clone 和 pull 操作。</p>
+<ul>
+<li>Write，Members will be able to clone, pull, and push all repositories.</li>
+</ul>
+<p>成员可以对所有库实施 clone、pull 和 push 操作。</p>
+<ul>
+<li>Admin，Members will be able to clone, pull, push, and add new collaborators to all repositories.</li>
+</ul>
+<p>成员可以对所有库实施 clone、pull、push 和添加外部协作者的操作。</p>
+<h3 id="2、组织角色"><a href="#2、组织角色" class="headerlink" title="2、组织角色"></a>2、组织角色</h3><ul>
+<li>Owner，Has full administrative access to the entire organization.</li>
+</ul>
+<p>对整个组织具有完全的管理访问权限。<strong>组织角色为 Owner 时，对于组织中每一个库而言，默认权限都是 Admin。</strong></p>
+<ul>
+<li>Member，Can see every member and non-secret team in the organization, and can create new repositories.</li>
+</ul>
+<p>可以查看组织中的每个成员和非机密团队，并可以创建新的存储库。<strong>组织角色为 Member 时，对于组织中每一个库而言，默认权限都与基本权限相同。</strong></p>
+<h3 id="3、库权限"><a href="#3、库权限" class="headerlink" title="3、库权限"></a>3、库权限</h3><p>Read、Write、Admin，详见基本权限的描述。<strong>如果需要在某一个库中授予某个成员高于基本权限的权限，需要将其添加为外部协作者。</strong></p>
+<h3 id="4、组织权限总结如下"><a href="#4、组织权限总结如下" class="headerlink" title="4、组织权限总结如下"></a>4、组织权限总结如下</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">直接写入</th>
+<th align="center">issue 操作<br>[删除、隐藏、修改]</th>
+<th align="center">添加标签</th>
+<th align="center">分支操作<br>[删除、创建]</th>
+<th align="center">邀请校对</th>
+<th align="center">被邀请校对</th>
+<th align="center">校对操作<br>[同意、驳回、重校]</th>
+<th align="center">强制合并</th>
+<th align="center">库 Setting 菜单可见</th>
+<th align="center">组织 Setting 菜单可见</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">组织拥有者</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">Read</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="center">Write</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="center">Admin</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>通用技术</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-常用命令</title>
+    <url>/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<!--
+注意：在 issues 使用锚点不能使用 [title](#title) 这种方式
+ -->
+
+<h1 id="git-常用命令"><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a><a name="目录">目录</a></h2><ul>
+<li><a href="#初始化仓库">初始化仓库</a></li>
+<li><a href="#全局配置用户名和邮箱地址">全局配置用户名和邮箱地址</a></li>
+<li><a href="#删除全局配置的用户名和邮箱地址">删除全局配置的用户名和邮箱地址</a></li>
+<li><a href="#对当前仓库配置用户名和邮箱地址">对当前仓库配置用户名和邮箱地址</a></li>
+<li><a href="#查看全局配置的用户名和邮箱">查看全局配置的用户名和邮箱</a></li>
+<li><a href="#查看当前仓库的用户名和邮箱">查看当前仓库的用户名和邮箱</a></li>
+<li><a href="#生成-SSH-公钥">生成-SSH-公钥</a></li>
+<li><a href="#关联远程仓库">关联远程仓库</a></li>
+<li><a href="#把本地库的所有内容推送到远程库">把本地库的所有内容推送到远程库</a></li>
+<li><a href="#从远程仓库克隆">从远程仓库克隆</a></li>
+<li><a href="#将修改的文件提交到暂存区">将修改的文件提交到暂存区</a></li>
+<li><a href="#将文件从暂存区提交到版本库">将文件从暂存区提交到版本库</a></li>
+<li><a href="#修改-commit-的注释信息">修改-commit-的注释信息</a></li>
+<li><a href="#查看当前提交状态">查看当前提交状态</a></li>
+<li><a href="#查看文件具体变更内容">查看文件具体变更内容</a></li>
+<li><a href="#查看提交的历史版本">查看提交的历史版本</a></li>
+<li><a href="#查看操作命令历史记录">查看操作命令历史记录</a></li>
+<li><a href="#版本回退">版本回退</a></li>
+<li><a href="#撤销修改或提交">撤销修改或提交</a></li>
+<li><a href="#删除文件">删除文件</a></li>
+<li><a href="#分支操作">分支操作</a></li>
+<li><a href="#对比两个分支差异">对比两个分支差异</a></li>
+<li><a href="#保存工作现场">保存工作现场</a></li>
+<li><a href="#查看已经保存工作现场">查看已经保存工作现场</a></li>
+<li><a href="#恢复工作现场">恢复工作现场</a></li>
+<li><a href="#获取远程仓库最新提交到本地">获取远程仓库最新提交到本地</a></li>
+<li><a href="#打标签">打标签</a></li>
+<li><a href="#查看所有标签">查看所有标签</a></li>
+<li><a href="#补标签">补标签</a></li>
+<li><a href="#查看标签信息">查看标签信息</a></li>
+<li><a href="#删除标签">删除标签</a></li>
+<li><a href="#将标签推送到远程">将标签推送到远程</a></li>
+<li><a href="#清空缓存">清空缓存</a></li>
+</ul>
+<h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a><a name="初始化仓库">初始化仓库</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+
+<h2 id="全局配置用户名和邮箱地址"><a href="#全局配置用户名和邮箱地址" class="headerlink" title="全局配置用户名和邮箱地址"></a><a name="全局配置用户名和邮箱地址">全局配置用户名和邮箱地址</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email email@example.com</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果一台机器需要使用多个 ssh 公钥的方式，不应使用全局配置，而是每个仓库独立配置。否则提交时，远程仓库的 commit 记录会显示是全局用户做的提交操作。</p>
+<h2 id="删除全局配置的用户名和邮箱地址"><a href="#删除全局配置的用户名和邮箱地址" class="headerlink" title="删除全局配置的用户名和邮箱地址"></a><a name="删除全局配置的用户名和邮箱地址">删除全局配置的用户名和邮箱地址</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global --unset user.name</span><br><span class="line">$ git config --global --unset user.email</span><br></pre></td></tr></table></figure>
+
+<h2 id="对当前仓库配置用户名和邮箱地址"><a href="#对当前仓库配置用户名和邮箱地址" class="headerlink" title="对当前仓库配置用户名和邮箱地址"></a><a name="对当前仓库配置用户名和邮箱地址">对当前仓库配置用户名和邮箱地址</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config user.name &quot;Your Name&quot;</span><br><span class="line">$ git config user.email email@example.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看全局配置的用户名和邮箱"><a href="#查看全局配置的用户名和邮箱" class="headerlink" title="查看全局配置的用户名和邮箱"></a><a name="查看全局配置的用户名和邮箱">查看全局配置的用户名和邮箱</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name</span><br><span class="line">$ git config --global user.email</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看当前仓库的用户名和邮箱"><a href="#查看当前仓库的用户名和邮箱" class="headerlink" title="查看当前仓库的用户名和邮箱"></a><a name="查看当前仓库的用户名和邮箱">查看当前仓库的用户名和邮箱</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git config user.name</span><br><span class="line">$ git config user.email</span><br></pre></td></tr></table></figure>
+
+<h2 id="生成-SSH-公钥"><a href="#生成-SSH-公钥" class="headerlink" title="生成-SSH-公钥"></a><a name="生成-SSH-公钥">生成-SSH-公钥</a></h2><p>1、为 <code>git@example.com</code> 用户生成 SSH 公钥 <code>id_rsa</code> 文件，并保存在默认目录 <code>~/.ssh</code> 下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;git@example.com &quot; -f ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+<p>2、测试 username （默认用户名为 git）的 SSH 链接是否正常</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ssh –T &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a><a name="关联远程仓库">关联远程仓库</a></h2><p>添加名称为 origin 的关联信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote add origin git@github.com:username/name.git</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote add origin https://github.com/username/name.git</span><br></pre></td></tr></table></figure>
+
+<p>查看全部关联的详细信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git remote -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="把本地库的所有内容推送到远程库"><a href="#把本地库的所有内容推送到远程库" class="headerlink" title="把本地库的所有内容推送到远程库"></a><a name="把本地库的所有内容推送到远程库">把本地库的所有内容推送到远程库</a></h2><p>1、通常添加参数 <code>-u</code>，简化提交远程库流程。例如：把本地的 master 分支和远程的 master 分支关联：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>2、使用参数 -u 关联后，推送最新修改命令简化为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push</span><br></pre></td></tr></table></figure>
+
+<h2 id="从远程仓库克隆"><a href="#从远程仓库克隆" class="headerlink" title="从远程仓库克隆"></a><a name="从远程仓库克隆">从远程仓库克隆</a></h2><p>1、默认方式，克隆全部分支，并指定本地文件夹名称为 dirName</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone git@github.com:username/repositoryname.git dirName</span><br></pre></td></tr></table></figure>
+
+<p>2、克隆指定分支</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git clone -b branchname https://github.com/username/repositoryname.git</span><br></pre></td></tr></table></figure>
+
+<p>git 支持多种协议，包括 https，但通过 ssh 支持的原生 git 协议速度最快。</p>
+<h2 id="将修改的文件提交到暂存区"><a href="#将修改的文件提交到暂存区" class="headerlink" title="将修改的文件提交到暂存区"></a><a name="将修改的文件提交到暂存区">将修改的文件提交到暂存区</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git add &lt;filename.xxx&gt; [-u][.][-A]</span><br></pre></td></tr></table></figure>
+
+<p><code>-u</code> 参数：提交被修改（modified）和被删除（deleted）文件，不包括新文件（new）</p>
+<p><code>.</code>参数：提交新文件（new）和被修改（modified）文件，不包括被删除（deleted）文件</p>
+<p><code>-A</code>参数：提交所有变化，包括新文件（new）、被修改（modified）文件、被删除（deleted）文件</p>
+<h2 id="将文件从暂存区提交到版本库"><a href="#将文件从暂存区提交到版本库" class="headerlink" title="将文件从暂存区提交到版本库"></a><a name="将文件从暂存区提交到版本库">将文件从暂存区提交到版本库</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;create new file&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改-commit-的注释信息"><a href="#修改-commit-的注释信息" class="headerlink" title="修改 commit 的注释信息"></a><a name="修改 commit 的注释信息">修改 commit 的注释信息</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看当前提交状态"><a href="#查看当前提交状态" class="headerlink" title="查看当前提交状态"></a><a name="查看当前提交状态">查看当前提交状态</a></h2><p>可以查看是否存在变更，但不能查看具体变更了什么内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看文件具体变更内容"><a href="#查看文件具体变更内容" class="headerlink" title="查看文件具体变更内容"></a><a name="查看文件具体变更内容">查看文件具体变更内容</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git diff &lt;fileName.xxx&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看提交的历史版本"><a href="#查看提交的历史版本" class="headerlink" title="查看提交的历史版本"></a><a name="查看提交的历史版本">查看提交的历史版本</a></h2><p>默认情况下显示的信息冗长，使用时通常 <code>--pretty=oneline</code> 参数。例子：仅显示提交的最近 3 条提交历史版本号，只能显示 head 指向的当前版本和之前的版本信息</p>
+<p>1、本地仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log --pretty=oneline -3</span><br><span class="line">或</span><br><span class="line">$ git log --oneline -3</span><br></pre></td></tr></table></figure>
+
+<p>2、远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log origin/master --pretty=oneline -3</span><br><span class="line">或</span><br><span class="line">$ git log origin/master --oneline -3</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看操作命令历史记录"><a href="#查看操作命令历史记录" class="headerlink" title="查看操作命令历史记录"></a><a name="查看操作命令历史记录">查看操作命令历史记录</a></h2><p>使用该命令可以某版本在执行回退后再次返回某版本，前提是不退出当前命令行窗口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+
+<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a><a name="版本回退">版本回退</a></h2><p>1、回退到上一个版本：<code>$ git reset --hard HEAD^</code></p>
+<p>2、回退到上上一个版本：<code>$ git reset --hard HEAD^^</code></p>
+<p>3、回退到上 50 个版本：<code>$ git reset --hard HEAD~50</code></p>
+<p>4、根据版本号回退，版本号不必输入完全，可区别即可：<code>$ git reset --hard &lt;versionCode&gt;</code></p>
+<h2 id="撤销修改或提交"><a href="#撤销修改或提交" class="headerlink" title="撤销修改或提交"></a><a name="撤销修改或提交">撤销修改或提交</a></h2><p>1、修改后还没有被放到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -- &lt;fileName.xxx&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2、修改后已经放到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git reset HEAD &lt;fileName.xxx&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3、修改后已经提交到版本库。此时，使用版本回退，回退到指定版本</p>
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a><a name="删除文件">删除文件</a></h2><p>1、从暂存区删除文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git rm &lt;fileName.xxx&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、从暂存区恢复文件，只能恢复文件到最新版本，并丢失最近一次提交后修改的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;fileName.xxx&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a><a name="分支操作">分支操作</a></h2><p>1、本地分支</p>
+<ul>
+<li>创建本地分支：<code>$ git branch feature-local</code></li>
+<li>切换到本地分支：<code>$ git checkout feature-local</code></li>
+<li>创建并同时切换到本地分支：<code>$ git checkout –b feature-local</code></li>
+</ul>
+<p>2、远程分支</p>
+<ul>
+<li>在远程开好分支 feature-branch，本地获取：<code>$ git checkout -b feature-local origin/feature-branch</code></li>
+<li>本地创建名为 dev 的远程分支：<code>$ git checkout -b dev origin/dev</code></li>
+<li>指定推送本地的 feature-local 分支到远程 origin 的 feature-branch 分支，若远程不存在该分支则新建：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$  git push origin feature-local:feature-branch</span><br></pre></td></tr></table></figure>
+
+<p>3、查看所有分支（本地分支和远程分支）:<code>$ git branch -a</code></p>
+<p>4、合并分支</p>
+<p>要合并 dev 分支到 master 主分支。先切换到 master 分支后，执行命令：<code>$ git merge dev</code></p>
+<p>注：通常合并分支时 git 会用 Fast forward 模式，但这种模式下，删除分支后，会丢掉分支信息。如果要强制禁用 Fast forward 模式，git 就会在 merge 时生成一个新的 commit，这样，从分支历史上就可以看出分支信息：<code>$ git merge --no-ff -m &quot;merge with no-ff&quot; dev</code></p>
+<p>5、查看分支历史：<code>$ git log --graph --pretty=oneline --abbrev-commit</code>，若内容过多，可仅显示前 10 条：<code>$ git log --oneline -10</code></p>
+<p>6、删除分支</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git branch -d &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果分支还没有合并，使用上条命令会出现提示阻止删除，此时需要强行删除</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git branch -D &lt;branchName&gt;</span><br></pre></td></tr></table></figure>
+
+<p>7、合并远程分支到本地</p>
+<ul>
+<li>在本地新建一个 temp 分支，并将远程 origin 仓库的 master 分支代码下载到本地 temp 分支：<code>git fetch origin master:tmp</code></li>
+<li>比较本地代码与刚刚从远程下载下来的代码的区别：<code>git diff tmp</code></li>
+<li>合并 temp 分支到本地的 master 分支：<code>git merge tmp</code></li>
+<li>如果不想保留 temp 分支 可以用这步删除：<code>git branch -d temp</code></li>
+</ul>
+<p>注意：若提交历史不同，无法合并，参见「合并两个不同提交历史的分支」。</p>
+<p>8、合并两个不同提交历史的分支</p>
+<ul>
+<li>将远程仓库的更新获取到本地分支 temp：<code>git fetch origin master:temp</code></li>
+<li>此时若直接合并，因为提交历史不同，出现 fatal: refusing to merge unrelated histories 错误，需要增加参数，强制合并即可。：<code>git merge temp --allow-unrelated-histories</code></li>
+</ul>
+<p>9、切换分支时出现 “error: The following untracked working tree files……”</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">error: The following untracked working tree files would be overwritten by checkout:</span><br><span class="line">        ……（涉及的文件列表）</span><br><span class="line">Please move or remove them before you switch branches.</span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure>
+
+<p>解决方式：删除上述涉及的文件即可。执行如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clean -d -fx</span><br></pre></td></tr></table></figure>
+
+<p>git clean 参数</p>
+<ul>
+<li>-n 显示将要删除的文件和目录；</li>
+<li>-x 删除忽略文件已经对 git 来说不识别的文件</li>
+<li>-d 删除未被添加到 git 的路径中的文件</li>
+<li>-f 强制运行</li>
+</ul>
+<h2 id="对比两个分支差异"><a href="#对比两个分支差异" class="headerlink" title="对比两个分支差异"></a><a name="对比两个分支差异">对比两个分支差异</a></h2><p>有 2 个分支：master、dev。</p>
+<p>1、查看 dev 有，而 master 中没有的：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log dev ^master</span><br></pre></td></tr></table></figure>
+
+<p>2、查看 dev 中比 master 中多提交了哪些内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log master..dev</span><br></pre></td></tr></table></figure>
+
+<p>3、只比较两个分支有什么不一样：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log dev...master</span><br></pre></td></tr></table></figure>
+
+<p>在上述情况下，再显示出每个提交是在哪个分支上：<code>git log --left-right dev...master</code></p>
+<p>根据 <code>–left-right dev…master</code> 的顺序，左箭头 &lt; 表示是 dev 分支提交；右箭头 &gt; 表示 master 分支提交</p>
+<h2 id="保存工作现场"><a href="#保存工作现场" class="headerlink" title="保存工作现场"></a><a name="保存工作现场">保存工作现场</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
+
+<p>注意：要提交到暂存区才可以执行 stash，可以执行多次 stash</p>
+<h2 id="查看已经保存工作现场"><a href="#查看已经保存工作现场" class="headerlink" title="查看已经保存工作现场"></a><a name="查看已经保存工作现场">查看已经保存工作现场</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git stash list</span><br></pre></td></tr></table></figure>
+
+<h2 id="恢复工作现场"><a href="#恢复工作现场" class="headerlink" title="恢复工作现场"></a><a name="恢复工作现场">恢复工作现场</a></h2><ul>
+<li><p>使用 git stash apply 恢复：<code>$ git stash apply stash@&#123;0&#125;</code>，但这种方式恢复后 stash 内容并不删除，需要用 git stash drop 来删除：<code>$ git stash drop stash@&#123;0&#125;</code></p>
+</li>
+<li><p>另一种方式是用 git stash pop，恢复的同时把 stash 内容也删了：<code>$ git stash pop stash@&#123;0&#125;</code></p>
+</li>
+</ul>
+<h2 id="获取远程仓库最新提交到本地"><a href="#获取远程仓库最新提交到本地" class="headerlink" title="获取远程仓库最新提交到本地"></a><a name="获取远程仓库最新提交到本地">获取远程仓库最新提交到本地</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+
+<p>如果 git pull 提示 no tracking information，则说明本地分支和远程分支的链接关系没有创建，执行命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>抓取远程分支最新提交到本地分支</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git pull origin 远端分支名:本地分支名</span><br></pre></td></tr></table></figure>
+
+<h2 id="打标签"><a href="#打标签" class="headerlink" title="打标签"></a><a name="打标签">打标签</a></h2><p>切换到需要打标签的分支上执行命令：<code>$ git tag v1.0</code></p>
+<h2 id="查看所有标签"><a href="#查看所有标签" class="headerlink" title="查看所有标签"></a><a name="查看所有标签">查看所有标签</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git tag</span><br></pre></td></tr></table></figure>
+
+<h2 id="补标签"><a href="#补标签" class="headerlink" title="补标签"></a><a name="补标签">补标签</a></h2><p>查看历史提交，找到需要补标签的提交的 id，执行命令：<code>$ git tag v0.9 &lt;commitId&gt;</code>，也可以为标签添加说明，用 -a 指定标签名，-m 指定说明文字：<code>$ git tag -a v0.1 -m &quot;version 0.1&quot; &lt;commitId&gt;</code></p>
+<p>注：标签不是按时间顺序列出，而是按字母排序的</p>
+<h2 id="查看标签信息"><a href="#查看标签信息" class="headerlink" title="查看标签信息"></a><a name="查看标签信息">查看标签信息</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git show &lt;tagName&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a><a name="删除标签">删除标签</a></h2><ul>
+<li>删除本地标签</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git tag -d v0.1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除远程标签，要先删除本地标签，再 push</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git tag -d v0.9</span><br><span class="line">$ git push origin :refs/tags/v0.9</span><br></pre></td></tr></table></figure>
+
+<h2 id="将标签推送到远程"><a href="#将标签推送到远程" class="headerlink" title="将标签推送到远程"></a><a name="将标签推送到远程">将标签推送到远程</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push origin v1.0</span><br></pre></td></tr></table></figure>
+
+<p>一次性推送全部尚未推送到远程的本地标签：<code>$ git push origin –-tags</code></p>
+<h2 id="清空缓存"><a href="#清空缓存" class="headerlink" title="清空缓存"></a><a name="清空缓存">清空缓存</a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm -r --cached .</span><br></pre></td></tr></table></figure>
+
+<p>例如，当 ignore 文件更新时，如果不清空缓存，则不生效。</p>
+<h2 id="命令行创建空白-gitignore-文件"><a href="#命令行创建空白-gitignore-文件" class="headerlink" title="命令行创建空白 .gitignore 文件"></a><a name="命令行创建空白 .gitignore 文件">命令行创建空白 .gitignore 文件</a></h2><p>进入库目录，命令行执行 <code>touch .gitignore</code> 即可。</p>
+]]></content>
+      <categories>
+        <category>通用技术</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git-问题备忘</title>
+    <url>/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="git-删除远程仓库文件"><a href="#git-删除远程仓库文件" class="headerlink" title="git 删除远程仓库文件"></a>git 删除远程仓库文件</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>git 提交到远程仓库后发现有遗漏的文件未添加到 <code>.ignore</code> 文件中</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>例如不需要提交 target 目录，可执行 <code>git rm -r --cached target</code>，重新 commit 和 push 即可</p>
+<p>说明：</p>
+<ul>
+<li><p>删除工作区文件，并且将这次删除放入暂存区，<code>git rm [file1] [file2] ...</code></p>
+</li>
+<li><p>停止追踪指定文件，但该文件会保留在工作区，<code>git rm --cached [file]</code></p>
+</li>
+</ul>
+<h2 id="git-提交时出现警告-LF-will-be-replaced-by-CRLF-in"><a href="#git-提交时出现警告-LF-will-be-replaced-by-CRLF-in" class="headerlink" title="git 提交时出现警告 LF-will-be-replaced-by-CRLF-in"></a>git 提交时出现警告 LF-will-be-replaced-by-CRLF-in</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>提交时出现警告：<code>warning: LF will be replaced by CRLF </code>，但是不影响提交。</p>
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>配置选项修改，把 core.autocrlf 设置成 false。其他选项如下：<ul>
+<li>git config –global core.autocrlf true #默认值</li>
+<li>git config –global core.autocrlf input #从库中迁出代码不转换</li>
+<li>git config –global core.autocrlf false  #不转换</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-提交时中文文件名显示的解决方案"><a href="#git-提交时中文文件名显示的解决方案" class="headerlink" title="git 提交时中文文件名显示的解决方案"></a>git 提交时中文文件名显示的解决方案</h2><h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><p>git 提交时中文显示为乱码，有碍观瞻</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">117 files changed, 11670 insertions(+), 5 deletions(-)</span><br><span class="line"> create mode 100644 &quot;content/Excel/SUMIFS \345\207\275\346\225\260.md&quot;</span><br><span class="line"> create mode 100644 &quot;content/Excel/VBA \344\275\277\347\224\250 ReDim \345\256\236\347\216\260\344\272\214\347\273\264\345\212\250\346\200\201\346\225\260\347\273\204.md&quot;</span><br><span class="line"> create mode 100644 &quot;content/Excel/VBA \345\210\240\351\231\244\346\211\200\346\234\211\345\267\245\344\275\234\350\241\250\347\232\204\347\251\272\350\241\214.md&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><p>执行 <code>git config --global core.quotepath false</code> 即可，上述提交的文件名已经可以辨认</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">117 files changed, 11670 insertions(+), 5 deletions(-)</span><br><span class="line"> create mode 100644 content/Excel/SUMIFS 函数.md</span><br><span class="line"> create mode 100644 content/Excel/VBA 使用 ReDim 实现二维动态数组.md</span><br><span class="line"> create mode 100644 content/Excel/VBA 删除所有工作表的空行.md</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>通用技术</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gitignore-文件通用参考版本</title>
+    <url>/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a>案例一</h2><ul>
+<li><code>/mtk/</code>，过滤整个文件夹</li>
+<li><code>*.zip</code>，过滤所有.zip 文件</li>
+<li><code>/mtk/do.c</code>，过滤某个具体文件</li>
+</ul>
+<h2 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a>案例二</h2><p>只需要管理 <code>/mtk/</code> 目录中的 one.txt 文件，这个目录中的其他文件都不需要管理：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/mtk/</span><br><span class="line">!/mtk/one.txt</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+</blockquote>
+<ol>
+<li>git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，如果前面的规则匹配的范围更大，则后面的规则将不会生效。</li>
+<li>如果在创建 .gitignore 文件之前 push，即使在 .gitignore 文件中写入新的过滤规则，这些规则也不会起作用，Git 仍然会对所有文件进行版本管理。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># See https://help.github.com/articles/ignoring-files/ for more about ignoring files.</span><br><span class="line"></span><br><span class="line">.gradle</span><br><span class="line">!gradle/wrapper/gradle-wrapper.jar</span><br><span class="line">!**/src/main/**/build/</span><br><span class="line">!**/src/test/**/build/</span><br><span class="line">HELP.md</span><br><span class="line"></span><br><span class="line"># STS</span><br><span class="line">.apt_generated</span><br><span class="line">.classpath</span><br><span class="line">.factorypath</span><br><span class="line">.project</span><br><span class="line">.settings</span><br><span class="line">.springBeans</span><br><span class="line">.sts4-cache</span><br><span class="line"></span><br><span class="line"># IntelliJ IDEA</span><br><span class="line">.idea</span><br><span class="line">*.iws</span><br><span class="line">*.iml</span><br><span class="line">*.ipr</span><br><span class="line">out/</span><br><span class="line">!**/src/main/**/out/</span><br><span class="line">!**/src/test/**/out/</span><br><span class="line"></span><br><span class="line"># NetBeans</span><br><span class="line">/nbproject/private/</span><br><span class="line">/nbbuild/</span><br><span class="line">/dist/</span><br><span class="line">/nbdist/</span><br><span class="line">/.nb-gradle/</span><br><span class="line"></span><br><span class="line"># VS Code</span><br><span class="line">.vscode/</span><br><span class="line"></span><br><span class="line"># dependencies</span><br><span class="line">/node_modules</span><br><span class="line">/.pnp</span><br><span class="line">.pnp.js</span><br><span class="line"></span><br><span class="line"># testing</span><br><span class="line">/coverage</span><br><span class="line"></span><br><span class="line"># production</span><br><span class="line">/build</span><br><span class="line"></span><br><span class="line"># misc</span><br><span class="line">.DS_Store</span><br><span class="line">.env.local</span><br><span class="line">.env.development.local</span><br><span class="line">.env.test.local</span><br><span class="line">.env.production.local</span><br><span class="line"></span><br><span class="line">npm-debug.log*</span><br><span class="line">yarn-debug.log*</span><br><span class="line">yarn-error.log*</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>通用技术</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</title>
+    <url>/2022/12/07/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>使用 Navicat 连接阿里云远程 MySQL 数据库。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1、开放权限"><a href="#1、开放权限" class="headerlink" title="1、开放权限"></a>1、开放权限</h3><p>登录 MySql，此时用命令指定用户名 root 可以通过密码 123456 访问所有数据库，之后刷新权限。相应的命令及结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27; WITH GRANT OPTION;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、设置服务器安全组的端口放行规则"><a href="#2、设置服务器安全组的端口放行规则" class="headerlink" title="2、设置服务器安全组的端口放行规则"></a>2、设置服务器安全组的端口放行规则</h3><p><strong>ECS 云服务器安全组设置如下：</strong></p>
+<img src="/2022/12/07/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" class="">
+
+<p><strong>轻量应用服务器防火墙设置如下：</strong></p>
+<img src="/2022/12/07/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" class="">
+
+<h3 id="3、设置-Navicat"><a href="#3、设置-Navicat" class="headerlink" title="3、设置 Navicat"></a>3、设置 Navicat</h3><p>进入 Navicat，新建连接，在「常规」选项卡中输入开放权限时的信息，用户名：root；密码：123456</p>
+<img src="/2022/12/07/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-Navicat-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-MySQL-%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" class="">
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用-github+Action-部署-Hexo-博客</title>
+    <url>/2022/11/30/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E4%BD%BF%E7%94%A8-github+Action-%E9%83%A8%E7%BD%B2-Hexo-%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为便于叙述，统一说明如下：</p>
+<ul>
+<li>博客 github 源码仓库默认分支为 main，ssh 地址：<code>git@github.com:username/blog.git</code></li>
+<li><code>username.github.io</code>：博客部署仓库，默认分支为 main</li>
+<li><code>hexo_deploy</code>：本地私钥文件</li>
+<li>&#96;hexo_deploy.pub：本地公钥文件</li>
+<li>主题以 NexT 8.13.2 为例</li>
+</ul>
+<blockquote>
+<p>本地 hexo 安装、主题部署流程较简单，步骤省略。</p>
+</blockquote>
+<h2 id="1、配置本地博客源代码库"><a href="#1、配置本地博客源代码库" class="headerlink" title="1、配置本地博客源代码库"></a>1、配置本地博客源代码库</h2><p>在本地博客源代码仓库根目录 <code>_config.yml</code> 文件中增加如下部署配置：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：github 目前仅允许 ssh 提交，部署仓库必须为 ssh 地址</p>
+</blockquote>
+<h2 id="2、配置专用密钥对"><a href="#2、配置专用密钥对" class="headerlink" title="2、配置专用密钥对"></a>2、配置专用密钥对</h2><p>本地重新生成一组密钥对，如 <code>hexo_deploy.pub</code> 与 <code>hexo_deploy</code>。私钥配置到 github 源码仓库的 <code>repository secret</code>，公钥配置到 <code>username.github.io</code> 部署仓库的 <code>Deploy keys</code>。该密钥对专用于「源码仓库」与「部署仓库」之间的 Action 自动部署。</p>
+<blockquote>
+<p>github 源码库新建后即可配置：依次进入 <code>Settings -&gt; Secrets -&gt; Actions -&gt; New repository secret</code>，名称取 <code>HEXO_DEPLOY_SECRET</code>，值取自 <code>hexo_deploy</code> 内容；<code>username.github.io.git</code> 部署仓库配置步骤略。</p>
+</blockquote>
+<p>也可以拿用户公钥 <code>SSH keys</code>（可访问全部仓库）及其对应的私钥完成该步骤，但是用户公钥不一致时（比如办公室和家里使用的用户公钥不同，除非复制同一份密钥对），Action 自动部署的私钥也要更改，使用专用密钥对可避免这个问题。</p>
+<h2 id="3、创建-Action"><a href="#3、创建-Action" class="headerlink" title="3、创建 Action"></a>3、创建 Action</h2><p>在本地博客源代码库根目录下创建 <code>.github/workflows/deploy.yml</code> 文件，参考内容如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">hexo-blog-deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">username</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="string">username@gmail.com</span></span><br><span class="line">  <span class="attr">DEPLOY_REPO:</span> <span class="string">username/username.github.io</span></span><br><span class="line">  <span class="attr">DEPLOY_BRANCH:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build</span> <span class="string">on</span> <span class="string">node</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span> <span class="string">and</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.os</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">os:</span> [<span class="string">ubuntu-latest</span>]</span><br><span class="line">        <span class="attr">node_version:</span> [<span class="number">19.</span><span class="string">x</span>]</span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">deploy</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configuration</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_SECRET:</span> <span class="string">$&#123;&#123;secrets.HEXO_DEPLOY_SECRET&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sudo timedatectl set-timezone &quot;Asia/Shanghai&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">          <span class="comment"># 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).</span></span><br><span class="line">          <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;$HEXO_DEPLOY_SECRET&quot;</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 设置用户名和邮箱，否则提示 Please tell me who you are.</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">$GIT_USER</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">$GIT_EMAIL</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string">          npm install hexo-deployer-git --save</span></span><br><span class="line"><span class="string">          # 全局搜索插件</span></span><br><span class="line"><span class="string">          npm install hexo-generator-searchdb --save</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4、其他"><a href="#4、其他" class="headerlink" title="4、其他"></a>4、其他</h2><h2 id="（可选）部署留言栏-Utterances"><a href="#（可选）部署留言栏-Utterances" class="headerlink" title="（可选）部署留言栏 Utterances"></a>（可选）部署留言栏 Utterances</h2><p>安装 github 应用： <code>https://github.com/apps/utterances</code></p>
+<p>next 最新版本已经集成 Utterances，因此不需要复制安装完成后的模板，直接在主题文件根目录下设置 <code>_config.yml</code> 文件即可：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">username/username.github.io</span> <span class="comment"># Github repository owner and name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">pathname</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="（可选）部署留言栏-giscus"><a href="#（可选）部署留言栏-giscus" class="headerlink" title="（可选）部署留言栏 giscus"></a>（可选）部署留言栏 giscus</h2><p>进入官网（<code>https://giscus.app/</code>）可拿到一段已经填充配置内容的 <code>&lt;script&gt;</code> 标签：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;https://giscus.app/client.js&quot;</span><br><span class="line">    data-repo=&quot;[在此输入仓库]&quot;</span><br><span class="line">    data-repo-id=&quot;[在此输入仓库 ID]&quot;</span><br><span class="line">    data-category=&quot;[在此输入分类名]&quot;</span><br><span class="line">    data-category-id=&quot;[在此输入分类 ID]&quot;</span><br><span class="line">    data-mapping=&quot;pathname&quot;</span><br><span class="line">    data-strict=&quot;0&quot;</span><br><span class="line">    data-reactions-enabled=&quot;1&quot;</span><br><span class="line">    data-emit-metadata=&quot;0&quot;</span><br><span class="line">    data-input-position=&quot;bottom&quot;</span><br><span class="line">    data-theme=&quot;preferred_color_scheme&quot;</span><br><span class="line">    data-lang=&quot;zh-CN&quot;</span><br><span class="line">    crossorigin=&quot;anonymous&quot;</span><br><span class="line">    async&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果要在每一篇文章后添加评论功能，以 next 主题为例，仅供参考。进入 <code>themes/next/layout/_macro/post.njk</code> 文件，找到模板中「文章末尾」（注释标志为 <code>END POST BODY</code>，如下所示），将上述片段加入。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;#####################&#125;</span><br><span class="line">&#123;### <span class="variable constant_">END</span> <span class="variable constant_">POST</span> <span class="variable constant_">BODY</span> ###&#125;</span><br><span class="line">&#123;#####################&#125;</span><br><span class="line">&lt;footer <span class="keyword">class</span>=<span class="string">&quot;post-footer&quot;</span>&gt;</span><br><span class="line">  &#123;%- <span class="keyword">if</span> is_index %&#125;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-eof&quot;</span> style=<span class="string">&quot;margin:20px auto 20px;width:100%;background: transparent;border-top: 1px solid #e2e0e0&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;&#123;- <span class="title function_">next_inject</span>(<span class="string">&#x27;postBodyEnd&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">reward_settings</span>.<span class="property">enable</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-reward.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">creative_commons</span>.<span class="property">license</span> and theme.<span class="property">creative_commons</span>.<span class="property">post</span> and post.<span class="property">copyright</span> !== <span class="literal">false</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-copyright.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">follow_me</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-followme.njk&#x27;</span>, &#123;&#125;, &#123;<span class="attr">cache</span>: theme.<span class="property">cache</span>.<span class="property">enable</span>&#125;) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line">    &#123;###   add giscus  ###&#125;</span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line"></span><br><span class="line">    &lt;script src=<span class="string">&quot;https://giscus.app/client.js&quot;</span></span><br><span class="line">        data-repo=<span class="string">&quot;[在此输入仓库]&quot;</span></span><br><span class="line">        data-repo-id=<span class="string">&quot;[在此输入仓库 ID]&quot;</span></span><br><span class="line">        data-category=<span class="string">&quot;[在此输入分类名]&quot;</span></span><br><span class="line">        data-category-id=<span class="string">&quot;[在此输入分类 ID]&quot;</span></span><br><span class="line">        data-mapping=<span class="string">&quot;pathname&quot;</span></span><br><span class="line">        data-strict=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-reactions-enabled=<span class="string">&quot;1&quot;</span></span><br><span class="line">        data-emit-metadata=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-input-position=<span class="string">&quot;bottom&quot;</span></span><br><span class="line">        data-theme=<span class="string">&quot;preferred_color_scheme&quot;</span></span><br><span class="line">        data-lang=<span class="string">&quot;zh-CN&quot;</span></span><br><span class="line">        crossorigin=<span class="string">&quot;anonymous&quot;</span></span><br><span class="line">        <span class="keyword">async</span>&gt;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">tags</span> and post.<span class="property">tags</span>.<span class="property">length</span> %&#125;</span><br><span class="line">      &#123;%- set tag_indicate = <span class="string">&#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;</span> <span class="keyword">if</span> theme.<span class="property">tag_icon</span> <span class="keyword">else</span> <span class="string">&#x27;#&#x27;</span> %&#125;</span><br><span class="line">      &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-tags&quot;</span>&gt;</span><br><span class="line">        &#123;%- <span class="keyword">for</span> tag <span class="keyword">in</span> post.<span class="property">tags</span>.<span class="title function_">toArray</span>() %&#125;</span><br><span class="line">          &lt;a href=<span class="string">&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot;</span> rel=<span class="string">&quot;tag&quot;</span>&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.<span class="property">name</span> &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="（可选）部署域名"><a href="#（可选）部署域名" class="headerlink" title="（可选）部署域名"></a>（可选）部署域名</h2><p>参考官方文档：<a href="%60https://docs.github.com/cn/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages%60">验证用户站点的域</a></p>
+<blockquote>
+<p>注意：需要在 blog 源代码库 source 目录下放置 CNAME 文件。之后步骤按官方文档进行</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>部署-ubuntu-服务器</title>
-    <url>/2023/03/06/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <url>/2023/03/06/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/%E9%83%A8%E7%BD%B2-ubuntu-%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -1660,6 +1662,7 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>ubuntu</tag>
+        <tag>mariadb</tag>
       </tags>
   </entry>
 </search>

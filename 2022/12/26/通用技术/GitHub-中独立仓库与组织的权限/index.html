@@ -23,25 +23,25 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
-<meta property="og:title" content="gitignore-文件通用参考版本">
-<meta property="og:url" content="http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/index.html">
+<meta property="og:title" content="GitHub-中独立仓库与组织的权限">
+<meta property="og:url" content="http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/index.html">
 <meta property="og:site_name" content="Notebook">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-26T08:19:29.000Z">
-<meta property="article:modified_time" content="2023-05-02T14:12:38.260Z">
+<meta property="article:published_time" content="2022-12-26T08:23:23.000Z">
+<meta property="article:modified_time" content="2023-05-04T13:11:54.852Z">
 <meta property="article:author" content="Mr.Dcheng">
-<meta property="article:tag" content="未标记">
+<meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/">
+<link rel="canonical" href="http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/","path":"2022/12/26/gitignore-文件通用参考版本/","title":"gitignore-文件通用参考版本"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/","path":"2022/12/26/通用技术/GitHub-中独立仓库与组织的权限/","title":"GitHub-中独立仓库与组织的权限"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>gitignore-文件通用参考版本 | Notebook</title>
+<title>GitHub-中独立仓库与组织的权限 | Notebook</title>
   
 
 
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E4%B8%80"><span class="nav-number">1.</span> <span class="nav-text">案例一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E4%BA%8C"><span class="nav-number">2.</span> <span class="nav-text">案例二</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%EF%BC%88%E5%85%AC%E5%BC%80%E6%88%96%E7%A7%81%E6%9C%89%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">一、独立仓库（公开或私有）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%BB%84%E7%BB%87"><span class="nav-number">2.</span> <span class="nav-text">二、组织</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81Base-permissions%EF%BC%88%E5%9F%BA%E6%9C%AC%E6%9D%83%E9%99%90%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">1、Base permissions（基本权限）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E7%BB%84%E7%BB%87%E8%A7%92%E8%89%B2"><span class="nav-number">2.2.</span> <span class="nav-text">2、组织角色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%BA%93%E6%9D%83%E9%99%90"><span class="nav-number">2.3.</span> <span class="nav-text">3、库权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E7%BB%84%E7%BB%87%E6%9D%83%E9%99%90%E6%80%BB%E7%BB%93%E5%A6%82%E4%B8%8B"><span class="nav-number">2.4.</span> <span class="nav-text">4、组织权限总结如下</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,12 +165,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/2022/12/26/gitignore-%E6%96%87%E4%BB%B6%E9%80%9A%E7%94%A8%E5%8F%82%E8%80%83%E7%89%88%E6%9C%AC/">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E7%8B%AC%E7%AB%8B%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%84%E7%BB%87%E7%9A%84%E6%9D%83%E9%99%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -223,12 +223,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="gitignore-文件通用参考版本 | Notebook">
+      <meta itemprop="name" content="GitHub-中独立仓库与组织的权限 | Notebook">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header" style="margin-bottom:0">
         <h1 class="post-title" itemprop="name headline" style="text-align:left">
-          gitignore-文件通用参考版本
+          GitHub-中独立仓库与组织的权限
         </h1>
 
         <div class="post-meta-container">
@@ -239,14 +239,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-12-26 16:19:29" itemprop="dateCreated datePublished" datetime="2022-12-26T16:19:29+08:00">2022-12-26</time>
+      <time title="Created: 2022-12-26 16:23:23" itemprop="dateCreated datePublished" datetime="2022-12-26T16:23:23+08:00">2022-12-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-02 22:12:38" itemprop="dateModified" datetime="2023-05-02T22:12:38+08:00">2023-05-02</time>
+      <time title="Modified: 2023-05-04 21:11:54" itemprop="dateModified" datetime="2023-05-04T21:11:54+08:00">2023-05-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,7 +254,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" itemprop="url" rel="index"><span itemprop="name">未分类</span></a>
+          <a href="/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">通用技术</span></a>
         </span>
     </span>
 
@@ -279,22 +279,146 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a>案例一</h2><ul>
-<li><code>/mtk/</code>，过滤整个文件夹</li>
-<li><code>*.zip</code>，过滤所有.zip 文件</li>
-<li><code>/mtk/do.c</code>，过滤某个具体文件</li>
+<h2 id="一、独立仓库（公开或私有）"><a href="#一、独立仓库（公开或私有）" class="headerlink" title="一、独立仓库（公开或私有）"></a>一、独立仓库（公开或私有）</h2><p>独立仓库包含 <strong>仓库拥有者和外部协作者</strong> 两种角色，相关权限如下表</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">直接写入</th>
+<th align="center">issue 操作<br>[删除、隐藏、修改]</th>
+<th align="center">添加标签</th>
+<th align="center">分支操作<br>[删除、创建]</th>
+<th align="center">邀请校对</th>
+<th align="center">被邀请校对</th>
+<th align="center">校对操作<br>[同意、驳回、重校]</th>
+<th align="center">强制合并</th>
+<th align="center">Setting 菜单可见</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">仓库拥有者</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">外部协作者</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+<p><strong>注：Setting 菜单是否可见决定了是否具备删库、设置分支规则、邀请外部协作者、密钥设置等高级权限。</strong></p>
+<h2 id="二、组织"><a href="#二、组织" class="headerlink" title="二、组织"></a>二、组织</h2><p>组织包含 <strong>组织拥有者、成员、外部协作者</strong> 三种角色，以及 <strong>Read、Write、Admin</strong> 三种权限。</p>
+<h3 id="1、Base-permissions（基本权限）"><a href="#1、Base-permissions（基本权限）" class="headerlink" title="1、Base permissions（基本权限）"></a>1、Base permissions（基本权限）</h3><p>Base permissions to the organization’s repositories apply to all members and excludes outside collaborators. Since organization members can have permissions from multiple sources, members and collaborators who have been granted a higher level of access than the base permissions will retain their higher permission privileges.</p>
+<p>组织存储库的基本权限适用于所有成员（不含外部协作者）。由于组织成员可以拥有多个库的自定义权限，因此被授予比基本权限更高级别访问权限时，成员和协作者将保留更高的权限。</p>
+<p>基本权限包含如下几种：</p>
+<ul>
+<li>None，Members will only be able to clone and pull public repositories. To give a member additional access, you’ll need to add them to teams or make them collaborators on individual repositories.</li>
 </ul>
-<h2 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a>案例二</h2><p>只需要管理 <code>/mtk/</code> 目录中的 one.txt 文件，这个目录中的其他文件都不需要管理：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/mtk/</span><br><span class="line">!/mtk/one.txt</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：</p>
-</blockquote>
-<ol>
-<li>git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，如果前面的规则匹配的范围更大，则后面的规则将不会生效。</li>
-<li>如果在创建 .gitignore 文件之前 push，即使在 .gitignore 文件中写入新的过滤规则，这些规则也不会起作用，Git 仍然会对所有文件进行版本管理。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># See https://help.github.com/articles/ignoring-files/ for more about ignoring files.</span><br><span class="line"></span><br><span class="line">.gradle</span><br><span class="line">!gradle/wrapper/gradle-wrapper.jar</span><br><span class="line">!**/src/main/**/build/</span><br><span class="line">!**/src/test/**/build/</span><br><span class="line">HELP.md</span><br><span class="line"></span><br><span class="line"># STS</span><br><span class="line">.apt_generated</span><br><span class="line">.classpath</span><br><span class="line">.factorypath</span><br><span class="line">.project</span><br><span class="line">.settings</span><br><span class="line">.springBeans</span><br><span class="line">.sts4-cache</span><br><span class="line"></span><br><span class="line"># IntelliJ IDEA</span><br><span class="line">.idea</span><br><span class="line">*.iws</span><br><span class="line">*.iml</span><br><span class="line">*.ipr</span><br><span class="line">out/</span><br><span class="line">!**/src/main/**/out/</span><br><span class="line">!**/src/test/**/out/</span><br><span class="line"></span><br><span class="line"># NetBeans</span><br><span class="line">/nbproject/private/</span><br><span class="line">/nbbuild/</span><br><span class="line">/dist/</span><br><span class="line">/nbdist/</span><br><span class="line">/.nb-gradle/</span><br><span class="line"></span><br><span class="line"># VS Code</span><br><span class="line">.vscode/</span><br><span class="line"></span><br><span class="line"># dependencies</span><br><span class="line">/node_modules</span><br><span class="line">/.pnp</span><br><span class="line">.pnp.js</span><br><span class="line"></span><br><span class="line"># testing</span><br><span class="line">/coverage</span><br><span class="line"></span><br><span class="line"># production</span><br><span class="line">/build</span><br><span class="line"></span><br><span class="line"># misc</span><br><span class="line">.DS_Store</span><br><span class="line">.env.local</span><br><span class="line">.env.development.local</span><br><span class="line">.env.test.local</span><br><span class="line">.env.production.local</span><br><span class="line"></span><br><span class="line">npm-debug.log*</span><br><span class="line">yarn-debug.log*</span><br><span class="line">yarn-error.log*</span><br></pre></td></tr></table></figure>
+<p>成员只能对公共库实施 clone 和 pull 操作。要为成员提供额外的访问权限，需要将它们添加到团队中，或者让它们成为各个存储库的外部协作者。</p>
+<ul>
+<li>Read，Members will be able to clone and pull all repositories.</li>
+</ul>
+<p>成员可以对所有库实施 clone 和 pull 操作。</p>
+<ul>
+<li>Write，Members will be able to clone, pull, and push all repositories.</li>
+</ul>
+<p>成员可以对所有库实施 clone、pull 和 push 操作。</p>
+<ul>
+<li>Admin，Members will be able to clone, pull, push, and add new collaborators to all repositories.</li>
+</ul>
+<p>成员可以对所有库实施 clone、pull、push 和添加外部协作者的操作。</p>
+<h3 id="2、组织角色"><a href="#2、组织角色" class="headerlink" title="2、组织角色"></a>2、组织角色</h3><ul>
+<li>Owner，Has full administrative access to the entire organization.</li>
+</ul>
+<p>对整个组织具有完全的管理访问权限。<strong>组织角色为 Owner 时，对于组织中每一个库而言，默认权限都是 Admin。</strong></p>
+<ul>
+<li>Member，Can see every member and non-secret team in the organization, and can create new repositories.</li>
+</ul>
+<p>可以查看组织中的每个成员和非机密团队，并可以创建新的存储库。<strong>组织角色为 Member 时，对于组织中每一个库而言，默认权限都与基本权限相同。</strong></p>
+<h3 id="3、库权限"><a href="#3、库权限" class="headerlink" title="3、库权限"></a>3、库权限</h3><p>Read、Write、Admin，详见基本权限的描述。<strong>如果需要在某一个库中授予某个成员高于基本权限的权限，需要将其添加为外部协作者。</strong></p>
+<h3 id="4、组织权限总结如下"><a href="#4、组织权限总结如下" class="headerlink" title="4、组织权限总结如下"></a>4、组织权限总结如下</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">直接写入</th>
+<th align="center">issue 操作<br>[删除、隐藏、修改]</th>
+<th align="center">添加标签</th>
+<th align="center">分支操作<br>[删除、创建]</th>
+<th align="center">邀请校对</th>
+<th align="center">被邀请校对</th>
+<th align="center">校对操作<br>[同意、驳回、重校]</th>
+<th align="center">强制合并</th>
+<th align="center">库 Setting 菜单可见</th>
+<th align="center">组织 Setting 菜单可见</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">组织拥有者</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">Read</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="center">Write</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="center">Admin</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -324,20 +448,20 @@
           async>
         </script>
           <div class="post-tags">
-              <a href="/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/" rel="tag"># 未标记</a>
+              <a href="/tags/github/" rel="tag"># github</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/12/26/git-%E9%97%AE%E9%A2%98%E5%A4%87%E5%BF%98/" rel="prev" title="git-问题备忘">
-                  <i class="fa fa-chevron-left"></i> git-问题备忘
+                <a href="/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="prev" title="git-常用命令">
+                  <i class="fa fa-chevron-left"></i> git-常用命令
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/12/26/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="git-常用命令">
-                  git-常用命令 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/12/26/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/GitHub-%E4%B8%AD%E4%BD%BF%E7%94%A8-issues-%E6%A8%A1%E7%89%88%E5%92%8C-pull-request-%E6%A8%A1%E7%89%88/" rel="next" title="GitHub-中使用-issues-模版和-pull-request-模版">
+                  GitHub-中使用-issues-模版和-pull-request-模版 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
