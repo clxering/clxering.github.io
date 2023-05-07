@@ -1456,7 +1456,13 @@ End 	Fn + →
 <h2 id="3、创建-Action"><a href="#3、创建-Action" class="headerlink" title="3、创建 Action"></a>3、创建 Action</h2><p>在本地博客源代码库根目录下创建 <code>.github/workflows/deploy.yml</code> 文件，参考内容如下：</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">hexo-blog-deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">username</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="string">username@gmail.com</span></span><br><span class="line">  <span class="attr">DEPLOY_REPO:</span> <span class="string">username/username.github.io</span></span><br><span class="line">  <span class="attr">DEPLOY_BRANCH:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build</span> <span class="string">on</span> <span class="string">node</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span> <span class="string">and</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.os</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">os:</span> [<span class="string">ubuntu-latest</span>]</span><br><span class="line">        <span class="attr">node_version:</span> [<span class="number">19.</span><span class="string">x</span>]</span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">deploy</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configuration</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_SECRET:</span> <span class="string">$&#123;&#123;secrets.HEXO_DEPLOY_SECRET&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sudo timedatectl set-timezone &quot;Asia/Shanghai&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">          <span class="comment"># 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).</span></span><br><span class="line">          <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;$HEXO_DEPLOY_SECRET&quot;</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 设置用户名和邮箱，否则提示 Please tell me who you are.</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">$GIT_USER</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">$GIT_EMAIL</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string">          npm install hexo-deployer-git --save</span></span><br><span class="line"><span class="string">          # 全局搜索插件</span></span><br><span class="line"><span class="string">          npm install hexo-generator-searchdb --save</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="4、其他"><a href="#4、其他" class="headerlink" title="4、其他"></a>4、其他</h2><h2 id="（可选）部署留言栏-Utterances"><a href="#（可选）部署留言栏-Utterances" class="headerlink" title="（可选）部署留言栏 Utterances"></a>（可选）部署留言栏 Utterances</h2><p>安装 github 应用： <code>https://github.com/apps/utterances</code></p>
+<h2 id="4、常用命令"><a href="#4、常用命令" class="headerlink" title="4、常用命令"></a>4、常用命令</h2><ul>
+<li>本地启动：<code>hexo s</code></li>
+<li>清除缓存：<code>hexo clean</code></li>
+<li>新建草稿：<code>hexo new draft &lt;filename&gt;</code></li>
+<li>发布草稿：<code>hexo publish [layout] &lt;filename&gt;</code></li>
+</ul>
+<h2 id="5、其他"><a href="#5、其他" class="headerlink" title="5、其他"></a>5、其他</h2><h2 id="（可选）部署留言栏-Utterances"><a href="#（可选）部署留言栏-Utterances" class="headerlink" title="（可选）部署留言栏 Utterances"></a>（可选）部署留言栏 Utterances</h2><p>安装 github 应用： <code>https://github.com/apps/utterances</code></p>
 <p>next 最新版本已经集成 Utterances，因此不需要复制安装完成后的模板，直接在主题文件根目录下设置 <code>_config.yml</code> 文件即可：</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">username/username.github.io</span> <span class="comment"># Github repository owner and name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">pathname</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
 
@@ -1663,6 +1669,429 @@ End 	Fn + →
       <tags>
         <tag>ubuntu</tag>
         <tag>mariadb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CompletableFuture-异步处理任务</title>
+    <url>/2023/05/03/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/CompletableFuture-%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86%E4%BB%BB%E5%8A%A1/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<blockquote>
+<p>oracle JDK8 有关内容的文档：<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html</a></p>
+</blockquote>
+<h2 id="创建异步任务"><a href="#创建异步任务" class="headerlink" title="创建异步任务"></a>创建异步任务</h2><p>runAsync 执行 CompletableFuture 任务，没有返回值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> CompletableFuture&lt;Void&gt; <span class="title function_">runAsync</span><span class="params">(Runnable runnable)</span></span><br><span class="line"><span class="keyword">static</span> CompletableFuture&lt;Void&gt; <span class="title function_">runAsync</span><span class="params">(Runnable runnable, Executor executor)</span></span><br></pre></td></tr></table></figure>
+
+<p>supplyAsync 执行 CompletableFuture 任务，可有返回值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">supplyAsync</span><span class="params">(Supplier&lt;U&gt; supplier)</span></span><br><span class="line"><span class="keyword">static</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">supplyAsync</span><span class="params">(Supplier&lt;U&gt; supplier, Executor executor)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果不指定 Executor 实现，则使用 <code>ForkJoinPool.commonPool()</code> 作为执行异步代码的线程池</p>
+</blockquote>
+<p>创建异步任务后，可根据需求进行如下的操作：</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法名称</th>
+<th align="left">类型</th>
+<th align="left">传参</th>
+<th align="left">返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">thenRun</td>
+<td align="left">单任务消费</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenRunAsync</td>
+<td align="left">单任务消费</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenApply</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">thenApplyAsync</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">thenAccept</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenAcceptAsync</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenCombine</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">要传参（两个任务的执行结果）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">thenCombineAsync</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">要传参（两个任务的执行结果）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">thenAcceptBoth</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">要传参（两个任务的执行结果）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenAcceptBothAsync</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">要传参（两个任务的执行结果）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">runAfterBoth</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">runAfterBothAsync</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">applyToEither</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">要传参（已完成任务的执行结果）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">applyToEitherAsync</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">要传参（已完成任务的执行结果）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">acceptEither</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">要传参（已完成任务的执行结果）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">acceptEitherAsync</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">要传参（已完成任务的执行结果）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">runAfterEither</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">runAfterEitherAsync</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">whenComplete</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参（正常返回值和异常）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">whenCompleteAsync</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参（正常返回值和异常）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">handle</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参（正常返回值和异常）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">handleAsync</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参（正常返回值和异常）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">exceptionally</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参 （异常）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenCompose</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">allOf</td>
+<td align="left">多任务消费（与）</td>
+<td align="left">要传参（任务列表）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">anyOf</td>
+<td align="left">多任务消费（或）</td>
+<td align="left">要传参（任务列表）</td>
+<td align="left">无返回值</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>不带 Async 版本由上一个任务的线程继续执行该任务，Async 版本可以指定执行该异步任务的 Executor 实现，如果不指定，默认使用 <code>ForkJoinPool.commonPool()</code></p>
+</blockquote>
+<h2 id="单任务消费"><a href="#单任务消费" class="headerlink" title="单任务消费"></a>单任务消费</h2><table>
+<thead>
+<tr>
+<th align="left">回调方法</th>
+<th align="left">类型</th>
+<th align="left">传参</th>
+<th align="left">返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">thenRun</td>
+<td align="left">单任务消费</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenRunAsync</td>
+<td align="left">单任务消费</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenAccept</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenAcceptAsync</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenApply</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">thenApplyAsync</td>
+<td align="left">单任务消费</td>
+<td align="left">要传参</td>
+<td align="left">有返回值</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="type">var</span> <span class="variable">executor</span> <span class="operator">=</span> Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">supplyAsyncTask</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;supplyAsyncTask=&quot;</span> + Thread.currentThread().getName());</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;, executor);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// thenApply</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">thenApplyTask</span> <span class="operator">=</span> supplyAsyncTask.thenApply((param) -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;thenApplyTask=&quot;</span> + Thread.currentThread().getName());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// thenApplyAsync不指定线程池</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">thenApplyAsyncTask</span> <span class="operator">=</span> supplyAsyncTask.thenApplyAsync((param) -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;thenApplyAsyncTask=&quot;</span> + Thread.currentThread().getName());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// thenApplyAsync指定线程池</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">thenApplyAsyncTask2</span> <span class="operator">=</span> supplyAsyncTask.thenApplyAsync((param) -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;thenApplyAsyncTask2=&quot;</span> + Thread.currentThread().getName());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;, executor);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 不调用get()将不执行回调</span></span><br><span class="line">    thenApplyAsyncTask.get();</span><br><span class="line">    thenApplyAsyncTask2.get();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭线程池</span></span><br><span class="line">    executor.shutdown();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">supplyAsyncTask=pool-1-thread-1</span><br><span class="line">thenApplyAsyncTask2=pool-1-thread-2</span><br><span class="line">thenApplyTask=pool-1-thread-2</span><br><span class="line">thenApplyAsyncTask=ForkJoinPool.commonPool-worker-3</span><br></pre></td></tr></table></figure>
+
+<h2 id="双任务消费（与）"><a href="#双任务消费（与）" class="headerlink" title="双任务消费（与）"></a>双任务消费（与）</h2><p>将两个 CompletableFuture 组合起来，只有这两个都正常执行完了，才会执行某个任务。</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法名称</th>
+<th align="left">类型</th>
+<th align="left">传参</th>
+<th align="left">返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">thenCombine</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">有传参（两个任务的执行结果）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">thenCombineAsync</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">有传参（两个任务的执行结果）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">thenAcceptBoth</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">有传参（两个任务的执行结果）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">thenAcceptBothAsync</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">有传参（两个任务的执行结果）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">runAfterBoth</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">runAfterBothAsync</td>
+<td align="left">双任务消费（与）</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">task1</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; <span class="string">&quot;task1&quot;</span>);</span><br><span class="line">    <span class="type">var</span> <span class="variable">task2</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; <span class="string">&quot;task2&quot;</span>);</span><br><span class="line">    <span class="type">var</span> <span class="variable">task3</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; <span class="string">&quot;task3&quot;</span>);</span><br><span class="line"></span><br><span class="line">    task1.thenCombine(task2, (param1, param2) -&gt; &#123;</span><br><span class="line">        <span class="comment">// task1task2</span></span><br><span class="line">        System.out.println(param1 + param2);</span><br><span class="line">        <span class="keyword">return</span> param1 + param2;</span><br><span class="line">    &#125;).thenCombine(task3, (param12, param3) -&gt; &#123;</span><br><span class="line">        <span class="comment">// task1task2task3</span></span><br><span class="line">        System.out.println(param12 + param3);</span><br><span class="line">        <span class="keyword">return</span> param12 + param3;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    task1.thenAcceptBoth(task2, (param1, param2) -&gt; &#123;</span><br><span class="line">        <span class="comment">// task1task2</span></span><br><span class="line">        System.out.println(param1 + param2);</span><br><span class="line">    &#125;).thenAcceptBoth(task3, (param12, param3) -&gt; &#123;</span><br><span class="line">        <span class="comment">// nulltask3</span></span><br><span class="line">        System.out.println(param12 + param3);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    task1.runAfterBoth(task2, () -&gt; &#123;</span><br><span class="line">        <span class="comment">// task1 and task2</span></span><br><span class="line">        System.out.println(<span class="string">&quot;task1 and task2&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="双任务消费（或）"><a href="#双任务消费（或）" class="headerlink" title="双任务消费（或）"></a>双任务消费（或）</h2><p>将两个 CompletableFuture 组合起来，只要其中一个执行完了，就执行回调方法。</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法名称</th>
+<th align="left">类型</th>
+<th align="left">传参</th>
+<th align="left">返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">applyToEither</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">有传参（已完成任务的执行结果）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">applyToEitherAsync</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">有传参（已完成任务的执行结果）</td>
+<td align="left">有返回值</td>
+</tr>
+<tr>
+<td align="left">acceptEither</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">有传参（已完成任务的执行结果）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">acceptEitherAsync</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">有传参（已完成任务的执行结果）</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">runAfterEither</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">runAfterEitherAsync</td>
+<td align="left">双任务消费（或）</td>
+<td align="left">无传参</td>
+<td align="left">无返回值</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">task1</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(<span class="number">5</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;task1&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="type">var</span> <span class="variable">task2</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(<span class="number">3</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;task2&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="type">var</span> <span class="variable">task3</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(<span class="number">3</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;task3&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    task1.applyToEither(task2, (param) -&gt; &#123;</span><br><span class="line">        <span class="comment">// applyToEither=task2</span></span><br><span class="line">        System.out.println(<span class="string">&quot;applyToEither=&quot;</span> + param);</span><br><span class="line">        <span class="keyword">return</span> param;</span><br><span class="line">    &#125;).acceptEither(task3, (param) -&gt; &#123;</span><br><span class="line">        <span class="comment">// acceptEither=task2 或 acceptEither=task3</span></span><br><span class="line">        System.out.println(<span class="string">&quot;acceptEither=&quot;</span> + param);</span><br><span class="line">    &#125;).get();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// task1 or task2</span></span><br><span class="line">    task1.runAfterEither(task2,()-&gt; System.out.println(<span class="string">&quot;task1 or task2&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="whenComplete、whenCompleteAsync"><a href="#whenComplete、whenCompleteAsync" class="headerlink" title="whenComplete、whenCompleteAsync"></a>whenComplete、whenCompleteAsync</h3><p>某个任务执行完成后，执行的回调方法，无返回值。可以访问 CompletableFuture 的结果和异常作为参数，使用它们并执行想要的操作。此方法并不能转换完成的结果。会内部抛出异常。其正常返回的 CompletableFuture 的结果来自上个任务。</p>
+<h3 id="handle、handleAsync"><a href="#handle、handleAsync" class="headerlink" title="handle、handleAsync"></a>handle、handleAsync</h3><p>不论正常返回还是出异常都会进入 handle，参数通常为 <code>new BiFunction&lt;T, Throwable, R&gt;();</code>，其中</p>
+<ul>
+<li>T：上一任务传入的对象类型</li>
+<li>Throwable：上一任务传入的异常</li>
+<li>R：返回的对象类型</li>
+</ul>
+<blockquote>
+<p>handle 和 thenApply 的区别：如果任务出现异常不会进入 thenApply；任务出现异常也会进入 handle，可对异常处理。</p>
+</blockquote>
+<blockquote>
+<p>handle 和 whenComplete 的区别：handle 可对传入值 T 进行转换，并产生自己的返回结果 R；whenComplete 的返回值和上级任务传入的结果一致，不能转换。</p>
+</blockquote>
+<blockquote>
+<p>whenComplete、whenCompleteAsync、handle 和 handleAsync 的输入参数一个是正常结果一个是异常结果，而 exceptionally 的输入参数为异常结果。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">supplyAsyncTask</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        <span class="comment">// 制造一个异常</span></span><br><span class="line">        <span class="comment">// int value = 1 / 0;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;supplyAsyncTask&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">handle</span> <span class="operator">=</span> supplyAsyncTask.handle((s, throwable) -&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (Optional.ofNullable(throwable).isPresent()) &#123;</span><br><span class="line">            <span class="keyword">return</span> throwable.getMessage();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>() &#123;&#123;</span><br><span class="line">            add(s);</span><br><span class="line">        &#125;&#125;;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// supplyAsyncTask异常时，输出1：java.lang.ArithmeticException: / by zero</span></span><br><span class="line">    <span class="comment">// 输出2：[supplyAsyncTask]</span></span><br><span class="line">    System.out.println(handle.get());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="exceptionally"><a href="#exceptionally" class="headerlink" title="exceptionally"></a>exceptionally</h3><p>某个任务执行抛出异常时执行的回调方法。抛出异常作为参数，传递到回调方法。仅处理异常情况。如果任务成功完成，那么将被跳过。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">supplyAsyncTask</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        <span class="type">double</span> error=<span class="number">1</span>/<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">    &#125;, executor).exceptionally((e)-&gt;&#123;</span><br><span class="line">        <span class="comment">// java.lang.ArithmeticException: / by zero</span></span><br><span class="line">        System.out.println(e.getMessage());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// &quot;error&quot;</span></span><br><span class="line">    System.out.println(supplyAsyncTask.get());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="complete"><a href="#complete" class="headerlink" title="complete"></a>complete</h3><p>如果尚未完成，则将 <code>get()</code> 和相关方法返回的值设置为给定值。如果此调用导致此 CompletableFuture 转换到完成状态，则返回 true，否则返回 false。文档描述：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">If not already completed, sets the value returned by get() and related methods to the given value.</span><br><span class="line"></span><br><span class="line">Params:</span><br><span class="line">value – the result value</span><br><span class="line">Returns:</span><br><span class="line">true if this invocation caused this CompletableFuture to transition to a completed state, else false</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="type">var</span> <span class="variable">task1</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(<span class="number">15</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 若get放在此处，一直等待task1完成，输出10</span></span><br><span class="line">    <span class="comment">// System.out.println(task1.get());</span></span><br><span class="line">    <span class="comment">// 强制task1完成，输出true</span></span><br><span class="line">    System.out.println(task1.complete(<span class="number">5</span>));</span><br><span class="line">    <span class="comment">// 输出5</span></span><br><span class="line">    System.out.println(task1.get());</span><br><span class="line">    <span class="comment">// task1已完成，输出false</span></span><br><span class="line">    System.out.println(task1.complete(<span class="number">50</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="thenCompose"><a href="#thenCompose" class="headerlink" title="thenCompose"></a>thenCompose</h3><p>源码定义</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">thenCompose</span><span class="params">(Function&lt;? <span class="built_in">super</span> T, ? extends CompletionStage&lt;U&gt;&gt; fn)</span>;</span><br><span class="line"><span class="keyword">public</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">thenComposeAsync</span><span class="params">(Function&lt;? <span class="built_in">super</span> T, ? extends CompletionStage&lt;U&gt;&gt; fn)</span> ;</span><br><span class="line"><span class="keyword">public</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">thenComposeAsync</span><span class="params">(Function&lt;? <span class="built_in">super</span> T, ? extends CompletionStage&lt;U&gt;&gt; fn, Executor executor)</span> ;</span><br></pre></td></tr></table></figure>
+
+<p>thenCompose 方法会在某个任务执行完成后，将该任务的执行结果作为入参，执行指定的方法。该方法会返回一个新的 CompletableFuture 实例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="type">var</span> <span class="variable">task1</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">task2</span> <span class="operator">=</span> task1.thenCompose(param -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is task2 param=&quot;</span> + param);</span><br><span class="line">        <span class="keyword">return</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;this is task2 square&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> Math.pow(param, <span class="number">2</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;).thenApply(param -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;thenApply get the square=&quot;</span> + param);</span><br><span class="line">        <span class="keyword">return</span> param;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">task3</span> <span class="operator">=</span> task1.thenCompose(param -&gt; &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;this is task3 param=&quot;</span> + param);</span><br><span class="line">        <span class="keyword">return</span> CompletableFuture.runAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;this is task3 square&quot;</span>);</span><br><span class="line">            System.out.println(Math.pow(param, <span class="number">2</span>));</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;task2 get=&quot;</span> + task2.get());</span><br><span class="line">    System.out.println(<span class="string">&quot;task3 get=&quot;</span> + task3.get());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="built_in">this</span> is task2 param=<span class="number">10</span></span><br><span class="line"><span class="built_in">this</span> is task2 square</span><br><span class="line">thenApply get the square=<span class="number">100.0</span></span><br><span class="line"><span class="built_in">this</span> is task3 param=<span class="number">10</span></span><br><span class="line"><span class="built_in">this</span> is task3 square</span><br><span class="line"><span class="number">100.0</span></span><br><span class="line">task2 get=<span class="number">100.0</span></span><br><span class="line">task3 get=<span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="allOf"><a href="#allOf" class="headerlink" title="allOf"></a>allOf</h3><p>静态方法，阻塞等待所有给定的 CompletableFuture 执行结束后，返回一个 <code>CompletableFuture&lt;Void&gt;</code> 结果。所有任务都执行完成后，才执行 allOf 的回调方法。如果任意一个任务异常，执行 get 方法时会抛出异常。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">task1</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(<span class="number">2</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;task1&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="type">var</span> <span class="variable">task2</span> <span class="operator">=</span> CompletableFuture.runAsync(() -&gt; &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> <span class="number">1</span> / <span class="number">0</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;task2 is over&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    CompletableFuture.allOf(task1, task2).whenComplete((param, throwable) -&gt; &#123;</span><br><span class="line">        <span class="comment">// null</span></span><br><span class="line">        System.out.println(param);</span><br><span class="line">    &#125;).exceptionally(throwable -&gt; &#123;</span><br><span class="line">        <span class="comment">// task3 allOf throwable=java.lang.ArithmeticException: / by zero</span></span><br><span class="line">        System.out.println(<span class="string">&quot;task3 allOf throwable=&quot;</span> + throwable.getMessage());</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;).get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="anyOf"><a href="#anyOf" class="headerlink" title="anyOf"></a>anyOf</h3><p>静态方法，阻塞等待任意一个给定的 CompletableFuture 对象执行结束后，返回一个 <code>CompletableFuture&lt;Void&gt;</code> 结果。任意一个任务执行完，就执行 anyOf 的回调方法。如果执行的任务异常，执行 get 方法时会抛出异常。</p>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CompletionService-及时获取任务返回值</title>
+    <url>/2023/05/06/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/CompletionService-%E5%8F%8A%E6%97%B6%E8%8E%B7%E5%8F%96%E4%BB%BB%E5%8A%A1%E8%BF%94%E5%9B%9E%E5%80%BC/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="ExecutorService"><a href="#ExecutorService" class="headerlink" title="ExecutorService"></a>ExecutorService</h2><p>定义如下的 TaskCallable 类，返回值的延迟输出时间根据传入值决定：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title class_">TaskCallable</span><span class="params">(String taskID, Double value, Double rate)</span> <span class="keyword">implements</span> <span class="title class_">Callable</span>&lt;String&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        TimeUnit.MILLISECONDS.sleep(value.longValue());</span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot;taskID=&#123; %s &#125; result=&#123; %s*%s -&gt; %s &#125;&quot;</span>, taskID, value, rate, value * rate);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>向线程池添加三个任务，执行时间有所区别，最后依次调用 <code>get()</code> 方法输出结果。</p>
+<p><a href="https://github.com/inspiration-lab/java-snippet-testing/blob/main/src/main/java/com/lab/snippet/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%BC%82%E6%AD%A5/ExecutorService/ExecutorServiceRun.java">查看完整示例代码</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">var</span> <span class="variable">futureList</span> <span class="operator">=</span> Arrays.asList(</span><br><span class="line">        executorService.submit(<span class="keyword">new</span> <span class="title class_">TaskCallable</span>(<span class="string">&quot;1aa8c994-281e-4fbb-a09b-cdf389eedf3b&quot;</span>, <span class="number">1000.0</span>, <span class="number">0.5</span>)),</span><br><span class="line">        executorService.submit(<span class="keyword">new</span> <span class="title class_">TaskCallable</span>(<span class="string">&quot;321996c2-73c0-411a-8e66-fcfa04d94ae1&quot;</span>, <span class="number">5000.0</span>, <span class="number">1.0</span>)),</span><br><span class="line">        executorService.submit(<span class="keyword">new</span> <span class="title class_">TaskCallable</span>(<span class="string">&quot;3df9d22e-17d9-4b48-a821-867974681d6e&quot;</span>, <span class="number">600.0</span>, <span class="number">1.2</span>))</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>; index &lt; futureList.size(); index++) &#123;</span><br><span class="line">    <span class="type">var</span> <span class="variable">result</span> <span class="operator">=</span> futureList.get(index).get();</span><br><span class="line">    System.out.println(result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">executorService.shutdown();</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">taskID=&#123; 1aa8c994-281e-4fbb-a09b-cdf389eedf3b &#125; result=&#123; <span class="number">1000.0</span>*<span class="number">0.5</span> -&gt; <span class="number">500.0</span> &#125;</span><br><span class="line">taskID=&#123; 321996c2-73c0-411a-<span class="number">8e66</span>-fcfa04d94ae1 &#125; result=&#123; <span class="number">5000.0</span>*<span class="number">1.0</span> -&gt; <span class="number">5000.0</span> &#125;</span><br><span class="line">taskID=&#123; 3df9d22e-17d9-4b48-a821-867974681d6e &#125; result=&#123; <span class="number">600.0</span>*<span class="number">1.2</span> -&gt; <span class="number">720.0</span> &#125;</span><br><span class="line">计时器&#123; b10bbd47-63c4-<span class="number">4545</span>-b236-15303f40cc1f &#125;停止，耗时=&#123; 5004ms &#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于 <code>get()</code> 方法是阻塞的，因此如果某个 Future 执行时间太长，整个遍历过程将会阻塞，无法及时从已完成的 Future 拿到返回值。上述例子中，即使 600ms 的任务，也只能等到前两个长时间任务都完成后才能输出。</p>
+<h2 id="CompletionService"><a href="#CompletionService" class="headerlink" title="CompletionService"></a>CompletionService</h2><p>CompletionSerive 接口的实现类 ExecutorCompletionService 优化了获取异步操作结果。ExecutorCompletionService 中内置了存放 Future 的队列 completionQueue，在任务调用完成后，将要返回的 future 放入到该队列。客户端通过 <code>take()</code> 方法得到 future，再调用 <code>get()</code> 方法从而获取任务执行结果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">QueueingFuture</span>&lt;V&gt; <span class="keyword">extends</span> <span class="title class_">FutureTask</span>&lt;Void&gt; &#123;</span><br><span class="line">    QueueingFuture(RunnableFuture&lt;V&gt; task,</span><br><span class="line">                    BlockingQueue&lt;Future&lt;V&gt;&gt; completionQueue) &#123;</span><br><span class="line">        <span class="built_in">super</span>(task, <span class="literal">null</span>);</span><br><span class="line">        <span class="built_in">this</span>.task = task;</span><br><span class="line">        <span class="built_in">this</span>.completionQueue = completionQueue;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Future&lt;V&gt; task;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BlockingQueue&lt;Future&lt;V&gt;&gt; completionQueue;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">done</span><span class="params">()</span> &#123; completionQueue.add(task); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>向 CompletionService 提交任务的方式与 ExecutorService 一样。两者的区别在于取结果的方式。有了 CompletionService，可以不再需要 Future 集合。如果要得到最早的执行结果，调用 <code>completionService.take().get()</code> 即可：</p>
+<p><a href="https://github.com/inspiration-lab/java-snippet-testing/blob/main/src/main/java/com/lab/snippet/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%BC%82%E6%AD%A5/ExecutorService/CompletionServiceRun.java">查看完整示例代码</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">5</span>);</span><br><span class="line">CompletionService&lt;String&gt; completionService = <span class="keyword">new</span> <span class="title class_">ExecutorCompletionService</span>&lt;&gt;(executorService);</span><br><span class="line"></span><br><span class="line">completionService.submit(<span class="keyword">new</span> <span class="title class_">TaskCallable</span>(<span class="string">&quot;1aa8c994-281e-4fbb-a09b-cdf389eedf3b&quot;</span>, <span class="number">1000.0</span>, <span class="number">0.5</span>));</span><br><span class="line">completionService.submit(<span class="keyword">new</span> <span class="title class_">TaskCallable</span>(<span class="string">&quot;321996c2-73c0-411a-8e66-fcfa04d94ae1&quot;</span>, <span class="number">5000.0</span>, <span class="number">1.0</span>));</span><br><span class="line">completionService.submit(<span class="keyword">new</span> <span class="title class_">TaskCallable</span>(<span class="string">&quot;3df9d22e-17d9-4b48-a821-867974681d6e&quot;</span>, <span class="number">600.0</span>, <span class="number">1.2</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>; index &lt; <span class="number">3</span>; index++) &#123;</span><br><span class="line">    System.out.println(completionService.take().get());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">executorService.shutdown();</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">taskID=&#123; 3df9d22e-17d9-4b48-a821-867974681d6e &#125; result=&#123; <span class="number">600.0</span>*<span class="number">1.2</span> -&gt; <span class="number">720.0</span> &#125;</span><br><span class="line">taskID=&#123; 1aa8c994-281e-4fbb-a09b-cdf389eedf3b &#125; result=&#123; <span class="number">1000.0</span>*<span class="number">0.5</span> -&gt; <span class="number">500.0</span> &#125;</span><br><span class="line">taskID=&#123; 321996c2-73c0-411a-<span class="number">8e66</span>-fcfa04d94ae1 &#125; result=&#123; <span class="number">5000.0</span>*<span class="number">1.0</span> -&gt; <span class="number">5000.0</span> &#125;</span><br><span class="line">计时器&#123; 7223efb6-ec07-<span class="number">4294</span>-8f23-8b73b536c9b4 &#125;停止，耗时=&#123; 5002ms &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CompletionService-结合异步实现多线程处理任务"><a href="#CompletionService-结合异步实现多线程处理任务" class="headerlink" title="CompletionService 结合异步实现多线程处理任务"></a>CompletionService 结合异步实现多线程处理任务</h2><p>定义一个任务队列，异步执行「入队」和「出队」，最终通过CompletionService获取全部任务的返回结果。</p>
+<p><a href="https://github.com/inspiration-lab/java-snippet-testing/blob/main/src/main/java/com/lab/snippet/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%BC%82%E6%AD%A5/ExecutorService/AsyncRun.java">查看完整示例代码</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义队列</span></span><br><span class="line">LinkedBlockingDeque&lt;TaskCallable&gt; linkedBlockingDeque = <span class="keyword">new</span> <span class="title class_">LinkedBlockingDeque</span>&lt;&gt;();</span><br><span class="line"><span class="comment">// 模拟任务数量</span></span><br><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">taskCount</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line"><span class="comment">// 获取CPU核心数</span></span><br><span class="line"><span class="type">int</span> <span class="variable">coreNum</span> <span class="operator">=</span> Runtime.getRuntime().availableProcessors();</span><br><span class="line"><span class="comment">// 定义线程池</span></span><br><span class="line"><span class="type">ThreadPoolExecutor</span> <span class="variable">customPool</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(coreNum, coreNum, coreNum, TimeUnit.MINUTES, <span class="keyword">new</span> <span class="title class_">LinkedBlockingDeque</span>&lt;&gt;(),</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">ThreadFactory</span>() &#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">AtomicInteger</span> <span class="variable">customPoolCurrent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicInteger</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Thread <span class="title function_">newThread</span><span class="params">(Runnable runnable)</span> &#123;</span><br><span class="line">                <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(runnable, String.format(<span class="string">&quot;customPool-thread-%s&quot;</span>, customPoolCurrent.getAndIncrement()));</span><br><span class="line">                thread.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">                <span class="keyword">return</span> thread;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.CallerRunsPolicy());</span><br><span class="line"></span><br><span class="line">CompletionService&lt;String&gt; completionService = <span class="keyword">new</span> <span class="title class_">ExecutorCompletionService</span>&lt;&gt;(customPool);</span><br><span class="line"></span><br><span class="line"><span class="type">var</span> <span class="variable">pushElement</span> <span class="operator">=</span> CompletableFuture.runAsync(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>; index &lt; taskCount; index++) &#123;</span><br><span class="line">        <span class="type">var</span> <span class="variable">value</span> <span class="operator">=</span> Math.random() * <span class="number">1000</span>;</span><br><span class="line">        <span class="type">var</span> <span class="variable">taskCallable</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TaskCallable</span>(UUID.randomUUID().toString(), value, Math.random());</span><br><span class="line">        linkedBlockingDeque.push(taskCallable);</span><br><span class="line">        System.out.println(String.format(<span class="string">&quot;线程 %s 完成 %s 入队&quot;</span>, Thread.currentThread().getName(), taskCallable));</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            TimeUnit.MILLISECONDS.sleep(<span class="number">300</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="type">var</span> <span class="variable">submitTask</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">boolean</span> <span class="variable">flagTask</span> <span class="operator">=</span> pushElement.isDone();</span><br><span class="line">            <span class="type">boolean</span> <span class="variable">flagPeek</span> <span class="operator">=</span> Optional.ofNullable(linkedBlockingDeque.peek()).isPresent();</span><br><span class="line">            <span class="comment">// 当【入队任务完成】且【队列没有元素可取】时结束</span></span><br><span class="line">            <span class="keyword">if</span> (flagTask == <span class="literal">true</span> &amp;&amp; flagPeek == <span class="literal">false</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flagPeek == <span class="literal">false</span>) &#123;</span><br><span class="line">                <span class="comment">// 仅【队列没有元素可取】时，跳过</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 【队列有元素可取】时，添加任务到线程池</span></span><br><span class="line">            TimeUnit.MILLISECONDS.sleep(<span class="number">500</span>);</span><br><span class="line">            <span class="type">var</span> <span class="variable">taskCallable</span> <span class="operator">=</span> linkedBlockingDeque.take();</span><br><span class="line">            completionService.submit(taskCallable);</span><br><span class="line">            System.out.println(String.format(<span class="string">&quot;线程 %s 将 %s 提交到线程池&quot;</span>, Thread.currentThread().getName(), taskCallable));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="type">boolean</span> <span class="variable">submit</span> <span class="operator">=</span> submitTask.get();</span><br><span class="line"><span class="keyword">if</span> (!submit) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>; index &lt; taskCount; index++) &#123;</span><br><span class="line">        System.out.println(completionService.take().get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">customPool.shutdown();</span><br><span class="line">customPool.awaitTermination(<span class="number">3</span>, TimeUnit.SECONDS);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=29ad9f36-<span class="number">2e25</span>-457a-8a50-40b2619ccd85, value=<span class="number">297.9894322218015</span>, rate=<span class="number">0.39525736986090654</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=<span class="number">72434730</span>-e52a-<span class="number">4819</span>-a249-25b1e8450c81, value=<span class="number">861.735810794833</span>, rate=<span class="number">0.0508273434713048</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=<span class="number">72434730</span>-e52a-<span class="number">4819</span>-a249-25b1e8450c81, value=<span class="number">861.735810794833</span>, rate=<span class="number">0.0508273434713048</span>] 提交到线程池</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=6f25d9e6-9f38-4d84-ac59-259324f800f1, value=<span class="number">931.5744113116666</span>, rate=<span class="number">0.8237427385465251</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=6e3de271-<span class="number">2169</span>-49c7-a425-9973304379a9, value=<span class="number">754.2015420496596</span>, rate=<span class="number">0.480198992823775</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=6e3de271-<span class="number">2169</span>-49c7-a425-9973304379a9, value=<span class="number">754.2015420496596</span>, rate=<span class="number">0.480198992823775</span>] 提交到线程池</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=ffcb4a5e-603b-46dd-b4d0-02dc2bc7204c, value=<span class="number">259.60270090020333</span>, rate=<span class="number">0.404730459043419</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=ffcb4a5e-603b-46dd-b4d0-02dc2bc7204c, value=<span class="number">259.60270090020333</span>, rate=<span class="number">0.404730459043419</span>] 提交到线程池</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=6f25d9e6-9f38-4d84-ac59-259324f800f1, value=<span class="number">931.5744113116666</span>, rate=<span class="number">0.8237427385465251</span>] 提交到线程池</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=29ad9f36-<span class="number">2e25</span>-457a-8a50-40b2619ccd85, value=<span class="number">297.9894322218015</span>, rate=<span class="number">0.39525736986090654</span>] 提交到线程池</span><br><span class="line">taskID=&#123; <span class="number">72434730</span>-e52a-<span class="number">4819</span>-a249-25b1e8450c81 &#125; result=&#123; <span class="number">861.735810794833</span>*<span class="number">0.0508273434713048</span> -&gt; <span class="number">43.7997420367923</span> &#125;</span><br><span class="line">taskID=&#123; 6e3de271-<span class="number">2169</span>-49c7-a425-9973304379a9 &#125; result=&#123; <span class="number">754.2015420496596</span>*<span class="number">0.480198992823775</span> -&gt; <span class="number">362.1668208783845</span> &#125;</span><br><span class="line">taskID=&#123; ffcb4a5e-603b-46dd-b4d0-02dc2bc7204c &#125; result=&#123; <span class="number">259.60270090020333</span>*<span class="number">0.404730459043419</span> -&gt; <span class="number">105.06912030425069</span> &#125;</span><br><span class="line">taskID=&#123; 29ad9f36-<span class="number">2e25</span>-457a-8a50-40b2619ccd85 &#125; result=&#123; <span class="number">297.9894322218015</span>*<span class="number">0.39525736986090654</span> -&gt; <span class="number">117.78251922633414</span> &#125;</span><br><span class="line">taskID=&#123; 6f25d9e6-9f38-4d84-ac59-259324f800f1 &#125; result=&#123; <span class="number">931.5744113116666</span>*<span class="number">0.8237427385465251</span> -&gt; <span class="number">767.3776567337393</span> &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
 </search>
