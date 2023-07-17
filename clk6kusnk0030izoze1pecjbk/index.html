@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="将-VSCode-添加到右键菜单">
+<meta property="og:url" content="http://www.dcheng.site/clk6kusnk0030izoze1pecjbk/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.dcheng.site/clk6kusnk0030izoze1pecjbk/1.png">
+<meta property="og:image" content="http://www.dcheng.site/clk6kusnk0030izoze1pecjbk/2.png">
+<meta property="article:published_time" content="2022-12-07T02:15:35.000Z">
+<meta property="article:modified_time" content="2023-07-17T08:01:36.823Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="未标记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.dcheng.site/clk6kusnk0030izoze1pecjbk/1.png">
+
+
+<link rel="canonical" href="http://www.dcheng.site/clk6kusnk0030izoze1pecjbk/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/clk6kusnk0030izoze1pecjbk/","path":"clk6kusnk0030izoze1pecjbk/","title":"将-VSCode-添加到右键菜单"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>将-VSCode-添加到右键菜单 | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-10-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">Windows 10 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%B7%BB%E5%8A%A0%E8%87%B3%E6%96%87%E4%BB%B6%E7%9A%84%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95"><span class="nav-number">2.1.</span> <span class="nav-text">1、添加至文件的右键菜单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%B7%BB%E5%8A%A0%E8%87%B3%E7%9B%AE%E5%BD%95%E7%9A%84%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95"><span class="nav-number">2.2.</span> <span class="nav-text">2、添加至目录的右键菜单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%B7%BB%E5%8A%A0%E8%87%B3%E6%A1%8C%E9%9D%A2%EF%BC%88%E7%9B%AE%E5%BD%95%E5%86%85%EF%BC%89%E7%9A%84%E7%A9%BA%E7%99%BD%E4%BD%8D%E7%BD%AE%E7%9A%84%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95"><span class="nav-number">2.3.</span> <span class="nav-text">3、添加至桌面（目录内）的空白位置的右键菜单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#macOS-10-14-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">macOS 10.14 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%89%93%E5%BC%80%E8%87%AA%E5%8A%A8%E6%93%8D%E4%BD%9C%EF%BC%8C%E6%96%87%E7%A8%BF%E7%B1%BB%E5%9E%8B%E9%80%89%E5%8F%96-%E5%BF%AB%E9%80%9F%E6%93%8D%E4%BD%9C"><span class="nav-number">3.1.</span> <span class="nav-text">1、打开自动操作，文稿类型选取 快速操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%B7%A6%E4%BE%A7%E8%B5%84%E6%BA%90%E5%BA%93%E9%80%89%E6%8B%A9-%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E5%AF%B9%E5%BA%94%E5%85%B6%E5%8F%B3%E4%BE%A7%E5%AD%90%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%8F%8C%E5%87%BB-%E6%89%93%E5%BC%80%E8%AE%BF%E8%BE%BE%E9%A1%B9%E7%9B%AE%EF%BC%8C"><span class="nav-number">3.2.</span> <span class="nav-text">2、左侧资源库选择 文件和文件夹，对应其右侧子菜单栏双击 打开访达项目，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%9C%A8-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%94%B6%E5%88%B0%E5%BD%93%E5%89%8D-%E9%80%89%E6%8B%A9-%E6%96%87%E4%BB%B6%E6%88%96%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E4%BD%8D%E4%BA%8E-%E9%80%89%E6%8B%A9-%E8%AE%BF%E8%BE%BE"><span class="nav-number">3.3.</span> <span class="nav-text">3、在 工作流程收到当前 选择 文件或文件夹，位于 选择 访达</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%9C%A8-%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F-%E6%89%BE%E5%88%B0-Visual-Studio-Code-app"><span class="nav-number">3.4.</span> <span class="nav-text">4、在 打开方式 找到 Visual Studio Code.app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E5%AE%8C%E6%88%90%E4%BB%A5%E4%B8%8A%E8%AE%BE%E7%BD%AE%E5%90%8E%EF%BC%8Ccmd-S-%E5%B0%86%E8%AF%A5%E5%BF%AB%E9%80%9F%E6%93%8D%E4%BD%9C%E4%BF%9D%E5%AD%98%E4%B8%BA-Open-with-VSCode-%E5%8D%B3%E5%8F%AF"><span class="nav-number">3.5.</span> <span class="nav-text">5、完成以上设置后，cmd+S 将该快速操作保存为 Open with VSCode 即可</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/clk6kusnk0030izoze1pecjbk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="将-VSCode-添加到右键菜单 | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          将-VSCode-添加到右键菜单
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-12-07 10:15:35" itemprop="dateCreated datePublished" datetime="2022-12-07T10:15:35+08:00">2022-12-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-07-17 16:01:36" itemprop="dateModified" datetime="2023-07-17T16:01:36+08:00">2023-07-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" itemprop="url" rel="index"><span itemprop="name">未分类</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Windows 10 或 macOS 10.14 下安装 VSCode 后，右键快速打开选项并没有快捷启动。</p>
+<h2 id="Windows-10-解决方案"><a href="#Windows-10-解决方案" class="headerlink" title="Windows 10 解决方案"></a>Windows 10 解决方案</h2><p>通过注册表添加三个位置的快速打开选项：文件、目录、桌面（目录内）的空白位置。</p>
+<h3 id="1、添加至文件的右键菜单"><a href="#1、添加至文件的右键菜单" class="headerlink" title="1、添加至文件的右键菜单"></a>1、添加至文件的右键菜单</h3><p>定位注册表中如下位置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT\*\shell</span><br></pre></td></tr></table></figure>
+
+<p>参考以下结构，在 shell 下新建一个项 Open with VSCode</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">├── Open with VSCode</span><br><span class="line">    ├── (默认)（在右键菜单显示的名称）</span><br><span class="line">    ├── Icon（在右键菜单显示的图标路径）</span><br><span class="line">    └── command</span><br><span class="line">        └── (默认)（执行的命令行及应用路径）</span><br></pre></td></tr></table></figure>
+
+<p>添加相应字符串值即可实现点击文件的右键菜单进入 VSCode。导出内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Open with VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open with VSCode&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Open with VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%1\&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、添加至目录的右键菜单"><a href="#2、添加至目录的右键菜单" class="headerlink" title="2、添加至目录的右键菜单"></a>2、添加至目录的右键菜单</h3><p>定位至 <code>HKEY_CLASSES_ROOT\Directory\shell</code>，按照相同结构设置即可实现点击目录的右键菜单进入 VSCode。导出内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open Folder as VSCode Project&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%1\&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、添加至桌面（目录内）的空白位置的右键菜单"><a href="#3、添加至桌面（目录内）的空白位置的右键菜单" class="headerlink" title="3、添加至桌面（目录内）的空白位置的右键菜单"></a>3、添加至桌面（目录内）的空白位置的右键菜单</h3><p>定位至 <code>HKEY_CLASSES_ROOT\Directory\Background\shell</code>，按照相同结构设置即可实现点击桌面（目录内）的空白位置的右键菜单进入 VSCode。导出内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open Folder as VSCode Project&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%V\&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="macOS-10-14-解决方案"><a href="#macOS-10-14-解决方案" class="headerlink" title="macOS 10.14 解决方案"></a>macOS 10.14 解决方案</h2><p>通过快速操作添加两个位置的快速打开选项：文件、目录。</p>
+<h3 id="1、打开自动操作，文稿类型选取-快速操作"><a href="#1、打开自动操作，文稿类型选取-快速操作" class="headerlink" title="1、打开自动操作，文稿类型选取 快速操作"></a>1、打开自动操作，文稿类型选取 <code>快速操作</code></h3><img src="/clk6kusnk0030izoze1pecjbk/1.png" class="">
+
+<h3 id="2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，"><a href="#2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，" class="headerlink" title="2、左侧资源库选择 文件和文件夹，对应其右侧子菜单栏双击 打开访达项目，"></a>2、左侧资源库选择 <code>文件和文件夹</code>，对应其右侧子菜单栏双击 <code>打开访达项目</code>，</h3><h3 id="3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达"><a href="#3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达" class="headerlink" title="3、在 工作流程收到当前 选择 文件或文件夹，位于 选择 访达"></a>3、在 <code>工作流程收到当前</code> 选择 <code>文件或文件夹</code>，<code>位于</code> 选择 <code>访达</code></h3><h3 id="4、在-打开方式-找到-Visual-Studio-Code-app"><a href="#4、在-打开方式-找到-Visual-Studio-Code-app" class="headerlink" title="4、在 打开方式 找到 Visual Studio Code.app"></a>4、在 <code>打开方式</code> 找到 <code>Visual Studio Code.app</code></h3><img src="/clk6kusnk0030izoze1pecjbk/2.png" class="">
+
+<h3 id="5、完成以上设置后，cmd-S-将该快速操作保存为-Open-with-VSCode-即可"><a href="#5、完成以上设置后，cmd-S-将该快速操作保存为-Open-with-VSCode-即可" class="headerlink" title="5、完成以上设置后，cmd+S 将该快速操作保存为 Open with VSCode 即可"></a>5、完成以上设置后，<code>cmd+S</code> 将该快速操作保存为 <code>Open with VSCode</code> 即可</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/" rel="tag"># 未标记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/clk6kusn4001rizozgf0e5rpb/" rel="prev" title="MacOS-或-Win-环境下问题杂烩及备忘">
+                  <i class="fa fa-chevron-left"></i> MacOS-或-Win-环境下问题杂烩及备忘
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/clk6kusoj004vizoz5q6p57h6/" rel="next" title="使用-Navicat-远程连接阿里云服务器的-MySQL-数据库">
+                  使用-Navicat-远程连接阿里云服务器的-MySQL-数据库 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
