@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="部署-ubuntu-服务器">
+<meta property="og:url" content="http://www.dcheng.site/clkepnbhn0052h3q5ab1166f7/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-06T12:32:38.000Z">
+<meta property="article:modified_time" content="2023-07-23T00:37:58.632Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="mariadb">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/clkepnbhn0052h3q5ab1166f7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/clkepnbhn0052h3q5ab1166f7/","path":"clkepnbhn0052h3q5ab1166f7/","title":"部署-ubuntu-服务器"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>部署-ubuntu-服务器 | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ssh"><span class="nav-text">安装 ssh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Mariadb"><span class="nav-text">安装 Mariadb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2-JDK"><span class="nav-text">部署 JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%9C%AC%E5%9C%B0%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80"><span class="nav-text">修改本地网络地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7%E6%88%96%E5%91%BD%E4%BB%A4"><span class="nav-text">其他工具或命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-text">防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-text">其他相关命令</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/clkepnbhn0052h3q5ab1166f7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="部署-ubuntu-服务器 | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          部署-ubuntu-服务器
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-06 20:32:38" itemprop="dateCreated datePublished" datetime="2023-03-06T20:32:38+08:00">2023-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-07-23 08:37:58" itemprop="dateModified" datetime="2023-07-23T08:37:58+08:00">2023-07-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">部署和安装</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<p>本例使用系统版本为 Ubuntu 22.04.2 LTS (GNU&#x2F;Linux 5.19.0-35-generic x86_64)</p>
+<blockquote>
+<p>提示：win 环境下最好使用 UltraISO 烧写镜像文件。经实测，按照官方文档推荐的 balenaEtcher 有损坏 U 盘风险。</p>
+</blockquote>
+<h2 id="安装-ssh"><a href="#安装-ssh" class="headerlink" title="安装 ssh"></a>安装 ssh</h2><p>执行下列命令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>验证服务是否启动：<code>sudo systemctl status ssh</code></p>
+<h2 id="安装-Mariadb"><a href="#安装-Mariadb" class="headerlink" title="安装 Mariadb"></a>安装 Mariadb</h2><p>两种主要方式：</p>
+<p>1、Repositories 安装方式：<code>https://mariadb.org/download/?t=repo-config&amp;d=22.04+%22jammy%22&amp;v=10.11&amp;r_m=neusoft</code></p>
+<p>2、从 <code>https://archive.mariadb.org/mariadb-10.11.2/bintar-linux-systemd-x86_64/</code> 获得链接，直接下载压缩包</p>
+<blockquote>
+<p>本地二进制压缩包链接：<code>https://archive.mariadb.org/mariadb-10.11.2/bintar-linux-systemd-x86_64/mariadb-10.11.2-linux-systemd-x86_64.tar.gz</code></p>
+</blockquote>
+<p>本例采用第一种。依次执行下列命令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apt-transport-https curl</span><br><span class="line">sudo curl -o /etc/apt/trusted.<span class="property">gpg</span>.<span class="property">d</span>/mariadb_release_signing_key.<span class="property">asc</span> <span class="string">&#x27;https://mariadb.org/mariadb_release_signing_key.asc&#x27;</span></span><br><span class="line">sudo sh -c <span class="string">&quot;echo &#x27;deb https://mirrors.neusoft.edu.cn/mariadb/repo/10.11/ubuntu jammy main&#x27; &gt;&gt;/etc/apt/sources.list&quot;</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install mariadb-server</span><br></pre></td></tr></table></figure>
+
+<p>3、验证服务是否启动：<code>sudo systemctl status mariadb</code></p>
+<blockquote>
+<p>注意：安装完成后要执行 <code>sudo -i</code> 切换 root 再通过 <code>mariadb -u root</code> 进入设置密码：<code>alter user &#39;root&#39;@&#39;localhost&#39; identified by &#39;MyNewPass4!&#39;;</code></p>
+</blockquote>
+<p>4、配置文件</p>
+<p>配置文件路径为：<code>/etc/mysql/mariadb.conf.d/50-server.cnf</code></p>
+<p>5、取消 IP 限制</p>
+<p>当执行 <code>netstat -an|grep 3306</code> 命令发现如下反馈，说明此时无法远程连接数据库。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu-virtual-<span class="attr">machine</span>:~$ netstat -an|grep <span class="number">3306</span></span><br><span class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">3306</span>          <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:*               <span class="variable constant_">LISTEN</span></span><br></pre></td></tr></table></figure>
+
+<p>打开配置文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/mysql/mariadb.<span class="property">conf</span>.<span class="property">d</span>/<span class="number">50</span>-server.<span class="property">cnf</span></span><br></pre></td></tr></table></figure>
+
+<p>找到 <code>bind-address = 127.0.0.1</code> 注释掉。</p>
+<blockquote>
+<p>可能需要安装 vim 编辑器，执行 <code>sudo apt-get install vim</code></p>
+</blockquote>
+<h2 id="部署-JDK"><a href="#部署-JDK" class="headerlink" title="部署 JDK"></a>部署 JDK</h2><p>以 corretto 为例。按相应 JDK 版本依次执行命令：</p>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/generic-linux-install.html">https://docs.aws.amazon.com/corretto/latest/corretto-17-ug/generic-linux-install.html</a></p>
+<p>1、JDK11</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add -</span><br><span class="line">sudo add-apt-repository &#x27;deb https://apt.corretto.aws stable main&#x27;</span><br><span class="line">sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk</span><br></pre></td></tr></table></figure>
+
+<p>2、JDK17</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add -</span><br><span class="line">sudo add-apt-repository &#x27;deb https://apt.corretto.aws stable main&#x27;</span><br><span class="line">sudo apt-get update; sudo apt-get install -y java-17-amazon-corretto-jdk</span><br></pre></td></tr></table></figure>
+
+<p>3、卸载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg --remove java-11-amazon-corretto-jdk</span><br><span class="line">sudo dpkg --remove java-17-amazon-corretto-jdk</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改本地网络地址"><a href="#修改本地网络地址" class="headerlink" title="修改本地网络地址"></a>修改本地网络地址</h2><p>1、固定 IP</p>
+<p>通过 <code>ip a</code> 命令查看网咖信息。修改前：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu-virtual-<span class="attr">machine</span>:~$ ip a</span><br><span class="line"><span class="number">1</span>: <span class="attr">lo</span>: &lt;<span class="variable constant_">LOOPBACK</span>,<span class="variable constant_">UP</span>,<span class="variable constant_">LOWER_UP</span>&gt; mtu <span class="number">65536</span> qdisc noqueue state <span class="variable constant_">UNKNOWN</span> group <span class="keyword">default</span> qlen <span class="number">1000</span></span><br><span class="line">    link/loopback <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> brd <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">    inet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>/<span class="number">8</span> scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::<span class="number">1</span>/<span class="number">128</span> scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"><span class="number">2</span>: <span class="attr">ens33</span>: &lt;<span class="variable constant_">BROADCAST</span>,<span class="variable constant_">MULTICAST</span>,<span class="variable constant_">UP</span>,<span class="variable constant_">LOWER_UP</span>&gt; mtu <span class="number">1500</span> qdisc fq_codel state <span class="variable constant_">UP</span> group <span class="keyword">default</span> qlen <span class="number">1000</span></span><br><span class="line">    link/ether <span class="number">00</span>:0<span class="attr">c</span>:<span class="number">29</span>:<span class="attr">cb</span>:<span class="attr">bf</span>:c6 brd <span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:ff</span><br><span class="line">    altname enp2s1</span><br><span class="line">    inet <span class="number">192.168</span><span class="number">.160</span><span class="number">.133</span>/<span class="number">24</span> brd <span class="number">192.168</span><span class="number">.160</span><span class="number">.255</span> scope <span class="variable language_">global</span> dynamic noprefixroute ens33</span><br><span class="line">       valid_lft 1555sec preferred_lft 1555sec</span><br><span class="line">    inet6 <span class="attr">fe80</span>::85<span class="attr">bd</span>:<span class="attr">d35d</span>:<span class="attr">f025</span>:dcf4/<span class="number">64</span> scope link noprefixroute</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+
+<p>查看 <code>/etc/netplan</code> 网络配置文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu-virtual-<span class="attr">machine</span>:~$ ls /etc/netplan</span><br><span class="line"><span class="number">01</span>-network-manager-all.<span class="property">yaml</span></span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>sudo vim /etc/netplan/*.yaml</code>，添加以下内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># <span class="title class_">Let</span> <span class="title class_">NetworkManager</span> manage all devices on <span class="variable language_">this</span> system</span><br><span class="line"><span class="attr">network</span>:</span><br><span class="line">    <span class="attr">version</span>: <span class="number">2</span></span><br><span class="line">    <span class="attr">renderer</span>: <span class="title class_">NetworkManager</span></span><br><span class="line">    <span class="attr">ethernets</span>:</span><br><span class="line">       <span class="attr">ens33</span>:</span><br><span class="line">          <span class="attr">addresses</span>: [<span class="number">192.168</span><span class="number">.160</span><span class="number">.134</span>/<span class="number">24</span>]</span><br><span class="line">          <span class="attr">routes</span>:</span><br><span class="line">            - <span class="attr">to</span>: <span class="keyword">default</span></span><br><span class="line">              <span class="attr">via</span>: <span class="number">192.168</span><span class="number">.160</span><span class="number">.2</span></span><br><span class="line">          <span class="attr">nameservers</span>:</span><br><span class="line">             <span class="attr">addresses</span>: [<span class="number">180.76</span><span class="number">.76</span><span class="number">.76</span>, <span class="number">223.5</span><span class="number">.5</span><span class="number">.5</span>]</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>ens33：拟设置的网卡名称</li>
+<li>addresses：拟设置的固定 ip 和掩码。掩码 24 表示前 24 位有效，剩下的 8 位可以是 0-254 之间的任一地址（255 为广播地址），例如 255.255.255.255 是 IPv4 中最大可能的 IP 地址，每个数字（255）都是由 8 个比特位表示的，每个比特位非 0 即 1，最大值即为 11111111，因此掩码 24 表示 255.255.255.0。同理，xxx.xxx.xxx.xxx&#x2F;32，表示掩码为 192.168.0.0</li>
+<li>routes：网关地址。default 也可以写为 <code>0.0.0.0/0</code> 或 <code>0/0</code></li>
+<li>nameservers：DNS 地址</li>
+</ul>
+<blockquote>
+<p>网关若使用 <code>gateway4</code> 属性会提示 <code>** (process:9908): WARNING **: 22:03:51.792: gateway4 has been deprecated, use default routes instead. See the &#39;Default routes&#39; section of the documentation for more details.</code></p>
+</blockquote>
+<p>执行 <code>sudo netplan try</code> 使配置生效。修改后：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu-virtual-<span class="attr">machine</span>:~$ ip a</span><br><span class="line"><span class="number">1</span>: <span class="attr">lo</span>: &lt;<span class="variable constant_">LOOPBACK</span>,<span class="variable constant_">UP</span>,<span class="variable constant_">LOWER_UP</span>&gt; mtu <span class="number">65536</span> qdisc noqueue state <span class="variable constant_">UNKNOWN</span> group <span class="keyword">default</span> qlen <span class="number">1000</span></span><br><span class="line">    link/loopback <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> brd <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">    inet <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>/<span class="number">8</span> scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::<span class="number">1</span>/<span class="number">128</span> scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line"><span class="number">2</span>: <span class="attr">ens33</span>: &lt;<span class="variable constant_">BROADCAST</span>,<span class="variable constant_">MULTICAST</span>,<span class="variable constant_">UP</span>,<span class="variable constant_">LOWER_UP</span>&gt; mtu <span class="number">1500</span> qdisc fq_codel state <span class="variable constant_">UP</span> group <span class="keyword">default</span> qlen <span class="number">1000</span></span><br><span class="line">    link/ether <span class="number">00</span>:0<span class="attr">c</span>:<span class="number">29</span>:<span class="attr">cb</span>:<span class="attr">bf</span>:c6 brd <span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:<span class="attr">ff</span>:ff</span><br><span class="line">    altname enp2s1</span><br><span class="line">    inet <span class="number">192.168</span><span class="number">.160</span><span class="number">.134</span>/<span class="number">24</span> brd <span class="number">192.168</span><span class="number">.160</span><span class="number">.255</span> scope <span class="variable language_">global</span> noprefixroute ens33</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 <span class="attr">fe80</span>::20<span class="attr">c</span>:29<span class="attr">ff</span>:<span class="attr">fecb</span>:bfc6/<span class="number">64</span> scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+
+<p>2、开启 dhcp</p>
+<p>无需再设置 addresses 属性（实际上 routes 属性也可以移除）。配置如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># <span class="title class_">Let</span> <span class="title class_">NetworkManager</span> manage all devices on <span class="variable language_">this</span> system</span><br><span class="line"><span class="attr">network</span>:</span><br><span class="line">    <span class="attr">version</span>: <span class="number">2</span></span><br><span class="line">    <span class="attr">renderer</span>: <span class="title class_">NetworkManager</span></span><br><span class="line">    <span class="attr">ethernets</span>:</span><br><span class="line">       <span class="attr">ens33</span>:</span><br><span class="line">          <span class="attr">dhcp4</span>: <span class="literal">true</span></span><br><span class="line">          <span class="attr">routes</span>:</span><br><span class="line">            - <span class="attr">to</span>: <span class="keyword">default</span></span><br><span class="line">              <span class="attr">via</span>: <span class="number">192.168</span><span class="number">.160</span><span class="number">.2</span></span><br><span class="line">          <span class="attr">nameservers</span>:</span><br><span class="line">             <span class="attr">addresses</span>: [<span class="number">180.76</span><span class="number">.76</span><span class="number">.76</span>, <span class="number">223.5</span><span class="number">.5</span><span class="number">.5</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他工具或命令"><a href="#其他工具或命令" class="headerlink" title="其他工具或命令"></a>其他工具或命令</h2><p>查看 CPU、内存使用情况：<code>sudo apt-get install htop</code></p>
+<h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><p>一般系统默认带有防火墙。安装命令：<code>sudo apt install ufw</code></p>
+<p>1、允许 ssh（<strong>特别注意开启，否则下次连接将无法远程连接</strong>）</p>
+<p>执行 <code>sudo ufw allow ssh</code> 或 <code>sudo ufw allow 22</code> 创建防火墙规则，允许 22 端口上的所有连接。</p>
+<p>2、启用 ufw</p>
+<p>执行 <code>sudo ufw enable</code>，确认启动后可通过 <code>sudo ufw status verbose</code> 查看状态。</p>
+<blockquote>
+<p>注：当状态为 <code>Status: inactive</code> 说明 ufw 未启动。如果处于活动状态，将显示 <code>Status: active</code>，并列出所有规则。</p>
+</blockquote>
+<p>3、拒绝连接</p>
+<p>执行 <code>sudo ufw deny from 192.1.110.24</code>，则拒绝全部来自该 IP 的连接。</p>
+<p>4、删除规则</p>
+<p>执行 <code>sudo ufw status numbered</code> 查看规则列表，获知规则的序号，再执行 <code>sudo ufw delete 3</code>（删除第 3 条规则）</p>
+<p>5、端口规则设置</p>
+<p>ufw 默认的策略是允许出，不允许进，这个可以在配置文件 <code>/etc/default/ufw</code> 中看到。出规则需要配置。</p>
+<p>配置文件片段：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">DEFAULT_INPUT_POLICY</span> = <span class="string">&quot;DROP&quot;</span>;</span><br><span class="line"><span class="variable constant_">DEFAULT_OUTPUT_POLICY</span> = <span class="string">&quot;ACCEPT&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>允许 http 连接：<code>sudo ufw allow http</code> 或 <code>sudo ufw allow 80</code></li>
+<li>阻止 http 连接：<code>sudo ufw denty http</code> 或 <code>sudo ufw denty 80</code></li>
+<li>开放特定端口范围：<code>sudo ufw allow 3000:3007/tcp</code></li>
+</ul>
+<blockquote>
+<p>注：如果不指定协议，会自动允许 tcp 和 udp 两种协议。</p>
+</blockquote>
+<ul>
+<li>限制 IP 允许连接的端口：<code>sudo ufw allow from 192.1.110.24 to any port 22</code></li>
+<li>配合子网掩码限制网段：<code>sudo ufw allow from 192.1.110.24/24</code></li>
+<li>监听来自指定网卡的连接：<code>sudo ufw allow in on eth1 to any port 3306</code></li>
+</ul>
+<p>6、停止和重置</p>
+<ul>
+<li>停用 ufw：<code>sudo ufw disable</code></li>
+<li>重置 ufw 规则：<code>sudo ufw reset</code></li>
+</ul>
+<h2 id="其他相关命令"><a href="#其他相关命令" class="headerlink" title="其他相关命令"></a>其他相关命令</h2><ul>
+<li>显示所有连接：<code>lsof -i</code></li>
+<li>仅获取 ipv6 流量：<code>lsof -i6</code></li>
+<li>显示端口信息：<code>lsof -i :5432</code></li>
+</ul>
+<blockquote>
+<p>lsof 命令参数：<code>lsof -i[46] [protocol][@hostname|hostaddr][:service|port]</code></p>
+</blockquote>
+<ul>
+<li>列出所有：<code>netstat -a </code></li>
+<li>使用 ip 地址列出所有监听状态的 tcp 端口以及程序名：<code>netstat -atnlp</code></li>
+</ul>
+<blockquote>
+<p>netstat 命令参数：</p>
+</blockquote>
+<ul>
+<li>显示所有连接中的 Socket：<code>-a</code> 或 <code>--all</code></li>
+<li>显示正在使用 Socket 的程序识别码和程序名称：<code>-p</code> 或 <code>--programs</code></li>
+<li>显示 TCP 传输协议的连线状况：<code>-t</code> 或 <code>--tcp</code></li>
+<li>显示 UDP 传输协议的连线状况：<code>-u</code> 或 <code>--udp</code></li>
+</ul>
+<p>显示结果参数释义：</p>
+<ul>
+<li><p><code>Proto</code>：协议名（tcp 协议还是 udp 协议还是 unix 协议）</p>
+</li>
+<li><p><code>Recv-Q</code>：网络接收队列。表示收到的数据已经在本地接收缓冲，但是还有多少没有被进程取走，recv()如果接收队列 Recv-Q 一直处于阻塞状态，可能是遭受了拒绝服务 denial-of-service 攻击；</p>
+</li>
+<li><p><code>send-Q</code>：网路发送队列。对方没有收到的数据或者说没有 Ack 的,还是本地缓冲区.</p>
+</li>
+<li><p><code>Local Address</code>：表示监听服务器上对应的 ip 地址的对应端口 (0.0.0.0 表示本地所有 ip)</p>
+</li>
+<li><p><code>Foreign Address</code>：与本机端口通信的外部 socket。显示规则与 Local Address 相同</p>
+</li>
+<li><p><code>State</code>：链路状态。共有 12 中可能的状态</p>
+<ul>
+<li><p>LISTEN ：正在监听端口，可以接受连接</p>
+</li>
+<li><p>SYN_SENT：socket 正在积极尝试建立一个连接，即处于发送后连接前的一个等待但未匹配进入连接的状态</p>
+</li>
+<li><p>SYN_RECV：收到对方的连接建立请求</p>
+</li>
+<li><p>ESTABLISHED：代表一个打开的连接，双方可以进行或已经在数据交互</p>
+</li>
+<li><p>FIN_WAIT1：socket 已关闭，连接正在或正要关闭</p>
+</li>
+<li><p>CLOSE_WAIT：等待关闭。当对方关闭一个 SOCKET 后发送 FIN 报文给自己，系统毫无疑问地会回应一个 ACK 报文给对方，此时则进入到 CLOSE_WAIT 状态。接下来需要考虑的事情是察看你是否还有数据发送给对方，如果没有就可以关闭这个 SOCKET，发送 FIN 报文给对方，也即关闭连接。所以在 CLOSE_WAIT 状态下，需要完成的事情是等待你去关闭连接。</p>
+</li>
+<li><p>FIN_WAIT2：连接已关闭，并且 socket 正在等待远端结束</p>
+</li>
+<li><p>LAST_ACK：被动关闭一方在发送 FIN 报文后，最后等待对方的 ACK 报文。当收到 ACK 报文后，也即可以进入到 CLOSED 可用状态</p>
+</li>
+<li><p>TIME_WAIT：socket 正在等待关闭处理仍在网络上的数据包。表示收到了对方的 FIN 报文，并发送出了 ACK 报文，就等 2MSL 后即可回到 CLOSED 可用状态。如果 FIN_WAIT_1 状态下，收到了对方同时带 FIN 标志和 ACK 标志的报文时，可以直接进入到 TIME_WAIT 状态，而无须经过 FIN_WAIT_2 状态。</p>
+</li>
+<li><p>CLOSING：比较少见，等待远程 TCP 对连接中断的确认</p>
+</li>
+<li><p>CLOSED：没有任何连接状态。被动关闭端在接受到 ACK 包后，就进入该状态。连接结束</p>
+</li>
+<li><p>UNKNOWN：未知的状态</p>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+              <a href="/tags/mariadb/" rel="tag"># mariadb</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/clkepnbgb0025h3q5egpy8m51/" rel="prev" title="conda-依赖管理">
+                  <i class="fa fa-chevron-left"></i> conda-依赖管理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/clkepnbge002gh3q50c7rbyuk/" rel="next" title="logback-日志配置">
+                  logback-日志配置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

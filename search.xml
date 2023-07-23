@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>DataGrip-2018.3.4-数据导出配置案例</title>
-    <url>/clk6kusn1001jizoza51h445f/</url>
+    <url>/clkepnbg5001jh3q5fz6kcpf7/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -84,14 +84,14 @@
   </entry>
   <entry>
     <title>IntelliJ-IDEA-快捷键及常用配置</title>
-    <url>/clk6kusn2001mizoz8kyh2qbg/</url>
+    <url>/clkepnbg6001mh3q5aatt60lm/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
 
-<img src="/clk6kusn2001mizoz8kyh2qbg/1.png" class="">
+<img src="/clkepnbg6001mh3q5aatt60lm/1.png" class="">
 
-<img src="/clk6kusn2001mizoz8kyh2qbg/2.png" class="">
+<img src="/clkepnbg6001mh3q5aatt60lm/2.png" class="">
 
 <!-- 
 符号 	说明
@@ -138,7 +138,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>MacOS-或-Win-环境下问题杂烩及备忘</title>
-    <url>/clk6kusn4001rizozgf0e5rpb/</url>
+    <url>/clkepnbg7001rh3q58jas62bl/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -167,7 +167,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>Maven-配置阿里云中央仓库和自定义本地仓库</title>
-    <url>/clk6kusn5001uizozeaq6ftvh/</url>
+    <url>/clkepnbg7001uh3q5gh420ved/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -188,7 +188,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>Nginx-配置文件的结构详解及案例</title>
-    <url>/clk6kusn5001xizozcfox9z59/</url>
+    <url>/clkepnbg8001xh3q5g21p7ozy/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -285,7 +285,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>VSCode-常用插件及配置</title>
-    <url>/clk6kusn70022izoz5ms95any/</url>
+    <url>/clkepnbga0022h3q53mjdderi/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -314,7 +314,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>conda-依赖管理</title>
-    <url>/clk6kusn80025izozfs4kbcgk/</url>
+    <url>/clkepnbgb0025h3q5egpy8m51/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -360,7 +360,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>gradle-问题备忘</title>
-    <url>/clk6kusna002aizozhizv9zia/</url>
+    <url>/clkepnbgc002ah3q5g4ind29z/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -437,68 +437,8 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>hexo-next-主题构建首页动态更新目录</title>
-    <url>/clk6kusnb002cizozcnkr6qnr/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<blockquote>
-</blockquote>
-<!-- more -->
-
-<h3 id="1-问题及需求"><a href="#1-问题及需求" class="headerlink" title="1 问题及需求"></a>1 问题及需求</h3><p><strong>问题</strong></p>
-<ul>
-<li>首页（home）默认显示按日期排序的文章列表，使用 <code>&lt;!-- more --&gt;</code> 省略内容仍显得繁杂冗长；</li>
-<li>分类（categories）页面虽然有按类型、日期排序的文章列表，但切换分类需要往返多次。</li>
-</ul>
-<p><strong>需求</strong></p>
-<ul>
-<li>建立一个首页目录，将文章分类（categories 参数）和标题，分别作为列表的一级、二级显示；</li>
-<li>标题即为文章链接，点击可直接到达；想查看其他分类，直接回到首页即可。</li>
-</ul>
-<h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2 解决方案"></a>2 解决方案</h3><h3 id="2-1-建立文件"><a href="#2-1-建立文件" class="headerlink" title="2.1 建立文件"></a>2.1 建立文件</h3><p>在 <code>source/</code> 下建立 <code>index.md</code>，命名标题，内容留空。</p>
-<h3 id="2-2-关闭默认首页"><a href="#2-2-关闭默认首页" class="headerlink" title="2.2 关闭默认首页"></a>2.2 关闭默认首页</h3><p>修改 hexo 配置文件 <code>_config.yml</code>，找到 <code>index_generator</code> 配置项，修改 <code>path</code> 属性为一个无效值：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">index_generator</span>:</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line">  <span class="attr">per_page</span>: <span class="number">10</span></span><br><span class="line">  <span class="attr">order_by</span>: -date</span><br></pre></td></tr></table></figure>
-
-<p>此时启动项目后，首页将不再出现文章列表，转而显示 <code>index.md</code> 内容。</p>
-<blockquote>
-<p>注：<code>index.md</code> 在渲染后成为 <code>index.html</code></p>
-</blockquote>
-<h3 id="3-动态更新目录"><a href="#3-动态更新目录" class="headerlink" title="3 动态更新目录"></a>3 动态更新目录</h3><p>若文章分类多，每次更新、调整文章都需要将相应链接手工同步到首页也是一件相当繁琐的事情。因此有必要考虑自动更新首页。</p>
-<h3 id="3-1-hexo-加载顺序"><a href="#3-1-hexo-加载顺序" class="headerlink" title="3.1 hexo 加载顺序"></a>3.1 hexo 加载顺序</h3><p>根据 hexo 文档 <a href="https://hexo.io/zh-cn/api/posts#%E6%B8%B2%E6%9F%93">https://hexo.io/zh-cn/api/posts#%E6%B8%B2%E6%9F%93</a> 关于渲染顺序的说明，要实现 <code>index.md</code> 的写入，要在 <code>hexo g</code> 命令执行之前完成，可引入 before_post_render 过滤器实现该需求。</p>
-<h3 id="3-2-hexo-过滤器"><a href="#3-2-hexo-过滤器" class="headerlink" title="3.2 hexo 过滤器"></a>3.2 hexo 过滤器</h3><p>过滤器文档：<a href="https://hexo.io/zh-cn/api/filter#%E6%A6%82%E8%A6%81">https://hexo.io/zh-cn/api/filter#%E6%A6%82%E8%A6%81</a></p>
-<p>在主题目录下 <code>themes\next\filters\</code> 新建 <code>index.js</code>，添加 priority 分别为 9 和 10 的两个 before_post_render 过滤器，如下所示：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> categoriesMap = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;before_post_render&#x27;</span>, <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 首页目录不显示草稿内容</span></span><br><span class="line">    <span class="keyword">if</span> (data.<span class="property">source</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;_drafts&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (data.<span class="property">path</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;index&quot;</span>) &lt; <span class="number">0</span> &amp;&amp; data.<span class="property">categories</span>.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> curCategorie = data.<span class="property">categories</span>.<span class="property">data</span>[<span class="number">0</span>].<span class="property">name</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (categoriesMap.<span class="title function_">has</span>(curCategorie)) &#123;</span><br><span class="line">            <span class="keyword">let</span> valueArray = categoriesMap.<span class="title function_">get</span>(curCategorie);</span><br><span class="line">            valueArray = valueArray.<span class="title function_">concat</span>(<span class="string">`  - [<span class="subst">$&#123;data.title&#125;</span>](/<span class="subst">$&#123;data.path&#125;</span>)\n`</span>)</span><br><span class="line">            categoriesMap.<span class="title function_">set</span>(curCategorie, valueArray);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            categoriesMap.<span class="title function_">set</span>(curCategorie, [<span class="string">`  - [<span class="subst">$&#123;data.title&#125;</span>](/<span class="subst">$&#123;data.path&#125;</span>)\n`</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;, <span class="number">9</span>);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;before_post_render&#x27;</span>, <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 精确定位index.html，防止误写其他路径不同但同名的文件</span></span><br><span class="line">    <span class="keyword">if</span> (data.<span class="property">path</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;index&quot;</span>) === <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> categoriesMap.<span class="title function_">keys</span>()) &#123;</span><br><span class="line">            data.<span class="property">content</span> += <span class="string">`- <span class="subst">$&#123;key&#125;</span>\n`</span></span><br><span class="line">            <span class="keyword">let</span> valueArray = categoriesMap.<span class="title function_">get</span>(key);</span><br><span class="line">            valueArray.<span class="title function_">forEach</span>(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">                data.<span class="property">content</span> += element;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-
-<p>代码说明</p>
-<ul>
-<li>第一个过滤器遍历全部文章，获取所有现存的分类及所属文章链接；</li>
-<li>第二个过滤器写入 <code>index.html</code></li>
-</ul>
-<h3 id="3-3-有关属性"><a href="#3-3-有关属性" class="headerlink" title="3.3 有关属性"></a>3.3 有关属性</h3><p>为探究 data 为何物，可打断点观察其结构：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  title<span class="punctuation">:</span> <span class="string">&quot;DataGrip-2018.3.4-数据导出配置案例&quot;</span><span class="punctuation">,</span></span><br><span class="line">  date<span class="punctuation">:</span> <span class="punctuation">&#123;</span>……文章生成日期的有关参数（略）<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  _content<span class="punctuation">:</span> <span class="string">&quot;……正文内容（略）&quot;</span><span class="punctuation">,</span></span><br><span class="line">  source<span class="punctuation">:</span> <span class="string">&quot;_posts/DataGrip-2018-3-4-数据导出配置案例.md&quot;</span><span class="punctuation">,</span></span><br><span class="line">  raw<span class="punctuation">:</span> <span class="string">&quot;……正文内容（略）&quot;</span><span class="punctuation">,</span></span><br><span class="line">  slug<span class="punctuation">:</span> <span class="string">&quot;DataGrip-2018-3-4-数据导出配置案例&quot;</span><span class="punctuation">,</span></span><br><span class="line">  published<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  updated<span class="punctuation">:</span> <span class="punctuation">&#123;</span>……文章更新日期的有关参数（略）<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  comments<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  layout<span class="punctuation">:</span> <span class="string">&quot;post&quot;</span><span class="punctuation">,</span></span><br><span class="line">  photos<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  link<span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  _id<span class="punctuation">:</span> <span class="string">&quot;cljzhnjmb001oz0u6en5ab6xb&quot;</span><span class="punctuation">,</span></span><br><span class="line">  path<span class="punctuation">:</span> <span class="string">&quot;2022/12/07/DataGrip-2018-3-4-数据导出配置案例/&quot;</span><span class="punctuation">,</span></span><br><span class="line">  permalink<span class="punctuation">:</span> <span class="string">&quot;http://www.dcheng.site/2022/12/07/DataGrip-2018-3-4-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E9%85%8D%E7%BD%AE%E6%A1%88%E4%BE%8B/&quot;</span><span class="punctuation">,</span></span><br><span class="line">  full_source<span class="punctuation">:</span> <span class="string">&quot;C:\\mainProjects\\blog\\source\\_posts\\DataGrip-2018-3-4-数据导出配置案例.md&quot;</span><span class="punctuation">,</span></span><br><span class="line">  asset_dir<span class="punctuation">:</span> <span class="string">&quot;C:\\mainProjects\\blog\\source\\_posts\\DataGrip-2018-3-4-数据导出配置案例\\&quot;</span><span class="punctuation">,</span></span><br><span class="line">  tags<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    data<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        name<span class="punctuation">:</span> <span class="string">&quot;DataGrip&quot;</span><span class="punctuation">,</span></span><br><span class="line">        _id<span class="punctuation">:</span> <span class="string">&quot;cljzhnjmc001uz0u6hlov172o&quot;</span><span class="punctuation">,</span></span><br><span class="line">        slug<span class="punctuation">:</span> <span class="string">&quot;DataGrip&quot;</span><span class="punctuation">,</span></span><br><span class="line">        path<span class="punctuation">:</span> <span class="string">&quot;tags/DataGrip/&quot;</span><span class="punctuation">,</span></span><br><span class="line">        permalink<span class="punctuation">:</span> <span class="string">&quot;http://www.dcheng.site/tags/DataGrip/&quot;</span><span class="punctuation">,</span></span><br><span class="line">        posts<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          data<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          length<span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        length<span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    length<span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  categories<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    data<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        name<span class="punctuation">:</span> <span class="string">&quot;配置案例&quot;</span><span class="punctuation">,</span></span><br><span class="line">        _id<span class="punctuation">:</span> <span class="string">&quot;cljzhnjmc001tz0u6967u3bji&quot;</span><span class="punctuation">,</span></span><br><span class="line">        slug<span class="punctuation">:</span> <span class="string">&quot;配置案例&quot;</span><span class="punctuation">,</span></span><br><span class="line">        path<span class="punctuation">:</span> <span class="string">&quot;categories/配置案例/&quot;</span><span class="punctuation">,</span></span><br><span class="line">        permalink<span class="punctuation">:</span> <span class="string">&quot;http://www.dcheng.site/categories/%E9%85%8D%E7%BD%AE%E6%A1%88%E4%BE%8B/&quot;</span><span class="punctuation">,</span></span><br><span class="line">        posts<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          data<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          length<span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        length<span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    length<span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  content<span class="punctuation">:</span> <span class="string">&quot;……正文内容（略）&quot;</span><span class="punctuation">,</span></span><br><span class="line">  site<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    data<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-最终效果"><a href="#4-最终效果" class="headerlink" title="4 最终效果"></a>4 最终效果</h3><p><img src="/clk6kusnb002cizozcnkr6qnr/%E5%9B%BE1-%E9%BB%98%E8%AE%A4%E6%95%88%E6%9E%9C.png" alt="图1-默认效果"></p>
-<center>图1-默认效果</center>
-
-</br>
-
-<p><img src="/clk6kusnb002cizozcnkr6qnr/%E5%9B%BE2-%E5%8A%A8%E6%80%81%E7%9B%AE%E5%BD%95%E6%95%88%E6%9E%9C.png" alt="图2-动态目录效果"></p>
-<center>图2-动态目录效果</center>
-
-<hr>
-]]></content>
-      <categories>
-        <category>未分类</category>
-      </categories>
-      <tags>
-        <tag>未标记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>java-建立定时任务</title>
-    <url>/clk6kusnd002gizozbgtw9hvn/</url>
+    <url>/clkepnbgd002ch3q59jiycr7e/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -557,7 +497,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>logback-日志配置</title>
-    <url>/clk6kusne002jizozfad2hy5z/</url>
+    <url>/clkepnbge002gh3q50c7rbyuk/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -768,7 +708,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>使用-orphan-参数创建独立空白分支</title>
-    <url>/clk6kusnf002nizoz0hhqc8h2/</url>
+    <url>/clkepnbgf002jh3q5hn7f17gs/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -800,7 +740,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>使用-push-提交到远程仓库出现-The-requested-URL-returned-error-403-错误</title>
-    <url>/clk6kusnh002qizoz7ntyf5wy/</url>
+    <url>/clkepnbgh002nh3q5h7kn73l0/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -840,7 +780,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>使用多个-SSH-公钥连接多个-GitHub-远程仓库</title>
-    <url>/clk6kusni002tizozfqy47220/</url>
+    <url>/clkepnbgi002qh3q523gmc810/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -904,7 +844,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>修改-host-表开启-gist</title>
-    <url>/clk6kusnj002xizozbkwhajz3/</url>
+    <url>/clkepnbgi002th3q507zb3icy/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -929,7 +869,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>将-VSCode-添加到右键菜单</title>
-    <url>/clk6kusnk0030izoze1pecjbk/</url>
+    <url>/clkepnbgk002xh3q58ald8bxe/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -952,9 +892,9 @@ End 	Fn + →
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open Folder as VSCode Project&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%V\&quot;&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="macOS-10-14-解决方案"><a href="#macOS-10-14-解决方案" class="headerlink" title="macOS 10.14 解决方案"></a>macOS 10.14 解决方案</h2><p>通过快速操作添加两个位置的快速打开选项：文件、目录。</p>
-<h3 id="1、打开自动操作，文稿类型选取-快速操作"><a href="#1、打开自动操作，文稿类型选取-快速操作" class="headerlink" title="1、打开自动操作，文稿类型选取 快速操作"></a>1、打开自动操作，文稿类型选取 <code>快速操作</code></h3><img src="/clk6kusnk0030izoze1pecjbk/1.png" class="">
+<h3 id="1、打开自动操作，文稿类型选取-快速操作"><a href="#1、打开自动操作，文稿类型选取-快速操作" class="headerlink" title="1、打开自动操作，文稿类型选取 快速操作"></a>1、打开自动操作，文稿类型选取 <code>快速操作</code></h3><img src="/clkepnbgk002xh3q58ald8bxe/1.png" class="">
 
-<h3 id="2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，"><a href="#2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，" class="headerlink" title="2、左侧资源库选择 文件和文件夹，对应其右侧子菜单栏双击 打开访达项目，"></a>2、左侧资源库选择 <code>文件和文件夹</code>，对应其右侧子菜单栏双击 <code>打开访达项目</code>，</h3><h3 id="3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达"><a href="#3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达" class="headerlink" title="3、在 工作流程收到当前 选择 文件或文件夹，位于 选择 访达"></a>3、在 <code>工作流程收到当前</code> 选择 <code>文件或文件夹</code>，<code>位于</code> 选择 <code>访达</code></h3><h3 id="4、在-打开方式-找到-Visual-Studio-Code-app"><a href="#4、在-打开方式-找到-Visual-Studio-Code-app" class="headerlink" title="4、在 打开方式 找到 Visual Studio Code.app"></a>4、在 <code>打开方式</code> 找到 <code>Visual Studio Code.app</code></h3><img src="/clk6kusnk0030izoze1pecjbk/2.png" class="">
+<h3 id="2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，"><a href="#2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，" class="headerlink" title="2、左侧资源库选择 文件和文件夹，对应其右侧子菜单栏双击 打开访达项目，"></a>2、左侧资源库选择 <code>文件和文件夹</code>，对应其右侧子菜单栏双击 <code>打开访达项目</code>，</h3><h3 id="3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达"><a href="#3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达" class="headerlink" title="3、在 工作流程收到当前 选择 文件或文件夹，位于 选择 访达"></a>3、在 <code>工作流程收到当前</code> 选择 <code>文件或文件夹</code>，<code>位于</code> 选择 <code>访达</code></h3><h3 id="4、在-打开方式-找到-Visual-Studio-Code-app"><a href="#4、在-打开方式-找到-Visual-Studio-Code-app" class="headerlink" title="4、在 打开方式 找到 Visual Studio Code.app"></a>4、在 <code>打开方式</code> 找到 <code>Visual Studio Code.app</code></h3><img src="/clkepnbgk002xh3q58ald8bxe/2.png" class="">
 
 <h3 id="5、完成以上设置后，cmd-S-将该快速操作保存为-Open-with-VSCode-即可"><a href="#5、完成以上设置后，cmd-S-将该快速操作保存为-Open-with-VSCode-即可" class="headerlink" title="5、完成以上设置后，cmd+S 将该快速操作保存为 Open with VSCode 即可"></a>5、完成以上设置后，<code>cmd+S</code> 将该快速操作保存为 <code>Open with VSCode</code> 即可</h3>]]></content>
       <categories>
@@ -966,7 +906,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>有关-Payload-在维基百科的释义</title>
-    <url>/clk6kusnm0033izoz4mppb0ok/</url>
+    <url>/clkepnbgl002zh3q5frbe0sr3/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -997,7 +937,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>GitHub-中使用-issues-模版和-pull-request-模版</title>
-    <url>/clk6kusof004kizoz47s10l8j/</url>
+    <url>/clkepnbhd004hh3q58dzj5xsi/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -1051,7 +991,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>GitHub-中独立仓库与组织的权限</title>
-    <url>/clk6kusog004lizozbon02eyv/</url>
+    <url>/clkepnbhe004ih3q5gpkh0xft/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -1206,7 +1146,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>git-常用命令</title>
-    <url>/clk6kusoh004nizoz0zi8hf8b/</url>
+    <url>/clkepnbhe004kh3q53p1u3esh/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -1448,7 +1388,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>git-问题备忘</title>
-    <url>/clk6kusoi004pizoz8xy9com7/</url>
+    <url>/clkepnbhi004mh3q5en1qay8u/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -1487,7 +1427,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>gitignore-文件通用参考版本</title>
-    <url>/clk6kusoi004sizoz00qw4um6/</url>
+    <url>/clkepnbhj004ph3q59ffq645r/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -1517,8 +1457,68 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>hexo-next-主题构建首页动态更新目录</title>
+    <url>/clkepnbhk004sh3q5fkdecpj9/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<blockquote>
+</blockquote>
+<!-- more -->
+
+<h3 id="1-问题及需求"><a href="#1-问题及需求" class="headerlink" title="1 问题及需求"></a>1 问题及需求</h3><p><strong>问题</strong></p>
+<ul>
+<li>首页（home）默认显示按日期排序的文章列表，使用 <code>&lt;!-- more --&gt;</code> 省略内容仍显得繁杂冗长；</li>
+<li>分类（categories）页面虽然有按类型、日期排序的文章列表，但切换分类需要往返多次。</li>
+</ul>
+<p><strong>需求</strong></p>
+<ul>
+<li>建立一个首页目录，将文章分类（categories 参数）和标题，分别作为列表的一级、二级显示；</li>
+<li>标题即为文章链接，点击可直接到达；想查看其他分类，直接回到首页即可。</li>
+</ul>
+<h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2 解决方案"></a>2 解决方案</h3><h3 id="2-1-建立文件"><a href="#2-1-建立文件" class="headerlink" title="2.1 建立文件"></a>2.1 建立文件</h3><p>在 <code>source/</code> 下建立 <code>index.md</code>，命名标题，内容留空。</p>
+<h3 id="2-2-关闭默认首页"><a href="#2-2-关闭默认首页" class="headerlink" title="2.2 关闭默认首页"></a>2.2 关闭默认首页</h3><p>修改 hexo 配置文件 <code>_config.yml</code>，找到 <code>index_generator</code> 配置项，修改 <code>path</code> 属性为一个无效值：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">index_generator</span>:</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line">  <span class="attr">per_page</span>: <span class="number">10</span></span><br><span class="line">  <span class="attr">order_by</span>: -date</span><br></pre></td></tr></table></figure>
+
+<p>此时启动项目后，首页将不再出现文章列表，转而显示 <code>index.md</code> 内容。</p>
+<blockquote>
+<p>注：<code>index.md</code> 在渲染后成为 <code>index.html</code></p>
+</blockquote>
+<h3 id="3-动态更新目录"><a href="#3-动态更新目录" class="headerlink" title="3 动态更新目录"></a>3 动态更新目录</h3><p>若文章分类多，每次更新、调整文章都需要将相应链接手工同步到首页也是一件相当繁琐的事情。因此有必要考虑自动更新首页。</p>
+<h3 id="3-1-hexo-加载顺序"><a href="#3-1-hexo-加载顺序" class="headerlink" title="3.1 hexo 加载顺序"></a>3.1 hexo 加载顺序</h3><p>根据 hexo 文档 <a href="https://hexo.io/zh-cn/api/posts#%E6%B8%B2%E6%9F%93">https://hexo.io/zh-cn/api/posts#%E6%B8%B2%E6%9F%93</a> 关于渲染顺序的说明，要实现 <code>index.md</code> 的写入，要在 <code>hexo g</code> 命令执行之前完成，可引入 before_post_render 过滤器实现该需求。</p>
+<h3 id="3-2-hexo-过滤器"><a href="#3-2-hexo-过滤器" class="headerlink" title="3.2 hexo 过滤器"></a>3.2 hexo 过滤器</h3><p>过滤器文档：<a href="https://hexo.io/zh-cn/api/filter#%E6%A6%82%E8%A6%81">https://hexo.io/zh-cn/api/filter#%E6%A6%82%E8%A6%81</a></p>
+<p>在主题目录下 <code>themes\next\filters\</code> 新建 <code>index.js</code>，添加 priority 分别为 9 和 10 的两个 before_post_render 过滤器，如下所示：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> categoriesMap = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;before_post_render&#x27;</span>, <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 首页目录不显示草稿内容</span></span><br><span class="line">    <span class="keyword">if</span> (data.<span class="property">source</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;_drafts&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (data.<span class="property">path</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;index&quot;</span>) &lt; <span class="number">0</span> &amp;&amp; data.<span class="property">categories</span>.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> curCategorie = data.<span class="property">categories</span>.<span class="property">data</span>[<span class="number">0</span>].<span class="property">name</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (categoriesMap.<span class="title function_">has</span>(curCategorie)) &#123;</span><br><span class="line">            <span class="keyword">let</span> valueArray = categoriesMap.<span class="title function_">get</span>(curCategorie);</span><br><span class="line">            valueArray = valueArray.<span class="title function_">concat</span>(<span class="string">`  - [<span class="subst">$&#123;data.title&#125;</span>](/<span class="subst">$&#123;data.path&#125;</span>)\n`</span>)</span><br><span class="line">            categoriesMap.<span class="title function_">set</span>(curCategorie, valueArray);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            categoriesMap.<span class="title function_">set</span>(curCategorie, [<span class="string">`  - [<span class="subst">$&#123;data.title&#125;</span>](/<span class="subst">$&#123;data.path&#125;</span>)\n`</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;, <span class="number">9</span>);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;before_post_render&#x27;</span>, <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 精确定位index.html，防止误写其他路径不同但同名的文件</span></span><br><span class="line">    <span class="keyword">if</span> (data.<span class="property">path</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;index&quot;</span>) === <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> categoriesMap.<span class="title function_">keys</span>()) &#123;</span><br><span class="line">            data.<span class="property">content</span> += <span class="string">`- <span class="subst">$&#123;key&#125;</span>\n`</span></span><br><span class="line">            <span class="keyword">let</span> valueArray = categoriesMap.<span class="title function_">get</span>(key);</span><br><span class="line">            valueArray.<span class="title function_">forEach</span>(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">                data.<span class="property">content</span> += element;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<p>代码说明</p>
+<ul>
+<li>第一个过滤器遍历全部文章，获取所有现存的分类及所属文章链接；</li>
+<li>第二个过滤器写入 <code>index.html</code></li>
+</ul>
+<h3 id="3-3-有关属性"><a href="#3-3-有关属性" class="headerlink" title="3.3 有关属性"></a>3.3 有关属性</h3><p>为探究 data 为何物，可打断点观察其结构：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  title<span class="punctuation">:</span> <span class="string">&quot;DataGrip-2018.3.4-数据导出配置案例&quot;</span><span class="punctuation">,</span></span><br><span class="line">  date<span class="punctuation">:</span> <span class="punctuation">&#123;</span>……文章生成日期的有关参数（略）<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  _content<span class="punctuation">:</span> <span class="string">&quot;……正文内容（略）&quot;</span><span class="punctuation">,</span></span><br><span class="line">  source<span class="punctuation">:</span> <span class="string">&quot;_posts/DataGrip-2018-3-4-数据导出配置案例.md&quot;</span><span class="punctuation">,</span></span><br><span class="line">  raw<span class="punctuation">:</span> <span class="string">&quot;……正文内容（略）&quot;</span><span class="punctuation">,</span></span><br><span class="line">  slug<span class="punctuation">:</span> <span class="string">&quot;DataGrip-2018-3-4-数据导出配置案例&quot;</span><span class="punctuation">,</span></span><br><span class="line">  published<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  updated<span class="punctuation">:</span> <span class="punctuation">&#123;</span>……文章更新日期的有关参数（略）<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  comments<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  layout<span class="punctuation">:</span> <span class="string">&quot;post&quot;</span><span class="punctuation">,</span></span><br><span class="line">  photos<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  link<span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  _id<span class="punctuation">:</span> <span class="string">&quot;cljzhnjmb001oz0u6en5ab6xb&quot;</span><span class="punctuation">,</span></span><br><span class="line">  path<span class="punctuation">:</span> <span class="string">&quot;2022/12/07/DataGrip-2018-3-4-数据导出配置案例/&quot;</span><span class="punctuation">,</span></span><br><span class="line">  permalink<span class="punctuation">:</span> <span class="string">&quot;http://www.dcheng.site/2022/12/07/DataGrip-2018-3-4-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA%E9%85%8D%E7%BD%AE%E6%A1%88%E4%BE%8B/&quot;</span><span class="punctuation">,</span></span><br><span class="line">  full_source<span class="punctuation">:</span> <span class="string">&quot;C:\\mainProjects\\blog\\source\\_posts\\DataGrip-2018-3-4-数据导出配置案例.md&quot;</span><span class="punctuation">,</span></span><br><span class="line">  asset_dir<span class="punctuation">:</span> <span class="string">&quot;C:\\mainProjects\\blog\\source\\_posts\\DataGrip-2018-3-4-数据导出配置案例\\&quot;</span><span class="punctuation">,</span></span><br><span class="line">  tags<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    data<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        name<span class="punctuation">:</span> <span class="string">&quot;DataGrip&quot;</span><span class="punctuation">,</span></span><br><span class="line">        _id<span class="punctuation">:</span> <span class="string">&quot;cljzhnjmc001uz0u6hlov172o&quot;</span><span class="punctuation">,</span></span><br><span class="line">        slug<span class="punctuation">:</span> <span class="string">&quot;DataGrip&quot;</span><span class="punctuation">,</span></span><br><span class="line">        path<span class="punctuation">:</span> <span class="string">&quot;tags/DataGrip/&quot;</span><span class="punctuation">,</span></span><br><span class="line">        permalink<span class="punctuation">:</span> <span class="string">&quot;http://www.dcheng.site/tags/DataGrip/&quot;</span><span class="punctuation">,</span></span><br><span class="line">        posts<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          data<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          length<span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        length<span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    length<span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  categories<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    data<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="punctuation">&#123;</span></span><br><span class="line">        name<span class="punctuation">:</span> <span class="string">&quot;配置案例&quot;</span><span class="punctuation">,</span></span><br><span class="line">        _id<span class="punctuation">:</span> <span class="string">&quot;cljzhnjmc001tz0u6967u3bji&quot;</span><span class="punctuation">,</span></span><br><span class="line">        slug<span class="punctuation">:</span> <span class="string">&quot;配置案例&quot;</span><span class="punctuation">,</span></span><br><span class="line">        path<span class="punctuation">:</span> <span class="string">&quot;categories/配置案例/&quot;</span><span class="punctuation">,</span></span><br><span class="line">        permalink<span class="punctuation">:</span> <span class="string">&quot;http://www.dcheng.site/categories/%E9%85%8D%E7%BD%AE%E6%A1%88%E4%BE%8B/&quot;</span><span class="punctuation">,</span></span><br><span class="line">        posts<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          data<span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">          length<span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        length<span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    length<span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  content<span class="punctuation">:</span> <span class="string">&quot;……正文内容（略）&quot;</span><span class="punctuation">,</span></span><br><span class="line">  site<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    data<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-最终效果"><a href="#4-最终效果" class="headerlink" title="4 最终效果"></a>4 最终效果</h3><p><img src="/clkepnbhk004sh3q5fkdecpj9/%E5%9B%BE1-%E9%BB%98%E8%AE%A4%E6%95%88%E6%9E%9C.png" alt="图1-默认效果"></p>
+<center>图1-默认效果</center>
+
+</br>
+
+<p><img src="/clkepnbhk004sh3q5fkdecpj9/%E5%9B%BE2-%E5%8A%A8%E6%80%81%E7%9B%AE%E5%BD%95%E6%95%88%E6%9E%9C.png" alt="图2-动态目录效果"></p>
+<center>图2-动态目录效果</center>
+
+<hr>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>未标记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</title>
-    <url>/clk6kusoj004vizoz5q6p57h6/</url>
+    <url>/clkepnbhl004vh3q5emgk0gcs/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -1528,13 +1528,13 @@ End 	Fn + →
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27; WITH GRANT OPTION;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
 
 <h3 id="2、设置服务器安全组的端口放行规则"><a href="#2、设置服务器安全组的端口放行规则" class="headerlink" title="2、设置服务器安全组的端口放行规则"></a>2、设置服务器安全组的端口放行规则</h3><p><strong>ECS 云服务器安全组设置如下：</strong></p>
-<img src="/clk6kusoj004vizoz5q6p57h6/1.png" class="">
+<img src="/clkepnbhl004vh3q5emgk0gcs/1.png" class="">
 
 <p><strong>轻量应用服务器防火墙设置如下：</strong></p>
-<img src="/clk6kusoj004vizoz5q6p57h6/2.png" class="">
+<img src="/clkepnbhl004vh3q5emgk0gcs/2.png" class="">
 
 <h3 id="3、设置-Navicat"><a href="#3、设置-Navicat" class="headerlink" title="3、设置 Navicat"></a>3、设置 Navicat</h3><p>进入 Navicat，新建连接，在「常规」选项卡中输入开放权限时的信息，用户名：root；密码：123456</p>
-<img src="/clk6kusoj004vizoz5q6p57h6/3.png" class="">
+<img src="/clkepnbhl004vh3q5emgk0gcs/3.png" class="">
 ]]></content>
       <categories>
         <category>部署和安装</category>
@@ -1545,7 +1545,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>使用-github+Action-部署-Hexo-博客</title>
-    <url>/clk6kusol004yizozh90p5mqi/</url>
+    <url>/clkepnbhm004zh3q57p0496bf/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -1606,7 +1606,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>部署-ubuntu-服务器</title>
-    <url>/clk6kusop0052izoz9nwk83am/</url>
+    <url>/clkepnbhn0052h3q5ab1166f7/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -1792,7 +1792,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>CompletableFuture-异步处理任务</title>
-    <url>/clk6kusot0059izozgxi18oac/</url>
+    <url>/clkepnbhp0058h3q5gzjz3daj/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -2174,7 +2174,7 @@ End 	Fn + →
   </entry>
   <entry>
     <title>CompletionService-及时获取任务返回值</title>
-    <url>/clk6kusou005aizoz5lbfgdag/</url>
+    <url>/clkepnbhq005bh3q5bstdeeix/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
