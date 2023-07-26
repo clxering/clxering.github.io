@@ -15,8 +15,200 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Mon, 24 Jul 2023 13:11:02 GMT</pubDate>
+    <pubDate>Wed, 26 Jul 2023 13:19:47 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>volatile-变量使用指南</title>
+      <link>http://www.dcheng.site/468704c0-2bb6-11ee-879b-0b2c36f14b2e/</link>
+      <guid>http://www.dcheng.site/468704c0-2bb6-11ee-879b-0b2c36f14b2e/</guid>
+      <pubDate>Wed, 26 Jul 2023 13:11:10 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/">java</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/468704c0-2bb6-11ee-879b-0b2c36f14b2e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java-SimpleDateFormat-Example</title>
+      <link>http://www.dcheng.site/4686ddb2-2bb6-11ee-879b-0b2c36f14b2e/</link>
+      <guid>http://www.dcheng.site/4686ddb2-2bb6-11ee-879b-0b2c36f14b2e/</guid>
+      <pubDate>Wed, 26 Jul 2023 13:10:50 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/">java</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/4686ddb2-2bb6-11ee-879b-0b2c36f14b2e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java-optional-parameters</title>
+      <link>http://www.dcheng.site/468704c1-2bb6-11ee-879b-0b2c36f14b2e/</link>
+      <guid>http://www.dcheng.site/468704c1-2bb6-11ee-879b-0b2c36f14b2e/</guid>
+      <pubDate>Wed, 26 Jul 2023 13:10:12 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/">java</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/468704c1-2bb6-11ee-879b-0b2c36f14b2e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java-Custom-Exception-Example</title>
+      <link>http://www.dcheng.site/4686ddb0-2bb6-11ee-879b-0b2c36f14b2e/</link>
+      <guid>http://www.dcheng.site/4686ddb0-2bb6-11ee-879b-0b2c36f14b2e/</guid>
+      <pubDate>Wed, 26 Jul 2023 13:09:30 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/">java</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/4686ddb0-2bb6-11ee-879b-0b2c36f14b2e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Java-8-中的-Streams-API-详解</title>
+      <link>http://www.dcheng.site/4686b6a1-2bb6-11ee-879b-0b2c36f14b2e/</link>
+      <guid>http://www.dcheng.site/4686b6a1-2bb6-11ee-879b-0b2c36f14b2e/</guid>
+      <pubDate>Wed, 26 Jul 2023 13:09:03 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/">java</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/4686b6a1-2bb6-11ee-879b-0b2c36f14b2e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>How-to-design-Classes-and-Interfaces</title>
+      <link>http://www.dcheng.site/4686ddb1-2bb6-11ee-879b-0b2c36f14b2e/</link>
+      <guid>http://www.dcheng.site/4686ddb1-2bb6-11ee-879b-0b2c36f14b2e/</guid>
+      <pubDate>Wed, 26 Jul 2023 13:08:28 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/">java</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/4686ddb1-2bb6-11ee-879b-0b2c36f14b2e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Enabling-Cross-Origin-Requests-for-a-RESTful-Web-Service</title>
+      <link>http://www.dcheng.site/4686b6a0-2bb6-11ee-879b-0b2c36f14b2e/</link>
+      <guid>http://www.dcheng.site/4686b6a0-2bb6-11ee-879b-0b2c36f14b2e/</guid>
+      <pubDate>Wed, 26 Jul 2023 13:07:57 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/">java</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/4686b6a0-2bb6-11ee-879b-0b2c36f14b2e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>9-differences-between-Array-and-ArrayList-in-Java</title>
+      <link>http://www.dcheng.site/46868f90-2bb6-11ee-879b-0b2c36f14b2e/</link>
+      <guid>http://www.dcheng.site/46868f90-2bb6-11ee-879b-0b2c36f14b2e/</guid>
+      <pubDate>Wed, 26 Jul 2023 13:05:53 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/">java</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      
+      
+      <comments>http://www.dcheng.site/46868f90-2bb6-11ee-879b-0b2c36f14b2e/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>3-things-every-java-developer-should-stop-doing</title>

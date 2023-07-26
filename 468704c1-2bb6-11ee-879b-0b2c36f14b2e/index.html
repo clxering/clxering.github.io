@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Java-optional-parameters">
+<meta property="og:url" content="http://www.dcheng.site/468704c1-2bb6-11ee-879b-0b2c36f14b2e/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-26T13:10:12.000Z">
+<meta property="article:modified_time" content="2023-07-26T13:19:47.595Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="未标记">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/468704c1-2bb6-11ee-879b-0b2c36f14b2e/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/468704c1-2bb6-11ee-879b-0b2c36f14b2e/","path":"468704c1-2bb6-11ee-879b-0b2c36f14b2e/","title":"Java-optional-parameters"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java-optional-parameters | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-optional-parameters"><span class="nav-text">Java optional parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Optional-method-parameters"><span class="nav-text">1. Optional method parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Nullable-annotation"><span class="nav-text">1.1 @Nullable annotation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Optional-lists"><span class="nav-text">1.2. Optional lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Null-object-pattern"><span class="nav-text">1.3. Null object pattern</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-Method-overloading"><span class="nav-text">1.4. Method overloading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Parameter-Object-pattern"><span class="nav-text">1.5. Parameter Object pattern</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Optional-constructor-parameters"><span class="nav-text">2. Optional constructor parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Builder-pattern"><span class="nav-text">2.1. Builder pattern</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Compile-time-safe-class-builder"><span class="nav-text">2.2. Compile time safe class builder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Builder-class-generation"><span class="nav-text">2.3. Builder class generation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Java-optional-parameters-anti-patterns"><span class="nav-text">3. Java optional parameters anti-patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Maps"><span class="nav-text">3.1. Maps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Java-varargs"><span class="nav-text">3.2. Java varargs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Why-not-Optional-as-method-argument"><span class="nav-text">3.3. Why not Optional as method argument?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-usage"><span class="nav-text">Memory usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Coding-with-reader-in-mind"><span class="nav-text">Coding with reader in mind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-language-architect-opinion"><span class="nav-text">Java language architect opinion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Does-Optional-solve-optional-parameter-problem"><span class="nav-text">Does Optional solve optional parameter problem?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-text">Conclusion</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/468704c1-2bb6-11ee-879b-0b2c36f14b2e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java-optional-parameters | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          Java-optional-parameters
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-07-26 21:10:12 / Modified: 21:19:47" itemprop="dateCreated datePublished" datetime="2023-07-26T21:10:12+08:00">2023-07-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">文献翻译</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Java-optional-parameters"><a href="#Java-optional-parameters" class="headerlink" title="Java optional parameters"></a>Java optional parameters</h1><p><strong>Java 中的可选参数</strong></p>
+<blockquote>
+<p>转译自：<a target="_blank" rel="noopener" href="https://www.javacodegeeks.com/2018/11/java-optional-parameters.html">https://www.javacodegeeks.com/2018/11/java-optional-parameters.html</a></p>
+</blockquote>
+<p>When you design a method in a Java class, some parameters may be optional for its execution. No matter it is inside a DTO, a fat model domain object, or a simple stateless service class, optional method parameters are common.</p>
+<p>在 Java 类中设计方法时，一些参数可能是可选的。无论是 DTO、胖模型域对象还是简单的无状态服务类，可选的方法参数都是常见的。</p>
+<p>From this article <strong>you will learn how to handle optional parameters in Java.</strong> We’ll focus on regular method, class constructors with optional fields, and quickly look at bad practices of the discussed topic. We’ll stop for a moment to look at Java 8 Optional and assess（vt. 评定；估价） if it fits our needs.</p>
+<p>从本文中，<strong>你将了解如何在 Java 中处理可选参数。</strong> 我们将重点讨论常规方法、带有可选字段的类构造函数，并快速查看所讨论主题的不良实践。我们会停下来看看 Java 8 中的 Optional 类，看看它是否符合我们的需求。</p>
+<p>Let’s get started.</p>
+<p>让我们开始吧。</p>
+<h2 id="1-Optional-method-parameters"><a href="#1-Optional-method-parameters" class="headerlink" title="1. Optional method parameters"></a>1. Optional method parameters</h2><p><strong>可选的方法参数</strong></p>
+<p>You can tackle（vt. 处理；抓住） Java optional parameters in method in several different ways. I’ll walk you through from the simplest to more complex.</p>
+<p>你可以用几种不同的方法处理方法中的 Java 可选参数。我将引导你（理解）从最简单到更复杂的（情况）。</p>
+<h2 id="1-1-Nullable-annotation"><a href="#1-1-Nullable-annotation" class="headerlink" title="1.1 @Nullable annotation"></a>1.1 @Nullable annotation</h2><p><strong>@Nullable 注解</strong></p>
+<p>Why just don’t pass the null around? It’s a simple solution which doesn’t require any extra work. You don’t have any object which is required as one of method’s parameters? No problem. Just pass the null and the compiler is happy.</p>
+<p>为什么不传递 null 呢？这是一个简单的答案，不需要任何额外的工作。你没有需要作为方法参数之一的对象吗？没有问题。把 null 传递给编译器就好了。</p>
+<p><strong>The issue here is readability.</strong> How does the programmer who calls a method knows if he can safely pass the null? For which parameters nulls are acceptable and which are mandatory?</p>
+<p><strong>这里的问题是可读性。</strong> 调用方法的程序员如何知道是否可以安全地传递 null？哪些参数是可接受 null 的，哪些是强制的？</p>
+<p>To make it clear that the null is a valid input, you can use a @Nullable annotation.</p>
+<p>为了说明 null 是一个有效的输入，你可以使用@Nullable 注解。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User createUser(String name, @Nullable Email email) &#123;</span><br><span class="line">   // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Don’t you agree this method declaration is self-explanatory?</p>
+<p>你不同意这个方法声明是不言自明的吗？</p>
+<p>While simple, the issue with null passing approach is that it can easily get out of control. The team may quickly start overusing it and make the code base <strong>hard to maintain with plenty of null check conditions.</strong></p>
+<p>虽然很简单，但是 null 传递方法的问题是它很容易失控。团队可能很快就会开始 <strong>过度使用它，并在大量的 null 检查条件下使代码库难以维护。</strong></p>
+<p>There are other options, though.</p>
+<p>不过，还有其他选择。</p>
+<h2 id="1-2-Optional-lists"><a href="#1-2-Optional-lists" class="headerlink" title="1.2. Optional lists"></a>1.2. Optional lists</h2><p>Instead of null, we can sometime create an empty representation（n. 代表；表现） of a class. Think about Java collections. <strong>If a method accepts a list or a map, you should never use nulls as the input.</strong></p>
+<p>有时我们可以创建一个类的空表示，而不是 null。想想 Java 集合。<strong>如果方法接受 List 或 Map（作为参数），则永远不应该使用 null 作为（参数）输入。</strong></p>
+<p>An empty collection is always better than null because in majority of cases it doesn’t require any special treatment.</p>
+<p>空集合总是比 null 好，因为在大多数情况下，它不需要任何特殊处理。</p>
+<p>You may wonder why you should waste memory to create empty collections. After all, null doesn’t cost you anything.</p>
+<p>你可能想知道为什么要浪费内存来创建空集合。毕竟，null 不需要任何代价。</p>
+<p>Your doubts are justified. Fortunately, there’s a simple solution.</p>
+<p>你的怀疑是有道理的。幸运的是，有一个简单的解决方案。</p>
+<p>You shouldn’t create a new instance of a collection whenever you need an empty representative. Reuse the same instance across the code base.</p>
+<p>在需要空代表时，不应该创建集合的新实例。在代码库中重复使用相同的实例。</p>
+<p>And you know what? Java already has empty instances of all collections which you can use. You’ll find them in the Collections utility class.</p>
+<p>你知道吗？Java 已经有了可以使用的所有集合的空实例。你可以在 Collections 实用程序类中找到它们。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User createUser(String name, List&lt;Rights&gt; rights) &#123;</span><br><span class="line">   // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Collections;</span><br><span class="line">// ...</span><br><span class="line">create(&quot;bob&quot;, Collections.emptyList());</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-Null-object-pattern"><a href="#1-3-Null-object-pattern" class="headerlink" title="1.3. Null object pattern"></a>1.3. Null object pattern</h2><p><strong>Null 对象模式</strong></p>
+<p>The concept of empty collections also applies to other classes. An empty collection is just a regular collection with zero elements. By the same token, you can think about other objects in your applications.</p>
+<p>空集合的概念也适用于其他类。空集合只是一个包含零元素的常规集合。同样，你可以考虑应用程序中的其他对象。</p>
+<p><strong>The Null object is a special instance of a class which represents missing value.</strong> If some method expects an object as a parameter, you can always pass the Null object representation without worry it will cause an unexpected exception at the runtime.</p>
+<p><strong>Null 对象是表示缺失值的类的特殊实例。</strong> 如果某些方法希望将对象作为参数，那么总是可以传递 Null 对象表示，而不用担心这会在运行时导致意外异常。</p>
+<p>You can implement the Null object pattern in two ways.</p>
+<p>你可以通过两种方式实现 Null 对象模式。</p>
+<p>For simple value objects, a default instance with predefined values assigned to properties is enough. Usually, you expose this Null object as a constant so you can reuse it multiple times. For instance:</p>
+<p>对于简单的值对象，为属性指定预定义值的默认实例就足够了。通常，你将这个 Null 对象作为常量公开，以便可以多次重用它。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class User &#123;</span><br><span class="line"></span><br><span class="line">   public static final User EMPTY = new User(&quot;&quot;, Collections.emptyList());</span><br><span class="line"></span><br><span class="line">   private final String name;</span><br><span class="line">   private final List&lt;Rights&gt; rights;</span><br><span class="line"></span><br><span class="line">   public User(String name, List&lt;Rights&gt; rights) &#123;</span><br><span class="line">       Objects.requireNonNull(name);</span><br><span class="line">       Objects.requireNonNull(rights);</span><br><span class="line">       this.name = name;</span><br><span class="line">       this.rights = rights;</span><br><span class="line">   &#125;</span><br><span class="line">   // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If your Null object also needs to mimic some behavior exposed via methods, a simple instance may not work. In that case, you should extend the class and override such methods.</p>
+<p>如果你的 Null 对象也需要模仿一些通过方法暴露的行为，那么简单的实例就不会起作用了。在这种情况下，你应该扩展类并覆盖这些方法。</p>
+<p>Here is an example which extends the previous one:</p>
+<p>下面是对上一个例子的扩展：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class AnonymousUser extends User &#123;</span><br><span class="line"></span><br><span class="line">   public static final AnonymousUser INSTANCE = new AnonymousUser();</span><br><span class="line"></span><br><span class="line">   private AnonymousUser() &#123;</span><br><span class="line">      super(&quot;&quot;, Collections.emptyList());</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   @Override</span><br><span class="line">   public void changeName(String newName) &#123;</span><br><span class="line">       throw new AuthenticationException(&quot;Only authenticated user can change the name&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>A dedicated Null object class allows you to put many corner cases in a single place which makes maintenance much more pleasant.</p>
+<p>一个专用的 Null 对象类允许你将许多偏僻个案放在一个地方，这使得维护更加愉快。</p>
+<h2 id="1-4-Method-overloading"><a href="#1-4-Method-overloading" class="headerlink" title="1.4. Method overloading"></a>1.4. Method overloading</h2><p><strong>方法重载</strong></p>
+<p>If your design a method with optional parameters, you can expose（vt. 揭露，揭发；使曝光；显示） overloaded versions of that method. <strong>Each method should accept only parameters which are required.</strong></p>
+<p>如果你设计的方法具有可选参数，则可以公开该方法的重载版本。<strong>每个方法只能接受需要的参数。</strong></p>
+<p>With this approach, you don’t have to expect that the caller will provide default values for optional parameters. You pass the defaults on your own inside overloaded method. In other words, you hide the default values for optional parameters from method’s callers.</p>
+<p>使用这种方法，你不必期望调用方会为可选参数提供默认值。你可以在重载方法中自行传递默认值。换句话说，对方法调用者隐藏可选参数的默认值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User createUser(String name) &#123;</span><br><span class="line">   this.createUser(name, Email.EMPTY);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User createUser(String name, Email email) &#123;</span><br><span class="line">   Objects.requireNonNull(name);</span><br><span class="line">   Objects.requireNonNull(rights);</span><br><span class="line">   // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The overloaded methods can call each other but it’s not mandatory. You can implement each method independently if it’s more convenient. However, usually you validate all parameters and put the logic inside the method with the longest parameter list.</p>
+<p>重载的方法可以相互调用，但不是强制的。如果方便的话，可以单独实现每个方法。但是，通常你要验证所有参数，并将逻辑放在具有最长参数列表的方法中。</p>
+<p>It’s worth mentioning that method overloading is widely used inside the standard Java library. When you learn how to design APIs, learn from people with greater experience.</p>
+<p>值得一提的是，方法重载在标准 Java 库中被广泛使用。当你学习如何设计 API 时，请向具有更丰富经验的人学习。</p>
+<h2 id="1-5-Parameter-Object-pattern"><a href="#1-5-Parameter-Object-pattern" class="headerlink" title="1.5. Parameter Object pattern"></a>1.5. Parameter Object pattern</h2><p><strong>参数对象模式</strong></p>
+<p>The majority of developers agree that when the list of method parameters grows too long it become hard to read. Usually, you handle the issue with the Parameter Object pattern. The parameter object is a named container class which groups all method parameters.</p>
+<p>大多数开发人员都同意，当方法参数列表增长得太长时，就会变得难以读取。通常，你使用参数对象模式来处理这个问题。参数对象是一个命名容器类，它对所有方法参数进行分组。</p>
+<p>Does it solve the problem of optional method parameters?</p>
+<p>是否解决了方法参数可选的问题?</p>
+<p>No. It doesn’t.</p>
+<p>不。它不是。</p>
+<p>It just moves the problem to the constructor of the parameter object.</p>
+<p>它只是将问题移动到参数对象的构造函数中。</p>
+<p>Let’s see how do we solve this more general problem with …</p>
+<p>让我们看看如何解决这个更普遍的问题。</p>
+<h2 id="2-Optional-constructor-parameters"><a href="#2-Optional-constructor-parameters" class="headerlink" title="2. Optional constructor parameters"></a>2. Optional constructor parameters</h2><p><strong>可选的构造函数参数</strong></p>
+<p>In the perspective（n. 观点） of the problem with optional parameters, simple constructors don’t differ from regular member methods. You can successfully use all the techniques we’ve already discussed also with constructors.</p>
+<p>对于可选参数的问题，简单构造函数与常规成员方法没有区别。你可以成功地使用我们已经与构造函数讨论过的所有技术。</p>
+<p>However, when the list of constructor parameters is getting longer and many of them are optional parameters, applying constructor overloading may seem cumbersome.</p>
+<p>然而，当构造函数参数的列表越来越长，而且其中许多参数是可选参数时，应用构造函数重载可能看起来很麻烦。</p>
+<p>If you agree, you should check out the Builder pattern.</p>
+<p>如果你同意，你应该检查构建器模式。</p>
+<h2 id="2-1-Builder-pattern"><a href="#2-1-Builder-pattern" class="headerlink" title="2.1. Builder pattern"></a>2.1. Builder pattern</h2><p><strong>构建器模式</strong></p>
+<p>Let’s consider a class with multiple optional fields:</p>
+<p>让我们考虑一个具有多个可选字段的类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class ProgrammerProfile &#123;</span><br><span class="line"></span><br><span class="line">   // required field</span><br><span class="line">   private final String name;</span><br><span class="line"></span><br><span class="line">   // optional fields</span><br><span class="line">   private final String blogUrl;</span><br><span class="line">   private final String twitterHandler;</span><br><span class="line">   private final String githubUrl;</span><br><span class="line"></span><br><span class="line">   public ProgrammerProfile(String name) &#123;</span><br><span class="line">       Objects.requireNonNull(name);</span><br><span class="line">       this.name = name;</span><br><span class="line">       // other fields assignment...</span><br><span class="line">   &#125;</span><br><span class="line">   // getters</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If you created a constructors to cover all possible combination with optional parameters, you would end up with a quite overwhelming list.</p>
+<p>如果你创建了一个构造函数来涵盖所有可能的与可选参数的组合，那么你将得到一个相当庞大的列表。</p>
+<p>How to avoid multiple constructors? Use a builder class.</p>
+<p>如何避免多个构造函数？使用构建器类。</p>
+<p><strong><em>译注：关于构建器的内容，可以参考《Effective-Java-3rd-edition》，Item-2: Consider-a-builder-when-faced-with-many-constructor-parameters（<a target="_blank" rel="noopener" href="https://github.com/clxering/Effective-Java-3rd-edition-Chinese-English-bilingual/blob/master/Chapter-2/Chapter-2-Item-2-Consider-a-builder-when-faced-with-many-constructor-parameters.md">Item-2</a>）</em></strong></p>
+<p>You usually implement the builder as an inner class of the class it suppose to build. That way, both classes have access to their private members.</p>
+<p>你通常将构建器实现为它要构建的类的内部类。这样，两个类都可以访问它们的私有成员。</p>
+<p>Take a look at a builder for the class from the previous example:</p>
+<p>看看前面例子中类的构建器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">class ProgrammerProfile &#123;</span><br><span class="line"></span><br><span class="line">   // fields, getters, ...</span><br><span class="line"></span><br><span class="line">   private ProgrammerProfile(Builder builder) &#123;</span><br><span class="line">       Objects.requireNonNull(builder.name);</span><br><span class="line">       name = builder.name;</span><br><span class="line">       blogUrl = builder.blogUrl;</span><br><span class="line">       twitterHandler = builder.twitterHandler;</span><br><span class="line">       githubUrl = builder.githubUrl;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static Builder newBuilder() &#123;</span><br><span class="line">       return new Builder();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   static final class Builder &#123;</span><br><span class="line"></span><br><span class="line">       private String name;</span><br><span class="line">       private String blogUrl;</span><br><span class="line">       private String twitterHandler;</span><br><span class="line">       private String githubUrl;</span><br><span class="line"></span><br><span class="line">       private Builder() &#123;&#125;</span><br><span class="line"></span><br><span class="line">       public Builder withName(String val) &#123;</span><br><span class="line">           name = val;</span><br><span class="line">           return this;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public Builder withBlogUrl(String val) &#123;</span><br><span class="line">           blogUrl = val;</span><br><span class="line">           return this;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public Builder withTwitterHandler(String val) &#123;</span><br><span class="line">           twitterHandler = val;</span><br><span class="line">           return this;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public Builder withGithubUrl(String val) &#123;</span><br><span class="line">           githubUrl = val;</span><br><span class="line">           return this;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public ProgrammerProfile build() &#123;</span><br><span class="line">           return new ProgrammerProfile(this);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Instead of a public constructor, we only expose one single static factory method for the inner builder class. The private constructor (which the builder calls in the build() method) uses a builder instance to assign all fields and verifies if all required values are present.</p>
+<p>我们只为内部构建器类公开一个静态工厂方法，而不是一个公共构造函数。私有构造函数(构建器在 build()方法中调用)使用一个构建器实例来分配所有字段，并验证是否存在所有需要的值。</p>
+<p>It’s a pretty simple technique once you think about it.</p>
+<p>这是一个非常简单的技巧。</p>
+<p>The client code of that builder which sets only a selected optional parameter may look as follows:</p>
+<p>该生成器的客户端代码只设置一个选定的可选参数，其代码如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ProgrammerProfile.newBuilder()</span><br><span class="line">       .withName(&quot;Daniel&quot;)</span><br><span class="line">       .withBlogUrl(&quot;www.dolszewski.com/blog/&quot;)</span><br><span class="line">       .build();</span><br></pre></td></tr></table></figure>
+
+<p>With the builder, you can create all possible combinations with optional parameters of the object.</p>
+<p>使用构建器，你可以使用对象的可选参数创建所有可能的组合。</p>
+<h2 id="2-2-Compile-time-safe-class-builder"><a href="#2-2-Compile-time-safe-class-builder" class="headerlink" title="2.2. Compile time safe class builder"></a>2.2. Compile time safe class builder</h2><p><strong>编译时安全类构建器</strong></p>
+<p>Unfortunately, just by look at the methods of the builder from the previous paragraph you can’t really tell which parameters are optional and which are required. What is more, without knowing you can omit the required parameters by accident.</p>
+<p>不幸的是，仅通过查看前一段中构建器的方法，你无法真正判断哪些参数是可选的，哪些是必需的。更重要的是，如果不知道你可以意外地忽略所需的参数。</p>
+<p>Check out the following example of the incorrectly used builder:</p>
+<p>查看以下错误使用的构建器示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ProgrammerProfile.newBuilder()</span><br><span class="line">       .withBlogUrl(&quot;www.dolszewski.com/blog/&quot;)</span><br><span class="line">       .withTwitterHandler(&quot;daolszewski&quot;)</span><br><span class="line">       .build();</span><br></pre></td></tr></table></figure>
+
+<p>The compiler won’t report any error. You’ll realize the problem with the missing required parameter only at the runtime.</p>
+<p>编译器不会报告任何错误。只有在运行时，你才会意识到缺少必需参数的问题。</p>
+<p>So how do you tackle the issue?</p>
+<p>那么如何解决这个问题呢？</p>
+<p>You need to slightly modify the builder factory method so that you can call it only with required parameters and left builder methods only for optional parameters.</p>
+<p>你需要稍微修改 builder factory 方法，以便只能使用必需的参数调用它，而仅对可选参数使用 left builder 方法。</p>
+<p>Here’s all you have to change:</p>
+<p>以下是你需要改动的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class ProgrammerProfile &#123;</span><br><span class="line"></span><br><span class="line">   // ...</span><br><span class="line"></span><br><span class="line">   public static Builder newBuilder(String name) &#123;</span><br><span class="line">      return new Builder(name);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public static final class Builder &#123;</span><br><span class="line"></span><br><span class="line">      private final String name;</span><br><span class="line">      // ...</span><br><span class="line"></span><br><span class="line">      private Builder(String name) &#123;</span><br><span class="line">          this.name = name;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      // ...</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Builder-class-generation"><a href="#2-3-Builder-class-generation" class="headerlink" title="2.3. Builder class generation"></a>2.3. Builder class generation</h2><p><strong>构建器类生成</strong></p>
+<p>You may think that builders require hell of a lot of code.</p>
+<p>你可能认为构建器需要大量的代码。</p>
+<p>Don’t worry.</p>
+<p>不必担心。</p>
+<p>You don’t have to type all that code on your own. All popular Java IDEs have plugins which allow to generate class builders. IntelliJ users can check the InnerBuilder plugin, while Eclipse fans can take a look at Spart Builder Generator. You can also find alternative plugins in the official repositories.</p>
+<p>你不需要自己输入所有的代码。所有流行的 Java IDE 都有允许生成类构建器的插件。IntelliJ 用户可以查看 InnerBuilder 插件，而 Eclipse 的粉丝可以查看 Spart Builder 生成器。你还可以在官方存储库中找到其他插件。</p>
+<p>If you use the project Lombok, it also simplify working with class builders. You can check this short introduction to Lombok builders if you need a place to start.</p>
+<p>如果你使用 Project Lombok，它还可以简化与类构建器的工作。如果你需要一个开始的地方，可以查看 Lombok 构建器的简短介绍。</p>
+<h2 id="3-Java-optional-parameters-anti-patterns"><a href="#3-Java-optional-parameters-anti-patterns" class="headerlink" title="3. Java optional parameters anti-patterns"></a>3. Java optional parameters anti-patterns</h2><p><strong>Java 可选参数的反模式</strong></p>
+<p>While browsing the web in search for approaches to work with Java optional parameters, you can find a few additional suggestions than we already covered. Let me explain why you should consider them as wrong approaches.</p>
+<p>在浏览 web 以寻找使用 Java 可选参数的方法时，你可以找到一些我们已经介绍过的其他建议。让我解释一下为什么你应该认为它们是错误的方法。</p>
+<h2 id="3-1-Maps"><a href="#3-1-Maps" class="headerlink" title="3.1. Maps"></a>3.1. Maps</h2><p>Technically speaking, method’s input is a set of key-value pairs. In Java, we have a standard built-in data structure which matches this description – the Map.</p>
+<p>从技术上讲，方法的输入是一组 key-value 对。在 Java 中，我们有一个标准的内置数据结构来匹配这个描述，它就是 Map。</p>
+<p>The compile won’t prevent you from using HashMap&lt;String, Object&gt; as a container for all optional method parameters but your common sense should.</p>
+<p>编译器不会阻止你使用 HashMap&lt;String, Object&gt;作为所有可选方法参数的容器，这也是你应该具备的常识。</p>
+<p>Although you can put anything in such HashMap, it’s wrong idea. This approach is hard to understand, unreadable and will quickly become your maintenance nightmare.</p>
+<p>尽管你可以将任何内容放入这样的 HashMap 中，但这种想法是错误的。这种方法很难理解、不可读，并且很快就会成为你的维护噩梦。</p>
+<p>Still not convinced（v. 使确信）?</p>
+<p>还不相信吗？</p>
+<p>You should definitely consider switching your career to a JavaScript developer. It’s much easier to cry in the company.</p>
+<p>你绝对应该考虑转行到 JavaScript 开发人员。（和这个相比），在公司里哭要容易得多。</p>
+<h2 id="3-2-Java-varargs"><a href="#3-2-Java-varargs" class="headerlink" title="3.2. Java varargs"></a>3.2. Java varargs</h2><p><strong>Java 可变参数</strong></p>
+<p>Just to be clear, there’s absolutely nothing wrong in using Java varargs. If you don’t know with how many arguments your method will be called, varargs is a perfect fit.</p>
+<p>需要明确的是，使用 Java 的可变参数绝对没有什么错。如果不知道方法将被调用多少个参数，那么可变参数非常适合。</p>
+<p>But using varargs as a container for a single value, which might be present or not, is a misuse. Such declaration allows to call a method with more optional values than expected. We discussed much more descriptive approaches for handling a single optional parameters.</p>
+<p>但是使用可变参数作为单个值的容器（可能存在也可能不存在）是一种误用。这样的声明允许调用一个方法比预期更多的可选值。我们讨论了更多的描述方法来处理单一的可选参数。</p>
+<h2 id="3-3-Why-not-Optional-as-method-argument"><a href="#3-3-Why-not-Optional-as-method-argument" class="headerlink" title="3.3. Why not Optional as method argument?"></a>3.3. Why not Optional as method argument?</h2><p><strong>为什么不将 Optional 对象作为方法参数呢?</strong></p>
+<p>Finally, the most controversial approach – Java 8 Optional as a method input. I’ve already written a post about Optional use cases in which I also covered method parameters. Let me extend what you can find there.</p>
+<p>最后，最具争议的方法就是将 Java 8 的 Optional 对象作为方法输入。我已经写了一篇关于 Optional 用例的文章，其中也涉及了方法参数。我把你能找到的扩展一下。</p>
+<h2 id="Memory-usage"><a href="#Memory-usage" class="headerlink" title="Memory usage"></a>Memory usage</h2><p><strong>内存使用情况</strong></p>
+<p>When you create an instance of the Optional class, you have to allocate the memory for it. While the empty optional instance accessed with Optional.empty() is a reusable singleton (just like empty collections we’ve already discussed), non empty instances will occupy the operating memory.</p>
+<p>当你创建 Optional 类的实例时，你必须为它分配内存。虽然使用 Optional.empty()访问的空 Optional 实例是可重用的单例（就像我们已经讨论过的空集合一样），但是非空实例将占用操作内存。</p>
+<p>Wrapping objects using Optional factory methods just for the purpose of calling a method which will immediately unwrap them doesn’t make sense if you compare this approach with other possibilities.</p>
+<p>如果你将这种方法与其他可能的方法进行比较，那么仅为了调用将立即展开它们的方法而使用可选工厂方法包装对象是没有意义的。</p>
+<p>Yet, nowadays Garbage Collectors handle short-lived objects very well. The memory allocation isn’t a big deal. Do we have any other cons?</p>
+<p>然而，现在垃圾收集器可以很好地处理短期对象。内存分配不是什么大问题。我们还有其他缺点吗?</p>
+<h2 id="Coding-with-reader-in-mind"><a href="#Coding-with-reader-in-mind" class="headerlink" title="Coding with reader in mind"></a>Coding with reader in mind</h2><p><strong>为读者编写代码</strong></p>
+<p>What about code readability?</p>
+<p>那么代码可读性呢?</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">createProfile(&quot;Daniel&quot;, Optional.of(&quot;www.dolszewski.com/blog/&quot;),</span><br><span class="line">       Optional.of(&quot;daolszewski&quot;), Optional.of(&quot;https://github.com/danielolszewski&quot;));</span><br></pre></td></tr></table></figure>
+
+<p>Maybe it’s just a matter of personal preference but for many developers multiple Optional factory calls are distracting. The noise in the code for the reader. But again, it’s just a matter of taste. Let’s find something more convincing.</p>
+<p>也许这只是个人喜好的问题，但是对于许多开发人员来说，多个 Optional 工厂调用会分散他们的注意力。代码中的噪声是为读者准备的。但这只是品味的问题。让我们找些更有说服力的。</p>
+<h2 id="Java-language-architect-opinion"><a href="#Java-language-architect-opinion" class="headerlink" title="Java language architect opinion"></a>Java language architect opinion</h2><p><strong>Java 语言架构师看法</strong></p>
+<p><strong><em>译注：原文的 language 拼写错误</em></strong></p>
+<p>Brian Goetz, who is Java language architect at Oracle once stated that Optional was added to the standard library with methods’ results in mind, not their inputs.</p>
+<p>Oracle 的 Java 语言架构师 Brian Goetz 曾经说过，将 Optional 添加到标准库时考虑的是方法的结果，而不是方法的输入。</p>
+<p>But software developers are rebels and don’t like listening to authorities. This argument may also seems weak. We have to go deeper.</p>
+<p>但软件开发者是叛逆者，不喜欢听当局的。这一论点似乎也站不住脚。我们必须更深入。</p>
+<h2 id="Does-Optional-solve-optional-parameter-problem"><a href="#Does-Optional-solve-optional-parameter-problem" class="headerlink" title="Does Optional solve optional parameter problem?"></a>Does Optional solve optional parameter problem?</h2><p><strong>可选是否解决可选参数问题？</strong></p>
+<p>If you have a method declaration like this:</p>
+<p>如果你有这样的方法声明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doSomethingWith(Optional&lt;Object&gt; parameter);</span><br></pre></td></tr></table></figure>
+
+<p>How many possible inputs should you expect?</p>
+<p>你应该期望多少可能的输入？</p>
+<p>The parameter can be either a wrapped value or the empty optional instance. So the answer is 2, right?</p>
+<p>参数可以是包装类的值，也可以是空的 Optional 实例。所以答案是 2，对吧？</p>
+<p>Wrong.</p>
+<p>错。</p>
+<p>The real answer is 3 because you can also pass the null as the argument. You should have a limited trust to inputs when you don’t know who will be the caller of your API.</p>
+<p>真正的答案是 3，因为你也可以传递 null 作为参数。当你不知道谁将是 API 的调用者时，你应该对输入具有有限的信任。</p>
+<p>In that case, before processing the parameter you should check if the Optional isn’t equal to the null and then if the value is present. Quite complicated, don’t you agree?</p>
+<p>在这种情况下，在处理参数之前，你应该检查 Optional 是否等于 null，然后检查值是否存在。相当复杂，你同意吗?</p>
+<p>I pretty sure I have not exhausted the topic yet. As this is one of potential holy wars of Java programming, you should form your own opinion. If you want to add something to the list of arguments against Optional as a method parameter, please share your thoughts in the comments. It’s more than welcome.</p>
+<p>我敢肯定我还没有穷尽这个话题。由于这是 Java 编程的潜在圣战之一，你应该形成自己的观点。如果你想在可选参数的参数列表中添加一些内容，请在评论中分享你的想法。非常欢迎。</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p><strong>结论</strong></p>
+<p>Let’s recap what we’ve learned. Java doesn’t have a possibility to set a default value to method parameters. The language provides us we many other alternatives for handling optional parameters.</p>
+<p>让我们回顾一下我们所学到的。Java 不可能为方法参数设置默认值。该语言为我们提供了许多处理可选参数的其他选择。</p>
+<p>These alternatives include the @Nullable annotation, null objects, method overloading, and the Parameter Object pattern. We also familiarize with class builders for objects with multiple optional fields. Lastly, we reviewed common bad practices and potential misuses.</p>
+<p>这些替代方法包括@Nullable 注释、null 对象、方法重载和参数对象模式。我们还熟悉具有多个可选字段的对象的类构建器。最后，我们回顾了常见的不良实践和潜在的误用。</p>
+<p>If you find the article helpful, I’ll be grateful for sharing it with your followers. I’d also love to know your thoughts, all comments are welcome.</p>
+<p>如果你觉得这篇文章对你有帮助，我会很感激与你的追随者分享它。我也想知道你的想法，欢迎所有的意见。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/" rel="tag"># 未标记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/4686ddb0-2bb6-11ee-879b-0b2c36f14b2e/" rel="prev" title="Java-Custom-Exception-Example">
+                  <i class="fa fa-chevron-left"></i> Java-Custom-Exception-Example
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/4686ddb2-2bb6-11ee-879b-0b2c36f14b2e/" rel="next" title="Java-SimpleDateFormat-Example">
+                  Java-SimpleDateFormat-Example <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

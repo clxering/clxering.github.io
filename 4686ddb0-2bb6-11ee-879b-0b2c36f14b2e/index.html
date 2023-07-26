@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Java-Custom-Exception-Example">
+<meta property="og:url" content="http://www.dcheng.site/4686ddb0-2bb6-11ee-879b-0b2c36f14b2e/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-26T13:09:30.000Z">
+<meta property="article:modified_time" content="2023-07-26T13:19:47.595Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="未标记">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/4686ddb0-2bb6-11ee-879b-0b2c36f14b2e/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/4686ddb0-2bb6-11ee-879b-0b2c36f14b2e/","path":"4686ddb0-2bb6-11ee-879b-0b2c36f14b2e/","title":"Java-Custom-Exception-Example"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java-Custom-Exception-Example | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-Custom-Exception-Example"><span class="nav-text">Java Custom Exception Example</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81Basics-of-Exception"><span class="nav-text">1、Basics of Exception</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81Creating-custom-Exception"><span class="nav-text">2、Creating custom Exception</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81Points-to-note"><span class="nav-text">3、Points to note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81Closing-Words"><span class="nav-text">4、Closing Words</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95%EF%BC%8C%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99-1"><span class="nav-text">附录，相关资料 1</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/4686ddb0-2bb6-11ee-879b-0b2c36f14b2e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java-Custom-Exception-Example | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          Java-Custom-Exception-Example
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-07-26 21:09:30 / Modified: 21:19:47" itemprop="dateCreated datePublished" datetime="2023-07-26T21:09:30+08:00">2023-07-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">文献翻译</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="Java-Custom-Exception-Example"><a href="#Java-Custom-Exception-Example" class="headerlink" title="Java Custom Exception Example"></a>Java Custom Exception Example</h1><p><strong>Java 自定义异常案例</strong></p>
+<blockquote>
+<p>转译自：<a target="_blank" rel="noopener" href="https://examples.javacodegeeks.com/">https://examples.javacodegeeks.com</a></p>
+</blockquote>
+<p>In this example we will look briefly（短暂的） at the basics of <code>Exception</code>, in Java Programming Language. We will also see, how to create a custom <code>Exception</code> Class.</p>
+<p>在这个案例中，我们将使用 Java 语言来简要介绍“异常”的基础知识。我们同样也能够了解如何创建一个自定义的 Exception 类。</p>
+<h2 id="1、Basics-of-Exception"><a href="#1、Basics-of-Exception" class="headerlink" title="1、Basics of Exception"></a>1、Basics of Exception</h2><p><strong>异常的基础知识</strong><br>As per（按照） oracle docs, An exception is an event, which occurs during the execution of a program, that disrupts（扰乱） the normal flow of the program’s instructions（指令）.</p>
+<p>按照 oracle 的文档介绍，异常是一个在程序运行期间发生的事件，会扰乱正常程序流程的指令。</p>
+<p>In laymen（非专业人员） terms, when a condition occurs, in which the routine（程序） is not sure how to proceed in an ordinary way it creates an object of exception and hands it over to the runtime system to find an appropriate handler for the exception object. In case, the runtime system does not find an appropriate handler in the call hierarchy the runtime system terminates.</p>
+<p>用非专业的话来说，当满足异常发生条件时，程序不确定能以普通的方式进行时，它创建一个异常对象并递交给运行时系统，以查找处理异常对象的合适的处理程序。在这种情况下，运行时系统在运行时系统终止的调用层次结构中没有找到合适的处理程序。</p>
+<p>The exceptions have <code>java.lang.Throwable</code> as their superclass.The three main categories of Exceptional conditions are :</p>
+<p>异常以 java.lang.Throwable 类作为父类。异常主要有三大类：</p>
+<p>（1）Error(represented by <code>java.lang.Error</code> and its sub-classes)</p>
+<p>错误（以 java.lang.Error 类及其子类表示）</p>
+<p>（2）Checked Exception(represented by direct subclasses of <code>java.lang.Exception</code> except <code>java.lang.RuntimeException</code>)</p>
+<p>Checked 异常（由 java.lang.Exception 除了 java.lang.RuntimeException 类的子类表示）</p>
+<p>（3）Unchecked or Runtime Exceptions (represented by <code>java.lang.RuntimeException</code> and its sub-classes)</p>
+<p>Unchecked 或运行时异常（由 java.lang.RuntimeException 类及其子类表示）</p>
+<p><strong>Errors :</strong> Errors denote serious abnormal（不正常的） condition with the application like <code>OutOfMemoryError</code> or <code>VirtualMachineError</code>. Any reasonable application should not try to recover from such a condition.</p>
+<p>错误表示严重的异常情况，如 OutOfMemoryError（内存溢出）或 VirtualMachineError（虚拟机错误）。任何理由都不能使应用程序从这种情况中恢复过来。</p>
+<p><strong>Runtime Exception&#x2F;Unchecked Exception :</strong> These types of exceptions usually indicate programming errors like <code>NullPointerException</code> or <code>IllegalArgumentException</code>. The application may or may not choose to recover from the condition.</p>
+<p>这些类型的异常通常表示程序错误，如 NullPointerException（空指针异常）或 IllegalArgumentException（参数异常）。应用程序可以选择从该类异常中恢复，也可以选择不恢复。</p>
+<p><strong>Checked Exception :</strong> An application is supposed to catch these types of exceptions and recover reasonably from them. Examples include <code>FileNotFoundException</code> and <code>ParseException</code>.</p>
+<p>应用程序应该捕获这类异常并合理恢复。例如 FileNotFoundException（文件未找到异常）和 ParseException（解析异常）。</p>
+<h2 id="2、Creating-custom-Exception"><a href="#2、Creating-custom-Exception" class="headerlink" title="2、Creating custom Exception"></a>2、Creating custom Exception</h2><p><strong>创建自定义异常</strong><br>The first thing before creating a custom exception, the developer should be able to justify（证明） the creation（创建，n.）. As per（按照） Java Docs, You should write your own exception classes if you answer yes to any of the following questions; otherwise, you can probably use someone else’s.</p>
+<p>创建自定义异常前，开发者应为此（行为）找到依据。按照 Java 文档，如果你对以下任何一个问题回答 yes，你应该编写自己的异常类；否则，你（最好）用别人的。</p>
+<p>（1）Do you need an exception type that isn’t represented by those in the Java platform?</p>
+<p>你需要一个 Java 平台中没有（定义）的异常类型吗？</p>
+<p>（2）Would it help users if they could differentiate（区分） your exceptions from those thrown by classes written by other vendors（供应商）?</p>
+<p>如果用户可以将你的异常与其他供应商编写的类抛出的异常区分开来，那么这会对用户有帮助吗?</p>
+<p>（3）Does your code throw more than one related exception?</p>
+<p>你的代码是否会抛出多个相关异常？</p>
+<p>（4）If you use someone else’s exceptions, will users have access to those exceptions? A similar question is, should your package be independent and self-contained?</p>
+<p>如果你使用其他人的异常，用户是否可以访问这些异常？类似的问题是，你的包应该是独立的、自包含的吗？</p>
+<p>Now, that you are sure that you really do want a create a custom Exception class we will begin writing the actual program.To create a custom checked exception, we have to sub-class from the <code>java.lang.Exception</code> class. And that’s it! Yes, creating a custom exception in java is simple as that!</p>
+<p>现在，你确信确实想要创建一个自定义的异常类，我们将开始编写实际的程序。要创建一个自定义异常，我们必须从 java.lang.Exception 派生子类。是的，在 java 中创建一个自定义异常很简单！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class CustomException extends Exception&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Sometimes though, the <code>CustomException</code> object will have to be constructed from another exception. So its important that we create a constructor for such a scenario.</p>
+<p>但有时，CustomException 对象需要通过另一个异常来构造。因此，为这样的场景创建构造函数是很重要的。</p>
+<p>So a more complete class would be as below :</p>
+<p>因此，一个更完整的类应如下所示：</p>
+<p><strong>CustomException.java:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package com.javacodegeeks.examples.exception;</span><br><span class="line">public class CustomException extends Exception</span><br><span class="line">&#123;</span><br><span class="line">    private static final long serialVersionUID = 1997753363232807009L;</span><br><span class="line">		public CustomException()</span><br><span class="line">		&#123;&#125;</span><br><span class="line">		public CustomException(String message)</span><br><span class="line">		&#123;</span><br><span class="line">			super(message);</span><br><span class="line">		&#125;</span><br><span class="line">		public CustomException(Throwable cause)</span><br><span class="line">		&#123;</span><br><span class="line">			super(cause);</span><br><span class="line">		&#125;</span><br><span class="line">		public CustomException(String message, Throwable cause)</span><br><span class="line">		&#123;</span><br><span class="line">			super(message, cause);</span><br><span class="line">		&#125;</span><br><span class="line">		public CustomException(String message, Throwable cause,</span><br><span class="line">                         boolean enableSuppression, boolean writableStackTrace)</span><br><span class="line">		&#123;</span><br><span class="line">			super(message, cause, enableSuppression, writableStackTrace);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.1、Testing the custom Exception（测试自定义异常） :</strong><br><strong>CustomExceptionTest.java:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.javacodegeeks.examples.exception;</span><br><span class="line">public class CustomExceptionTest</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">	try</span><br><span class="line">        &#123;</span><br><span class="line">	      testException(null);</span><br><span class="line">        &#125;</span><br><span class="line">        catch (CustomException e)</span><br><span class="line">        &#123;</span><br><span class="line">	      e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void testException(String string) throws CustomException</span><br><span class="line">    &#123;</span><br><span class="line">	      if(string == null)</span><br><span class="line">		    throw new CustomException(&quot;The String value is null&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Similarly, an unchecked exception can be created by sub-classing from the <code>java.lang.RuntimeException</code> Class.</p>
+<p>类似地，unchecked 异常可以通过 java.lang.RuntimeException 的子类来创建。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class CustomException extends RuntimeException&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、Points-to-note"><a href="#3、Points-to-note" class="headerlink" title="3、Points to note"></a>3、Points to note</h2><p><strong>注意事项</strong><br>（1）An unchecked exception should be preferred（首选） to a checked exception. This will help programmes to be free of unnecessary <code>try..catch blocks</code>.</p>
+<p>相比一个 unchecked 异常，应首选 checked 异常。这有助于程序摆脱不必要的 try..catch 块。</p>
+<p>（2）Exceptions are abnormal conditions, and as such should not be used for controlling the flow of execution of the programmes(as demonstrated by example below).</p>
+<p>异常是异常情况，不应该用于程序的流程控制（如下面示例所示）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">	for (int i = 0;; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(args[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">catch (ArrayIndexOutOfBoundsException e)</span><br><span class="line">&#123;</span><br><span class="line">		// do nothing</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）A <code>catch block</code> should not be empty as shown in the example above. Such exceptions are very difficult to track（跟踪）, since there is no logging.</p>
+<p>catch 块不应该是空的，如上面的示例所示。由于没有日志记录，因此很难跟踪这些异常。</p>
+<p>（4）The name of a custom exception class should end with Exception. It improves the readability of the code. Instead of naming the class InvalidSerial, the class should be named InvalidSerialException.</p>
+<p>自定义异常类的名称应该以 Exception 结尾。它提高了代码的可读性。类不应该命名为 InvalidSerial，而应该命名为 InvalidSerialException。</p>
+<p>（5）When using ARM&#x2F;try-with-resources blocks, if exception gets suppressed by the try-with-resources statement, we can use <code>Throwable#getSuppressed()</code> method.</p>
+<p>当使用 ARM&#x2F;try-with-resources 块时，如果异常被 try-with-resources 语句抑制，我们可以使用 Throwable# getrepression()方法。</p>
+<h2 id="4、Closing-Words"><a href="#4、Closing-Words" class="headerlink" title="4、Closing Words"></a>4、Closing Words</h2><p><strong>结束语</strong></p>
+<p>Here,we tried to understand the basics of exception and how to create a custom exception of our own. We learned the best practices while creating a custom exception class and also how to handle（处理） an exception in a reasonable manner.</p>
+<p>在这里，我们尝试理解异常的基本原理，以及如何创建我们自己的自定义异常。我们在创建自定义异常类时学习了最佳实践，以及如何以合理的方式处理异常。</p>
+<h2 id="附录，相关资料-1"><a href="#附录，相关资料-1" class="headerlink" title="附录，相关资料 1"></a>附录，相关资料 1</h2><p><strong>可与上述转译内容互参</strong><br>Throwable 是所有 Java 中所有异常类的父类，有两种子类：<strong>Error</strong>和<strong>Exception</strong></p>
+<p><strong>1、Error：</strong> 表示由 JVM 所侦测到的无法预期的错误，由于这是属于 JVM 层次的严重错误，导致 JVM 无法继续执行，这是不可捕捉到的，无法采取任何恢复的操作，只能显示错误信息。Error 类体系描述了 Java 运行系统中的内部错误以及资源耗尽的情形，应用程序不应该抛出这种类型的对象（一般是由虚拟机抛出）。假如出现这种错误，除了尽力使程序安全退出外，在其他方面是无能为力的。</p>
+<p><strong>2、Exception：</strong> 表示可恢复的异常，这是可捕捉到的。Java 提供了两类主要的异常：Runtime Exception 和 checked exception。</p>
+<p>（2-1）checked 异常是经常遇到的，如：IO 异常、SQL 异常。对于这种异常，JAVA 编译器强制要求我们对出现的这些异常进行 catch。所以，面对这种异常只能编写 catch 块去处理。这类异常一般是外部错误，例如试图从文件尾后读取数据等，这并不是程序本身的错误，而是在应用环境中出现的外部错误。</p>
+<p>（2-2）Runtime Exception 也称运行时异常，我们可以不处理。当出现这样的异常时，总是由虚拟机接管。比如：我们从来没有人去处理过 NullPointerException 异常，它就是运行时异常，并且 NullPointerException 还是最常见的异常之一。Runtime Exception 体系包括错误的类型转换、数组越界访问和试图访问空指针等等。如果出现 Runtime Exception，那么一定是程序员的错误。例如：可以通过检查数组下标和数组边界来避免数组越界访问异常。</p>
+<p>出现运行时异常后，系统会把异常一直往上层抛，一直遇到处理代码。如果到最上层还没有处理块，多线程程序就由 Thread.run()抛出，这个线程就退出；如果是单线程就被 main()抛出，整个程序也就退出了。运行时异常是 Exception 的子类，也有一般异常的特点，是可以被 catch 块处理的。只不过往往我们不对他处理罢了。如果不对运行时异常进行处理，那么出现运行时异常之后，要么是线程中止，要么是主程序终止。</p>
+<p>如果不想终止线程或程序，则必须捕捉所有的运行时异常，决不让这个处理线程退出。队列里面出现异常数据了，正常的处理应该是把异常数据舍弃，然后记录日志。不应该由于异常数据而影响下面对正常数据的处理。但并不代表在所有的场景你都应该如此，如果在其它场景，遇到了一些错误，如果退出程序比较好，这时你就可以不太理会运行时异常，或者是通过对异常的处理显式的控制程序退出。异常处理的目标之一就是为了把程序从异常中恢复出来。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/" rel="tag"># 未标记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/4686b6a1-2bb6-11ee-879b-0b2c36f14b2e/" rel="prev" title="Java-8-中的-Streams-API-详解">
+                  <i class="fa fa-chevron-left"></i> Java-8-中的-Streams-API-详解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/468704c1-2bb6-11ee-879b-0b2c36f14b2e/" rel="next" title="Java-optional-parameters">
+                  Java-optional-parameters <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
