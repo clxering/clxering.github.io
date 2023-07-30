@@ -15,8 +15,30 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 26 Jul 2023 13:19:47 GMT</pubDate>
+    <pubDate>Sun, 30 Jul 2023 12:36:18 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>win-ubuntu-安装-postgresql-15</title>
+      <link>http://www.dcheng.site/undefined/</link>
+      <guid>http://www.dcheng.site/undefined/</guid>
+      <pubDate>Sun, 30 Jul 2023 12:33:35 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/postgresql/">postgresql</category>
+      
+      
+      <comments>http://www.dcheng.site/undefined/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>volatile-变量使用指南</title>

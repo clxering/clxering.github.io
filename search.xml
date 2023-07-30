@@ -3155,6 +3155,146 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>win-ubuntu-安装-postgresql-15</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、win10"><a href="#1、win10" class="headerlink" title="1、win10"></a>1、win10</h2><p>下载地址：<a href="https://www.enterprisedb.com/download-postgresql-binaries">https://www.enterprisedb.com/download-postgresql-binaries</a></p>
+<h2 id="1-1、执行安装"><a href="#1-1、执行安装" class="headerlink" title="1.1、执行安装"></a>1.1、执行安装</h2><p>1）解压，并添加 <code>pgsql\bin</code> 到环境变量。</p>
+<p>2）执行 <code>initdb -U postgres -A password -E UTF-8 -W -D C:\pgsql\data</code>，该步骤将提示输入密码。</p>
+<p>3）执行 <code>pg_ctl -D &quot;C:/pgsql/data&quot; start</code> 启动服务。</p>
+<p>4）执行 <code>psql -U postgres</code> 登录，输入之前步骤的密码。</p>
+<blockquote>
+<p>注意：控制台方式启动服务，当关闭控制台时，服务随即终止。若要保持后台启动，需要注册服务。</p>
+</blockquote>
+<p>5）注册服务：执行 <code>pg_ctl register -N PostgreSQL -D &quot;C:/Users/clx/Desktop/pgsql/data&quot;</code>，再执行 <code>net start PostgreSQL</code></p>
+<h2 id="2、ubuntu-22-04"><a href="#2、ubuntu-22-04" class="headerlink" title="2、ubuntu 22.04"></a>2、ubuntu 22.04</h2><h2 id="2-1、官方文档"><a href="#2-1、官方文档" class="headerlink" title="2.1、官方文档"></a>2.1、官方文档</h2><p>文档地址：<a href="https://www.postgresql.org/download/linux/ubuntu/">https://www.postgresql.org/download/linux/ubuntu/</a> （version：20230726）</p>
+<p><strong>Linux downloads (Ubuntu) Ubuntu</strong></p>
+<p>PostgreSQL is available in all Ubuntu versions by default. However, Ubuntu “snapshots” a specific version of PostgreSQL that is then supported throughout the lifetime of that Ubuntu version. Other versions of PostgreSQL are available through the PostgreSQL apt repository.</p>
+<p><strong>PostgreSQL Apt Repository</strong></p>
+<p>If the version included in your version of Ubuntu is not the one you want, you can use the PostgreSQL Apt Repository. This repository will integrate with your normal systems and patch management, and provide automatic updates for all supported versions of PostgreSQL throughout the support lifetime of PostgreSQL.</p>
+<p>The PostgreSQL Apt Repository supports the current versions of Ubuntu:</p>
+<ul>
+<li>kinetic (22.10, non-LTS)</li>
+<li>jammy (22.04, LTS)</li>
+<li>focal (20.04, LTS)</li>
+<li>bionic (18.04, LTS)</li>
+</ul>
+<p>on the following architectures:</p>
+<ul>
+<li>amd64</li>
+<li>arm64 (18.04 and newer; LTS releases only)</li>
+<li>i386 (18.04 and older)</li>
+<li>ppc64el (LTS releases only)</li>
+</ul>
+<p>To use the apt repository, follow these steps:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Create the file repository configuration:</span></span><br><span class="line">sudo sh -c <span class="string">&#x27;echo &quot;deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main&quot; &gt; /etc/apt/sources.list.d/pgdg.list&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Import the repository signing key:</span></span><br><span class="line">wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -</span><br><span class="line"></span><br><span class="line"><span class="comment"># Update the package lists:</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install the latest version of PostgreSQL.</span></span><br><span class="line"><span class="comment"># If you want a specific version, use &#x27;postgresql-12&#x27; or similar instead of &#x27;postgresql&#x27;:</span></span><br><span class="line">sudo apt-get -y install postgresql-15</span><br></pre></td></tr></table></figure>
+
+<p>For more information about the apt repository, including answers to frequent questions, please see the PostgreSQL Apt Repository page on the wiki.</p>
+<p><strong>Included in distribution</strong></p>
+<p>Ubuntu includes PostgreSQL by default. To install PostgreSQL on Ubuntu, use the apt-get (or other apt-driving) command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get install postgresql-12</span><br></pre></td></tr></table></figure>
+
+<p>The repository contains many different packages including third party addons. The most common and important packages are (substitute the version number as required):</p>
+<h2 id="2-2、执行-pg-15-3-安装"><a href="#2-2、执行-pg-15-3-安装" class="headerlink" title="2.2、执行 pg-15.3 安装"></a>2.2、执行 pg-15.3 安装</h2><p>执行 <code>sudo apt-get -y install postgresql-15</code> 将安装 15.3</p>
+<h2 id="2-3、查看服务"><a href="#2-3、查看服务" class="headerlink" title="2.3、查看服务"></a>2.3、查看服务</h2><p>执行 <code>sudo systemctl status postgresql</code> 查看服务运行情况：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">postgresql.service - PostgreSQL RDBMS</span><br><span class="line">     Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset:&gt;</span><br><span class="line">     Active: active (exited) since Tue 2023-07-25 09:55:14 CST; 12min ago</span><br><span class="line">   Main PID: 4625 (code=exited, status=0/SUCCESS)</span><br><span class="line">        CPU: 2ms</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3、查看路径"><a href="#2-3、查看路径" class="headerlink" title="2.3、查看路径"></a>2.3、查看路径</h2><p>执行 <code>ps -ef | grep postgres | grep -v &#39;grep&#39;</code> 显示如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">postgres    5671       1  0 09:55 ?        00:00:00 /usr/lib/postgresql/15/bin/postgres -D /var/lib/postgresql/15/main -c config_file=/etc/postgresql/15/main/postgresql.conf</span><br><span class="line">postgres    5672    5671  0 09:55 ?        00:00:00 postgres: 15/main: checkpointer </span><br><span class="line">postgres    5673    5671  0 09:55 ?        00:00:00 postgres: 15/main: background writer </span><br><span class="line">postgres    5675    5671  0 09:55 ?        00:00:00 postgres: 15/main: walwriter </span><br><span class="line">postgres    5676    5671  0 09:55 ?        00:00:00 postgres: 15/main: autovacuum launcher </span><br><span class="line">postgres    5677    5671  0 09:55 ?        00:00:00 postgres: 15/main: logical replication launcher </span><br></pre></td></tr></table></figure>
+
+<p>可获知以下信息：</p>
+<ul>
+<li>安装目录：<code>/usr/lib/postgresql/15/bin/postgres</code></li>
+<li>初始化数据库的数据目录：<code>/var/lib/postgresql/15/main</code></li>
+<li>配置文件路径：<code>/etc/postgresql/15/main/postgresql.conf</code></li>
+</ul>
+<h2 id="2-4、登录"><a href="#2-4、登录" class="headerlink" title="2.4、登录"></a>2.4、登录</h2><p>1）切换用户：执行 <code>su - postgres</code></p>
+<blockquote>
+<p>注意：如果提示 <code>su：认证失败</code>，需要执行 <code>sudo passwd postgres</code> 设置密码再切换，输入设置的密码即可。</p>
+</blockquote>
+<p>2）输入 <code>psql</code> 登录</p>
+<blockquote>
+<p>如果本地登录需要切换新增的角色，要在 <code>pg_hba.conf</code> 配置认证方式。例如：<code>local  all  all  md5</code></p>
+</blockquote>
+<h2 id="3、通用部分"><a href="#3、通用部分" class="headerlink" title="3、通用部分"></a>3、通用部分</h2><h2 id="3-1、创建角色"><a href="#3-1、创建角色" class="headerlink" title="3.1、创建角色"></a>3.1、创建角色</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CREATE ROLE name [ [ WITH ] option [ ... ] ]</span><br></pre></td></tr></table></figure>
+
+<p>option 属性</p>
+<ul>
+<li>登录权限（LOGIN ），具有该属性的角色才能连接数据库。</li>
+<li>创建数据库（CREATEDB），具有该属性的角色才能够创建数据库（超级用户除外）。</li>
+<li>创建角色（CREATEROLE），具有该属性的角色才能够创建其他角色（超级用户除外）。</li>
+<li>启动复制（REPLICATION），具有该属性的角色才能够启动流复制（超级用户除外）。</li>
+<li>密码（PASSWORD），只有当用户连接数据库使用的客户端认证方法要求提供密码时，密码属性才有意义。password 和 md5 认证方法需要使用密码。</li>
+<li>超级用户（SUPERUSER），数据的超级用户可以避开所有的权限检查，只验证登录权限。</li>
+</ul>
+<p>例1，创建角色并赋予【登录、创建数据库、密码】属性：<code>create role abc123 login createdb password &#39;abc123&#39;;</code></p>
+<p>例2，修改角色属性：<code>alter role &lt;role_name&gt; login createdb;</code></p>
+<blockquote>
+<p>注：可执行 <code>\du</code> 查看当前全部角色</p>
+</blockquote>
+<h2 id="3-2、查看版本"><a href="#3-2、查看版本" class="headerlink" title="3.2、查看版本"></a>3.2、查看版本</h2><p>执行 <code>psql --version</code> 查看当前版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">psql (PostgreSQL) 15.3 (Ubuntu 15.3-1.pgdg22.04+1)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3、远程登录"><a href="#3-3、远程登录" class="headerlink" title="3.3、远程登录"></a>3.3、远程登录</h2><ul>
+<li>修改 <code>/etc/postgresql/15/main/pg_hba.conf</code>，按需增加配置，如：<code>host  all  all  0.0.0.0/0  md5</code></li>
+<li>修改配置文件，将 <code>listen_addresses = &#39;localhost&#39;</code> 修改为 <code>listen_addresses = &#39;*&#39;</code></li>
+<li>执行 <code>sudo systemctl restart postgresql</code> 重启服务</li>
+</ul>
+<h2 id="3-3-1、pg-hba-conf-配置参数"><a href="#3-3-1、pg-hba-conf-配置参数" class="headerlink" title="3.3.1、pg_hba.conf 配置参数"></a>3.3.1、<code>pg_hba.conf</code> 配置参数</h2><p>1）TYPE（主机类型）</p>
+<ul>
+<li><code>local</code>，unix-domain 的 socket 连接</li>
+<li><code>host</code>，TCP&#x2F;IP socket</li>
+<li><code>hostssl</code>，SSL加密的 TCP&#x2F;IP socket</li>
+</ul>
+<p>2）DATABASE（数据库名称）</p>
+<p><code>all</code>、<code>sameuser</code>、<code>samerole</code>、<code>replication</code>、<code>数据库名称</code>，或者多个数据库名称用 <code>逗号</code></p>
+<blockquote>
+<p>注意：all 不匹配 <code>replication</code></p>
+</blockquote>
+<p>3）USER（用户名称）</p>
+<p><code>all</code>、<code>一个用户名</code>、<code>一组用户名</code>，多个用户时，可以用逗号隔开，或者在用户名称前缀 <code>+</code>，在 USER 和 DATABASE 字段，也可以写一个单独的文件名称用 <code>@</code> 前缀，该文件包含数据库名称或用户名称。</p>
+<p>4）ADDRESS（地址范围）</p>
+<p>该参数可以为 <code>主机名称</code> 或者 <code>IP/32(IPV4)</code> 或 <code>IP/128(IPV6)</code>，主机名称以 <code>.</code> 开头，<code>samehost</code> 或 <code>samenet</code> 匹配任意 ip 地址</p>
+<p>5）METHOD（验证方式）</p>
+<ul>
+<li><code>trust</code>，无需密码验证可直接连接访问</li>
+<li><code>reject</code>，拒绝访问</li>
+<li><code>md5</code>，以 md5 加密</li>
+<li><code>password</code>，明文传输密码</li>
+<li><code>scram-sha-256</code></li>
+<li><code>gss</code></li>
+<li><code>sspi</code></li>
+<li><code>ident</code></li>
+<li><code>peer</code></li>
+<li><code>pam</code></li>
+<li><code>ldap</code></li>
+<li><code>radius</code></li>
+<li><code>cert</code></li>
+</ul>
+<blockquote>
+<p>注意：若为 <code>password</code> 则发送的为明文密码</p>
+</blockquote>
+<h2 id="4、问题集锦"><a href="#4、问题集锦" class="headerlink" title="4、问题集锦"></a>4、问题集锦</h2><h3 id="4-1、UTC-时间与系统时间偏差-8-小时"><a href="#4-1、UTC-时间与系统时间偏差-8-小时" class="headerlink" title="4.1、UTC 时间与系统时间偏差 8 小时"></a>4.1、UTC 时间与系统时间偏差 8 小时</h3><p><strong>解决方案：</strong></p>
+<p>1）显式指定 PRC</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> now() <span class="keyword">at</span> <span class="type">time</span> zone <span class="string">&#x27;PRC&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>结果：<code>2023-07-30 16:01:17.285747</code></p>
+<p>2）进一步指定格式</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> to_char(now() <span class="keyword">at</span> <span class="type">time</span> zone <span class="string">&#x27;PRC&#x27;</span>,<span class="string">&#x27;YYYY-MM-DD hh24:mi:ss&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>结果：<code>2023-07-30 16:03:34</code></p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>postgresql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</title>
     <url>/5886f891-2a1e-11ee-846a-89c1529ebdf1/</url>
     <content><![CDATA[<blockquote>
