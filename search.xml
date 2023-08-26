@@ -3155,8 +3155,79 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>win-环境下-node-压缩版安装</title>
+    <url>/ed0e3b50-441c-11ee-bc1a-25c3478a32d1/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、下载-Windows-Binary-zip-包"><a href="#1、下载-Windows-Binary-zip-包" class="headerlink" title="1、下载 Windows Binary (.zip)包"></a>1、下载 Windows Binary (.zip)包</h2><p>地址：<a href="https://nodejs.org/en/download">https://nodejs.org/en/download</a></p>
+<h2 id="2、设置"><a href="#2、设置" class="headerlink" title="2、设置"></a>2、设置</h2><p>解压到安装位置后，新建 <code>node-cache</code> 和 <code>node-global</code> 两个目录。开启 cmd 控制台切换到安装位置，执行配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> D:\node-v18.17.1-win-x64</span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">&quot;D:\node-v18.17.1-win-x64\node-cache&quot;</span></span><br><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">&quot;D:\node-v18.17.1-win-x64\node-global&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>添加如下环境变量</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">D:\node-v18.17.1-win-x64</span><br><span class="line">D:\node-v18.17.1-win-x64\node-global</span><br></pre></td></tr></table></figure>
+
+<p>任意位置执行查看版本命令确认安装情况：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c:\&gt;npm -v</span><br><span class="line">9.6.7</span><br><span class="line"></span><br><span class="line">c:\&gt;node -v</span><br><span class="line">v18.17.1</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu-配置共享文件夹</title>
+    <url>/0255ad60-4353-11ee-bed6-3d33eaf7fa7a/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<p>官网：<a href="https://www.samba.org/">https://www.samba.org/</a></p>
+<h2 id="1、安装-samba-服务器"><a href="#1、安装-samba-服务器" class="headerlink" title="1、安装 samba 服务器"></a>1、安装 samba 服务器</h2><p>执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install samba samba-common</span><br></pre></td></tr></table></figure>
+
+<p>可通过 <code>samba -V</code> 查看是否安装成功，输出结果：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Version 4.15.13-Ubuntu</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、创建目录"><a href="#2、创建目录" class="headerlink" title="2、创建目录"></a>2、创建目录</h2><p>假设共享路径为：<code>/home/share</code></p>
+<p>修改权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> 777 /home/share</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、修改配置文件"><a href="#3、修改配置文件" class="headerlink" title="3、修改配置文件"></a>3、修改配置文件</h2><p>执行 <code>sudo vim /etc/samba/smb.conf</code> 增加如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[src_share]</span><br><span class="line">comment = share</span><br><span class="line">path = /home/ubuntu/src</span><br><span class="line">public = <span class="built_in">yes</span></span><br><span class="line">browseable = <span class="built_in">yes</span></span><br><span class="line">writable = <span class="built_in">yes</span></span><br><span class="line">valid <span class="built_in">users</span> = ubuntu</span><br><span class="line">create mask = 777</span><br><span class="line">directory mask = 777</span><br><span class="line">available = <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<p>参数意义</p>
+<ul>
+<li><code>[src_share]</code>，显示的共享文件夹名称</li>
+<li><code>comment</code>：注释说明</li>
+<li><code>path</code>：共享路径</li>
+<li><code>browseable</code>：是否在 Window Explorer 中显示该目录</li>
+<li><code>writable</code>：写权限</li>
+<li><code>valid users</code>：可以访问的用户</li>
+<li><code>create mask</code>：新建立的文件的属性</li>
+<li><code>directory mask</code>：新建立的目录的属性</li>
+<li><code>available</code>：共享资源是否可用</li>
+</ul>
+<h2 id="4、添加-samba-访问账号及密码"><a href="#4、添加-samba-访问账号及密码" class="headerlink" title="4、添加 samba 访问账号及密码"></a>4、添加 samba 访问账号及密码</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo smbpasswd -a username</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：该用户需要在系统用户列表；可执行 <code>sudo pdbedit -L</code> 查看允许访问的用户。</p>
+</blockquote>
+<h2 id="5、重启服务"><a href="#5、重启服务" class="headerlink" title="5、重启服务"></a>5、重启服务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service smbd restart</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>win-ubuntu-安装-postgresql-15</title>
-    <url>/undefined/</url>
+    <url>/0255ad61-4353-11ee-bed6-3d33eaf7fa7a/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
 <span id="more"></span>
@@ -3292,6 +3363,29 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>postgresql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10-powershell-禁止运行脚本的问题</title>
+    <url>/ed0e8970-441c-11ee-bc1a-25c3478a32d1/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h2><p>使用 vscode 或 powershell 控制台时，由于默认执行策略是 Restricted，执行一些命令会提示报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo : 无法加载文件 D:\node-v18.17.1-win-x64\node-global\hexo.ps1，因为在此系统上禁止运行脚本。</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h2><p>1）执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br></pre></td></tr></table></figure>
+
+<p>2）重启应用或控制台</p>
+<h2 id="3、其他"><a href="#3、其他" class="headerlink" title="3、其他"></a>3、其他</h2><p>查看当前策略：<code>get-executionpolicy</code></p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>powershell</tag>
       </tags>
   </entry>
   <entry>

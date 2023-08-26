@@ -15,13 +15,79 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 30 Jul 2023 12:36:18 GMT</pubDate>
+    <pubDate>Sat, 26 Aug 2023 14:35:37 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
+      <title>win10-powershell-禁止运行脚本的问题</title>
+      <link>http://www.dcheng.site/ed0e8970-441c-11ee-bc1a-25c3478a32d1/</link>
+      <guid>http://www.dcheng.site/ed0e8970-441c-11ee-bc1a-25c3478a32d1/</guid>
+      <pubDate>Sat, 26 Aug 2023 14:19:24 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/powershell/">powershell</category>
+      
+      
+      <comments>http://www.dcheng.site/ed0e8970-441c-11ee-bc1a-25c3478a32d1/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>win-环境下-node-压缩版安装</title>
+      <link>http://www.dcheng.site/ed0e3b50-441c-11ee-bc1a-25c3478a32d1/</link>
+      <guid>http://www.dcheng.site/ed0e3b50-441c-11ee-bc1a-25c3478a32d1/</guid>
+      <pubDate>Sat, 26 Aug 2023 14:02:41 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/node/">node</category>
+      
+      
+      <comments>http://www.dcheng.site/ed0e3b50-441c-11ee-bc1a-25c3478a32d1/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>ubuntu-配置共享文件夹</title>
+      <link>http://www.dcheng.site/0255ad60-4353-11ee-bed6-3d33eaf7fa7a/</link>
+      <guid>http://www.dcheng.site/0255ad60-4353-11ee-bed6-3d33eaf7fa7a/</guid>
+      <pubDate>Fri, 25 Aug 2023 14:22:02 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/ubuntu/">ubuntu</category>
+      
+      
+      <comments>http://www.dcheng.site/0255ad60-4353-11ee-bed6-3d33eaf7fa7a/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>win-ubuntu-安装-postgresql-15</title>
-      <link>http://www.dcheng.site/undefined/</link>
-      <guid>http://www.dcheng.site/undefined/</guid>
+      <link>http://www.dcheng.site/0255ad61-4353-11ee-bed6-3d33eaf7fa7a/</link>
+      <guid>http://www.dcheng.site/0255ad61-4353-11ee-bed6-3d33eaf7fa7a/</guid>
       <pubDate>Sun, 30 Jul 2023 12:33:35 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -36,7 +102,7 @@
       <category domain="http://www.dcheng.site/tags/postgresql/">postgresql</category>
       
       
-      <comments>http://www.dcheng.site/undefined/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/0255ad61-4353-11ee-bed6-3d33eaf7fa7a/#disqus_thread</comments>
       
     </item>
     
