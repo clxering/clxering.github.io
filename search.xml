@@ -3880,6 +3880,40 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>在win10+vscode+anaconda3+python3.11.3独立环境部署pytorch2.0.1+cuda11.8</title>
+    <url>/148d4630-44e0-11ee-bc05-f9725afef782/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<p>该方式不用提前安装 vs2015_runtime 运行时以及 cuda、cudnn，在执行 pytorch 官网的命令后已经全部带有。因此，可在独立环境中同时存在多个版本的 cuda 或者 pytorch cpu 版本。</p>
+<h2 id="1、确定可支持-CUDA-版本"><a href="#1、确定可支持-CUDA-版本" class="headerlink" title="1、确定可支持 CUDA 版本"></a>1、确定可支持 CUDA 版本</h2><p>打开 NVIDIA Control Panel（NVIDIA 控制面板），点击左下角「系统信息」，在「组件」标签页查看支持的最高版本，如图所示：</p>
+<p><img src="/148d4630-44e0-11ee-bc05-f9725afef782/%E5%9B%BE1-%E7%A1%AE%E5%AE%9A%E5%8F%AF%E6%94%AF%E6%8C%81CUDA%E7%89%88%E6%9C%AC.png" alt="图1-确定可支持CUDA版本"></p>
+<h2 id="2、在-https-pytorch-org-查看-pytorch-支持的最高-CUDA-版本"><a href="#2、在-https-pytorch-org-查看-pytorch-支持的最高-CUDA-版本" class="headerlink" title="2、在 https://pytorch.org/ 查看 pytorch 支持的最高 CUDA 版本"></a>2、在 <a href="https://pytorch.org/">https://pytorch.org/</a> 查看 pytorch 支持的最高 CUDA 版本</h2><p><img src="/148d4630-44e0-11ee-bc05-f9725afef782/%E5%9B%BE2-%E6%9F%A5%E7%9C%8Bpytorch%E6%94%AF%E6%8C%81%E7%9A%84%E6%9C%80%E9%AB%98CUDA%E7%89%88%E6%9C%AC.png" alt="图2-查看pytorch支持的最高CUDA版本"></p>
+<h2 id="3、执行部署"><a href="#3、执行部署" class="headerlink" title="3、执行部署"></a>3、执行部署</h2><p>1）确保 anaconda3（python3.11.3）在 vscode 能够正常使用，相关部署参考 <a href="https://www.dcheng.site/148d4631-44e0-11ee-bc05-f9725afef782/">部署win10+vscode+anaconda3环境</a></p>
+<p>2）执行下列命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：全部安装均采用默认源，其中 libcublas 包的安装比较费时。</p>
+</blockquote>
+<p>3）验证</p>
+<p>执行如下代码：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># cuda是否可用</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br><span class="line"><span class="comment"># 获取GPU信息</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;GPU=&quot;</span>, torch.cuda.get_device_name(torch.device(<span class="string">&quot;cuda:0&quot;</span>)))</span><br><span class="line"><span class="comment"># 获取pytorch版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pytorch version=&quot;</span>, torch.__version__)</span><br><span class="line"><span class="comment"># 获取cuda版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;cuda Version=&quot;</span>, torch.version.cuda)</span><br><span class="line"><span class="comment"># 获取cudnn版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;cudnn version=&quot;</span>, torch.backends.cudnn.version())</span><br></pre></td></tr></table></figure>
+
+<p>输出如下结果，表明全部组件安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">True</span><br><span class="line">GPU= NVIDIA GeForce RTX 4070</span><br><span class="line">pytorch version= 2.0.1</span><br><span class="line">cuda Version= 11.8</span><br><span class="line">cudnn version= 8700</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>cuda</tag>
+        <tag>pytorch</tag>
+        <tag>python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>部署-ubuntu-服务器</title>
     <url>/58871fa0-2a1e-11ee-846a-89c1529ebdf1/</url>
     <content><![CDATA[<blockquote>
@@ -4063,6 +4097,63 @@ End 	Fn + →
       <tags>
         <tag>ubuntu</tag>
         <tag>mariadb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>部署win10+vscode+anaconda3环境</title>
+    <url>/148d4631-44e0-11ee-bc05-f9725afef782/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、安装-anaconda3"><a href="#1、安装-anaconda3" class="headerlink" title="1、安装 anaconda3"></a>1、安装 anaconda3</h2><p>务必选择添加环境变量，便于 vscode 新建环境，或者手动添加，假设安装目录为 <code>D:\anaconda3</code>，添加如下路径：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">D:\anaconda3</span><br><span class="line">D:\anaconda3\Library\mingw-w64\bin</span><br><span class="line">D:\anaconda3\Library\usr\bin</span><br><span class="line">D:\anaconda3\Library\bin</span><br><span class="line">D:\anaconda3\Scripts</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、vscode-安装微软官方-python-插件，相关信息如下"><a href="#2、vscode-安装微软官方-python-插件，相关信息如下" class="headerlink" title="2、vscode 安装微软官方 python 插件，相关信息如下"></a>2、vscode 安装微软官方 python 插件，相关信息如下</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Name: Python</span><br><span class="line">Id: ms-python.python</span><br><span class="line">Description: IntelliSense (Pylance), Linting, Debugging (multi-threaded, remote), Jupyter Notebooks, code formatting, refactoring, unit tests, and more.</span><br><span class="line">Version: 2023.10.1</span><br><span class="line">Publisher: Microsoft</span><br><span class="line">VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-python.python</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、创建或复用-conda-环境"><a href="#3、创建或复用-conda-环境" class="headerlink" title="3、创建或复用 conda 环境"></a>3、创建或复用 conda 环境</h2><p>1）创建</p>
+<p>ctrl+shift+P，输入<code>&gt; Create Environment</code> 命令，选择建立 conda 环境，进一步选择 python 版本。</p>
+<p>2）复用</p>
+<ul>
+<li>ctrl+shift+P，输入<code>&gt; Select Interpreter</code> 命令，选择已存在的 conda 环境，重启终端。</li>
+<li>或者点击右下角 <code>conda</code></li>
+</ul>
+<h2 id="4、问题及解决方案"><a href="#4、问题及解决方案" class="headerlink" title="4、问题及解决方案"></a>4、问题及解决方案</h2><p><strong>问题 1：</strong> 出现如下提示，应执行 <code>conda init powershell</code>，之后重新启动 vscode</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">CommandNotFoundError: Your shell has not been properly configured to use <span class="string">&#x27;conda activate&#x27;</span>.</span><br><span class="line">If using <span class="string">&#x27;conda activate&#x27;</span> from a batch script, change your</span><br><span class="line">invocation to <span class="string">&#x27;CALL conda.bat activate&#x27;</span>.</span><br><span class="line"></span><br><span class="line">To initialize your shell, run</span><br><span class="line"></span><br><span class="line">    $ conda init &lt;SHELL_NAME&gt;</span><br><span class="line"></span><br><span class="line">Currently supported shells are:</span><br><span class="line">  - bash</span><br><span class="line">  - cmd.exe</span><br><span class="line">  - fish</span><br><span class="line">  - tcsh</span><br><span class="line">  - xonsh</span><br><span class="line">  - zsh</span><br><span class="line">  - powershell</span><br><span class="line"></span><br><span class="line">See <span class="string">&#x27;conda init --help&#x27;</span> <span class="keyword">for</span> more information and options.</span><br><span class="line"></span><br><span class="line">IMPORTANT: You may need to close and restart your shell after running <span class="string">&#x27;conda init&#x27;</span>.</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题 2：</strong> 使用终端进入 conda 环境的项目目录时，可能会提示报错信息：“……在此系统上禁止运行脚本”，</p>
+<p>vscode 终端选择 Windows PowerShell 时，默认执行策略是 Restricted，即不允许任何脚本运行。</p>
+<blockquote>
+<p>有关 Windows PowerShell 执行策略的详细信息，请参阅 about_Execution_Policy。</p>
+</blockquote>
+<blockquote>
+<p>可执行 <code>get-executionpolicy</code> 命令查看当前策略</p>
+</blockquote>
+<p>以管理员身份打开 PowerShell 输入 <code>set-executionpolicy remotesigned</code>，重启 vscode 终端，即可切换到当前 conda 环境。一般而言，解除上述问题后，每次新建终端进入 conda 环境后，会自动执行 <code>active</code> 和 <code>conda active</code> 命令，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(base) PS C:\py_test&gt; activate</span><br><span class="line">(base) PS C:\py_test&gt; conda activate c:\py_test\.conda</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、其他相关命令"><a href="#5、其他相关命令" class="headerlink" title="5、其他相关命令"></a>5、其他相关命令</h2><ul>
+<li>查看安装源：<code>conda config --show-sources</code></li>
+<li>添加安装源：<code>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</code><ul>
+<li>其他安装源：<code>conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</code></li>
+<li>其他安装源：<code>conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></li>
+<li>换回 conda 的默认源，删除 channels：<code>conda config --remove-key channels</code></li>
+</ul>
+</li>
+<li>删除安装源：<code>conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</code></li>
+<li>查看源优先级：<code>conda config --get channels</code></li>
+<li>查看 <code>.condarc</code> 文件位置（执行 <code>conda config</code> 系列命令时生成）：<code>conda info</code></li>
+<li>显示 channel 来源： <code>conda config --set show_channel_urls yes</code></li>
+<li>查看所有虚拟环境：<code>conda info --envs</code></li>
+<li>安装指定版本依赖：<code>conda install package=version</code></li>
+<li>临时指定源：<code>conda install package=version -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>anaconda</tag>
       </tags>
   </entry>
   <entry>

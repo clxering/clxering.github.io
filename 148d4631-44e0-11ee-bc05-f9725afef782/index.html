@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="部署win10+vscode+anaconda3环境">
+<meta property="og:url" content="http://www.dcheng.site/148d4631-44e0-11ee-bc05-f9725afef782/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-27T13:42:43.000Z">
+<meta property="article:modified_time" content="2023-08-27T13:49:41.363Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="anaconda">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/148d4631-44e0-11ee-bc05-f9725afef782/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/148d4631-44e0-11ee-bc05-f9725afef782/","path":"148d4631-44e0-11ee-bc05-f9725afef782/","title":"部署win10+vscode+anaconda3环境"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>部署win10+vscode+anaconda3环境 | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85-anaconda3"><span class="nav-text">1、安装 anaconda3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81vscode-%E5%AE%89%E8%A3%85%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9-python-%E6%8F%92%E4%BB%B6%EF%BC%8C%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF%E5%A6%82%E4%B8%8B"><span class="nav-text">2、vscode 安装微软官方 python 插件，相关信息如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E6%88%96%E5%A4%8D%E7%94%A8-conda-%E7%8E%AF%E5%A2%83"><span class="nav-text">3、创建或复用 conda 环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">4、问题及解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-text">5、其他相关命令</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/148d4631-44e0-11ee-bc05-f9725afef782/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="部署win10+vscode+anaconda3环境 | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          部署win10+vscode+anaconda3环境
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-08-27 21:42:43 / Modified: 21:49:41" itemprop="dateCreated datePublished" datetime="2023-08-27T21:42:43+08:00">2023-08-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">部署和安装</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、安装-anaconda3"><a href="#1、安装-anaconda3" class="headerlink" title="1、安装 anaconda3"></a>1、安装 anaconda3</h2><p>务必选择添加环境变量，便于 vscode 新建环境，或者手动添加，假设安装目录为 <code>D:\anaconda3</code>，添加如下路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\anaconda3</span><br><span class="line">D:\anaconda3\Library\mingw-w64\bin</span><br><span class="line">D:\anaconda3\Library\usr\bin</span><br><span class="line">D:\anaconda3\Library\bin</span><br><span class="line">D:\anaconda3\Scripts</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、vscode-安装微软官方-python-插件，相关信息如下"><a href="#2、vscode-安装微软官方-python-插件，相关信息如下" class="headerlink" title="2、vscode 安装微软官方 python 插件，相关信息如下"></a>2、vscode 安装微软官方 python 插件，相关信息如下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Name: Python</span><br><span class="line">Id: ms-python.python</span><br><span class="line">Description: IntelliSense (Pylance), Linting, Debugging (multi-threaded, remote), Jupyter Notebooks, code formatting, refactoring, unit tests, and more.</span><br><span class="line">Version: 2023.10.1</span><br><span class="line">Publisher: Microsoft</span><br><span class="line">VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-python.python</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、创建或复用-conda-环境"><a href="#3、创建或复用-conda-环境" class="headerlink" title="3、创建或复用 conda 环境"></a>3、创建或复用 conda 环境</h2><p>1）创建</p>
+<p>ctrl+shift+P，输入<code>&gt; Create Environment</code> 命令，选择建立 conda 环境，进一步选择 python 版本。</p>
+<p>2）复用</p>
+<ul>
+<li>ctrl+shift+P，输入<code>&gt; Select Interpreter</code> 命令，选择已存在的 conda 环境，重启终端。</li>
+<li>或者点击右下角 <code>conda</code></li>
+</ul>
+<h2 id="4、问题及解决方案"><a href="#4、问题及解决方案" class="headerlink" title="4、问题及解决方案"></a>4、问题及解决方案</h2><p><strong>问题 1：</strong> 出现如下提示，应执行 <code>conda init powershell</code>，之后重新启动 vscode</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">CommandNotFoundError: Your shell has not been properly configured to use <span class="string">&#x27;conda activate&#x27;</span>.</span><br><span class="line">If using <span class="string">&#x27;conda activate&#x27;</span> from a batch script, change your</span><br><span class="line">invocation to <span class="string">&#x27;CALL conda.bat activate&#x27;</span>.</span><br><span class="line"></span><br><span class="line">To initialize your shell, run</span><br><span class="line"></span><br><span class="line">    $ conda init &lt;SHELL_NAME&gt;</span><br><span class="line"></span><br><span class="line">Currently supported shells are:</span><br><span class="line">  - bash</span><br><span class="line">  - cmd.exe</span><br><span class="line">  - fish</span><br><span class="line">  - tcsh</span><br><span class="line">  - xonsh</span><br><span class="line">  - zsh</span><br><span class="line">  - powershell</span><br><span class="line"></span><br><span class="line">See <span class="string">&#x27;conda init --help&#x27;</span> <span class="keyword">for</span> more information and options.</span><br><span class="line"></span><br><span class="line">IMPORTANT: You may need to close and restart your shell after running <span class="string">&#x27;conda init&#x27;</span>.</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题 2：</strong> 使用终端进入 conda 环境的项目目录时，可能会提示报错信息：“……在此系统上禁止运行脚本”，</p>
+<p>vscode 终端选择 Windows PowerShell 时，默认执行策略是 Restricted，即不允许任何脚本运行。</p>
+<blockquote>
+<p>有关 Windows PowerShell 执行策略的详细信息，请参阅 about_Execution_Policy。</p>
+</blockquote>
+<blockquote>
+<p>可执行 <code>get-executionpolicy</code> 命令查看当前策略</p>
+</blockquote>
+<p>以管理员身份打开 PowerShell 输入 <code>set-executionpolicy remotesigned</code>，重启 vscode 终端，即可切换到当前 conda 环境。一般而言，解除上述问题后，每次新建终端进入 conda 环境后，会自动执行 <code>active</code> 和 <code>conda active</code> 命令，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) PS C:\py_test&gt; activate</span><br><span class="line">(base) PS C:\py_test&gt; conda activate c:\py_test\.conda</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、其他相关命令"><a href="#5、其他相关命令" class="headerlink" title="5、其他相关命令"></a>5、其他相关命令</h2><ul>
+<li>查看安装源：<code>conda config --show-sources</code></li>
+<li>添加安装源：<code>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</code><ul>
+<li>其他安装源：<code>conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</code></li>
+<li>其他安装源：<code>conda config --add channels http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></li>
+<li>换回 conda 的默认源，删除 channels：<code>conda config --remove-key channels</code></li>
+</ul>
+</li>
+<li>删除安装源：<code>conda config --remove channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</code></li>
+<li>查看源优先级：<code>conda config --get channels</code></li>
+<li>查看 <code>.condarc</code> 文件位置（执行 <code>conda config</code> 系列命令时生成）：<code>conda info</code></li>
+<li>显示 channel 来源： <code>conda config --set show_channel_urls yes</code></li>
+<li>查看所有虚拟环境：<code>conda info --envs</code></li>
+<li>安装指定版本依赖：<code>conda install package=version</code></li>
+<li>临时指定源：<code>conda install package=version -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</code></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/anaconda/" rel="tag"># anaconda</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/148d4630-44e0-11ee-bc05-f9725afef782/" rel="prev" title="在win10+vscode+anaconda3+python3.11.3独立环境部署pytorch2.0.1+cuda11.8">
+                  <i class="fa fa-chevron-left"></i> 在win10+vscode+anaconda3+python3.11.3独立环境部署pytorch2.0.1+cuda11.8
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
