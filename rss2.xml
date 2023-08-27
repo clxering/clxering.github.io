@@ -15,8 +15,54 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 26 Aug 2023 14:35:37 GMT</pubDate>
+    <pubDate>Sun, 27 Aug 2023 00:25:37 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>云服务器部署-JavaWeb-环境</title>
+      <link>http://www.dcheng.site/bf93b0d0-446f-11ee-90e9-49c3e96e9425/</link>
+      <guid>http://www.dcheng.site/bf93b0d0-446f-11ee-90e9-49c3e96e9425/</guid>
+      <pubDate>Sun, 27 Aug 2023 00:13:12 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/JavaWeb/">JavaWeb</category>
+      
+      
+      <comments>http://www.dcheng.site/bf93b0d0-446f-11ee-90e9-49c3e96e9425/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>win-本地部署-mariadb</title>
+      <link>http://www.dcheng.site/bf9389c0-446f-11ee-90e9-49c3e96e9425/</link>
+      <guid>http://www.dcheng.site/bf9389c0-446f-11ee-90e9-49c3e96e9425/</guid>
+      <pubDate>Sat, 26 Aug 2023 23:42:05 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      <category domain="http://www.dcheng.site/tags/mariadb/">mariadb</category>
+      
+      
+      <comments>http://www.dcheng.site/bf9389c0-446f-11ee-90e9-49c3e96e9425/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>win10-powershell-禁止运行脚本的问题</title>

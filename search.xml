@@ -3366,6 +3366,36 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>win-本地部署-mariadb</title>
+    <url>/bf9389c0-446f-11ee-90e9-49c3e96e9425/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、环境"><a href="#1、环境" class="headerlink" title="1、环境"></a>1、环境</h2><ul>
+<li>Windows 10 专业版 22H2</li>
+<li>mariadb-10.11.5</li>
+</ul>
+<h2 id="2、部署步骤"><a href="#2、部署步骤" class="headerlink" title="2、部署步骤"></a>2、部署步骤</h2><p>1）进入下载列表 <code>https://mariadb.org/download/?t=mariadb&amp;p=mariadb&amp;r=10.11.5&amp;os=windows&amp;cpu=x86_64&amp;pkg=zip&amp;m=aliyun</code>，获取 <code>mariadb-10.11.5-winx64.zip</code>，解压</p>
+<p>2）在 mariadb-10.11.5-winx64 目录下新建 data 文件夹，即为数据目录。并将 <code>mariadb-10.11.5-winx64\bin</code> 添加到环境变量，则以下命令在 cmd 可直接执行。</p>
+<p>3）安装 MairaDB 服务<br>管理员权限下在 cmd 终端执行 <code>mysqld.exe --install MariaDB</code></p>
+<p>4）初始化<br>管理员权限下在 cmd 终端执行 <code>mysql_install_db.exe</code></p>
+<p>5）启动服务<br>管理员权限下在 cmd 终端执行 <code>net start mariaDB</code></p>
+<p>6）初始登录配置</p>
+<ul>
+<li>执行 <code>mariadb -u root</code>（初始登录无密码）</li>
+<li>执行 <code>alter user &quot;root&quot;@&quot;localhost&quot; identified by &quot;root&quot;;</code> 修改 root 账户密码</li>
+</ul>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+        <tag>mariadb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>win10-powershell-禁止运行脚本的问题</title>
     <url>/ed0e8970-441c-11ee-bc1a-25c3478a32d1/</url>
     <content><![CDATA[<blockquote>
@@ -3386,6 +3416,379 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>powershell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>云服务器部署-JavaWeb-环境</title>
+    <url>/bf93b0d0-446f-11ee-90e9-49c3e96e9425/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>2020-03-15 修改，补充增加了内容。</p>
+<h2 id="1、环境、工具及版本"><a href="#1、环境、工具及版本" class="headerlink" title="1、环境、工具及版本"></a>1、环境、工具及版本</h2><ul>
+<li>CentOS Linux 7.4.1708 (Core)</li>
+<li>Amazon Corretto 11</li>
+<li>MySQL 5.7.28 或 MySQL 8.0.18</li>
+<li>Nginx 1.16.1</li>
+</ul>
+<h2 id="2、安装-JDK-x2F-JRE-参考步骤"><a href="#2、安装-JDK-x2F-JRE-参考步骤" class="headerlink" title="2、安装 JDK&#x2F;JRE 参考步骤"></a>2、安装 JDK&#x2F;JRE 参考步骤</h2><h2 id="2-1、yum-安装"><a href="#2-1、yum-安装" class="headerlink" title="2.1、yum 安装"></a>2.1、yum 安装</h2><p>1）添加 yum 存储库</p>
+<p>在该页面：<a href="https://docs.aws.amazon.com/zh_cn/corretto/latest/corretto-11-ug/downloads-list.html">https://docs.aws.amazon.com/zh_cn/corretto/latest/corretto-11-ug/downloads-list.html</a> 选择适用的发行包，拷贝链接后，使用以下命令安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh https://d3pxv6yz143wms.cloudfront.net/11.0.3.7.1/java-11-amazon-corretto-devel-11.0.3.7-1.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>也可以下载到本地执行安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh java-11-amazon-corretto-devel-11.0.3.7-1.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>2）开始安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## yum install java</span><br></pre></td></tr></table></figure>
+
+<p>3）输入命令：<code>java -version</code>，查看 JDK 是否安装成功，如果安装成功则显示版本号信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## java -version</span><br><span class="line">openjdk version &quot;11.0.3&quot; 2019-04-16 LTS</span><br><span class="line">OpenJDK Runtime Environment Corretto-11.0.3.7.1 (build 11.0.3+7-LTS)</span><br><span class="line">OpenJDK 64-Bit Server VM Corretto-11.0.3.7.1 (build 11.0.3+7-LTS, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2、手动安装"><a href="#2-2、手动安装" class="headerlink" title="2.2、手动安装"></a>2.2、手动安装</h2><p>1）在 etc 下建立存放目录，可以用图形化工具建立，或者命令行：<code>mkdir /etc/java</code></p>
+<p>2）在 etc 下使用命令：<code>wget https://d3pxv6yz143wms.cloudfront.net/11.0.3.7.1/amazon-corretto-11.0.3.7.1-linux-x64.tar.gz</code>，或将本地文件上传。</p>
+<p>3）在 etc 下执行命令：<code>tar zxvf jdk-8u171-linux-x64.tar.gz -C /etc/java/</code></p>
+<p>4）解压完成后，修改 <code>/etc/profile</code> 文件，在末尾添加内容后保存：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##set java environment</span><br><span class="line">export JAVA_HOME=/etc/java/amazon-corretto-11.0.3.7.1-linux-x64</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JAVA_HOME:$PATH</span><br></pre></td></tr></table></figure>
+
+<p><strong>附加内容：若安装 JDK 8，环境变量设置可改为：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##set java environment</span><br><span class="line">export JAVA_HOME=/usr/java/jdk/jdk1.8.0_171</span><br><span class="line">export JRE_HOME=/usr/java/jdk/jdk1.8.0_171/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$JAVA_HOME:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>5）使用命令：<code>source /etc/profile</code>，让环境变量生效</p>
+<p>6）输入命令：<code>java -version</code>，查看 JDK 是否安装成功。</p>
+<h2 id="3、安装-MySQL-参考步骤"><a href="#3、安装-MySQL-参考步骤" class="headerlink" title="3、安装 MySQL 参考步骤"></a>3、安装 MySQL 参考步骤</h2><p>采用官网介绍的安装方法，步骤如下。原文详见：<a href="https://dev.mysql.com/doc/mysql-yum-repo-quick-guide/en/##repo-qg-yum-installing">A Quick Guide to Using the MySQL Yum Repository</a></p>
+<p>1）查询并移除 CentOS 7 默认安装的 mariaDB，执行该步骤需要获得 root 权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## rpm -qa | grep mariadb</span><br><span class="line">mariadb-libs-5.5.60-1.el7_5.x86_64</span><br><span class="line">[root@iZ9vbe1cif1bx32Z ~]## yum -y remove mariadb-libs</span><br></pre></td></tr></table></figure>
+
+<p>2）添加 yum 存储库</p>
+<p>在该页面：<a href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a> 选择适用的发行包，拷贝链接后，使用以下命令安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>也可以下载到本地执行安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh mysql80-community-release-el7-3.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>3）选择版本</p>
+<p>在 yum 存储库中，不同版本的 MySQL Community Server 托管在不同的子存储库中。默认情况下启用最新版本（当前为 MySQL 8.0）的子存储库，而所有其他系列（例如，MySQL 5.7 系列）的子存储库均被禁用。使用以下命令可查看 yum 存储库中的所有子存储库，并查看已启用或禁用的子存储库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## yum repolist all | grep mysql</span><br><span class="line">mysql-cluster-7.5-community/x86_64 MySQL Cluster 7.5 Community   disabled</span><br><span class="line">mysql-cluster-7.5-community-source MySQL Cluster 7.5 Community - disabled</span><br><span class="line">mysql-cluster-7.6-community/x86_64 MySQL Cluster 7.6 Community   disabled</span><br><span class="line">mysql-cluster-7.6-community-source MySQL Cluster 7.6 Community - disabled</span><br><span class="line">mysql-cluster-8.0-community/x86_64 MySQL Cluster 8.0 Community   disabled</span><br><span class="line">mysql-cluster-8.0-community-source MySQL Cluster 8.0 Community - disabled</span><br><span class="line">mysql-connectors-community/x86_64  MySQL Connectors Community    enabled:    128</span><br><span class="line">mysql-connectors-community-source  MySQL Connectors Community -  disabled</span><br><span class="line">mysql-tools-community/x86_64       MySQL Tools Community         enabled:    100</span><br><span class="line">mysql-tools-community-source       MySQL Tools Community - Sourc disabled</span><br><span class="line">mysql-tools-preview/x86_64         MySQL Tools Preview           disabled</span><br><span class="line">mysql-tools-preview-source         MySQL Tools Preview - Source  disabled</span><br><span class="line">mysql55-community/x86_64           MySQL 5.5 Community Server    disabled</span><br><span class="line">mysql55-community-source           MySQL 5.5 Community Server -  disabled</span><br><span class="line">mysql56-community/x86_64           MySQL 5.6 Community Server    disabled</span><br><span class="line">mysql56-community-source           MySQL 5.6 Community Server -  disabled</span><br><span class="line">mysql57-community/x86_64           MySQL 5.7 Community Server    disabled</span><br><span class="line">mysql57-community-source           MySQL 5.7 Community Server -  disabled</span><br><span class="line">mysql80-community/x86_64           MySQL 8.0 Community Server    enabled:    145</span><br><span class="line">mysql80-community-source           MySQL 8.0 Community Server -  disabled</span><br></pre></td></tr></table></figure>
+
+<p>若安装最新版本则无需进行配置。要安装旧版本，例如 MySQL 5.7 系列，需禁用最新版本的子存储库并启用旧版本子存储库。以下命令禁用 8.0 系列的子存储库并启用 5.7 系列的子存储库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## yum-config-manager --disable mysql80-community</span><br><span class="line">[root@iZ9vbe1cif1bx32Z ~]## yum-config-manager --enable mysql57-community</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li>若提示找不到 <code>yum-config-manager</code> 命令，安装即可：<code>yum -y install yum-utils</code></li>
+<li>应该随时只为一个系列启用子存储库。如果启用了多个系列的子存储库，那么 yum 将使用最新的系列</li>
+</ul>
+<p>通过以下命令，验证是否已启用正确的子存储库：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## yum repolist enabled | grep mysql</span><br><span class="line">mysql-connectors-community/x86_64 MySQL Connectors Community                 128</span><br><span class="line">mysql-tools-community/x86_64      MySQL Tools Community                      100</span><br><span class="line">mysql57-community/x86_64          MySQL 5.7 Community Server                 384</span><br></pre></td></tr></table></figure>
+
+<p>4）开始安装</p>
+<p>通过以下命令安装 MySQL 服务器的软件包以及其他必需的软件包：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## yum install mysql-community-server</span><br></pre></td></tr></table></figure>
+
+<p>5）启动 MySQL 服务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## service mysqld start</span><br></pre></td></tr></table></figure>
+
+<p>6）检查状态</p>
+<p>使用命令 <code>service mysqld status</code>，出现以下提示说明服务正常运行（MySQL 5.7 和 8.0 的显示结果基本相同）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## service mysqld status</span><br><span class="line">Redirecting to /bin/systemctl status mysqld.service</span><br><span class="line">● mysqld.service - MySQL Server</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Mon 2019-10-28 17:53:00 CST; 3h 25min ago</span><br><span class="line">     Docs: man:mysqld(8)</span><br><span class="line">           http://dev.mysql.com/doc/refman/en/using-systemd.html</span><br><span class="line">  Process: 3731 ExecStart=/usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid $MYSQLD_OPTS (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 3681 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 3735 (mysqld)</span><br><span class="line">   CGroup: /system.slice/mysqld.service</span><br><span class="line">           └─3735 /usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mys...</span><br><span class="line"></span><br><span class="line">Oct 28 17:52:56 iZ9vbe1cif1bx32Z systemd[1]: Starting MySQL Server...</span><br><span class="line">Oct 28 17:53:00 iZ9vbe1cif1bx32Z systemd[1]: Started MySQL Server.</span><br></pre></td></tr></table></figure>
+
+<p>7）查看初始临时密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
+
+<p>8）使用生成的临时密码登录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## mysql -uroot -p</span><br></pre></td></tr></table></figure>
+
+<p>9）尽快为超级用户帐户设置自定义密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;MyNewPass4!&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>注意：MySQL 的 validate_password 插件默认安装。要求密码至少包含一个大写字母，一个小写字母，一位数字和一个特殊字符，并且密码总长度至少为 8 个字符。</p>
+<h2 id="4、MySQL-通用及专有设置"><a href="#4、MySQL-通用及专有设置" class="headerlink" title="4、MySQL 通用及专有设置"></a>4、MySQL 通用及专有设置</h2><h2 id="4-1、用户控制及授权"><a href="#4-1、用户控制及授权" class="headerlink" title="4.1、用户控制及授权"></a>4.1、用户控制及授权</h2><p>1）创建用户 test 并设置密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; create user test identified by &#x27;123aI~A!&#x27;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：可不进入 user 表执行该语句</p>
+</blockquote>
+<p>2）查看用户 test 的权限（没有分配前，无权限）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; show grants for &#x27;test&#x27;@&#x27;%&#x27;;</span><br><span class="line">+----------------------------------+</span><br><span class="line">| Grants for test@%                |</span><br><span class="line">+----------------------------------+</span><br><span class="line">| GRANT USAGE ON *.* TO &#x27;test&#x27;@&#x27;%&#x27; |</span><br><span class="line">+----------------------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>3）给用户 test 在 database 数据库中对的所有表授权，如：EXECUTE（执行存储过程），INSERT，SELECT，UPDATE 权限，’%’ 表示来自任意 IP 的访问：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grant execute,insert,select,update on database.* to &#x27;test&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>常用权限有以下几种：</p>
+<ul>
+<li>all privileges，所有权限</li>
+<li>select，读取权限</li>
+<li>delete，删除权限</li>
+<li>update，更新权限</li>
+<li>create，创建权限</li>
+<li>drop，删除数据库、数据表权限</li>
+</ul>
+<p>4）取消来自远程服务器的 AA 用户对数据库 db 里的表 tb 的所有权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">revoke all on db.tb from AA@&quot;%&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>5）刷新权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>6）删除用户</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">drop user test@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：可不进入 user 表执行该语句</p>
+</blockquote>
+<p>7）查看所有用户信息（8.0 版本显示结果稍有不同）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select user, host, authentication_string from mysql.user;</span><br><span class="line">+---------------+-----------+-------------------------------------------+</span><br><span class="line">| user          | host      | authentication_string                     |</span><br><span class="line">+---------------+-----------+-------------------------------------------+</span><br><span class="line">| root          | localhost | *ACE4C05F67A275C00548651B22A066C15B2AB728 |</span><br><span class="line">| mysql.session | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |</span><br><span class="line">| mysql.sys     | localhost | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |</span><br><span class="line">| test          | %         | *112D65D910D5E3AFCD5624275229F2C0F1B5ADE4 |</span><br><span class="line">+---------------+-----------+-------------------------------------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2、重置密码"><a href="#4-2、重置密码" class="headerlink" title="4.2、重置密码"></a>4.2、重置密码</h2><p>1）定位 &#x2F;etc&#x2F;my.cnf，在 my.cnf 文件 <code>[mysqld]</code> 下添加 <code>skip-grant-tables</code> 字符串，开启免密码登陆</p>
+<p>2）执行 <code>service mysqld restart</code>，重启服务，使配置生效</p>
+<p>3）执行 <code>mysql -u root -p</code>，无需键入内容，直接回车即可登录</p>
+<p>4）清空密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update mysql.user set authentication_string=&#x27;&#x27; where user=&#x27;root&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>5）将 <code>skip-grant-tables</code> 字符串删除，执行 <code>service mysqld restart</code>，重启服务，使配置生效</p>
+<p>6）执行 <code>mysql -u root -p</code>，无需键入内容，直接回车即可登录</p>
+<p>7）执行 <code>alter user &#39;root&#39;@&#39;localhost&#39; identified by &#39;MyNewPass4!&#39;;</code> 重新设置密码</p>
+<h2 id="4-3、移除-MySQL"><a href="#4-3、移除-MySQL" class="headerlink" title="4.3、移除 MySQL"></a>4.3、移除 MySQL</h2><p>1）停止服务：<code>service mysqld stop</code></p>
+<p>2）执行 <code>rpm -qa | grep -i mysql</code> 查看 MySQL 组件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## rpm -qa | grep -i mysql</span><br><span class="line">mysql-community-libs-5.7.28-1.el7.x86_64</span><br><span class="line">mysql80-community-release-el7-3.noarch</span><br><span class="line">mysql-community-common-5.7.28-1.el7.x86_64</span><br><span class="line">mysql-community-client-5.7.28-1.el7.x86_64</span><br><span class="line">mysql-community-server-5.7.28-1.el7.x86_64</span><br></pre></td></tr></table></figure>
+
+<p>3）组件彼此之间有依赖关系，按顺序逐项执行移除</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -ev mysql-community-server-5.7.28-1.el7.x86_64</span><br><span class="line">rpm -ev mysql-community-client-5.7.28-1.el7.x86_64</span><br><span class="line">rpm -ev mysql-community-libs-5.7.28-1.el7.x86_64</span><br><span class="line">rpm -ev mysql-community-common-5.7.28-1.el7.x86_64</span><br><span class="line">rpm -ev mysql80-community-release-el7-3.noarch</span><br></pre></td></tr></table></figure>
+
+<p>4）删除相关目录。执行 <code>find / -name mysql</code>（查找） 和 <code>rm -rf xxx</code>（删除） 逐项执行移除完全为止。可能包含的目录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@iZ9vbe1cif1bx32Z ~]## find / -name mysql</span><br><span class="line">/etc/selinux/targeted/active/modules/100/mysql</span><br><span class="line">/var/lib/mysql</span><br><span class="line">/var/lib/mysql/mysql</span><br><span class="line">/usr/share/mysql</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-4、MySQL-8-使用简单密码"><a href="#4-4、MySQL-8-使用简单密码" class="headerlink" title="4.4、MySQL 8 使用简单密码"></a>4.4、MySQL 8 使用简单密码</h2><p>MySQL 8 默认不能输入全数字的简单密码，需要进行如下设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; set global validate_password.policy=0;</span><br><span class="line">mysql&gt; set global validate_password.length=1;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-5、MySQL-8-开启外部第三方客户端连接权限"><a href="#4-5、MySQL-8-开启外部第三方客户端连接权限" class="headerlink" title="4.5、MySQL 8 开启外部第三方客户端连接权限"></a>4.5、MySQL 8 开启外部第三方客户端连接权限</h2><p>MySQL 8.0 采用了 caching_sha2_password 加密，是 sha256 的改进版加密方式，多数第三方客户端都不支持这种加密方式，自带的命令行可支持。具体可参看 <a href="https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html##upgrade-caching-sha2-password">官方文档</a> 有关该内容说明。要解决该问题，需要修改加密方式。以 root 用户为例，如果要配置其他用户或授权 IP，对应修改名称和地址即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;MyNewPass4!&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、安装-nginx-参考步骤"><a href="#5、安装-nginx-参考步骤" class="headerlink" title="5、安装 nginx 参考步骤"></a>5、安装 nginx 参考步骤</h2><h2 id="5-1、yum-安装（配置文件，稳定版）"><a href="#5-1、yum-安装（配置文件，稳定版）" class="headerlink" title="5.1、yum 安装（配置文件，稳定版）"></a>5.1、yum 安装（配置文件，稳定版）</h2><p>采用官网介绍的安装方法，步骤如下。原文详见：<a href="https://nginx.org/en/linux_packages.html##sourcepackages">Installation instructions</a></p>
+<p>1）新建配置文件 <code>/etc/yum.repos.d/nginx.repo</code>，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[nginx-stable]</span><br><span class="line">name=nginx stable repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line">module_hotfixes=true</span><br></pre></td></tr></table></figure>
+
+<p>2）配置中 <code>enabled=1</code>，因此默认安装稳定版，直接执行 <code>yum install nginx</code> 即可</p>
+<p>3）启动服务：<code>systemctl start nginx.service</code></p>
+<p>4）查看运行状态：<code>ps -ef | grep nginx</code>，若有 master process 和 worker process 两个进程说明正常启动。</p>
+<p>其他常用命令行：</p>
+<ul>
+<li>查看版本：nginx -v</li>
+<li>停止服务：<code>systemctl stop nginx.service</code></li>
+<li>重启服务：<code>systemctl restart nginx.service</code></li>
+<li>开机启动服务：<code>systemctl enable nginx.service</code></li>
+<li>全局配置文件路径：<code>/etc/nginx/nginx.conf</code></li>
+<li>网站文件存放路径：<code>/usr/share/nginx/html</code></li>
+<li>网站默认站点配置文件路径：<code>/etc/nginx/conf.d/default.conf</code></li>
+<li>自定义 Nginx 站点配置文件存放路径：<code>/etc/nginx/conf.d/</code></li>
+<li>查看服务器私有 IP：<code>ip addr show eth0 | grep inet | awk &#39;&#123; print $2; &#125;&#39; | sed &#39;s/\/.*$//&#39;</code></li>
+<li>卸载：<code>yum remove nginx</code>，之后可用 <code>which nginx</code> 确认是否卸载情况</li>
+</ul>
+<h2 id="5-2、yum-安装（手动，稳定版）"><a href="#5-2、yum-安装（手动，稳定版）" class="headerlink" title="5.2、yum 安装（手动，稳定版）"></a>5.2、yum 安装（手动，稳定版）</h2><p>1）在该页面：<a href="http://nginx.org/packages/centos/7/x86_64/RPMS/">http://nginx.org/packages/centos/7/x86_64/RPMS/</a> 选择适用的发行包，拷贝链接后，使用以下命令安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.16.1-1.el7.ngx.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>也可以下载到本地执行安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rpm -Uvh nginx-1.16.1-1.el7.ngx.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>2）执行 <code>yum install nginx</code> 即可</p>
+<p>3）启动服务：<code>systemctl start nginx.service</code></p>
+<h2 id="5-3、编译安装"><a href="#5-3、编译安装" class="headerlink" title="5.3、编译安装"></a>5.3、编译安装</h2><p>nginx 中 gzip 模块需要 zlib 库，rewrite 模块需要 pcre 库，ssl 功能需要 openssl 库。以 <code>/usr/mix</code> 安装目录为例：</p>
+<ul>
+<li>建立 mix 目录</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ mkdir mix</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装 GCC 和 GCC-C++</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ yum install gcc</span><br><span class="line">$ yum install gcc-c++</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<br>若未安装 GCC，安装 Nginx 会报如下错误：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./configure: error: C compiler cc is not found</span><br></pre></td></tr></table></figure>
+
+<p>若未安装 GCC-C++，安装 PCRE 库时报如下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">configure: error: You need a C++ compiler for C++ support.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译安装 PCRE 库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd /usr/</span><br><span class="line">$ wget https://sourceforge.net/projects/pcre/files/pcre/8.43/pcre-8.43.tar.gz</span><br><span class="line">$ tar -zxvf pcre-8.43.tar.gz -C /usr/mix/</span><br><span class="line">$ cd mix/pcre-8.43</span><br><span class="line">$ ./configure</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>注意：这里使用 pcre 而不用 pcre2</p>
+<ul>
+<li>编译安装 zlib 库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd /usr/</span><br><span class="line">$ wget http://www.zlib.net/zlib-1.2.11.tar.gz</span><br><span class="line">$ tar -zxvf zlib-1.2.11.tar.gz -C /usr/mix/</span><br><span class="line">$ cd mix/zlib-1.2.11</span><br><span class="line">$ ./configure</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译安装 openssl</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd /usr/</span><br><span class="line">$ wget https://www.openssl.org/source/openssl-1.0.2r.tar.gz</span><br><span class="line">$ tar -zxvf openssl-1.0.2r.tar.gz -C /usr/mix/</span><br><span class="line">$ cd mix/openssl-1.0.2r</span><br><span class="line">$ ./config</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译安装 nginx，并添加 PCRE、zlib 、openssl 的源码路径</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ cd /usr/</span><br><span class="line">$ wget http://nginx.org/download/nginx-1.16.0.tar.gz</span><br><span class="line">$ tar -zxvf nginx-1.16.0.tar.gz -C /usr/mix/</span><br><span class="line">$ cd mix/nginx-1.16.0</span><br><span class="line">$ ./configure --prefix=/usr/mix/nginx --with-pcre=/usr/mix/pcre-8.43 --with-zlib=/usr/mix/zlib-1.2.11 --with-openssl=/usr/mix/openssl-1.0.2r</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>启动 Nginx，默认端口为 80</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ./usr/mix/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看工作情况</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其他命令</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./sbin/nginx -s reload            ## 重新载入配置文件</span><br><span class="line">./sbin/nginx -s reopen            ## 重启 Nginx</span><br><span class="line">./sbin/nginx -s stop              ## 停止 Nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-4、问题及解决方案"><a href="#5-4、问题及解决方案" class="headerlink" title="5.4、问题及解决方案"></a>5.4、问题及解决方案</h2><h2 id="5-4-1、nginx-设置反向代理后，页面上的-js-css-文件无法加载"><a href="#5-4-1、nginx-设置反向代理后，页面上的-js-css-文件无法加载" class="headerlink" title="5.4.1、nginx 设置反向代理后，页面上的 js css 文件无法加载"></a>5.4.1、nginx 设置反向代理后，页面上的 js css 文件无法加载</h2><p>可添加如下配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location ~ .*\.(js|css)$ &#123;</span><br><span class="line">    proxy_pass http://127.0.0.1:8866;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">listen 80;</span><br><span class="line">server_name www.test.com;</span><br><span class="line"></span><br><span class="line">location /&#123;</span><br><span class="line">    proxy_pass http://xxx.xxx.xxx.xxx:9002;</span><br><span class="line">    index index.html;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line">    proxy_set_header  Host  $host;</span><br><span class="line">    proxy_set_header  X-Real-IP  $remote_addr;</span><br><span class="line">    proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~ .*\.(js|css)$ &#123;</span><br><span class="line">    proxy_pass http://xxx.xxx.xxx.xxx:9002;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-4-2、输入域名或-IP，访问不到主页"><a href="#5-4-2、输入域名或-IP，访问不到主页" class="headerlink" title="5.4.2、输入域名或 IP，访问不到主页"></a>5.4.2、输入域名或 IP，访问不到主页</h2><p>1）查看云服务器商防火墙是否放行 80 端口；</p>
+<p>2）系统防火墙是否放行 80 端口，相关命令如下：</p>
+<ul>
+<li><code>systemctl status firewalld.service</code>，查看系统防火墙状态（running&#x2F;dead）</li>
+<li><code>firewall-cmd --permanent --add-port=80/tcp</code>，开启 80 端口（重启系统启防火墙后生效）</li>
+<li><code>firewall-cmd --reload</code>，重启系统防火墙</li>
+<li><code>firewall-cmd --list-ports</code>，查看系统防火墙已开启端口</li>
+</ul>
+<p><strong>附加内容：防火墙的开启和关闭</strong></p>
+<ul>
+<li>临时关闭防火墙：<code>systemctl stop firewalld</code></li>
+<li>临时开启防火墙：<code>systemctl start firewalld</code></li>
+<li>永久关闭防火墙：<code>systemctl disable firewalld</code></li>
+<li>永久开启防火墙：<code>systemctl enable firewalld</code></li>
+</ul>
+<blockquote>
+<p>注意事项：临时关闭或开启防火墙，当重启时会回复之前的状态；永久开启或关闭防火墙，重启后生效。</p>
+</blockquote>
+<p><strong>附加内容：自启动服务命令</strong></p>
+<ul>
+<li>查看服务是否开机启动：systemctl is-enabled firewalld.service</li>
+<li>查看已启动的服务列表：systemctl list-unit-files|grep enabled</li>
+<li>查看启动失败的服务列表：systemctl –failed</li>
+</ul>
+<p><strong>附加内容：添加&#x2F;删除开放端口</strong></p>
+<ul>
+<li>默认作用域下，每次修改端口和服务相当于修改 <code>/etc/firewalld/zones/public.xml</code> 文件，也可以直接操作文件</li>
+<li>添加 http 服务：<code>firewall-cmd --zone=public --add-service=http --permanent</code></li>
+<li>查看端口是否开放，开启显示 yes：<code>firewall-cmd --query-port=80/tcp</code></li>
+<li>查看服务是否开放，开启显示 yes：<code>firewall-cmd --query-service=ssh</code></li>
+<li>删除开放的端口：<code>firewall-cmd --remove-port=80/tcp --permanent</code></li>
+<li>删除开放的服务：<code>firewall-cmd --zone=public --remove-service=http --permanent</code></li>
+<li>查看所有开启的服务：<code>firewall-cmd --list-services</code></li>
+<li>列出指定作用域的所有设置：<code>firewall-cmd --zone=public --list-all</code></li>
+<li>查看所有可用区域：<code>firewall-cmd --get-zones</code></li>
+<li>列出所有预设服务：<code>firewall-cmd --get-services</code>，将列出 <code>/usr/lib/firewalld/services/</code> 中的服务器名称。配置文件是以服务本身命名的 service-name.xml</li>
+<li>列出所有区域的设置：<code>firewall-cmd --list-all-zones</code></li>
+</ul>
+<blockquote>
+<p>注 1：缺省时的作用域为 public，即默认带参数 <code>--zone=public</code>，可通过 <code>firewall-cmd --get-default-zone</code> 命令查看，可通过 <code>firewall-cmd --set-default-zone=dmz</code> 命令更改</p>
+</blockquote>
+<blockquote>
+<p>注 2：<code>--permanent</code> 参数为永久生效</p>
+</blockquote>
+<blockquote>
+<p>注 3：<code>/etc/firewalld/zones/</code> 目录下保存作用域配置文件。如 <code>public.xml</code> 是当前生效配置；<code>public.xml.old</code> 是上一次生效配置。</p>
+</blockquote>
+<p><strong>附加内容：防火墙作用域</strong></p>
+<ul>
+<li>public ：仅允许访问本机的 ssh，ping，dhcp 服务（默认）</li>
+<li>trusted：允许任何访问</li>
+<li>block：阻塞任何来访请求，明确拒绝</li>
+<li>drop：丢弃任何来访的数据包，直接丢弃</li>
+</ul>
+<p><strong>附加内容：其他防火墙操作</strong></p>
+<p>定义规则</p>
+<ul>
+<li>设置某个 ip 访问某个服务：<code>firewall-cmd --permanent --zone=public --add-rich-rule=&#39;rule family=&quot;ipv4&quot; source address=&quot;192.168.0.4/24&quot; service name=&quot;http&quot; accept&#39;</code></li>
+<li>删除配置：<code>firewall-cmd --permanent --zone=public --remove-rich-rule=&#39;rule family=&quot;ipv4&quot; source address=&quot;192.168.0.4/24&quot; service name=&quot;http&quot; accept&#39;</code> &#x2F;&#x2F;</li>
+<li>设置某个 ip 访问某个端口：<code>firewall-cmd --permanent --add-rich-rule &#39;rule family=ipv4 source address=192.168.0.1/2 port port=80 protocol=tcp accept&#39;</code></li>
+<li>删除配置：<code>firewall-cmd --permanent --remove-rich-rule &#39;rule family=ipv4 source address=192.168.0.1/2 port port=80 protocol=tcp accept&#39;</code></li>
+<li>将 1.2.3.4 这个源地址的连接全部给 drop 掉：<code>firewall-cmd --add-rich-rule=&#39;rule family=&quot;ipv4&quot; source address=&quot;1.2.3.4&quot; drop&#39;</code></li>
+</ul>
+<p>伪装 IP</p>
+<ul>
+<li>检查是否允许伪装 IP：<code>firewall-cmd --query-masquerade</code></li>
+<li>允许防火墙伪装 IP：<code>firewall-cmd --add-masquerade</code></li>
+<li>禁止防火墙伪装 IP：<code>firewall-cmd --remove-masquerade</code></li>
+</ul>
+<p>请求转发</p>
+<ul>
+<li>将 80 端口的请求转发至 8080：<code>firewall-cmd --add-forward-port=port=80:proto=tcp:toport=8080</code></li>
+<li>将 80 端口的请求转发至 1 92.168.0.1：<code>firewall-cmd --add-forward-port=proto=80:proto=tcp:toaddr=192.168.1.0.1</code></li>
+<li>将 80 端口的请求转发至 192.168.0.1 的 8080 端口：<code>firewall-cmd --add-forward-port=proto=80:proto=tcp:toaddr=192.168.0.1:toport=8080</code></li>
+</ul>
+<h2 id="6、部署过程中的其他问题"><a href="#6、部署过程中的其他问题" class="headerlink" title="6、部署过程中的其他问题"></a>6、部署过程中的其他问题</h2><h2 id="6-1、解压-filename-tar-xz-文件"><a href="#6-1、解压-filename-tar-xz-文件" class="headerlink" title="6.1、解压 filename.tar.xz 文件"></a>6.1、解压 filename.tar.xz 文件</h2><p>使用命令：<code>tar -xvf filename.tar.xz</code></p>
+<h2 id="6-2、在-linux-服务器运行-jar-文件"><a href="#6-2、在-linux-服务器运行-jar-文件" class="headerlink" title="6.2、在 linux 服务器运行 jar 文件"></a>6.2、在 linux 服务器运行 jar 文件</h2><p>通常的方法是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ java -jar test.jar</span><br></pre></td></tr></table></figure>
+
+<p>但是这种方式在 SSH 窗口关闭时程序将中止运行，或者是运行时没法切出去执行其他任务，有没有办法让 jar 在后台运行。要解决这个问题，可以使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ nohup java -jar test.jar &amp;</span><br></pre></td></tr></table></figure>
+
+<p>即不挂断运行命令，账户退出或终端关闭时，程序仍然运行。当用 nohup 命令执行作业时，缺省情况下该作业的所有输出被重定向到 nohup.out 的文件中，除非另外指定了输出文件。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ nohup java -jar test.jar &gt;temp.txt &amp;</span><br></pre></td></tr></table></figure>
+
+<p>此时把日志文件输入到指定的文件中，没有则会自动创建。</p>
+<p><strong>附加内容：两种报错的解决</strong></p>
+<p>▲ 提示 <code>nohup: failed to run command</code>java’: No such file or directory&#96;</p>
+<p>▲ 或者使用 .&#x2F;startup.sh 开启 tomcat 服务报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Neither the JAVA_HOME nor the JRE_HOME environment variable is defined</span><br><span class="line">At least one of these environment variable is needed to run this program</span><br></pre></td></tr></table></figure>
+
+<p>以上情况，执行一次 source &#x2F;etc&#x2F;profile 即可。</p>
+<h2 id="6-3、linux-kill-命令"><a href="#6-3、linux-kill-命令" class="headerlink" title="6.3、linux kill 命令"></a>6.3、linux kill 命令</h2><p>格式：kill [参数][进程号]</p>
+<h2 id="6-4、linux-查询端口情况"><a href="#6-4、linux-查询端口情况" class="headerlink" title="6.4、linux 查询端口情况"></a>6.4、linux 查询端口情况</h2><p>netstat 命令各个参数说明如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-t : 指明显示TCP端口</span><br><span class="line">-u : 指明显示UDP端口</span><br><span class="line">-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)</span><br><span class="line">-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。</span><br><span class="line">-n : 不进行DNS轮询，显示IP(可以加速操作)</span><br></pre></td></tr></table></figure>
+
+<p>要显示当前服务器上所有端口及进程服务，与 grep 结合可查看某个具体端口及服务情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ntlp   //查看当前所有tcp端口</span><br><span class="line">netstat -ntulp |grep 80   //查看所有80端口使用情况</span><br><span class="line">netstat -ntulp | grep 3306   //查看所有3306端口使用情况</span><br></pre></td></tr></table></figure>
+
+<p>查询出来的结果，根据 ID 号可以用 kill 命令终止后台运行的任务。</p>
+<p><strong>附加内容：使用 netstate 报 -bash: netstate: command not found</strong><br>网络工具没有安装，执行 <code>yum install net-tools</code>，安装即可</p>
+<h2 id="6-5、jobs-命令："><a href="#6-5、jobs-命令：" class="headerlink" title="6.5、jobs 命令："></a>6.5、jobs 命令：</h2><p>查看当前终端后台运行的任务。jobs 的状态可以是 running，stopped，Terminated。<code>+</code> 号表示当前任务，<code>-</code> 号表示后一个任务。</p>
+<p>注：该命令可在使用 nohup 后紧接使用。</p>
+<h2 id="6-7、scp-上传或下载文件"><a href="#6-7、scp-上传或下载文件" class="headerlink" title="6.7、scp 上传或下载文件"></a>6.7、scp 上传或下载文件</h2><ul>
+<li>可执行 <code>yum install openssh-clients</code> 命令进行安装</li>
+<li>上传文件到服务器：<code>scp /Users/spirit/Documents/WechatIMG135.jpeg root@192.168.1.1:/usr/local</code></li>
+<li>上传文件夹到服务器：<code>scp -r /Users/spirit/Documents/fileFolder root@192.168.1.1:/usr/local</code></li>
+<li>从服务器下载文件：<code>scp root@192.168.1.1:/usr/local/WechatIMG135.jpeg /Users/spirit/Documents</code></li>
+<li>从服务器下载文件夹：<code>scp -r root@192.168.1.1:/usr/local/fileFolder /Users/spirit/Documents</code></li>
+</ul>
+<p>参数说明：</p>
+<ul>
+<li><code>-1</code>：强制 scp 命令使用协议 ssh1</li>
+<li><code>-2</code>：强制 scp 命令使用协议 ssh2</li>
+<li><code>-4</code>：强制 scp 命令只使用 IPv4 寻址</li>
+<li><code>-6</code>：强制 scp 命令只使用 IPv6 寻址</li>
+<li><code>-B</code>：使用批处理模式（传输过程中不询问传输口令或短语）</li>
+<li><code>-C</code>：允许压缩。（将-C 标志传递给 ssh，从而打开压缩功能）</li>
+<li><code>-p</code>：保留原文件的修改时间，访问时间和访问权限。</li>
+<li><code>-q</code>：不显示传输进度条。</li>
+<li><code>-r</code>：递归复制整个目录。</li>
+<li><code>-v</code>：详细方式显示输出。scp 和 ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。</li>
+<li><code>-c</code>：cipher，以 cipher 将数据传输进行加密，这个选项将直接传递给 ssh。</li>
+<li><code>-F</code>：ssh_config，指定一个替代的 ssh 配置文件，此参数直接传递给 ssh。</li>
+<li><code>-i</code>：identity_file，从指定文件中读取传输时使用的密钥文件，此参数直接传递给 ssh。</li>
+<li><code>-l</code>：limit，限定用户所能使用的带宽，以 Kbit&#x2F;s 为单位。</li>
+<li><code>-o</code>：ssh_option，如果习惯于使用 ssh_config(5)中的参数传递方式，</li>
+<li><code>-P</code>：port，注意是大写的 P, port 是指定数据传输用到的端口号</li>
+<li><code>-S</code>：program，指定加密传输时所使用的程序。此程序必须能够理解 ssh(1)的选项。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>JavaWeb</tag>
       </tags>
   </entry>
   <entry>
