@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="树莓派-ubuntu-环境下-mariadb-部署">
+<meta property="og:url" content="http://www.dcheng.site/ef12ce00-4937-11ee-861d-b3cf05b530a5/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-02T02:23:16.000Z">
+<meta property="article:modified_time" content="2023-09-02T02:33:14.396Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="mariadb">
+<meta property="article:tag" content="raspberry-pi">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/ef12ce00-4937-11ee-861d-b3cf05b530a5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/ef12ce00-4937-11ee-861d-b3cf05b530a5/","path":"ef12ce00-4937-11ee-861d-b3cf05b530a5/","title":"树莓派-ubuntu-环境下-mariadb-部署"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>树莓派-ubuntu-环境下-mariadb-部署 | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-text">防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD"><span class="nav-text">磁盘挂载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%AE%B9%E9%87%8F%E5%8F%8A%E5%88%86%E5%8C%BA%E7%8A%B6%E5%86%B5%EF%BC%88%E4%B8%8D%E8%83%BD%E6%9F%A5%E7%9C%8B%E6%9C%AA%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA%EF%BC%89"><span class="nav-text">磁盘容量及分区状况（不能查看未挂载分区）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%AE%B9%E9%87%8F%E5%8F%8A%E5%88%86%E5%8C%BA%E7%8A%B6%E5%86%B5%EF%BC%88%E5%8F%AF%E4%BB%A5%E6%9F%A5%E7%9C%8B%E6%9C%AA%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA%EF%BC%89"><span class="nav-text">磁盘容量及分区状况（可以查看未挂载分区）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x2F-lib-%E7%9B%AE%E5%BD%95%E5%A4%A7%E5%B0%8F"><span class="nav-text">&#x2F;lib 目录大小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x2F-lib-%E5%AD%90%E7%9B%AE%E5%BD%95%E5%A4%A7%E5%B0%8F"><span class="nav-text">&#x2F;lib 子目录大小</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E7%A7%BB-mariadb-%E6%95%B0%E6%8D%AE"><span class="nav-text">转移 mariadb 数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-MariaDB-x2F-MySQL-tools-read-configuration-files-in-the-following-order"><span class="nav-text">The MariaDB&#x2F;MySQL tools read configuration files in the following order:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0-%E2%80%9C-x2F-etc-x2F-mysql-x2F-my-cnf%E2%80%9D-symlinks-to-this-file-reason-why-all-the-rest-is-read"><span class="nav-text">0. “&#x2F;etc&#x2F;mysql&#x2F;my.cnf” symlinks to this file, reason why all the rest is read.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E2%80%9C-x2F-etc-x2F-mysql-x2F-mariadb-cnf%E2%80%9D-this-file-to-set-global-defaults"><span class="nav-text">1. “&#x2F;etc&#x2F;mysql&#x2F;mariadb.cnf” (this file) to set global defaults,</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E2%80%9C-x2F-etc-x2F-mysql-x2F-conf-d-x2F-cnf%E2%80%9D-to-set-global-options"><span class="nav-text">2. “&#x2F;etc&#x2F;mysql&#x2F;conf.d&#x2F;*.cnf” to set global options.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E2%80%9C-x2F-etc-x2F-mysql-x2F-mariadb-conf-d-x2F-cnf%E2%80%9D-to-set-MariaDB-only-options"><span class="nav-text">3. “&#x2F;etc&#x2F;mysql&#x2F;mariadb.conf.d&#x2F;*.cnf” to set MariaDB-only options.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E2%80%9C-x2F-my-cnf%E2%80%9D-to-set-user-specific-options"><span class="nav-text">4. “~&#x2F;.my.cnf” to set user-specific options.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2-java11"><span class="nav-text">部署 java11</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/ef12ce00-4937-11ee-861d-b3cf05b530a5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="树莓派-ubuntu-环境下-mariadb-部署 | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          树莓派-ubuntu-环境下-mariadb-部署
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-09-02 10:23:16 / Modified: 10:33:14" itemprop="dateCreated datePublished" datetime="2023-09-02T10:23:16+08:00">2023-09-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">部署和安装</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<p>1、下载树莓派 Ubuntu Server 20.04.3 LTS</p>
+<p><a target="_blank" rel="noopener" href="https://cn.ubuntu.com/download/raspberry-pi">https://cn.ubuntu.com/download/raspberry-pi</a></p>
+<p>2、使用 balenaEtcher 制作系统到闪存</p>
+<p><a target="_blank" rel="noopener" href="https://www.balena.io/etcher/">https://www.balena.io/etcher/</a></p>
+<p>3、设置 wifi</p>
+<p>参考官网步骤：<a target="_blank" rel="noopener" href="https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#3-wifi-or-ethernet">https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#3-wifi-or-ethernet</a></p>
+<p>启动系统前，在闪存找到 network-config 文件，移除注释，按需设置。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wifis:</span><br><span class="line">  wlan0:</span><br><span class="line">    dhcp4: true</span><br><span class="line">    optional: true</span><br><span class="line">    access-points:</span><br><span class="line">      &quot;home network&quot;:</span><br><span class="line">        password: &quot;123456789&quot;</span><br></pre></td></tr></table></figure>
+
+<p>4、启动系统</p>
+<ul>
+<li>默认用户名：ubuntu</li>
+<li>默认密码：ubuntu</li>
+</ul>
+<p>5、安装 ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>执行 apt-get 若出现 Could not get lock… 等类似提示，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E: Could not get lock /var/lib/dpkg/lock. It is held by process 34781 (dpkg)</span><br><span class="line">N: Be aware that removing the lock file is not a solution and may break your system.</span><br><span class="line">E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?</span><br></pre></td></tr></table></figure>
+
+<p>可通过 <code>ps afx|grep apt</code> 命令查看进程，使用 <code>kill -9 &lt;进程编号&gt;</code> 停止占用进程，再执行安装命令即可。</p>
+<blockquote>
+<p>注：不必删除 lock 文件。</p>
+</blockquote>
+<p>通过 <code>sudo systemctl status ssh</code> 查看服务状态是否正常，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu:~$ sudo systemctl status ssh</span><br><span class="line">● ssh.service - OpenBSD Secure Shell server</span><br><span class="line">     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Fri 2022-02-11 03:48:39 UTC; 1h 43min ago</span><br><span class="line">       Docs: man:sshd(8)</span><br><span class="line">             man:sshd_config(5)</span><br><span class="line">   Main PID: 45984 (sshd)</span><br><span class="line">      Tasks: 1 (limit: 4435)</span><br><span class="line">     CGroup: /system.slice/ssh.service</span><br><span class="line">             └─45984 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>ssh ubuntu@xxx.xxx.xxx.xxx</code> 连接即可。</p>
+<p>6、安装 mariadb</p>
+<p>参考官网步骤，采用阿里云镜像</p>
+<p><a target="_blank" rel="noopener" href="https://mariadb.org/download/?t=repo-config&d=20.04+%22focal%22&v=10.6&r_m=aliyun">https://mariadb.org/download/?t=repo-config&amp;d=20.04+%22focal%22&amp;v=10.6&amp;r_m=aliyun</a></p>
+<p><strong>依次</strong>执行如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common dirmngr apt-transport-https</span><br><span class="line">sudo apt-key adv --fetch-keys &#x27;https://mariadb.org/mariadb_release_signing_key.asc&#x27;</span><br><span class="line">sudo add-apt-repository &#x27;deb [arch=amd64,arm64,ppc64el,s390x] https://mirrors.aliyun.com/mariadb/repo/10.6/ubuntu focal main&#x27;</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install mariadb-server</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>sudo systemctl status mariadb.service</code> 查看服务状态，正常工作如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu:~$ sudo systemctl status mariadb.service</span><br><span class="line"></span><br><span class="line">● mariadb.service - MariaDB 10.6.5 database server</span><br><span class="line">     Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor prese&gt;</span><br><span class="line">    Drop-In: /etc/systemd/system/mariadb.service.d</span><br><span class="line">             └─migrated-from-my.cnf-settings.conf</span><br><span class="line">     Active: active (running) since Fri 2022-02-11 03:56:37 UTC; 39min ago</span><br><span class="line">       Docs: man:mariadbd(8)</span><br><span class="line">             https://mariadb.com/kb/en/library/systemd/</span><br><span class="line">   Main PID: 48637 (mariadbd)</span><br><span class="line">     Status: &quot;Taking your SQL requests now...&quot;</span><br><span class="line">      Tasks: 8 (limit: 4435)</span><br><span class="line">     CGroup: /system.slice/mariadb.service</span><br><span class="line">             └─48637 /usr/sbin/mariadbd</span><br></pre></td></tr></table></figure>
+
+<p>7、修改密码</p>
+<p>通过 <code>sudo mariadb -u root -p</code> 登录，不必输入密码，直接回车后修改 root 密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">alter user &#x27;root&#x27;@&#x27;localhost&#x27; identified by &#x27;xxxxxx&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>可通过 <code>select user, plugin from mysql.user;</code> 查看登陆方式。初始状态为 unix_socket(MariaDB)，配置密码后为 mysql_native_password</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; select user, plugin from mysql.user;</span><br><span class="line">+-------------+-----------------------+</span><br><span class="line">| User        | plugin                |</span><br><span class="line">+-------------+-----------------------+</span><br><span class="line">| mariadb.sys | mysql_native_password |</span><br><span class="line">| root        | mysql_native_password |</span><br><span class="line">| mysql       | mysql_native_password |</span><br><span class="line">+-------------+-----------------------+</span><br><span class="line">4 rows in set (0.011 sec)</span><br></pre></td></tr></table></figure>
+
+<p>8、允许远程连接</p>
+<p>通过 <code>sudo vim /etc/mysql/mariadb.conf.d/50-server.cnf</code> 修改配置，将其中 <code>bind-address = 127.0.0.1</code> 修改为 0.0.0.0 或直接注释掉。</p>
+<p>新增远程连接用户 <code>create user &lt;username&gt;@xxx.xxx.xxx.xxx identified by &#39;123456&#39;;</code></p>
+<p>9、其他</p>
+<p>启动 MariaDB 数据库服务 <code>sudo systemctl start mysql</code></p>
+<p>重启数据库服务 <code>sudo systemctl restart mysql</code></p>
+<p>设置 mysql 随系统服务启动 <code>sudo update-rc.d mysql defaults</code></p>
+<p>撤销随系统服务启动 <code>sudo update-rc.d -f mysql remove</code></p>
+<h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><h2 id="磁盘挂载"><a href="#磁盘挂载" class="headerlink" title="磁盘挂载"></a>磁盘挂载</h2><p>以机械硬盘为例，已经在 windows 格式化为 exFAT 格式。通过 USB 接入树莓派后，登入系统，通过 <code>sudo fdisk -l</code> 查看当前磁盘状态如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu:~$ sudo fdisk -l</span><br><span class="line">Disk /dev/loop0: 48.92 MiB, 51277824 bytes, 100152 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line">Disk /dev/loop1: 61.98 MiB, 64962560 bytes, 126880 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line">Disk /dev/loop2: 28.7 MiB, 29433856 bytes, 57488 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line"></span><br><span class="line">Disk /dev/mmcblk0: 29.74 GiB, 31914983424 bytes, 62333952 sectors</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disklabel type: dos</span><br><span class="line">Disk identifier: 0xf66f0719</span><br><span class="line"></span><br><span class="line">Device         Boot  Start      End  Sectors  Size Id Type</span><br><span class="line">/dev/mmcblk0p1 *      2048   526335   524288  256M  c W95 FAT32 (LBA)</span><br><span class="line">/dev/mmcblk0p2      526336 62333918 61807583 29.5G 83 Linux</span><br><span class="line"></span><br><span class="line">Disk /dev/sda: 298.9 GiB, 320072933376 bytes, 625142448 sectors</span><br><span class="line">Disk model: 00AAJS-00L7A0</span><br><span class="line">Units: sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 33553920 bytes</span><br><span class="line">Disklabel type: dos</span><br><span class="line">Disk identifier: 0x91676b87</span><br><span class="line"></span><br><span class="line">Device     Boot Start       End   Sectors   Size Id Type</span><br><span class="line">/dev/sda1        2048 625139711 625137664 298.1G  7 HPFS/NTFS/exFAT</span><br></pre></td></tr></table></figure>
+
+<p>格式化硬盘为 ext4 格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu:~$ sudo mkfs -t ext4 /dev/sda</span><br><span class="line">mke2fs 1.45.5 (07-Jan-2020)</span><br><span class="line">Found a dos partition table in /dev/sda</span><br><span class="line">Proceed anyway? (y,N) y</span><br><span class="line">Creating filesystem with 78142806 4k blocks and 19537920 inodes</span><br><span class="line">Filesystem UUID: bfff555b-254e-403a-880e-260601f7c1e5</span><br><span class="line">Superblock backups stored on blocks:</span><br><span class="line">	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,</span><br><span class="line">	4096000, 7962624, 11239424, 20480000, 23887872, 71663616</span><br><span class="line"></span><br><span class="line">Allocating group tables: done</span><br><span class="line">Writing inode tables: done</span><br><span class="line">Creating journal (262144 blocks): done</span><br><span class="line">Writing superblocks and filesystem accounting information: done</span><br></pre></td></tr></table></figure>
+
+<p>通过以下命令建立目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /mnt/disk</span><br><span class="line">chmod 777 /mnt/disk</span><br></pre></td></tr></table></figure>
+
+<p>挂载硬盘</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sda /mnt/disk</span><br></pre></td></tr></table></figure>
+
+<p>查询 uuid</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@ubuntu:~$ sudo blkid</span><br><span class="line">/dev/mmcblk0p1: LABEL_FATBOOT=&quot;system-boot&quot; LABEL=&quot;system-boot&quot; UUID=&quot;5496-E6C8&quot; TYPE=&quot;vfat&quot; PARTUUID=&quot;f66f0719-01&quot;</span><br><span class="line">/dev/mmcblk0p2: LABEL=&quot;writable&quot; UUID=&quot;675ba907-3741-428c-afa4-c00f1b649e3c&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;f66f0719-02&quot;</span><br><span class="line">/dev/loop0: TYPE=&quot;squashfs&quot;</span><br><span class="line">/dev/loop1: TYPE=&quot;squashfs&quot;</span><br><span class="line">/dev/loop2: TYPE=&quot;squashfs&quot;</span><br><span class="line">/dev/sda: UUID=&quot;bfff555b-254e-403a-880e-260601f7c1e5&quot; TYPE=&quot;ext4&quot;</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>sudo vim /etc/fstab</code> 在末尾添加下列内容，两者选其一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UUID=bfff555b-254e-403a-880e-260601f7c1e5 /mnt/disk ext4 defaults 0 0</span><br><span class="line">或</span><br><span class="line">/dev/sda /mnt/disk ext4 defaults 0 0</span><br></pre></td></tr></table></figure>
+
+<p>第一个数字：0 表示开机不检查磁盘，1 表示开机检查磁盘；<br>第二个数字：0 表示交换分区，1 代表启动分区（Linux），2 表示普通分区</p>
+<p>其他补充：<br>进入 &#x2F;mnt&#x2F;disk 目录，其中包含</p>
+<p>如果你运行 fsck 命令（文件系统检查和修复命令），它也许会找到一些数据碎片，这些文件碎片在硬盘中并没有引用。特别的，fsck 也许能找到看起来是完整的文件，但是在系统中没有名字－一个 inode 但是不对应文件名。这个数据仍然占用硬盘空间，但是并不能通过正常方式访问。</p>
+<pre><code>     lost+found目录的文件通常是未链接的文件（名字已经被删除），但是这些文件还被一些进程使用（数据没有删除），在突然关机时（内核panic或者突然断电）出现。这些文件系统会自动删除。
+
+    当因为软件或者硬件出现错误，导致文件系统不一致，也有可能把有问题的文件放到lost+found目录。它提供了恢复丢失文件的一种方法。
+
+
+
+    如果你不小心删除了lost+found目录，不能使用mkdir命令创建lost+found目录，应该使用mklost+found命令创建它。
+</code></pre>
+<p>$ cd &#x2F;<br>$ sudo mklost+found</p>
+<h1 id="磁盘容量及分区状况（不能查看未挂载分区）"><a href="#磁盘容量及分区状况（不能查看未挂载分区）" class="headerlink" title="磁盘容量及分区状况（不能查看未挂载分区）"></a>磁盘容量及分区状况（不能查看未挂载分区）</h1><p>df -Th</p>
+<h1 id="磁盘容量及分区状况（可以查看未挂载分区）"><a href="#磁盘容量及分区状况（可以查看未挂载分区）" class="headerlink" title="磁盘容量及分区状况（可以查看未挂载分区）"></a>磁盘容量及分区状况（可以查看未挂载分区）</h1><p>sudo fdisk -l<br>sudo lsblk -f</p>
+<h1 id="x2F-lib-目录大小"><a href="#x2F-lib-目录大小" class="headerlink" title="&#x2F;lib 目录大小"></a>&#x2F;lib 目录大小</h1><p>du -sh &#x2F;lib</p>
+<h1 id="x2F-lib-子目录大小"><a href="#x2F-lib-子目录大小" class="headerlink" title="&#x2F;lib 子目录大小"></a>&#x2F;lib 子目录大小</h1><p>du -sh &#x2F;lib&#x2F;*</p>
+<h2 id="转移-mariadb-数据"><a href="#转移-mariadb-数据" class="headerlink" title="转移 mariadb 数据"></a>转移 mariadb 数据</h2><p>执行 <code>sudo systemctl stop mariadb.service</code> 停止服务</p>
+<p>新建 &#x2F;mnt&#x2F;disk&#x2F;mariadbdata</p>
+<p>通过 <code>sudo vim /etc/mysql/mariadb.conf.d/50-server.cnf</code> 修改 datadir 如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># * Basic Settings</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">user                    = mysql</span><br><span class="line">pid-file                = /run/mysqld/mysqld.pid</span><br><span class="line">basedir                 = /usr</span><br><span class="line">#datadir                 = /var/lib/mysql</span><br><span class="line">datadir                 = /mnt/disk/mariadbdata</span><br><span class="line">tmpdir                  = /tmp</span><br><span class="line">lc-messages-dir         = /usr/share/mysql</span><br><span class="line">lc-messages             = en_US</span><br><span class="line">skip-external-locking</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>sudo cp -r /var/lib/mysql/* /mnt/disk/mariadbdata/</code> 复制旧数据到新位置。</p>
+<p>修改目录权限和组</p>
+<p><code>sudo chown -R mysql:mysql /mnt/disk/mariadbdata</code></p>
+<blockquote>
+<p>注意：若需要保存旧目录数据，应复制文件后再修改所有者，否则无法启动服务。</p>
+</blockquote>
+<p>执行 <code>sudo systemctl start mariadb.service</code> 重启服务</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>如果将数据转移到 &#x2F;home 目录需要修改 <code>/lib/systemd/system/mariadb.service</code> 为 <code>ProtectHome=false</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Prevent accessing /home, /root and /run/user</span><br><span class="line">ProtectHome=true</span><br></pre></td></tr></table></figure>
+
+<h1 id="The-MariaDB-x2F-MySQL-tools-read-configuration-files-in-the-following-order"><a href="#The-MariaDB-x2F-MySQL-tools-read-configuration-files-in-the-following-order" class="headerlink" title="The MariaDB&#x2F;MySQL tools read configuration files in the following order:"></a>The MariaDB&#x2F;MySQL tools read configuration files in the following order:</h1><h1 id="0-“-x2F-etc-x2F-mysql-x2F-my-cnf”-symlinks-to-this-file-reason-why-all-the-rest-is-read"><a href="#0-“-x2F-etc-x2F-mysql-x2F-my-cnf”-symlinks-to-this-file-reason-why-all-the-rest-is-read" class="headerlink" title="0. “&#x2F;etc&#x2F;mysql&#x2F;my.cnf” symlinks to this file, reason why all the rest is read."></a>0. “&#x2F;etc&#x2F;mysql&#x2F;my.cnf” symlinks to this file, reason why all the rest is read.</h1><h1 id="1-“-x2F-etc-x2F-mysql-x2F-mariadb-cnf”-this-file-to-set-global-defaults"><a href="#1-“-x2F-etc-x2F-mysql-x2F-mariadb-cnf”-this-file-to-set-global-defaults" class="headerlink" title="1. “&#x2F;etc&#x2F;mysql&#x2F;mariadb.cnf” (this file) to set global defaults,"></a>1. “&#x2F;etc&#x2F;mysql&#x2F;mariadb.cnf” (this file) to set global defaults,</h1><h1 id="2-“-x2F-etc-x2F-mysql-x2F-conf-d-x2F-cnf”-to-set-global-options"><a href="#2-“-x2F-etc-x2F-mysql-x2F-conf-d-x2F-cnf”-to-set-global-options" class="headerlink" title="2. “&#x2F;etc&#x2F;mysql&#x2F;conf.d&#x2F;*.cnf” to set global options."></a>2. “&#x2F;etc&#x2F;mysql&#x2F;conf.d&#x2F;*.cnf” to set global options.</h1><h1 id="3-“-x2F-etc-x2F-mysql-x2F-mariadb-conf-d-x2F-cnf”-to-set-MariaDB-only-options"><a href="#3-“-x2F-etc-x2F-mysql-x2F-mariadb-conf-d-x2F-cnf”-to-set-MariaDB-only-options" class="headerlink" title="3. “&#x2F;etc&#x2F;mysql&#x2F;mariadb.conf.d&#x2F;*.cnf” to set MariaDB-only options."></a>3. “&#x2F;etc&#x2F;mysql&#x2F;mariadb.conf.d&#x2F;*.cnf” to set MariaDB-only options.</h1><h1 id="4-“-x2F-my-cnf”-to-set-user-specific-options"><a href="#4-“-x2F-my-cnf”-to-set-user-specific-options" class="headerlink" title="4. “~&#x2F;.my.cnf” to set user-specific options."></a>4. “~&#x2F;.my.cnf” to set user-specific options.</h1><p>50-client.cnf 50-mysqld_safe.cnf 60-galera.cnf<br>50-mysql-clients.cnf 50-server.cnf 99-enable-encryption.cnf.preset</p>
+<h2 id="部署-java11"><a href="#部署-java11" class="headerlink" title="部署 java11"></a>部署 java11</h2><p>参考 <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/generic-linux-install.html">https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/generic-linux-install.html</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add -</span><br><span class="line"></span><br><span class="line">sudo add-apt-repository &#x27;deb https://apt.corretto.aws stable main&#x27;</span><br><span class="line"></span><br><span class="line">sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk</span><br></pre></td></tr></table></figure>
+
+<p>安装路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/lib/jvm/java-11-amazon-corretto/bin/</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+              <a href="/tags/mariadb/" rel="tag"># mariadb</a>
+              <a href="/tags/raspberry-pi/" rel="tag"># raspberry-pi</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ef127fe0-4937-11ee-861d-b3cf05b530a5/" rel="prev" title="修改-macOS-的-MAC-地址">
+                  <i class="fa fa-chevron-left"></i> 修改-macOS-的-MAC-地址
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

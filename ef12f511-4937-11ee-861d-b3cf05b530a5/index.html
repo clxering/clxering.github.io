@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Java8-Map-新增方法">
+<meta property="og:url" content="http://www.dcheng.site/ef12f511-4937-11ee-861d-b3cf05b530a5/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-03T00:16:14.000Z">
+<meta property="article:modified_time" content="2023-09-02T02:33:14.372Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/ef12f511-4937-11ee-861d-b3cf05b530a5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/ef12f511-4937-11ee-861d-b3cf05b530a5/","path":"ef12f511-4937-11ee-861d-b3cf05b530a5/","title":"Java8-Map-新增方法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java8-Map-新增方法 | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#getOrDefault-%E6%96%B9%E6%B3%95"><span class="nav-text">getOrDefault 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forEach-%E6%96%B9%E6%B3%95"><span class="nav-text">forEach 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#replaceAll-%E6%96%B9%E6%B3%95"><span class="nav-text">replaceAll 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#putIfAbsent-%E6%96%B9%E6%B3%95"><span class="nav-text">putIfAbsent 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remove-%E6%96%B9%E6%B3%95"><span class="nav-text">remove 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#replace-K-key-V-oldValue-V-newValue-%E6%96%B9%E6%B3%95"><span class="nav-text">replace(K key, V oldValue, V newValue) 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#replace-K-key-V-value-%E6%96%B9%E6%B3%95"><span class="nav-text">replace(K key, V value) 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computeIfAbsent-%E6%96%B9%E6%B3%95"><span class="nav-text">computeIfAbsent 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#computeIfPresent-%E6%96%B9%E6%B3%95"><span class="nav-text">computeIfPresent 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compute-%E6%96%B9%E6%B3%95"><span class="nav-text">compute 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#merge-%E6%96%B9%E6%B3%95"><span class="nav-text">merge 方法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/ef12f511-4937-11ee-861d-b3cf05b530a5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java8-Map-新增方法 | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          Java8-Map-新增方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-05-03 08:16:14" itemprop="dateCreated datePublished" datetime="2023-05-03T08:16:14+08:00">2023-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-02 10:33:14" itemprop="dateModified" datetime="2023-09-02T10:33:14+08:00">2023-09-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">后端技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+
+<p>在 Java 8 中的 Map.Entry 接口中增加了 comparingByKey, comparingByValue 方法，它们都返回 <code>Comparator&lt;Map.Entry&lt;K,V&gt;&gt;</code>, Comparator 是一个函数接口，主要是方便 Lambda 表达式的使用。</p>
+<p>在 Java 8 中的 Map 接口增加了一些 default 方法，提升了对 key，value 操作的便利性。下面是基本数据的定义，通过这些数据说明新增的一些方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">map.put(<span class="number">1</span>, <span class="string">&quot;a&quot;</span>);</span><br><span class="line">map.put(<span class="number">2</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line">map.put(<span class="number">3</span>, <span class="string">&quot;c&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="getOrDefault-方法"><a href="#getOrDefault-方法" class="headerlink" title="getOrDefault 方法"></a>getOrDefault 方法</h2><p>如果指定的 key 存在，则返回该 key 对应的 value，如果不存在，则返回指定的值。例子如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// key为4不存在，输出 d</span></span><br><span class="line">System.out.println(map.getOrDefault(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="forEach-方法"><a href="#forEach-方法" class="headerlink" title="forEach 方法"></a>forEach 方法</h2><p>遍历 Map 中的所有 Entry, 对 key, value 进行处理， 接收参数 (K, V) -&gt; void, 例子如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出1a, 2b, 3c</span></span><br><span class="line">map.forEach((key, value) -&gt; System.out.println(key + value));</span><br></pre></td></tr></table></figure>
+
+<h2 id="replaceAll-方法"><a href="#replaceAll-方法" class="headerlink" title="replaceAll 方法"></a>replaceAll 方法</h2><p>替换 Map 中所有 Entry 的 value 值，这个值由旧的 key 和 value 计算得出，接收参数 <code>(K, V) -&gt; V</code>, 类似如下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Map.Entry&lt;K, V&gt; entry : map.entrySet())</span><br><span class="line">    entry.setValue(function.apply(entry.getKey(), entry.getValue()));</span><br></pre></td></tr></table></figure>
+
+<p>例如如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">map.replaceAll((key, value) -&gt; (key + <span class="number">1</span>) + value);</span><br><span class="line"><span class="comment">// 输出 12a 23b 34c</span></span><br><span class="line">map.forEach((key, value) -&gt; System.out.println(key + value));</span><br></pre></td></tr></table></figure>
+
+<h2 id="putIfAbsent-方法"><a href="#putIfAbsent-方法" class="headerlink" title="putIfAbsent 方法"></a>putIfAbsent 方法</h2><p>如果 key 关联的 value 不存在，则关联新的 value 值，返回 key 关联的旧的值，类似如下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">V</span> <span class="variable">v</span> <span class="operator">=</span> map.get(key);</span><br><span class="line"><span class="keyword">if</span> (v == <span class="literal">null</span>)</span><br><span class="line">    v = map.put(key, value);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> v;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">map.putIfAbsent(<span class="number">3</span>, <span class="string">&quot;d&quot;</span>);</span><br><span class="line">map.putIfAbsent(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>);</span><br><span class="line"><span class="comment">// 输出 c</span></span><br><span class="line">System.out.println(map.get(<span class="number">3</span>));</span><br><span class="line"><span class="comment">// 输出 d</span></span><br><span class="line">System.out.println(map.get(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="remove-方法"><a href="#remove-方法" class="headerlink" title="remove 方法"></a>remove 方法</h2><p>接收 2 个参数，key 和 value，如果 key 关联的 value 值与指定的 value 值相等（equals），则删除这个元素，类似代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.containsKey(key) &amp;&amp; Objects.equals(map.get(key), value)) &#123;</span><br><span class="line">    map.remove(key);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">map.remove(<span class="number">1</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">// 未删除成功， 输出 a</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">map.remove(<span class="number">2</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">// 删除成功，输出 null</span></span><br><span class="line">System.out.println(map.get(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="replace-K-key-V-oldValue-V-newValue-方法"><a href="#replace-K-key-V-oldValue-V-newValue-方法" class="headerlink" title="replace(K key, V oldValue, V newValue) 方法"></a>replace(K key, V oldValue, V newValue) 方法</h2><p>如果 key 关联的值与指定的 oldValue 的值相等，则替换成新的 newValue，类似代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.containsKey(key) &amp;&amp; Objects.equals(map.get(key), value)) &#123;</span><br><span class="line">    map.put(key, newValue);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">map.replace(<span class="number">3</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;z&quot;</span>);</span><br><span class="line"><span class="comment">// 未替换成功，输出 c</span></span><br><span class="line">System.out.println(map.get(<span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">map.replace(<span class="number">1</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;z&quot;</span>);</span><br><span class="line"><span class="comment">// 替换成功， 输出 z</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="replace-K-key-V-value-方法"><a href="#replace-K-key-V-value-方法" class="headerlink" title="replace(K key, V value) 方法"></a>replace(K key, V value) 方法</h2><p>如果 map 中存在 key，则替换成 value 值，否则返回 null, 类似代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.containsKey(key)) &#123;</span><br><span class="line">    <span class="keyword">return</span> map.put(key, value);</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出旧的值， a</span></span><br><span class="line">System.out.println(map.replace(<span class="number">1</span>, <span class="string">&quot;aa&quot;</span>));</span><br><span class="line"><span class="comment">// 替换成功，输出新的值， aa</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不存在key为4， 输出 null</span></span><br><span class="line">System.out.println(map.replace(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>));</span><br><span class="line"><span class="comment">// 不存在key为4， 输出 null</span></span><br><span class="line">System.out.println(map.get(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="computeIfAbsent-方法"><a href="#computeIfAbsent-方法" class="headerlink" title="computeIfAbsent 方法"></a>computeIfAbsent 方法</h2><p>如果指定的 key 不存在，则通过指定的 <code>K -&gt; V</code> 计算出新的值设置为 key 的值，类似代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.get(key) == <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="type">V</span> <span class="variable">newValue</span> <span class="operator">=</span> mappingFunction.apply(key);</span><br><span class="line">    <span class="keyword">if</span> (newValue != <span class="literal">null</span>)</span><br><span class="line">        map.put(key, newValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">map.computeIfAbsent(<span class="number">1</span>, key -&gt; key + <span class="string">&quot; computed&quot;</span>);</span><br><span class="line"><span class="comment">// 存在key为1，则不进行计算，输出值 a</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">map.computeIfAbsent(<span class="number">4</span>, key -&gt; key + <span class="string">&quot; computed&quot;</span>);</span><br><span class="line"><span class="comment">// 不存在key为4，则进行计算，输出值 4 computed</span></span><br><span class="line">System.out.println(map.get(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="computeIfPresent-方法"><a href="#computeIfPresent-方法" class="headerlink" title="computeIfPresent 方法"></a>computeIfPresent 方法</h2><p>如果指定的 key 存在，则根据旧的 key 和 value 计算新的值 newValue, 如果 newValue 不为 null，则设置 key 新的值为 newValue, 如果 newValue 为 null, 则删除该 key 的值，类似代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.get(key) != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="type">V</span> <span class="variable">oldValue</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">    <span class="type">V</span> <span class="variable">newValue</span> <span class="operator">=</span> remappingFunction.apply(key, oldValue);</span><br><span class="line">    <span class="keyword">if</span> (newValue != <span class="literal">null</span>)</span><br><span class="line">        map.put(key, newValue);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        map.remove(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">map.computeIfPresent(<span class="number">1</span>, (key, value) -&gt; (key + <span class="number">1</span>) + value);</span><br><span class="line"><span class="comment">// 存在key为1， 则根据旧的key和value计算新的值，输出 2a</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">map.computeIfPresent(<span class="number">2</span>, (key, value) -&gt; <span class="literal">null</span>);</span><br><span class="line"><span class="comment">// 存在key为2， 根据旧的key和value计算得到null，删除该值，输出 null</span></span><br><span class="line">System.out.println(map.get(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="compute-方法"><a href="#compute-方法" class="headerlink" title="compute 方法"></a>compute 方法</h2><p>compute 方法是 computeIfAbsent 与 computeIfPresent 的综合体。</p>
+<h2 id="merge-方法"><a href="#merge-方法" class="headerlink" title="merge 方法"></a>merge 方法</h2><p>构造</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">merge(K key, V value, BiFunction&lt;? <span class="built_in">super</span> V, ? <span class="built_in">super</span> V, ? <span class="keyword">extends</span> <span class="title class_">V</span>&gt; remappingFunction)</span><br></pre></td></tr></table></figure>
+
+<p>如果指定的 key 不存在，则设置指定的 value 值，否则根据 key 的旧的值 oldvalue，value 计算出新的值 newValue, 如果 newValue 为 null, 则删除该 key，否则设置 key 的新值 newValue。类似如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">V</span> <span class="variable">oldValue</span> <span class="operator">=</span> map.get(key);</span><br><span class="line"><span class="type">V</span> <span class="variable">newValue</span> <span class="operator">=</span> (oldValue == <span class="literal">null</span>) ? value :</span><br><span class="line">        remappingFunction.apply(oldValue, value);</span><br><span class="line"><span class="keyword">if</span> (newValue == <span class="literal">null</span>)</span><br><span class="line">    map.remove(key);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    map.put(key, newValue);</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存在key为1， 输出 a merge</span></span><br><span class="line">System.out.println(map.merge(<span class="number">1</span>, <span class="string">&quot; merge&quot;</span>, (oldValue, newValue) -&gt; oldValue + newValue));</span><br><span class="line"><span class="comment">// 新值为null，删除key，输出 null</span></span><br><span class="line">System.out.println(map.merge(<span class="number">1</span>, <span class="string">&quot; merge&quot;</span>, (oldValue, newValue) -&gt; <span class="literal">null</span>));</span><br><span class="line"><span class="comment">// 输出 &quot; merge&quot;</span></span><br><span class="line">System.out.println(map.merge(<span class="number">4</span>, <span class="string">&quot; merge&quot;</span>, (oldValue, newValue) -&gt; oldValue + newValue));</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ef12ce01-4937-11ee-861d-b3cf05b530a5/" rel="prev" title="AtomicInteger-用法">
+                  <i class="fa fa-chevron-left"></i> AtomicInteger-用法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/58871fa1-2a1e-11ee-846a-89c1529ebdf1/" rel="next" title="CompletableFuture-异步处理任务">
+                  CompletableFuture-异步处理任务 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
