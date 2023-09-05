@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="Notebook">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-27T13:42:43.000Z">
-<meta property="article:modified_time" content="2023-09-02T02:33:14.396Z">
+<meta property="article:modified_time" content="2023-09-05T15:09:59.305Z">
 <meta property="article:author" content="Mr.Dcheng">
 <meta property="article:tag" content="anaconda">
 <meta name="twitter:card" content="summary">
@@ -246,7 +246,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-02 10:33:14" itemprop="dateModified" datetime="2023-09-02T10:33:14+08:00">2023-09-02</time>
+      <time title="Modified: 2023-09-05 23:09:59" itemprop="dateModified" datetime="2023-09-05T23:09:59+08:00">2023-09-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -279,18 +279,29 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="1、安装-anaconda3"><a href="#1、安装-anaconda3" class="headerlink" title="1、安装 anaconda3"></a>1、安装 anaconda3</h2><p>务必选择添加环境变量，便于 vscode 新建环境，或者手动添加，假设安装目录为 <code>D:\anaconda3</code>，添加如下路径：</p>
+<h2 id="1、安装-anaconda3"><a href="#1、安装-anaconda3" class="headerlink" title="1、安装 anaconda3"></a>1、安装 anaconda3</h2><p>务必选择添加环境变量（或用户变量），便于 vscode 新建环境，或者手动添加，假设安装目录为 <code>D:\anaconda3</code>，添加如下路径：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\anaconda3</span><br><span class="line">D:\anaconda3\Library\mingw-w64\bin</span><br><span class="line">D:\anaconda3\Library\usr\bin</span><br><span class="line">D:\anaconda3\Library\bin</span><br><span class="line">D:\anaconda3\Scripts</span><br></pre></td></tr></table></figure>
 
 <h2 id="2、vscode-安装微软官方-python-插件，相关信息如下"><a href="#2、vscode-安装微软官方-python-插件，相关信息如下" class="headerlink" title="2、vscode 安装微软官方 python 插件，相关信息如下"></a>2、vscode 安装微软官方 python 插件，相关信息如下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Name: Python</span><br><span class="line">Id: ms-python.python</span><br><span class="line">Description: IntelliSense (Pylance), Linting, Debugging (multi-threaded, remote), Jupyter Notebooks, code formatting, refactoring, unit tests, and more.</span><br><span class="line">Version: 2023.10.1</span><br><span class="line">Publisher: Microsoft</span><br><span class="line">VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-python.python</span><br></pre></td></tr></table></figure>
 
-<h2 id="3、创建或复用-conda-环境"><a href="#3、创建或复用-conda-环境" class="headerlink" title="3、创建或复用 conda 环境"></a>3、创建或复用 conda 环境</h2><p>1）创建</p>
+<h2 id="3、创建或复用-conda-环境"><a href="#3、创建或复用-conda-环境" class="headerlink" title="3、创建或复用 conda 环境"></a>3、创建或复用 conda 环境</h2><p>1）创建匿名 conda 环境</p>
 <p>ctrl+shift+P，输入<code>&gt; Create Environment</code> 命令，选择建立 conda 环境，进一步选择 python 版本。</p>
-<p>2）复用</p>
-<ul>
-<li>ctrl+shift+P，输入<code>&gt; Select Interpreter</code> 命令，选择已存在的 conda 环境，重启终端。</li>
-<li>或者点击右下角 <code>conda</code></li>
-</ul>
+<blockquote>
+<p>注意：这种方式会在项目下新建 <code>.conda</code> 目录。</p>
+</blockquote>
+<p>重新启动终端，将以全路径方式激活：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base) PS E:\test&gt; activate</span><br><span class="line">(base) PS E:\test&gt; conda activate e:\test\.conda</span><br><span class="line">(e:\test\.conda) PS E:\test&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2）创建指定名称的 conda 环境</p>
+<p>终端执行 <code>conda create -n &lt;env_name&gt; python=&lt;version&gt;</code> 即可创建指定 python 版本且名为 env_name 的环境，该环境一般放在目录 <code>anaconda3\envs</code> 下</p>
+<p>重新启动终端，将以名称激活：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base) PS E:\<span class="built_in">test</span>&gt; C:/anaconda3/Scripts/activate</span><br><span class="line">(base) PS E:\<span class="built_in">test</span>&gt; conda activate env_name</span><br><span class="line">(env_name) PS E:\<span class="built_in">test</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3）复用</p>
+<p>ctrl+shift+P，输入<code>&gt; Select Interpreter</code> 命令，选择已存在的 conda 环境（包括当前目录的匿名环境），重启终端即可。</p>
+<blockquote>
+<p>注意：重新选择环境后要重新进入终端</p>
+</blockquote>
 <h2 id="4、问题及解决方案"><a href="#4、问题及解决方案" class="headerlink" title="4、问题及解决方案"></a>4、问题及解决方案</h2><p><strong>问题 1：</strong> 出现如下提示，应执行 <code>conda init powershell</code>，之后重新启动 vscode</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">CommandNotFoundError: Your shell has not been properly configured to use <span class="string">&#x27;conda activate&#x27;</span>.</span><br><span class="line">If using <span class="string">&#x27;conda activate&#x27;</span> from a batch script, change your</span><br><span class="line">invocation to <span class="string">&#x27;CALL conda.bat activate&#x27;</span>.</span><br><span class="line"></span><br><span class="line">To initialize your shell, run</span><br><span class="line"></span><br><span class="line">    $ conda init &lt;SHELL_NAME&gt;</span><br><span class="line"></span><br><span class="line">Currently supported shells are:</span><br><span class="line">  - bash</span><br><span class="line">  - cmd.exe</span><br><span class="line">  - fish</span><br><span class="line">  - tcsh</span><br><span class="line">  - xonsh</span><br><span class="line">  - zsh</span><br><span class="line">  - powershell</span><br><span class="line"></span><br><span class="line">See <span class="string">&#x27;conda init --help&#x27;</span> <span class="keyword">for</span> more information and options.</span><br><span class="line"></span><br><span class="line">IMPORTANT: You may need to close and restart your shell after running <span class="string">&#x27;conda init&#x27;</span>.</span><br></pre></td></tr></table></figure>
 
@@ -302,8 +313,8 @@
 <blockquote>
 <p>可执行 <code>get-executionpolicy</code> 命令查看当前策略</p>
 </blockquote>
-<p>以管理员身份打开 PowerShell 输入 <code>set-executionpolicy remotesigned</code>，重启 vscode 终端，即可切换到当前 conda 环境。一般而言，解除上述问题后，每次新建终端进入 conda 环境后，会自动执行 <code>active</code> 和 <code>conda active</code> 命令，例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(base) PS C:\py_test&gt; activate</span><br><span class="line">(base) PS C:\py_test&gt; conda activate c:\py_test\.conda</span><br></pre></td></tr></table></figure>
+<p>以管理员身份打开 PowerShell 输入 <code>set-executionpolicy remotesigned</code>，重启 vscode 终端，即可切换到当前 conda 环境。一般而言，解除上述问题后，每次新建终端进入 conda 环境后，会自动执行 <code>active</code> 和 <code>conda active</code> 命令进入默认的 <code>base</code> 环境，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(base) PS E:\<span class="built_in">test</span>&gt; activate</span><br><span class="line">(base) PS E:\<span class="built_in">test</span>&gt; conda activate base</span><br><span class="line">(base) PS E:\<span class="built_in">test</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <h2 id="5、其他相关命令"><a href="#5、其他相关命令" class="headerlink" title="5、其他相关命令"></a>5、其他相关命令</h2><ul>
 <li>查看安装源：<code>conda config --show-sources</code></li>
@@ -317,7 +328,7 @@
 <li>查看源优先级：<code>conda config --get channels</code></li>
 <li>查看 <code>.condarc</code> 文件位置（执行 <code>conda config</code> 系列命令时生成）：<code>conda info</code></li>
 <li>显示 channel 来源： <code>conda config --set show_channel_urls yes</code></li>
-<li>查看所有虚拟环境：<code>conda info --envs</code></li>
+<li>查看所有虚拟环境：<code>conda info --envs</code> 或 <code>conda env list</code></li>
 <li>安装指定版本依赖：<code>conda install package=version</code></li>
 <li>临时指定源：<code>conda install package=version -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</code></li>
 </ul>
