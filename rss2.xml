@@ -15,8 +15,30 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 05 Sep 2023 15:09:59 GMT</pubDate>
+    <pubDate>Fri, 08 Sep 2023 15:15:57 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>ubuntu 部署 KMS 服务器</title>
+      <link>http://www.dcheng.site/undefined/</link>
+      <guid>http://www.dcheng.site/undefined/</guid>
+      <pubDate>Fri, 08 Sep 2023 13:12:17 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/kms/">kms</category>
+      
+      
+      <comments>http://www.dcheng.site/undefined/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>树莓派-ubuntu-环境下-mariadb-部署</title>
