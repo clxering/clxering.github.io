@@ -15,13 +15,13 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 08 Sep 2023 15:15:57 GMT</pubDate>
+    <pubDate>Sat, 09 Sep 2023 00:13:11 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>ubuntu 部署 KMS 服务器</title>
-      <link>http://www.dcheng.site/undefined/</link>
-      <guid>http://www.dcheng.site/undefined/</guid>
+      <title>部署 kms 服务器</title>
+      <link>http://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/</link>
+      <guid>http://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/</guid>
       <pubDate>Fri, 08 Sep 2023 13:12:17 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -36,7 +36,7 @@
       <category domain="http://www.dcheng.site/tags/kms/">kms</category>
       
       
-      <comments>http://www.dcheng.site/undefined/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/#disqus_thread</comments>
       
     </item>
     
