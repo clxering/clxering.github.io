@@ -15,8 +15,32 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 09 Sep 2023 00:13:11 GMT</pubDate>
+    <pubDate>Sat, 09 Sep 2023 03:53:22 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>部署win-server-2022-datacenter服务器</title>
+      <link>http://www.dcheng.site/077ca5b0-4ec4-11ee-86e1-a907f23a1148/</link>
+      <guid>http://www.dcheng.site/077ca5b0-4ec4-11ee-86e1-a907f23a1148/</guid>
+      <pubDate>Sat, 09 Sep 2023 03:20:41 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      <category domain="http://www.dcheng.site/tags/server/">server</category>
+      
+      
+      <comments>http://www.dcheng.site/077ca5b0-4ec4-11ee-86e1-a907f23a1148/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>部署 kms 服务器</title>

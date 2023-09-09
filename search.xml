@@ -4066,6 +4066,54 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>部署win-server-2022-datacenter服务器</title>
+    <url>/077ca5b0-4ec4-11ee-86e1-a907f23a1148/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、下载安装包"><a href="#1、下载安装包" class="headerlink" title="1、下载安装包"></a>1、下载安装包</h2><p>官方下载地址：<a href="https://www.microsoft.com/zh-cn/evalcenter/download-windows-server-2022">https://www.microsoft.com/zh-cn/evalcenter/download-windows-server-2022</a></p>
+<blockquote>
+<p>注意：该下载为评估版本，需要升到正式版才能够激活。详见后续步骤</p>
+</blockquote>
+<h2 id="2、设置网络"><a href="#2、设置网络" class="headerlink" title="2、设置网络"></a>2、设置网络</h2><p>安装后没有任何网络驱动，可按如下参考步骤接通有线连接：</p>
+<blockquote>
+<p>注：该案例主板为 ASUS PRIME B250M-PLUS，官网提供驱动不支持服务器系统</p>
+</blockquote>
+<p>1）进入「设备管理器」，双击打开「其他设备」</p>
+<p>2）此时「以太网控制器」应显示黄色叹号。右键选择「更新驱动程序」，选择「浏览我的电脑以查找驱动程序」，进一步选择「让我从计算机上….列表中选取」</p>
+<p>3）设备类型选择「网络适配器」</p>
+<p>4）左侧列表选择「intel Corporation」，右侧选择「Intel(R) Ethernet Connection 1219-LM」，下一步选「是」确认安装</p>
+<h2 id="3、开启远程桌面"><a href="#3、开启远程桌面" class="headerlink" title="3、开启远程桌面"></a>3、开启远程桌面</h2><p>默认为关闭，可按如下步骤开启：</p>
+<p>1）呼出开始菜单，打开「服务器管理器」</p>
+<p>2）进入「本地服务器」，点击「远程桌面」，选择允许即可</p>
+<h2 id="4、激活系统"><a href="#4、激活系统" class="headerlink" title="4、激活系统"></a>4、激活系统</h2><p>1）确认当前系统版本</p>
+<p>从官网下载的版本为评估版本，可打开 cmd 执行 <code>DISM /online /Get-CurrentEdition</code> 输出系统信息，当前版本带有 <code>Eval</code> 结尾说明是评估版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">部署映像服务和管理工具</span><br><span class="line">版本: 10.0.20348.681</span><br><span class="line"></span><br><span class="line">映像版本: 10.0.20348.1787</span><br><span class="line"></span><br><span class="line">当前版本为:</span><br><span class="line"></span><br><span class="line">当前版本 : ServerDatacenterEval</span><br><span class="line"></span><br><span class="line">操作成功完成。</span><br></pre></td></tr></table></figure>
+
+<p>2）前往 <code>https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys</code> 获取 Windows Server 2022 Datacenter 对应的 KMS Client Product Key</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">WX4NM-KYWYW-QJJR4-XV3QB-6VM33</span><br></pre></td></tr></table></figure>
+
+<p>3）执行 <code>DISM /online /Set-Edition:ServerDatacenter /ProductKey:WX4NM-KYWYW-QJJR4-XV3QB-6VM33 /AcceptEula</code> 等待更新完成，重启即可</p>
+<blockquote>
+<p>注意：默认的系统密钥切勿清除，必须保留</p>
+</blockquote>
+<p>4）此时系统密钥已经变更为上述从官网获得的 key，但仍提示未激活。可参考 <a href="https://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/">部署 kms 服务器</a> 的内容建立 kms 服务器</p>
+<p>5）建立完成后，设置 kms 服务器地址，执行 <code>slmgr /skms 192.168.1.5</code></p>
+<p>6）直接执行 <code>slmgr /ato</code> 激活</p>
+<blockquote>
+<p>注意：不用执行卸载和安装密钥的步骤</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+        <tag>server</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>部署win10+vscode+anaconda3环境</title>
     <url>/148d4631-44e0-11ee-bc05-f9725afef782/</url>
     <content><![CDATA[<blockquote>
