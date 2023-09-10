@@ -15,8 +15,54 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 09 Sep 2023 08:32:00 GMT</pubDate>
+    <pubDate>Sun, 10 Sep 2023 03:57:20 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>激活 win10 专业版</title>
+      <link>http://www.dcheng.site/53337b90-4f8d-11ee-9eaf-09d2cd19d790/</link>
+      <guid>http://www.dcheng.site/53337b90-4f8d-11ee-9eaf-09d2cd19d790/</guid>
+      <pubDate>Sun, 10 Sep 2023 03:47:56 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      
+      <comments>http://www.dcheng.site/53337b90-4f8d-11ee-9eaf-09d2cd19d790/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>部署 Office LTSC 2021 批量授权版本</title>
+      <link>http://www.dcheng.site/53337b91-4f8d-11ee-9eaf-09d2cd19d790/</link>
+      <guid>http://www.dcheng.site/53337b91-4f8d-11ee-9eaf-09d2cd19d790/</guid>
+      <pubDate>Sun, 10 Sep 2023 03:01:16 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      <category domain="http://www.dcheng.site/tags/office/">office</category>
+      
+      
+      <comments>http://www.dcheng.site/53337b91-4f8d-11ee-9eaf-09d2cd19d790/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>部署 Windows Server 2022 Datacenter</title>
@@ -56,6 +102,10 @@
       
       <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
       
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      <category domain="http://www.dcheng.site/tags/ubuntu/">ubuntu</category>
       
       <category domain="http://www.dcheng.site/tags/kms/">kms</category>
       

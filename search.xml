@@ -3817,6 +3817,79 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>激活 win10 专业版</title>
+    <url>/53337b90-4f8d-11ee-9eaf-09d2cd19d790/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、激活步骤"><a href="#1、激活步骤" class="headerlink" title="1、激活步骤"></a>1、激活步骤</h2><p>在需要激活的设备以管理员身份开启 cmd，执行以下步骤：</p>
+<p>1）卸载密钥，执行 <code>slmgr /upk</code></p>
+<blockquote>
+<p>注意：务必要执行卸载步骤</p>
+</blockquote>
+<p>2）假设已部署的 kms 服务器 ip 为 <code>192.168.1.5</code>，执行 <code>slmgr /skms 192.168.1.5</code> 设置 kms 服务器地址。可参考 <a href="https://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/">部署 kms 服务器</a> 的内容建立 kms 服务器</p>
+<blockquote>
+<p>win10 部署的服务器要注意防火墙规则是否允许访问</p>
+</blockquote>
+<p>3）安装密钥，执行 <code>slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</code></p>
+<blockquote>
+<p>该密钥为 win10 专业版固定，其他密钥详见 <a href="https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys">https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys</a></p>
+</blockquote>
+<p>4）激活，执行 <code>slmgr /ato</code>，等待数秒后提示是否成功</p>
+<p>5）验证，执行 <code>slmgr /xpr</code> 后若成功激活将显示有效时间 180 天</p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>部署 Office LTSC 2021 批量授权版本</title>
+    <url>/53337b91-4f8d-11ee-9eaf-09d2cd19d790/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>本文仅提炼总结关键步骤，详情可见官网文档：<a href="https://learn.microsoft.com/zh-cn/deployoffice/ltsc2021/deploy?cid=kerryherger">https://learn.microsoft.com/zh-cn/deployoffice/ltsc2021/deploy?cid=kerryherger</a></p>
+<h2 id="1、建立安装目录"><a href="#1、建立安装目录" class="headerlink" title="1、建立安装目录"></a>1、建立安装目录</h2><p>新建任意名称的目录 <code>C:\Users\abc\Desktop\officefiles</code>，用于归档部署过程中产生的文件。</p>
+<h2 id="2、下载-Office-部署工具"><a href="#2、下载-Office-部署工具" class="headerlink" title="2、下载 Office 部署工具"></a>2、下载 Office 部署工具</h2><p>1）下载部署工具到 <code>officefiles</code> 目录，官网地址：<a href="https://www.microsoft.com/download/details.aspx?id=49117">https://www.microsoft.com/download/details.aspx?id=49117</a></p>
+<p>2）双击 <code>officedeploymenttool.exe</code> 可执行文件，选择提取文件路径，也直接放在 <code>officefiles</code> 目录</p>
+<h2 id="3、创建-configuration-xml-文件"><a href="#3、创建-configuration-xml-文件" class="headerlink" title="3、创建 configuration.xml 文件"></a>3、创建 <code>configuration.xml</code> 文件</h2><p>1）使用 Office 自定义工具创建 <code>configuration.xml</code> 文件，工具地址：<a href="https://config.office.com/deploymentsettings">https://config.office.com/deploymentsettings</a></p>
+<p>2）根据需求选择 office 套件、语言，大多数选项保持默认即可。配置完成后导出，放在 <code>officefiles</code> 目录</p>
+<blockquote>
+<p>注意：配置文件名称必须是 <code>configuration.xml</code></p>
+</blockquote>
+<h2 id="3、下载-Office-LTSC-2021-安装文件"><a href="#3、下载-Office-LTSC-2021-安装文件" class="headerlink" title="3、下载 Office LTSC 2021 安装文件"></a>3、下载 Office LTSC 2021 安装文件</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
+<p>2）执行 <code>setup /download configuration.xml</code>，此时在 <code>officefiles</code> 中会包含名为 Data 的新目录。</p>
+<h2 id="4、安装-Office-LTSC-2021"><a href="#4、安装-Office-LTSC-2021" class="headerlink" title="4、安装 Office LTSC 2021"></a>4、安装 Office LTSC 2021</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
+<p>2）执行 <code>setup /configure configuration.xml</code>，安装完成后，将返回到命令提示符</p>
+<blockquote>
+<p>安装路径默认在 <code>C:\Program Files\Microsoft Office</code></p>
+</blockquote>
+<h2 id="5、激活"><a href="#5、激活" class="headerlink" title="5、激活"></a>5、激活</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Program Files\Microsoft Office\Office16</code></p>
+<p>2）假设已部署的 kms 服务器 ip 为 <code>192.168.1.5</code>，执行 <code>cscript ospp.vbs /sethst:192.168.1.5</code> 设置 kms 服务器地址。出现以下提示说明配置成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Successfully applied setting.</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可参考 <a href="https://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/">部署 kms 服务器</a> 的内容建立 kms 服务器</p>
+</blockquote>
+<p>3）执行 <code>cscript ospp.vbs /act</code> 激活。出现以下提示说明配置成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Microsoft (R) Windows Script Host Version 5.812</span><br><span class="line">版权所有(C) Microsoft Corporation。保留所有权利。</span><br><span class="line"></span><br><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fb61ac9a-1688-45d2-8f6b-0674dbffa33c</span><br><span class="line">LICENSE NAME: Office 21, Office21VisioPro2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: K2HT4</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fbdb3e18-a8ef-4fb3-9183-dffd60bd0984</span><br><span class="line">LICENSE NAME: Office 21, Office21ProPlus2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: 6F7TH</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、其他"><a href="#6、其他" class="headerlink" title="6、其他"></a>6、其他</h2><p>官方提供了上述使用到的 GVLK 列表（使用 Office 自定义工具创建 <code>configuration.xml</code> 文件时已经自动填写），详见：<a href="https://learn.microsoft.com/zh-cn/deployoffice/vlactivation/gvlks">用于 KMS 和基于 Active Directory 的 Office、Project 和 Visio 激活的 GVLK</a></p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+        <tag>office</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>部署 Windows Server 2022 Datacenter</title>
     <url>/077ca5b0-4ec4-11ee-86e1-a907f23a1148/</url>
     <content><![CDATA[<blockquote>
@@ -3852,7 +3925,7 @@ End 	Fn + →
 <p>注意：默认的系统密钥切勿清除，必须保留</p>
 </blockquote>
 <p>4）此时系统密钥已经变更为上述从官网获得的 key，但仍提示未激活。可参考 <a href="https://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/">部署 kms 服务器</a> 的内容建立 kms 服务器</p>
-<p>5）建立完成后，设置 kms 服务器地址，执行 <code>slmgr /skms 192.168.1.5</code></p>
+<p>5）建立完成后，假设已部署的 kms服务器ip为 <code>192.168.1.5</code>，执行 <code>slmgr /skms 192.168.1.5</code> 设置 kms 服务器地址</p>
 <p>6）直接执行 <code>slmgr /ato</code> 激活</p>
 <blockquote>
 <p>注意：不用执行卸载和安装密钥的步骤</p>
@@ -3864,6 +3937,56 @@ End 	Fn + →
       <tags>
         <tag>win</tag>
         <tag>server</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>部署 kms 服务器</title>
+    <url>/faef3d90-4ea4-11ee-addd-c161ce22f848/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、环境"><a href="#1、环境" class="headerlink" title="1、环境"></a>1、环境</h2><ul>
+<li>Windows 10 专业版 22H2</li>
+<li>Ubuntu 22.04.2 LTS (GNU&#x2F;Linux 5.19.0-35-generic x86_64)</li>
+</ul>
+<blockquote>
+<p>建议在 ubuntu 环境下部署。win 环境容易促使杀毒软件报警；如果使用虚拟机部署，要让同一局域网其他设备访问，应设置虚拟网络为桥接模式</p>
+</blockquote>
+<h2 id="2、Ubuntu-部署"><a href="#2、Ubuntu-部署" class="headerlink" title="2、Ubuntu 部署"></a>2、Ubuntu 部署</h2><p>1）执行下载 <code>wget https://github.com/Wind4/vlmcsd/releases/download/svn1113/binaries.tar.gz</code></p>
+<blockquote>
+<p>可到部署工具远程仓库查看最新版本：<a href="https://github.com/Wind4/vlmcsd/releases">https://github.com/Wind4/vlmcsd/releases</a></p>
+</blockquote>
+<p>2）执行解压 <code>tar -zxvf binaries.tar.gz</code></p>
+<p>3）进入目录 <code>cd binaries/Linux/intel/static</code>，执行 <code>./vlmcsdmulti-x64-musl-static vlmcsd</code></p>
+<blockquote>
+<p>注：如果重启或者关机，需要重新执行</p>
+</blockquote>
+<blockquote>
+<p>根据服务器系统和平台选择对应的文件，本文 ubuntu 环境为 x64，因此选用上述命令。其他可选：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vlmcsdmulti-x64-musl-static          vlmcsd-x86-musl-static</span><br><span class="line">vlmcsdmulti-x86-musl-static          vlmcsd-x86-musl-static-threads</span><br><span class="line">vlmcsdmulti-x86-musl-static-threads  vlmcs-x64-musl-static</span><br><span class="line">vlmcsd-x64-musl-static               vlmcs-x86-musl-static</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：要开放 1688 端口</p>
+</blockquote>
+<p>4）验证进程，执行 <code>ps aux | grep vlmcsd</code>，包含如下结果说明部署成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ubuntu      2590  0.0  0.0    296     0 ?        S    20:45   0:00 ./vlmcsdmulti-x64-musl-static vlmcsd</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、win10-部署"><a href="#3、win10-部署" class="headerlink" title="3、win10 部署"></a>3、win10 部署</h2><p>1）下载部署文件，解压两次（<code>binaries.tar.gz</code> -&gt; <code>binaries.tar</code> -&gt; <code>binaries</code>）</p>
+<p>2）进入目录 <code>binaries\Windows\intel</code>，以管理员身份打开 cmd，执行 <code>vlmcsd-Windows-x64.exe -s</code> 安装服务</p>
+<blockquote>
+<p>注：<code>vlmcsd-Windows-x64.exe -S</code> 参数为大写 S 则移除服务</p>
+</blockquote>
+<p>3）在运行栏执行 <code>services.msc</code> 进入服务管理，找到 <code>Key Management Server</code>，启动该服务</p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+        <tag>ubuntu</tag>
+        <tag>kms</tag>
       </tags>
   </entry>
   <entry>
@@ -4050,69 +4173,6 @@ End 	Fn + →
       <tags>
         <tag>ubuntu</tag>
         <tag>mariadb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>部署 kms 服务器</title>
-    <url>/faef3d90-4ea4-11ee-addd-c161ce22f848/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="1、环境"><a href="#1、环境" class="headerlink" title="1、环境"></a>1、环境</h2><ul>
-<li>Windows 10 专业版 22H2</li>
-<li>Ubuntu 22.04.2 LTS (GNU&#x2F;Linux 5.19.0-35-generic x86_64)</li>
-</ul>
-<blockquote>
-<p>建议在 ubuntu 环境下部署。win 环境容易促使杀毒软件报警；如果使用虚拟机部署，要让同一局域网其他设备访问，应设置虚拟网络为桥接模式</p>
-</blockquote>
-<h2 id="2、Ubuntu-部署"><a href="#2、Ubuntu-部署" class="headerlink" title="2、Ubuntu 部署"></a>2、Ubuntu 部署</h2><p>1）执行下载 <code>wget https://github.com/Wind4/vlmcsd/releases/download/svn1113/binaries.tar.gz</code></p>
-<blockquote>
-<p>可到部署工具远程仓库查看最新版本：<a href="https://github.com/Wind4/vlmcsd/releases">https://github.com/Wind4/vlmcsd/releases</a></p>
-</blockquote>
-<p>2）执行解压 <code>tar -zxvf binaries.tar.gz</code></p>
-<p>3）进入目录 <code>cd binaries/Linux/intel/static</code>，执行 <code>./vlmcsdmulti-x64-musl-static vlmcsd</code></p>
-<blockquote>
-<p>注：如果重启或者关机，需要重新执行</p>
-</blockquote>
-<blockquote>
-<p>根据服务器系统和平台选择对应的文件，本文 ubuntu 环境为 x64，因此选用上述命令。其他可选：</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vlmcsdmulti-x64-musl-static          vlmcsd-x86-musl-static</span><br><span class="line">vlmcsdmulti-x86-musl-static          vlmcsd-x86-musl-static-threads</span><br><span class="line">vlmcsdmulti-x86-musl-static-threads  vlmcs-x64-musl-static</span><br><span class="line">vlmcsd-x64-musl-static               vlmcs-x86-musl-static</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：要开放 1688 端口</p>
-</blockquote>
-<p>4）验证进程，执行 <code>ps aux | grep vlmcsd</code>，包含如下结果说明部署成功</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ubuntu      2590  0.0  0.0    296     0 ?        S    20:45   0:00 ./vlmcsdmulti-x64-musl-static vlmcsd</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、win10-部署"><a href="#3、win10-部署" class="headerlink" title="3、win10 部署"></a>3、win10 部署</h2><p>1）下载部署文件，解压两次（<code>binaries.tar.gz</code> -&gt; <code>binaries.tar</code> -&gt; <code>binaries</code>）</p>
-<p>2）进入目录 <code>binaries\Windows\intel</code>，以管理员身份打开 cmd，执行 <code>vlmcsd-Windows-x64.exe -s</code> 安装服务</p>
-<blockquote>
-<p>注：<code>vlmcsd-Windows-x64.exe -S</code> 参数为大写 S 则移除服务</p>
-</blockquote>
-<p>3）在运行栏执行 <code>services.msc</code> 进入服务管理，找到 <code>Key Management Server</code>，启动该服务</p>
-<h2 id="4、激活-win10-专业版"><a href="#4、激活-win10-专业版" class="headerlink" title="4、激活 win10 专业版"></a>4、激活 win10 专业版</h2><p>在其他需要激活的设备以管理员身份开启 cmd，执行以下步骤：</p>
-<p>1）卸载密钥，执行 <code>slmgr /upk</code></p>
-<blockquote>
-<p>注意：务必要执行卸载步骤</p>
-</blockquote>
-<p>2）设置 kms 服务器地址，执行 <code>slmgr /skms 192.168.1.5</code></p>
-<blockquote>
-<p>win10 部署的服务器要注意防火墙规则是否允许访问</p>
-</blockquote>
-<p>3）安装密钥，执行 <code>slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</code></p>
-<blockquote>
-<p>该密钥为 win10 专业版固定，其他密钥详见 <a href="https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys">https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys</a></p>
-</blockquote>
-<p>4）激活，执行 <code>slmgr /ato</code>，等待数秒后提示是否成功</p>
-<p>5）验证，执行 <code>slmgr /xpr</code> 后若成功激活将显示有效时间 180 天</p>
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>kms</tag>
       </tags>
   </entry>
   <entry>

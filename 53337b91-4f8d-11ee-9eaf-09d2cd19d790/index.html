@@ -23,25 +23,26 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
-<meta property="og:title" content="Maven-配置阿里云中央仓库和自定义本地仓库">
-<meta property="og:url" content="http://www.dcheng.site/5885e721-2a1e-11ee-846a-89c1529ebdf1/index.html">
+<meta property="og:title" content="部署 Office LTSC 2021 批量授权版本">
+<meta property="og:url" content="http://www.dcheng.site/53337b91-4f8d-11ee-9eaf-09d2cd19d790/index.html">
 <meta property="og:site_name" content="Notebook">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-26T08:37:14.000Z">
-<meta property="article:modified_time" content="2023-09-10T03:57:20.405Z">
+<meta property="article:published_time" content="2023-09-10T03:01:16.000Z">
+<meta property="article:modified_time" content="2023-09-10T03:57:20.409Z">
 <meta property="article:author" content="Mr.Dcheng">
-<meta property="article:tag" content="maven">
+<meta property="article:tag" content="win">
+<meta property="article:tag" content="office">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.dcheng.site/5885e721-2a1e-11ee-846a-89c1529ebdf1/">
+<link rel="canonical" href="http://www.dcheng.site/53337b91-4f8d-11ee-9eaf-09d2cd19d790/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/5885e721-2a1e-11ee-846a-89c1529ebdf1/","path":"5885e721-2a1e-11ee-846a-89c1529ebdf1/","title":"Maven-配置阿里云中央仓库和自定义本地仓库"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/53337b91-4f8d-11ee-9eaf-09d2cd19d790/","path":"53337b91-4f8d-11ee-9eaf-09d2cd19d790/","title":"部署 Office LTSC 2021 批量授权版本"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Maven-配置阿里云中央仓库和自定义本地仓库 | Notebook</title>
+<title>部署 Office LTSC 2021 批量授权版本 | Notebook</title>
   
 
 
@@ -144,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E5%A4%AE%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-text">中央仓库配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="nav-text">自定义本地仓库配置</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0%E3%80%81%E5%89%8D%E8%A8%80"><span class="nav-text">0、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%BB%BA%E7%AB%8B%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95"><span class="nav-text">1、建立安装目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E4%B8%8B%E8%BD%BD-Office-%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7"><span class="nav-text">2、下载 Office 部署工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA-configuration-xml-%E6%96%87%E4%BB%B6"><span class="nav-text">3、创建 configuration.xml 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E4%B8%8B%E8%BD%BD-Office-LTSC-2021-%E5%AE%89%E8%A3%85%E6%96%87%E4%BB%B6"><span class="nav-text">3、下载 Office LTSC 2021 安装文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%AE%89%E8%A3%85-Office-LTSC-2021"><span class="nav-text">4、安装 Office LTSC 2021</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E6%BF%80%E6%B4%BB"><span class="nav-text">5、激活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-text">6、其他</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -210,7 +211,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/5885e721-2a1e-11ee-846a-89c1529ebdf1/">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/53337b91-4f8d-11ee-9eaf-09d2cd19d790/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -223,12 +224,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Maven-配置阿里云中央仓库和自定义本地仓库 | Notebook">
+      <meta itemprop="name" content="部署 Office LTSC 2021 批量授权版本 | Notebook">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header" style="margin-bottom:0">
         <h1 class="post-title" itemprop="name headline" style="text-align:left">
-          Maven-配置阿里云中央仓库和自定义本地仓库
+          部署 Office LTSC 2021 批量授权版本
         </h1>
 
         <div class="post-meta-container">
@@ -238,15 +239,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2022-12-26 16:37:14" itemprop="dateCreated datePublished" datetime="2022-12-26T16:37:14+08:00">2022-12-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-10 11:57:20" itemprop="dateModified" datetime="2023-09-10T11:57:20+08:00">2023-09-10</time>
+      <time title="Created: 2023-09-10 11:01:16 / Modified: 11:57:20" itemprop="dateCreated datePublished" datetime="2023-09-10T11:01:16+08:00">2023-09-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -279,12 +274,33 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在国内访问 Maven 仓库的速度太慢，导致使用 IDEA 建立 Maven 项目会出现没有 src 目录结构的情况。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="中央仓库配置"><a href="#中央仓库配置" class="headerlink" title="中央仓库配置"></a>中央仓库配置</h3><p>在 Maven 安装目录下的 settings.xml 文件中的增加以下内容，使用阿里云的中央仓库。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/repositories/central/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>本文仅提炼总结关键步骤，详情可见官网文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/deployoffice/ltsc2021/deploy?cid=kerryherger">https://learn.microsoft.com/zh-cn/deployoffice/ltsc2021/deploy?cid=kerryherger</a></p>
+<h2 id="1、建立安装目录"><a href="#1、建立安装目录" class="headerlink" title="1、建立安装目录"></a>1、建立安装目录</h2><p>新建任意名称的目录 <code>C:\Users\abc\Desktop\officefiles</code>，用于归档部署过程中产生的文件。</p>
+<h2 id="2、下载-Office-部署工具"><a href="#2、下载-Office-部署工具" class="headerlink" title="2、下载 Office 部署工具"></a>2、下载 Office 部署工具</h2><p>1）下载部署工具到 <code>officefiles</code> 目录，官网地址：<a target="_blank" rel="noopener" href="https://www.microsoft.com/download/details.aspx?id=49117">https://www.microsoft.com/download/details.aspx?id=49117</a></p>
+<p>2）双击 <code>officedeploymenttool.exe</code> 可执行文件，选择提取文件路径，也直接放在 <code>officefiles</code> 目录</p>
+<h2 id="3、创建-configuration-xml-文件"><a href="#3、创建-configuration-xml-文件" class="headerlink" title="3、创建 configuration.xml 文件"></a>3、创建 <code>configuration.xml</code> 文件</h2><p>1）使用 Office 自定义工具创建 <code>configuration.xml</code> 文件，工具地址：<a target="_blank" rel="noopener" href="https://config.office.com/deploymentsettings">https://config.office.com/deploymentsettings</a></p>
+<p>2）根据需求选择 office 套件、语言，大多数选项保持默认即可。配置完成后导出，放在 <code>officefiles</code> 目录</p>
+<blockquote>
+<p>注意：配置文件名称必须是 <code>configuration.xml</code></p>
+</blockquote>
+<h2 id="3、下载-Office-LTSC-2021-安装文件"><a href="#3、下载-Office-LTSC-2021-安装文件" class="headerlink" title="3、下载 Office LTSC 2021 安装文件"></a>3、下载 Office LTSC 2021 安装文件</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
+<p>2）执行 <code>setup /download configuration.xml</code>，此时在 <code>officefiles</code> 中会包含名为 Data 的新目录。</p>
+<h2 id="4、安装-Office-LTSC-2021"><a href="#4、安装-Office-LTSC-2021" class="headerlink" title="4、安装 Office LTSC 2021"></a>4、安装 Office LTSC 2021</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
+<p>2）执行 <code>setup /configure configuration.xml</code>，安装完成后，将返回到命令提示符</p>
+<blockquote>
+<p>安装路径默认在 <code>C:\Program Files\Microsoft Office</code></p>
+</blockquote>
+<h2 id="5、激活"><a href="#5、激活" class="headerlink" title="5、激活"></a>5、激活</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Program Files\Microsoft Office\Office16</code></p>
+<p>2）假设已部署的 kms 服务器 ip 为 <code>192.168.1.5</code>，执行 <code>cscript ospp.vbs /sethst:192.168.1.5</code> 设置 kms 服务器地址。出现以下提示说明配置成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Successfully applied setting.</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
 
-<h3 id="自定义本地仓库配置"><a href="#自定义本地仓库配置" class="headerlink" title="自定义本地仓库配置"></a>自定义本地仓库配置</h3><p>在 Maven 安装目录下的 settings.xml 文件中设置本地仓库。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\myProgram\apache-maven-3.5.2\repositoryx<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可参考 <a href="https://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/">部署 kms 服务器</a> 的内容建立 kms 服务器</p>
+</blockquote>
+<p>3）执行 <code>cscript ospp.vbs /act</code> 激活。出现以下提示说明配置成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Microsoft (R) Windows Script Host Version 5.812</span><br><span class="line">版权所有(C) Microsoft Corporation。保留所有权利。</span><br><span class="line"></span><br><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fb61ac9a-1688-45d2-8f6b-0674dbffa33c</span><br><span class="line">LICENSE NAME: Office 21, Office21VisioPro2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: K2HT4</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fbdb3e18-a8ef-4fb3-9183-dffd60bd0984</span><br><span class="line">LICENSE NAME: Office 21, Office21ProPlus2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: 6F7TH</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、其他"><a href="#6、其他" class="headerlink" title="6、其他"></a>6、其他</h2><p>官方提供了上述使用到的 GVLK 列表（使用 Office 自定义工具创建 <code>configuration.xml</code> 文件时已经自动填写），详见：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/deployoffice/vlactivation/gvlks">用于 KMS 和基于 Active Directory 的 Office、Project 和 Visio 激活的 GVLK</a></p>
 
     </div>
 
@@ -314,20 +330,21 @@
           async>
         </script>
           <div class="post-tags">
-              <a href="/tags/maven/" rel="tag"># maven</a>
+              <a href="/tags/win/" rel="tag"># win</a>
+              <a href="/tags/office/" rel="tag"># office</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/58860e32-2a1e-11ee-846a-89c1529ebdf1/" rel="prev" title="gradle-问题备忘">
-                  <i class="fa fa-chevron-left"></i> gradle-问题备忘
+                <a href="/077ca5b0-4ec4-11ee-86e1-a907f23a1148/" rel="prev" title="部署 Windows Server 2022 Datacenter">
+                  <i class="fa fa-chevron-left"></i> 部署 Windows Server 2022 Datacenter
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/5885e720-2a1e-11ee-846a-89c1529ebdf1/" rel="next" title="Nginx-配置文件的结构详解及案例">
-                  Nginx-配置文件的结构详解及案例 <i class="fa fa-chevron-right"></i>
+                <a href="/53337b90-4f8d-11ee-9eaf-09d2cd19d790/" rel="next" title="激活 win10 专业版">
+                  激活 win10 专业版 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
