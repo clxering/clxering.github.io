@@ -5290,6 +5290,27 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>mariadb 报错 The total number of locks exceeds the lock table size 的解决</title>
+    <url>/d0d9c500-5563-11ee-b900-f9a67c785a37/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h2><p>修改表某字段 <code>decimal(10,2)</code> 类型为 <code>decimal(10,3)</code>，该表数据量约 2 亿行。执行时报如题错误。</p>
+<h2 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h2><p>1）执行 <code>show variables like &quot;%_buffer%&quot;;</code> 查看当前 <code>innodb_buffer_pool_size</code> 参数，默认为 134217728（128M）</p>
+<p>2）执行 <code>SET GLOBAL innodb_buffer_pool_size= 1073741824</code>，临时设置参数值为 1G</p>
+<h2 id="3、参考文献"><a href="#3、参考文献" class="headerlink" title="3、参考文献"></a>3、参考文献</h2><ul>
+<li><a href="https://www.cnblogs.com/innocenter/p/14948857.html">https://www.cnblogs.com/innocenter/p/14948857.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>mariadb</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>oracle 12c 使用 WM_CONCAT 函数提示标识符无效</title>
     <url>/ef12f514-4937-11ee-861d-b3cf05b530a5/</url>
     <content><![CDATA[<blockquote>

@@ -15,8 +15,30 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 10 Sep 2023 03:57:20 GMT</pubDate>
+    <pubDate>Sun, 17 Sep 2023 14:22:56 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>mariadb 报错 The total number of locks exceeds the lock table size 的解决</title>
+      <link>http://www.dcheng.site/d0d9c500-5563-11ee-b900-f9a67c785a37/</link>
+      <guid>http://www.dcheng.site/d0d9c500-5563-11ee-b900-f9a67c785a37/</guid>
+      <pubDate>Sun, 17 Sep 2023 14:01:02 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/mariadb/">mariadb</category>
+      
+      
+      <comments>http://www.dcheng.site/d0d9c500-5563-11ee-b900-f9a67c785a37/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>激活 win10 专业版</title>
