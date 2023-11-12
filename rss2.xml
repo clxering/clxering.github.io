@@ -15,8 +15,76 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 17 Sep 2023 14:22:56 GMT</pubDate>
+    <pubDate>Sun, 12 Nov 2023 13:02:11 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>win 删除服务</title>
+      <link>http://www.dcheng.site/3a21e150-815b-11ee-8ef0-c118c637cb12/</link>
+      <guid>http://www.dcheng.site/3a21e150-815b-11ee-8ef0-c118c637cb12/</guid>
+      <pubDate>Sun, 12 Nov 2023 12:34:57 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      
+      <comments>http://www.dcheng.site/3a21e150-815b-11ee-8ef0-c118c637cb12/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>postgresql-15 文档摘录</title>
+      <link>http://www.dcheng.site/3a21ba40-815b-11ee-8ef0-c118c637cb12/</link>
+      <guid>http://www.dcheng.site/3a21ba40-815b-11ee-8ef0-c118c637cb12/</guid>
+      <pubDate>Sat, 11 Nov 2023 15:09:51 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/">官方文档</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/postgresql/">postgresql</category>
+      
+      
+      <comments>http://www.dcheng.site/3a21ba40-815b-11ee-8ef0-c118c637cb12/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>win 防火墙配置允许回显请求</title>
+      <link>http://www.dcheng.site/3a220860-815b-11ee-8ef0-c118c637cb12/</link>
+      <guid>http://www.dcheng.site/3a220860-815b-11ee-8ef0-c118c637cb12/</guid>
+      <pubDate>Sat, 11 Nov 2023 10:38:18 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      
+      <comments>http://www.dcheng.site/3a220860-815b-11ee-8ef0-c118c637cb12/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>mariadb 报错 The total number of locks exceeds the lock table size 的解决</title>
