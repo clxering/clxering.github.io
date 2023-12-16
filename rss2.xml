@@ -15,8 +15,32 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 12 Nov 2023 13:02:11 GMT</pubDate>
+    <pubDate>Sat, 16 Dec 2023 10:43:11 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>springboot+mybatis 配置多数据库</title>
+      <link>http://www.dcheng.site/d27a8f70-9bfe-11ee-a92b-05e08d68d559/</link>
+      <guid>http://www.dcheng.site/d27a8f70-9bfe-11ee-a92b-05e08d68d559/</guid>
+      <pubDate>Thu, 14 Dec 2023 13:56:38 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
+      
+      <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
+      
+      
+      <comments>http://www.dcheng.site/d27a8f70-9bfe-11ee-a92b-05e08d68d559/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>win 删除服务</title>
@@ -437,7 +461,7 @@
     </item>
     
     <item>
-      <title>win-ubuntu-安装-postgresql-15</title>
+      <title>win、ubuntu 环境安装 postgresql 15</title>
       <link>http://www.dcheng.site/0255ad61-4353-11ee-bed6-3d33eaf7fa7a/</link>
       <guid>http://www.dcheng.site/0255ad61-4353-11ee-bed6-3d33eaf7fa7a/</guid>
       <pubDate>Sun, 30 Jul 2023 12:33:35 GMT</pubDate>
