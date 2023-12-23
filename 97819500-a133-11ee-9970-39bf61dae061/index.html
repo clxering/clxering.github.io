@@ -24,21 +24,21 @@
 
     <meta property="og:type" content="article">
 <meta property="og:title" content="使用 poetry 进行依赖管理">
-<meta property="og:url" content="http://www.dcheng.site/undefined/index.html">
+<meta property="og:url" content="http://www.dcheng.site/97819500-a133-11ee-9970-39bf61dae061/index.html">
 <meta property="og:site_name" content="Notebook">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-17T00:42:46.000Z">
-<meta property="article:modified_time" content="2023-12-17T03:51:46.665Z">
+<meta property="article:modified_time" content="2023-12-23T01:38:01.356Z">
 <meta property="article:author" content="Mr.Dcheng">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.dcheng.site/undefined/">
+<link rel="canonical" href="http://www.dcheng.site/97819500-a133-11ee-9970-39bf61dae061/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/undefined/","path":"undefined/","title":"使用 poetry 进行依赖管理"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/97819500-a133-11ee-9970-39bf61dae061/","path":"97819500-a133-11ee-9970-39bf61dae061/","title":"使用 poetry 进行依赖管理"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>使用 poetry 进行依赖管理 | Notebook</title>
@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -210,7 +210,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/undefined/">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/97819500-a133-11ee-9970-39bf61dae061/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -238,9 +238,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-12-17 08:42:46 / Modified: 11:51:46" itemprop="dateCreated datePublished" datetime="2023-12-17T08:42:46+08:00">2023-12-17</time>
+      <time title="Created: 2023-12-17 08:42:46" itemprop="dateCreated datePublished" datetime="2023-12-17T08:42:46+08:00">2023-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-12-23 09:38:01" itemprop="dateModified" datetime="2023-12-23T09:38:01+08:00">2023-12-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -276,57 +282,86 @@
 <p>官网：<a target="_blank" rel="noopener" href="https://python-poetry.org/">https://python-poetry.org/</a></p>
 <h2 id="1、安装及使用"><a href="#1、安装及使用" class="headerlink" title="1、安装及使用"></a>1、安装及使用</h2><p>1）执行 <code>pip install poetry</code></p>
 <blockquote>
-<p>推荐全局安装，使用时不用单独激活虚拟环境。另外 poetry 依赖较多，每次建立虚拟环境都安装一次比较麻烦。</p>
+<p>最好全局安装，不同项目之间切换时不用重复激活和安装依赖，比较方便。</p>
 </blockquote>
-<p>2）如果是新项目，则可使用 poetry 新建目录。执行 <code>poetry new poetry-demo</code>，项目结构如下：</p>
+<p>2）如果是新项目，则可使用 poetry 初始化。执行 <code>poetry new poetry-demo</code>，项目结构如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">poetry-demo</span><br><span class="line">├── pyproject.toml</span><br><span class="line">├── README.md</span><br><span class="line">├── poetry_demo</span><br><span class="line">│   └── __init__.py</span><br><span class="line">└── tests</span><br><span class="line">    └── __init__.py</span><br></pre></td></tr></table></figure>
 
-<p>3）如果是既有项目，引入 poetry，则执行 <code>poetry init</code>，通过互动配置，将生成 <code>pyproject.toml</code> 文件</p>
+<p>3）如果是既有项目引入 poetry，可在项目根目录执行 <code>poetry init</code>，通过互动配置生成 <code>pyproject.toml</code> 文件。</p>
 <blockquote>
-<p>win 环境下，虚拟环境路径为 <code>C:\Users\用户名\AppData\Local\pypoetry\Cache\virtualenvs</code>，虚拟环境名称会包含项目名称。</p>
+<p>win 环境下，默认虚拟环境在 <code>C:\Users\用户名\AppData\Local\pypoetry\Cache\virtualenvs</code> 目录下，虚拟环境名称会包含项目名称。</p>
 </blockquote>
-<h2 id="2、常用命令"><a href="#2、常用命令" class="headerlink" title="2、常用命令"></a>2、常用命令</h2><p>1）<code>poetry shell</code>，进入虚拟环境</p>
+<h2 id="2、常用命令"><a href="#2、常用命令" class="headerlink" title="2、常用命令"></a>2、常用命令</h2><ul>
+<li><code>poetry shell</code>，进入虚拟环境</li>
+</ul>
 <p>根据 <code>pyproject.toml</code> 文件来确定需要启动的虚拟环境。</p>
-<p>2）<code>poetry install</code>，安装依赖。</p>
+<ul>
+<li><code>poetry install</code>，安装全部依赖。</li>
+</ul>
 <p>例如从远程仓库 clone 的项目不包含依赖，执行该命令则按 <code>poetry.lock</code> 新建。</p>
-<p>3）<code>poetry add</code>，引入依赖，同时更新 <code>poetry.lock</code> 文件内容</p>
-<p>4）<code>poetry lock</code>，更新 <code>poetry.lock</code> 文件</p>
+<ul>
+<li><p><code>poetry install --no-dev</code>，安装非开发环境的依赖，部署时使用</p>
+</li>
+<li><p><code>poetry add &lt;name&gt;</code>，引入依赖，会同时更新 <code>poetry.lock</code> 文件</p>
+</li>
+</ul>
+<blockquote>
+<p>可指定为开发时依赖：<code>poetry add &lt;name&gt; --dev</code>，将添加到 <code>[tool.poetry.dev-dependencies]</code> 区域</p>
+</blockquote>
+<ul>
+<li><code>poetry lock</code>，更新 <code>poetry.lock</code> 文件</li>
+</ul>
 <p>如果手工修改了 <code>pyproject.toml</code>，比如指定特定模块的版本，此时 <code>poetry.lock</code> 的内容与 <code>pyproject.toml</code> 出现了脱钩，应执行上述命令保持两者一致。注意：该命令仅更新文件，不会安装模块至虚拟环境，要再使用 <code>poetry install</code> 安装模块。</p>
 <p>因此，在执行完 poetry lock 指令后，必须再使用 poetry install 来安装模块</p>
-<p>5）<code>poetry update</code>，更新依赖，或 <code>poetry update requests</code> 指定更新某个依赖</p>
-<p>6）<code>poetry show</code>，列出当前环境已安装依赖</p>
+<ul>
+<li><p><code>poetry update</code>，更新依赖，或 <code>poetry update requests</code> 指定更新某个依赖</p>
+</li>
+<li><p><code>poetry show</code>，列出当前环境已安装依赖，或 <code>poetry show -t</code> 以树形结构查看</p>
+</li>
+</ul>
 <blockquote>
 <p>显示的是 <code>poetry.lock</code> 的内容</p>
 </blockquote>
-<p>7）<code>poetry show --tree</code>，树状显示模块依赖层级，或 <code>poetry show requests --tree</code> 仅显示指定模块的依赖层级</p>
-<p>8）<code>poetry remove</code>，移除依赖</p>
-<p>9）<code>poetry config --list</code>，查看 poetry 配置</p>
-<p>10）<code>poetry source show</code>，显示下载源</p>
-<p>11）<code>poetry source remove &lt;源名称&gt;</code></p>
+<ul>
+<li><p><code>poetry show --tree</code>，树状显示模块依赖层级，或 <code>poetry show requests --tree</code> 仅显示指定模块的依赖层级</p>
+</li>
+<li><p><code>poetry remove &lt;name&gt;</code>，移除依赖</p>
+</li>
+<li><p><code>poetry config --list</code>，查看 poetry 配置</p>
+</li>
+<li><p><code>poetry source show</code>，显示下载源</p>
+</li>
+<li><p><code>poetry source remove &lt;源名称&gt;</code>，删除下载源</p>
+</li>
+<li><p>&#96;&#96;</p>
+</li>
+</ul>
 <h2 id="3、实用设置"><a href="#3、实用设置" class="headerlink" title="3、实用设置"></a>3、实用设置</h2><p>1）将虚拟环境建立在项目目录下。</p>
 <ul>
 <li>使用 <code>poetry config --list</code> 指令查看当前配置，如下所示；</li>
 <li>执行 <code>poetry config virtualenvs.in-project true</code>，修改配置，将虚拟环境建立在项目目录；</li>
-<li>执行 <code>poetry env remove python</code> 删除默认路径（virtualenvs.path）的虚拟环境；</li>
-<li>执行 <code>poetry env use python</code> 重建虚拟环境，名称为 <code>.venv</code>。</li>
+<li>执行 <code>poetry env remove python</code> 删除默认路径的虚拟环境；</li>
+<li>执行 <code>poetry env use python</code> 重建虚拟环境，名称为 <code>.venv</code></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Using version ^2.1.4 <span class="keyword">for</span> pandas</span><br><span class="line">cache-dir = <span class="string">&quot;C:\\Users\\Admin\\AppData\\Local\\pypoetry\\Cache&quot;</span></span><br><span class="line">experimental.system-git-client = <span class="literal">false</span></span><br><span class="line">installer.max-workers = null</span><br><span class="line">installer.modern-installation = <span class="literal">true</span></span><br><span class="line">installer.no-binary = null</span><br><span class="line">installer.parallel = <span class="literal">true</span></span><br><span class="line">repositories.tsinghua.url = <span class="string">&quot;https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/&quot;</span></span><br><span class="line">virtualenvs.create = <span class="literal">true</span></span><br><span class="line">virtualenvs.in-project = null</span><br><span class="line">virtualenvs.options.always-copy = <span class="literal">false</span></span><br><span class="line">virtualenvs.options.no-pip = <span class="literal">false</span></span><br><span class="line">virtualenvs.options.no-setuptools = <span class="literal">false</span></span><br><span class="line">virtualenvs.options.system-site-packages = <span class="literal">false</span></span><br><span class="line">virtualenvs.path = <span class="string">&quot;&#123;cache-dir&#125;\\virtualenvs&quot;</span>  <span class="comment"># C:\Users\Admin\AppData\Local\pypoetry\Cache\virtualenvs</span></span><br><span class="line">virtualenvs.prefer-active-python = <span class="literal">false</span></span><br><span class="line">virtualenvs.prompt = <span class="string">&quot;&#123;project_name&#125;-py&#123;python_version&#125;&quot;</span></span><br><span class="line">warnings.export = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>虚拟环境在项目目录时，注意添加 <code>.venv</code> 到 <code>.gitignore</code></p>
+</blockquote>
 <p>2）增加下载源</p>
 <p>使用默认源有时会出现连接超时的情况，可执行 <code>poetry source add &lt;source_name&gt; &lt;source_url&gt;</code> 添加国内源解决这个问题：</p>
 <ul>
 <li>执行 <code>poetry source add tsinghua https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/</code>，添加清华源</li>
 <li>或 <code>poetry source add tencent https://mirrors.cloud.tencent.com/pypi/simple/</code>，添加腾讯源</li>
-<li>或 <code>poetry source add ali https://mirrors.aliyun.com/pypi/simple/</code>，添加阿里源</li>
+<li>或 <code>poetry source add aliyun https://mirrors.aliyun.com/pypi/simple/</code>，添加阿里源</li>
 </ul>
 <blockquote>
 <p>命令参数可见 <a target="_blank" rel="noopener" href="https://python-poetry.org/docs/cli#source">https://python-poetry.org/docs/cli#source</a></p>
 </blockquote>
 <h2 id="4、其他"><a href="#4、其他" class="headerlink" title="4、其他"></a>4、其他</h2><p>1）当添加自定义源后，可能会遇到如下警告：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Warning</span>: <span class="title class_">In</span> a future version <span class="keyword">of</span> <span class="title class_">Poetry</span>, <span class="title class_">PyPI</span> will be disabled automatically <span class="keyword">if</span> at least one custom primary source is configured. <span class="title class_">In</span> order to avoid a breaking change and make your pyproject.<span class="property">toml</span> forward compatible, add <span class="title class_">PyPI</span> explicitly via <span class="string">&#x27;poetry source add pypi&#x27;</span>. <span class="title class_">By</span> the way, <span class="variable language_">this</span> has the advantage that you can set the priority <span class="keyword">of</span> <span class="title class_">PyPI</span> <span class="keyword">as</span> <span class="keyword">with</span> any other source.</span><br><span class="line"></span><br><span class="line">警告：在未来版本的 <span class="title class_">Poetry</span> 中，如果配置了至少一个自定义主源，<span class="title class_">PyPI</span> 将被自动禁用。为了避免破坏性更改并使 pyproject.<span class="property">toml</span> 向前兼容，请通过 <span class="string">&#x27;poetry source add pypi&#x27;</span> 显式地添加 <span class="title class_">PyPI</span>。顺便说一下，这样做的好处是你可以像使用任何其他源一样设置 <span class="title class_">PyPI</span> 的优先级。</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Warning: In a future version of Poetry, PyPI will be disabled automatically <span class="keyword">if</span> at least one custom primary <span class="built_in">source</span> is configured. In order to avoid a breaking change and make your pyproject.toml forward compatible, add PyPI explicitly via <span class="string">&#x27;poetry source add pypi&#x27;</span>. By the way, this has the advantage that you can <span class="built_in">set</span> the priority of PyPI as with any other <span class="built_in">source</span>.</span><br><span class="line"></span><br><span class="line">警告：在未来版本的 Poetry 中，如果配置了至少一个自定义主源，PyPI 将被自动禁用。为了避免破坏性更改并使 pyproject.toml 向前兼容，请通过 <span class="string">&#x27;poetry source add pypi&#x27;</span> 显式地添加 PyPI。顺便说一下，这样做的好处是你可以像使用任何其他源一样设置 PyPI 的优先级。</span><br></pre></td></tr></table></figure>
 
 <p>按照提示，执行 <code>poetry source add pypi</code> 即可。</p>
-<p>2）使用 idea 时，往往需要在 <code>File</code>-&gt;<code>Project Structure</code> 指定 python 环境。此时应在 <code>Facets</code> 选项卡选择 virtualenvs 下建立的虚拟环境，<code>Project</code> 以及 <code>Modules</code> 中保持 <code>No SDK</code></p>
 
     </div>
 
@@ -368,6 +403,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/97816df0-a133-11ee-9970-39bf61dae061/" rel="next" title="python 的字符串前缀">
+                  python 的字符串前缀 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
