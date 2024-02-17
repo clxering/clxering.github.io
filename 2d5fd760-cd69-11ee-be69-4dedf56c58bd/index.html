@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="docker 下配置 Oracle Database Server 12c R2">
+<meta property="og:url" content="http://www.dcheng.site/2d5fd760-cd69-11ee-be69-4dedf56c58bd/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-17T05:46:16.000Z">
+<meta property="article:modified_time" content="2024-02-17T08:15:02.284Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/2d5fd760-cd69-11ee-be69-4dedf56c58bd/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/2d5fd760-cd69-11ee-be69-4dedf56c58bd/","path":"2d5fd760-cd69-11ee-be69-4dedf56c58bd/","title":"docker 下配置 Oracle Database Server 12c R2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>docker 下配置 Oracle Database Server 12c R2 | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E4%B8%8B%E8%BD%BD%E9%95%9C%E5%83%8F"><span class="nav-text">1、下载镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E4%BF%AE%E6%94%B9%E6%BA%90%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-text">2、修改源（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E6%89%A7%E8%A1%8C%E9%95%9C%E5%83%8F"><span class="nav-text">3、执行镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E7%99%BB%E5%BD%95"><span class="nav-text">4、登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-text">5、修改密码（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81CDB-%E5%92%8C-PDB"><span class="nav-text">6、CDB 和 PDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7%E3%80%81%E7%94%A8%E6%88%B7%E5%88%86%E7%B1%BB"><span class="nav-text">7、用户分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8%E3%80%81%E5%88%87%E6%8D%A2%E8%87%B3-PDB"><span class="nav-text">8、切换至 PDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9%E3%80%81%E5%88%87%E6%8D%A2%E8%87%B3-CDB"><span class="nav-text">9、切换至 CDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10%E3%80%81%E7%99%BB%E9%99%86%E6%88%96%E8%BF%9E%E6%8E%A5"><span class="nav-text">10、登陆或连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11%E3%80%81%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7"><span class="nav-text">11、查看用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12%E3%80%81%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="nav-text">12、删除用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13%E3%80%81%E7%94%A8%E6%88%B7%E6%8E%88%E6%9D%83"><span class="nav-text">13、用户授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14%E3%80%81%E6%9F%A5%E7%9C%8B%E6%9D%83%E9%99%90"><span class="nav-text">14、查看权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15%E3%80%81%E6%92%A4%E9%94%80%E6%9D%83%E9%99%90"><span class="nav-text">15、撤销权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16%E3%80%81%E9%80%9A%E8%BF%87-pdbseed-%E6%96%B0%E5%BB%BA-PDB"><span class="nav-text">16、通过 pdbseed 新建 PDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17%E3%80%81%E5%85%8B%E9%9A%86%E6%9C%AC%E5%9C%B0-PDB-%E6%96%B0%E5%BB%BA-PDB"><span class="nav-text">17、克隆本地 PDB 新建 PDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18%E3%80%81%E6%9B%B4%E6%94%B9-PDB-%E6%A8%A1%E5%BC%8F"><span class="nav-text">18、更改 PDB 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19%E3%80%81%E4%BF%9D%E6%8C%81-PDB-%E6%A8%A1%E5%BC%8F"><span class="nav-text">19、保持 PDB 模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20%E3%80%81%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F"><span class="nav-text">20、密码过期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9F%A5%E8%AF%A2"><span class="nav-text">其他查询</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/2d5fd760-cd69-11ee-be69-4dedf56c58bd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="docker 下配置 Oracle Database Server 12c R2 | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          docker 下配置 Oracle Database Server 12c R2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-02-17 13:46:16 / Modified: 16:15:02" itemprop="dateCreated datePublished" datetime="2024-02-17T13:46:16+08:00">2024-02-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">部署和安装</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、下载镜像"><a href="#1、下载镜像" class="headerlink" title="1、下载镜像"></a>1、下载镜像</h2><p>1）<code>https://hub.docker.com/_/oracle-database-enterprise-edition</code></p>
+<p>2）填写一些信息，命令行输入 <code>docker login</code> 登陆后下载镜像。</p>
+<h2 id="2、修改源（可选）"><a href="#2、修改源（可选）" class="headerlink" title="2、修改源（可选）"></a>2、修改源（可选）</h2><p>采用阿里云提供的国内源，Docker Desktop 依次进入 <code>Settings</code>→<code>Docker Engine</code>，在 <code>registry-mirrors</code> 属性下添加地址（仅供参考）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;https://67ewp9up.mirror.aliyuncs.com&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;insecure-registries&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;debug&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;experimental&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;features&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;buildkit&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3、执行镜像"><a href="#3、执行镜像" class="headerlink" title="3、执行镜像"></a>3、执行镜像</h2><p>以 win10 为例。根据文档 Oracle Database Server Docker Image Documentation（Oracle 数据库服务端 Docker 镜像文档）其中 Reusing existing database 小节内容，将本地 <code>D:\oracledata</code> 挂载到 <code>/ORCL</code>，参考命令行如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name oracle -d -p <span class="number">1521</span>:<span class="number">1521</span> --restart=always -v <span class="attr">D</span>:<span class="regexp">/oracledata:/</span><span class="variable constant_">ORCL</span> 12a359cd0528</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、登录"><a href="#4、登录" class="headerlink" title="4、登录"></a>4、登录</h2><p>使用 Docker Desktop 进入容器命令行，执行 <code>source /home/oracle/.bashrc</code> 激活环境变量，再执行 <code>sqlplus /nolog</code>，否则提示找不到命令。</p>
+<blockquote>
+<p>或按照文档提示，直接执行 <code>$ docker exec -it &lt;Oracle-DB&gt; bash -c &quot;source /home/oracle/.bashrc; sqlplus /nolog&quot;</code>，效果相同；或执行 <code>docker exec -it oracle /bin/bash</code> 进入正在运行容器的命令行，执行 <code>sqlplus / as sysdba</code> 登入，这种方式不用激活环境变量。</p>
+</blockquote>
+<p><code>.bashrc</code> 内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># .bashrc</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Source global definitions</span></span><br><span class="line"><span class="keyword">if</span> [ -f /etc/bashrc ]; <span class="keyword">then</span></span><br><span class="line">        . /etc/bashrc</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line if you don&#x27;t like systemctl&#x27;s auto-paging feature:</span></span><br><span class="line"><span class="comment"># export SYSTEMD_PAGER=</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User specific aliases and functions</span></span><br><span class="line"><span class="built_in">export</span> ORACLE_HOME=/u01/app/oracle/product/12.2.0/dbhome_1</span><br><span class="line"><span class="built_in">export</span> OH=/u01/app/oracle/product/12.2.0/dbhome_1</span><br><span class="line"><span class="built_in">export</span> PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/u01/app/oracle/product/12.2.0/dbhome_1/bin</span><br><span class="line"><span class="built_in">export</span> TNS_ADMIN=/u01/app/oracle/product/12.2.0/dbhome_1/admin/ORCLCDB</span><br><span class="line"><span class="built_in">export</span> ORACLE_SID=ORCLCDB;</span><br></pre></td></tr></table></figure>
+
+<p>进入后连接至 SYS 账户 <code>connect / as sysdba</code></p>
+<h2 id="5、修改密码（可选）"><a href="#5、修改密码（可选）" class="headerlink" title="5、修改密码（可选）"></a>5、修改密码（可选）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter user sys identified by oracle;</span><br><span class="line">alter user system identified by oracle;</span><br></pre></td></tr></table></figure>
+
+<p>之后可在命令行输入 sqlplus，用上述用户登录即可</p>
+<blockquote>
+<p>注：SYS 账户必需以 dba 权限登录，应输入用户名 <code>sys as sysdba</code></p>
+</blockquote>
+<h2 id="6、CDB-和-PDB"><a href="#6、CDB-和-PDB" class="headerlink" title="6、CDB 和 PDB"></a>6、CDB 和 PDB</h2><p>Oracle 12c 引入了 CDB 与 PDB，在 ORACLE 12c 数据库引入的多租用户环境（Multitenant Environment）中，允许一个数据库容器（CDB）承载多个可插拔数据库（PDB）。CDB 全称为 Container Database，翻译为数据库容器，PDB 全称为 Pluggable Database，即可插拔数据库。在 ORACLE 12c 之前，实例与数据库是一对一或多对一关系（RAC），即一个实例只能与一个数据库相关联，数据库可以被多个实例所加载。而实例与数据库不可能是一对多的关系。当进入 ORACLE 12c 后，实例与数据库可以是一对多的关系。</p>
+<p>CDB 相当于操作系统，调用并管理各个 PDB。PDB 相当于真正提供业务需求的数据库实例。ORACLE 12c 安装后只创建了 CBD，需要自己生成相应的 PDB。平时的数据库操作大多数和 PDB 相关。</p>
+<blockquote>
+<p>注：数据库创建完成后默认带有一个名为 ORCLPDB1 的 PDB</p>
+</blockquote>
+<p>相关命令：</p>
+<ul>
+<li><code>select name,open_mode from v$pdbs;</code> 用来查看当前 CDB 容器中包含的 PDB 容器</li>
+<li><code>show pdbs;</code> 查看全部目前的 PDB</li>
+<li><code>show con_name;</code> 查看当前所在是 CDB 还是 PDB</li>
+</ul>
+<h2 id="7、用户分类"><a href="#7、用户分类" class="headerlink" title="7、用户分类"></a>7、用户分类</h2><p>Oracle 12c 的用户分为公共用户和本地用户</p>
+<p>公共用户：可以为 CDB 管理员创建，公共用户是在所有的 PDB 中都可以使用的用户，公共用户的信息存在 CDB$ROOT 中，并且存在于所有的 PDB 中。公共用户需要连到 CDB 进行创建和管理。在 CDB 中创建的用户默认就是公共用户，可以省略 container&#x3D;all，在 CDB 中只能创建公共用户，不能创建本地用户。</p>
+<p>本地用户：本地用户只会存储在对应的 PDB 中，在 PDB 中创建的用户默认就是本地用户，可以省略 container&#x3D;current，在 PDB 中只能创建本地用户，不能创建公共用户。</p>
+<p>为了区分公共用和本地用户，引进了新的参数 common_user_perfix，表示公共用户的前缀，默认为 c##，也就是说如果创建了一个公共用户，必须带上前缀，如果不加 c##，则会提示错误 <code>ORA-65096：公用用户名或角色名无效</code>。此前缀是可以进行修改的，但是建议不要修改。执行以下命令查看前缀：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show parameter common_user;</span><br></pre></td></tr></table></figure>
+
+<p>创建用户并授权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create user C<span class="comment">##test identified by 123456;</span></span><br><span class="line">grant connect,<span class="built_in">source</span>,dba to C<span class="comment">##test;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8、切换至-PDB"><a href="#8、切换至-PDB" class="headerlink" title="8、切换至 PDB"></a>8、切换至 PDB</h2><p>注意：使用这个命令需要的 sysdba 级别的权限，否则无法执行。切换后才可使用当前 PDB 的私有用户进行操作，12c 数据库创建完成后，默认情况下，使用 <code>sqlplus / as sysdba</code> 登录连接的是 CDB</p>
+<p>执行 <code>show con_name;</code>，当前在 CDB 容器中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CON_NAME</span><br><span class="line">------------------------------</span><br><span class="line">CDB<span class="variable">$ROOT</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>show pdbs;</code> 查询目前现有的 PDB 容器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    CON_ID CON_NAME                       OPEN MODE  RESTRICTED</span><br><span class="line">---------- ------------------------------ ---------- ----------</span><br><span class="line">         2 PDB<span class="variable">$SEED</span>                       READ ONLY  NO</span><br><span class="line">         3 ORCLPDB1                       READ WRITE NO</span><br></pre></td></tr></table></figure>
+
+<p>使用下列命令切换</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; alter session <span class="built_in">set</span> container=ORCLPDB1;</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>show con_name;</code> 验证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CON_NAME</span><br><span class="line">------------------------------</span><br><span class="line">ORCLPDB1</span><br></pre></td></tr></table></figure>
+
+<p>说明切换成功，此时就可以创建本地用户并授权：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; create user <span class="built_in">test</span> identified by 123456;</span><br><span class="line">SQL&gt; grant dba to <span class="built_in">test</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9、切换至-CDB"><a href="#9、切换至-CDB" class="headerlink" title="9、切换至 CDB"></a>9、切换至 CDB</h2><p>如果要切换回 CDB 容器只需将容器名换为 CDB 容器的名字即可，一个 CDB 只有一个根</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; alter session <span class="built_in">set</span> container=CDB<span class="variable">$ROOT</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="10、登陆或连接"><a href="#10、登陆或连接" class="headerlink" title="10、登陆或连接"></a>10、登陆或连接</h2><p>使用 DataGrip 登录 PDB 使用 serviceName 登录，默认为实例名称后加 localdomain（例如 ORCLPDB1.localdomain），可通过 tnsnames.ora 查看。查找文件所在路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find / -name tnsnames.ora</span><br><span class="line">/u01/app/oracle/product/12.2.0/dbhome_1/network/admin/samples/tnsnames.ora</span><br><span class="line">/u01/app/oracle/product/12.2.0/dbhome_1/admin/ORCLCDB/tnsnames.ora</span><br></pre></td></tr></table></figure>
+
+<p>观察环境变量 <code>export TNS_ADMIN=/u01/app/oracle/product/12.2.0/dbhome_1/admin/ORCLCDB</code> 可知正确路径。从 <code>ORCLCDB/tnsnames.ora</code> 可看到 ORCLCDB 和 ORCLPDB 的 serviceName，或用命令查询当前可用 serviceName</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select name,pdb from v<span class="variable">$services</span> order by name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="11、查看用户"><a href="#11、查看用户" class="headerlink" title="11、查看用户"></a>11、查看用户</h2><p>如果处在 CDB$ROOT 中查询 DBA 视图，那么只能查询到公共的数据字典；如果处在 PDB 中，那么查询 DBA 视图只能查到此 PDB 的数据字典。12c 中新增了 CDB 数据字典,可以查看所有的数据字典。所以，当在 CDB 中查询 dba_users，那你只能查询到公共的用户，当处于 PDB 中，只能查到 PDB 中的本地用户；如果想查询所有的用户，可以使用下的语句。其中新增 oracle_maintained 字段提示了此用户是否由 oracle 管理：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select a.username,a.common,a.con_id,decode(a.CON_ID,1,<span class="string">&#x27;CDB$ROOT&#x27;</span>,b.pdb_name) name from cdb_users a,cdb_pdbs b</span><br><span class="line"><span class="built_in">where</span> a.con_id=b.con_id(+) and oracle_maintained=<span class="string">&#x27;N&#x27;</span></span><br><span class="line">order by a.con_id,a.username;</span><br></pre></td></tr></table></figure>
+
+<p>以此类推，公共用户修改密码只能在 <code>CDB$ROOT</code> 中进行修改；本地用户只能在 PDB 中进行修改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; alter user c<span class="comment">##cdb identified by newcdb;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12、删除用户"><a href="#12、删除用户" class="headerlink" title="12、删除用户"></a>12、删除用户</h2><p>命令：<code>drop user C##用户名</code></p>
+<p>若用户拥有对象，则不能直接删除，否则将返回一个错误值。指定关键字 cascade，可删除用户所有的对象，然后再删除用户。</p>
+<h2 id="13、用户授权"><a href="#13、用户授权" class="headerlink" title="13、用户授权"></a>13、用户授权</h2><p>创建一个公共用户，此时是没有任何登录权限的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; create user c<span class="comment">##cdb identified by cdb;</span></span><br><span class="line"></span><br><span class="line">User created.</span><br><span class="line"></span><br><span class="line">SQL&gt; show pdbs;</span><br><span class="line"></span><br><span class="line">    CON_ID CON_NAME                       OPEN MODE  RESTRICTED</span><br><span class="line">---------- ------------------------------ ---------- ----------</span><br><span class="line">         2 PDB<span class="variable">$SEED</span>                       READ ONLY  NO</span><br><span class="line">         3 ORCLPDB1                       READ WRITE NO</span><br><span class="line"></span><br><span class="line">SQL&gt; show con_name</span><br><span class="line"></span><br><span class="line">CON_NAME</span><br><span class="line">------------------------------</span><br><span class="line">CDB<span class="variable">$ROOT</span></span><br><span class="line"></span><br><span class="line">SQL&gt; conn c<span class="comment">##cdb/cdb</span></span><br><span class="line"></span><br><span class="line">ERROR:</span><br><span class="line">ORA-01045: user c<span class="comment">##cdb lacks CREATE SESSION privilege; logon denied</span></span><br><span class="line"></span><br><span class="line">Warning: You are no longer connected to ORACLE.</span><br></pre></td></tr></table></figure>
+
+<p>在 CDB 中赋予 c##cdb 登录权限后，就可以登录到 CDB。登录 sys 账户进行授权（登录时默认在 CDB 中）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">conn / as sysdba</span><br><span class="line"></span><br><span class="line">Connected.</span><br><span class="line"></span><br><span class="line">SQL&gt; grant create session to c<span class="comment">##cdb;</span></span><br><span class="line"></span><br><span class="line">Grant succeeded.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：grant 不添加 container 子句，则默认为当前容器，即 <code>grant create session to c##cdb container=current;</code></p>
+</blockquote>
+<p>配置权限后可成功切换用户：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; conn c<span class="comment">##cdb/cdb</span></span><br><span class="line"></span><br><span class="line">Connected.</span><br></pre></td></tr></table></figure>
+
+<p>在 PDB 内部的授权为本地授权，可以在 PDB 中对公共用户进行授权。公共用户虽然在所有 PDB 中都存在，但并不是创建了公共用户就有权限访问所有 PDB，还需要单独赋予 create session 权限。此时还没有赋予单独的 PDB 权限给账户，当尝试连接其他 PDB 时会报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; alter session <span class="built_in">set</span> container=ORCLPDB1;</span><br><span class="line"></span><br><span class="line">ERROR:</span><br><span class="line">ORA-01031: insufficient privileges</span><br></pre></td></tr></table></figure>
+
+<p>通过登录 sys 账户连接 PDB，再对账户进行授权：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; conn / as sysdba</span><br><span class="line"></span><br><span class="line">Connected.</span><br><span class="line"></span><br><span class="line">SQL&gt; show con_name</span><br><span class="line"></span><br><span class="line">CON_NAME</span><br><span class="line">------------------------------</span><br><span class="line">CDB<span class="variable">$ROOT</span></span><br><span class="line"></span><br><span class="line">SQL&gt; alter session <span class="built_in">set</span> container=brent;</span><br><span class="line"></span><br><span class="line">Session altered.</span><br><span class="line"></span><br><span class="line">SQL&gt; grant create session to c<span class="comment">##cdb with admin option container=current;</span></span><br><span class="line"></span><br><span class="line">Grant succeeded.</span><br></pre></td></tr></table></figure>
+
+<p>或者对公共用户进行公共授权，授权之后的用户就拥有了所有 PDB 的相关权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; grant create session to c<span class="comment">##cdb container=all;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="14、查看权限"><a href="#14、查看权限" class="headerlink" title="14、查看权限"></a>14、查看权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select * from dba_sys_privs <span class="built_in">where</span> grantee like <span class="string">&#x27;C##%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="15、撤销权限"><a href="#15、撤销权限" class="headerlink" title="15、撤销权限"></a>15、撤销权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt;revoke create table from <span class="built_in">test</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="16、通过-pdbseed-新建-PDB"><a href="#16、通过-pdbseed-新建-PDB" class="headerlink" title="16、通过 pdbseed 新建 PDB"></a>16、通过 pdbseed 新建 PDB</h2><p>查找 pdbseed 目录的路径，例如 <code>/u02/app/oracle/oradata/ORCL/pdbseed</code>（可在挂载目录中查看），使用 sys 用户下执行下列命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; create pluggable database ORCLPDB2 admin user pdbadmin identified by oracle roles=(resource) file_name_convert=(<span class="string">&#x27;/u02/app/oracle/oradata/ORCL/pdbseed&#x27;</span>,<span class="string">&#x27;/u02/app/oracle/oradata/ORCL/orclpdb2&#x27;</span>);</span><br><span class="line"></span><br><span class="line">Pluggable database created.</span><br><span class="line"></span><br><span class="line">SQL&gt; show pdbs;</span><br><span class="line"></span><br><span class="line">    CON_ID CON_NAME                       OPEN MODE  RESTRICTED</span><br><span class="line">---------- ------------------------------ ---------- ----------</span><br><span class="line">         2 PDB<span class="variable">$SEED</span>                       READ ONLY  NO</span><br><span class="line">         3 ORCLPDB1                       READ WRITE NO</span><br><span class="line">         4 ORCLPDB2                       MOUNTED</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注 1：orclpdb2 目录不存在，执行后自行建立；注 2：要在 CBD 容器下下执行该命令</p>
+</blockquote>
+<h2 id="17、克隆本地-PDB-新建-PDB"><a href="#17、克隆本地-PDB-新建-PDB" class="headerlink" title="17、克隆本地 PDB 新建 PDB"></a>17、克隆本地 PDB 新建 PDB</h2><p>被克隆的 PDB 模式要修改为 read only</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; alter pluggable database ORCLPDB2 close;</span><br><span class="line">SQL&gt; alter pluggable database ORCLPDB2 open <span class="built_in">read</span> only;</span><br><span class="line">SQL&gt; create pluggable database ORCLPDB3 from ORCLPDB2 file_name_convert=(<span class="string">&#x27;/u02/app/oracle/oradata/ORCL/orclpdb2&#x27;</span>,<span class="string">&#x27;/u02/app/oracle/oradata/ORCL/orclpdb3&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="18、更改-PDB-模式"><a href="#18、更改-PDB-模式" class="headerlink" title="18、更改 PDB 模式"></a>18、更改 PDB 模式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter pluggable database ORCLPDB2 open <span class="built_in">read</span> write;</span><br></pre></td></tr></table></figure>
+
+<p>登陆时提示错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ERROR:</span><br><span class="line">ORA-01017: invalid username/password; logon denied</span><br><span class="line"></span><br><span class="line">Warning: You are no longer connected to ORACLE.</span><br></pre></td></tr></table></figure>
+
+<p>注意用户是否授权，另外要增加连接符，具体在 tnsnames.ora 文件中新加一个连接符，再重新启动监听器 lsnrctl start</p>
+<h2 id="19、保持-PDB-模式"><a href="#19、保持-PDB-模式" class="headerlink" title="19、保持 PDB 模式"></a>19、保持 PDB 模式</h2><p>完成常规配置后，当 CDB 实例关闭重新开启后会重置 PDB 的模式为 <code>MOUNTED</code>，此时可执行 <code>alter pluggable database ORCLPDB2 open;</code> 手动启动。或在 PDB 启动后使用 <code>alter pluggable database all save state;</code> 命令，保持状态，让 PDB 保持启动。或者通过在 CDB 新建触发器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt;create or replace trigger auto_open_pdbs</span><br><span class="line">after startup on database</span><br><span class="line">begin</span><br><span class="line">execute immediate <span class="string">&#x27;alter pluggable database all open&#x27;</span>;</span><br><span class="line">end;</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+
+<p>其他相关命令：</p>
+<ul>
+<li><code>alter pluggable database all except ORCLPDB2 close;</code>，除 ORCLPDB2 外关闭全部 PDB</li>
+<li><code>alter pluggable database all open;</code>，开启全部 PDB</li>
+<li><code>alter pluggable database all close immediate;</code>，关闭全部 PDB</li>
+<li><code>shutdown immediate;</code>，关闭 CDB</li>
+<li><code>startup mount;</code>，启动 CDB</li>
+</ul>
+<h2 id="20、密码过期"><a href="#20、密码过期" class="headerlink" title="20、密码过期"></a>20、密码过期</h2><p>1、执行 <code>docker exec -it oracle /bin/bash</code> 进入正在运行容器的命令行，执行 <code>sqlplus / as sysdba</code> 登入</p>
+<p>2、关闭密码过期机制</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter profile default <span class="built_in">limit</span> password_life_time unlimited;</span><br></pre></td></tr></table></figure>
+
+<p>3、切换到所在容器，例如 ORCLPDB1</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter session <span class="built_in">set</span> container=ORCLPDB1;</span><br></pre></td></tr></table></figure>
+
+<p>4、重新修改用户密码 abc2，再改回旧密码 abc 即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter user abc identified by abc2;</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>1、 如果在 PDB 中已经存在一个用户或者角色，则在 CDB 中不能创建相同的账号或者角色名。</p>
+<p>2、 同样在 CDB 中创建账号后不能在 PDB 中出现同名的账号，因 CDB 中的账号对所有的 PDB 都是有效的。</p>
+<p>3、 在 CDB 中创建的账号将会在全部的 PDB 中出现，但是在 CDB 中的授权，如非特别指定的话，并不能传递到 PDB 中。</p>
+<p>4、 针对同一个共有账号在 PDB 下创建的账号在 CDB 是看不到的。针对同一个共有账号，在 PDB 和 CDB 下创建的共有账号因在 CDB 和 PDB 下被赋予了不同的含义，故在 CDB 下创建的对象和在 PDB 下创建的对象是可以同名的，反之也成立。</p>
+<h2 id="其他查询"><a href="#其他查询" class="headerlink" title="其他查询"></a>其他查询</h2><p>1、查看所有用户：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from dba_users;</span><br><span class="line">select * from all_users;</span><br><span class="line">select * from user_users;</span><br></pre></td></tr></table></figure>
+
+<p>2、查看用户或角色系统权限(直接赋值给用户或角色的系 bai 统权限)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from dba_sys_privs;</span><br><span class="line">select * from user_sys_privs; (查看当前用户所拥有的权限)</span><br></pre></td></tr></table></figure>
+
+<p>3、查看角色(只能查看登陆用户拥有的角色)所包含的权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql&gt;select * from role_sys_privs;</span><br></pre></td></tr></table></figure>
+
+<p>4、查看用户对象权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from dba_tab_privs;</span><br><span class="line">select * from all_tab_privs;</span><br><span class="line">select * from user_tab_privs;</span><br></pre></td></tr></table></figure>
+
+<p>5、查看所有角色：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from dba_roles;</span><br></pre></td></tr></table></figure>
+
+<p>6、查看用户或角色所拥有的角色：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from dba_role_privs;</span><br><span class="line">select * from user_role_privs;</span><br></pre></td></tr></table></figure>
+
+<p>7.查看哪些用户有 sysdba 或 sysoper 系统权限(查询时需要相应权限)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from V<span class="variable">$PWFILE_USERS</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2d5ffe70-cd69-11ee-be69-4dedf56c58bd/" rel="prev" title="win 配置开机启动时执行脚本">
+                  <i class="fa fa-chevron-left"></i> win 配置开机启动时执行脚本
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2d5fb050-cd69-11ee-be69-4dedf56c58bd/" rel="next" title="GitHub 中使用 issues 模版和 pull request 模版">
+                  GitHub 中使用 issues 模版和 pull request 模版 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
