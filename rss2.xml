@@ -15,7 +15,7 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 17 Feb 2024 08:15:02 GMT</pubDate>
+    <pubDate>Sun, 25 Feb 2024 04:42:23 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -197,30 +197,6 @@
       
       
       <comments>http://www.dcheng.site/3a21e150-815b-11ee-8ef0-c118c637cb12/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>postgresql-15 文档摘录</title>
-      <link>http://www.dcheng.site/3a21ba40-815b-11ee-8ef0-c118c637cb12/</link>
-      <guid>http://www.dcheng.site/3a21ba40-815b-11ee-8ef0-c118c637cb12/</guid>
-      <pubDate>Sat, 11 Nov 2023 15:09:51 GMT</pubDate>
-      
-      <description>&lt;blockquote&gt;
-&lt;/blockquote&gt;</description>
-      
-      
-      
-      
-      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
-      
-      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/">官方文档</category>
-      
-      
-      <category domain="http://www.dcheng.site/tags/postgresql/">postgresql</category>
-      
-      
-      <comments>http://www.dcheng.site/3a21ba40-815b-11ee-8ef0-c118c637cb12/#disqus_thread</comments>
       
     </item>
     
