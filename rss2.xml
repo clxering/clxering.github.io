@@ -15,8 +15,54 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 25 Feb 2024 04:42:23 GMT</pubDate>
+    <pubDate>Sun, 10 Mar 2024 09:24:43 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>VMware15 安装 win11</title>
+      <link>http://www.dcheng.site/302e9b10-debd-11ee-bdc4-19fdf0ccb3e7/</link>
+      <guid>http://www.dcheng.site/302e9b10-debd-11ee-bdc4-19fdf0ccb3e7/</guid>
+      <pubDate>Sun, 10 Mar 2024 03:46:53 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      
+      <comments>http://www.dcheng.site/302e9b10-debd-11ee-bdc4-19fdf0ccb3e7/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Spring Boot 注解之 @ConditionalOnProperty</title>
+      <link>http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/</link>
+      <guid>http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/</guid>
+      <pubDate>Sat, 09 Mar 2024 02:45:20 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
+      
+      <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
+      
+      
+      <comments>http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>jackson 2.x 解析 json 案例</title>
@@ -155,7 +201,7 @@
     </item>
     
     <item>
-      <title>springboot+mybatis 配置多数据库</title>
+      <title>springboot 数据源配置</title>
       <link>http://www.dcheng.site/d27a8f70-9bfe-11ee-a92b-05e08d68d559/</link>
       <guid>http://www.dcheng.site/d27a8f70-9bfe-11ee-a92b-05e08d68d559/</guid>
       <pubDate>Thu, 14 Dec 2023 13:56:38 GMT</pubDate>
@@ -245,7 +291,7 @@
     </item>
     
     <item>
-      <title>激活 win10 专业版</title>
+      <title>激活 win10/11 pro</title>
       <link>http://www.dcheng.site/53337b90-4f8d-11ee-9eaf-09d2cd19d790/</link>
       <guid>http://www.dcheng.site/53337b90-4f8d-11ee-9eaf-09d2cd19d790/</guid>
       <pubDate>Sun, 10 Sep 2023 03:47:56 GMT</pubDate>

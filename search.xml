@@ -2856,6 +2856,82 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>VMware15 安装 win11</title>
+    <url>/302e9b10-debd-11ee-bdc4-19fdf0ccb3e7/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、安装要求"><a href="#1、安装要求" class="headerlink" title="1、安装要求"></a>1、安装要求</h2><p>官网地址：<a href="https://www.microsoft.com/en-us/windows/windows-11-specifications">System requirements</a></p>
+<p>System requirements</p>
+<p>These are the minimum system requirements for installing Windows 11 on a PC. If your device does not meet these requirements, you may not be able to install Windows 11 on your device and might want to consider purchasing a new PC. If you are unsure whether your PC meets these requirements, you can check with your PC Original Equipment Manufacturer (OEM) or, if your device is already running Windows 10, you can use the PC Health Check app to assess compatibility. Note that this app does not check for graphics card or display, as most compatible devices will meet those requirements listed below.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>项目</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Processor</td>
+<td>1 gigahertz (GHz) or faster with 2 or more cores on a compatible 64-bit processor or System on a Chip (SoC).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>RAM</td>
+<td>4 gigabyte (GB).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Storage</td>
+<td>64 GB or larger storage device Note: See below under “More information on storage space to keep Windows 11 up-to-date” for more details.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>System firmware</td>
+<td>UEFI, Secure Boot capable. Check here for information on how your PC might be able to meet this requirement.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>TPM</td>
+<td>Trusted Platform Module (TPM) version 2.0. Check here for instructions on how your PC might be enabled to meet this requirement.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Graphics card</td>
+<td>Compatible with DirectX 12 or later with WDDM 2.0 driver.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Display</td>
+<td>High definition (720p) display that is greater than 9” diagonally, 8 bits per color channel.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Internet connection and Microsoft account</td>
+<td>For all Windows 11 editions, internet access is required to perform updates and to download and take advantage of some features. A Microsoft account is required for some features.</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>内存</strong>和 <strong>TPM</strong> 是需要重点设置的部分，否则提示「这台电脑无法运行 Windows 11，这台电脑不符合安装此版本的 Windows 所需的最低系统要求。」</p>
+</blockquote>
+<h2 id="2、主要安装流程"><a href="#2、主要安装流程" class="headerlink" title="2、主要安装流程"></a>2、主要安装流程</h2><p>1）进入官网下载 win11 镜像：<a href="https://www.microsoft.com/zh-cn/software-download/windows11">Windows 11 磁盘映像 (ISO)</a>，选择「Windows 11 (multi-edition ISO)」，点击「下载」，「选择产品语言」后「确认」开始下载镜像；</p>
+<p>2）在 VMware15 新建虚拟机，在向导中选择「稍后安装操作系统」，先修改配置。磁盘大小、CPU 内核等配置均可以使用默认；特别注意<strong>内存至少为 4G</strong></p>
+<p>3）设置 TPM：依次进入「编辑虚拟机设置」→「访问控制」→「加密」设置密码；回到「硬件」选项卡，点击「添加」→ 选择「可信平台模块」</p>
+<p>4）选择镜像，正常安装即可。</p>
+<h2 id="3、其他问题"><a href="#3、其他问题" class="headerlink" title="3、其他问题"></a>3、其他问题</h2><p>1）安装时如果不登陆微软账户，可在添加账户界面选择「注册工作或学校账户」，点击「登陆选项」→「改为域加入」，设置名字后即可跳过登录账号步骤</p>
+<p>2）VMware17下载，<a href="https://www.vmware.com/products/workstation-pro.html">官方地址</a>，在「Try Workstation 17 Pro」下载试用版</p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows 环境下压缩版 MySQL 安装（8.0.15 版本）</title>
     <url>/ef12a6f0-4937-11ee-861d-b3cf05b530a5/</url>
     <content><![CDATA[<blockquote>
@@ -4086,7 +4162,7 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>激活 win10 专业版</title>
+    <title>激活 win10/11 pro</title>
     <url>/53337b90-4f8d-11ee-9eaf-09d2cd19d790/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
@@ -4103,7 +4179,7 @@ End 	Fn + →
 </blockquote>
 <p>3）安装密钥，执行 <code>slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</code></p>
 <blockquote>
-<p>该密钥为 win10 专业版固定，其他密钥详见 <a href="https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys">https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys</a></p>
+<p>该密钥为 win10&#x2F;11 专业版固定，其他密钥详见 <a href="https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys">https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys</a></p>
 </blockquote>
 <p>4）激活，执行 <code>slmgr /ato</code>，等待数秒后提示是否成功</p>
 <p>5）验证，执行 <code>slmgr /xpr</code> 后若成功激活将显示有效时间 180 天</p>
@@ -5107,6 +5183,101 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>Spring Boot 注解之 @ConditionalOnProperty</title>
+    <url>/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、使用情景"><a href="#1、使用情景" class="headerlink" title="1、使用情景"></a>1、使用情景</h2><p>1）根据配置属性有条件地创建 Bean</p>
+<p>2）可以用在类及方法上：标有 <code>@Configuration</code> 的类以及标有 <code>@Bean</code> 的方法</p>
+<p>3）当属性满足时才会使标有该注解的类或方法生效</p>
+<h2 id="2、使用详情"><a href="#2、使用详情" class="headerlink" title="2、使用详情"></a>2、使用详情</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>配置项</th>
+<th>having</th>
+<th>是否创建 Bean</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>config-test.property.action: true</td>
+<td>havingValue&#x3D;”true”</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>2</td>
+<td>config-test.property.action: false</td>
+<td>havingValue&#x3D;”false”</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>3</td>
+<td>config-test.property.action: enable</td>
+<td>havingValue&#x3D;”enable”</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>4</td>
+<td>config-test.property.action: no</td>
+<td>havingValue&#x3D;”enable”</td>
+<td><strong>不创建</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>config-test.property.action: true</td>
+<td>不配置</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>6</td>
+<td>config-test.property.action: false</td>
+<td>不配置</td>
+<td><strong>不创建</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>config-test.property.action: enable</td>
+<td>不配置</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>8</td>
+<td>config-test.property.action: no</td>
+<td>不配置</td>
+<td>创建</td>
+</tr>
+</tbody></table>
+<h2 id="3、案例"><a href="#3、案例" class="headerlink" title="3、案例"></a>3、案例</h2><p>1）创建一个 Cake 类，getKind 方法返回当前蛋糕的口味：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Cake</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> String kind;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getKind</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> kind;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2）创建两个子类 PineappleCake、StrawberryCake，表示不同口味的蛋糕：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PineappleCake</span> <span class="keyword">extends</span> <span class="title class_">Cake</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PineappleCake</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.kind = <span class="string">&quot;PineappleCake&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StrawberryCake</span> <span class="keyword">extends</span> <span class="title class_">Cake</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">StrawberryCake</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.kind = <span class="string">&quot;StrawberryCake&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3）创建 Config 类，其中使用 <code>@ConditionalOnProperty</code> 注解根据配置文件指定的口味创建相应的 Bean</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Config</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;customCake&quot;)</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty(prefix = &quot;cake.property&quot;, name = &quot;kind&quot;, havingValue = &quot;PineappleCake&quot;)</span>-</span><br><span class="line">    <span class="keyword">public</span> Cake <span class="title function_">pineappleCake</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">PineappleCake</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;customCake&quot;)</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty(prefix = &quot;cake.property&quot;, name = &quot;kind&quot;, havingValue = &quot;StrawberryCake&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Cake <span class="title function_">strawberryCake</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">StrawberryCake</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4）单元测试用例</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestSpringBootApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">ApplicationContextRunner</span> <span class="variable">contextRunner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ApplicationContextRunner</span>();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.contextRunner.withPropertyValues(<span class="string">&quot;cake.property.kind=PineappleCake&quot;</span>)</span><br><span class="line">                .withUserConfiguration(Config.class)</span><br><span class="line">                .run(context -&gt; &#123;</span><br><span class="line">                    assertThat(context).hasBean(<span class="string">&quot;customCake&quot;</span>);</span><br><span class="line">                    <span class="type">Cake</span> <span class="variable">cake</span> <span class="operator">=</span> context.getBean(PineappleCake.class);</span><br><span class="line">                    assertThat(cake.getKind()).isEqualTo(<span class="string">&quot;PineappleCake&quot;</span>);</span><br><span class="line">                    assertThat(context).doesNotHaveBean(<span class="string">&quot;StrawberryCake&quot;</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5）使用案例</p>
+<p>配置文件 <code>application.yml</code> 添加如下属性：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">cake:</span></span><br><span class="line">  <span class="attr">property:</span></span><br><span class="line">    <span class="attr">kind:</span> <span class="string">PineappleCake</span></span><br></pre></td></tr></table></figure>
+
+<p>按名称注入，获得的 kind 值与配置文件相同</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestSpringBootApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;customCake&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Cake cake;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads2</span><span class="params">()</span> &#123;</span><br><span class="line">        assertThat(cake.getKind()).isEqualTo(<span class="string">&quot;PineappleCake&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ThreadPoolExecutor-线程池</title>
     <url>/ef12f512-4937-11ee-861d-b3cf05b530a5/</url>
     <content><![CDATA[<blockquote>
@@ -5584,7 +5755,7 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>springboot+mybatis 配置多数据库</title>
+    <title>springboot 数据源配置</title>
     <url>/d27a8f70-9bfe-11ee-a92b-05e08d68d559/</url>
     <content><![CDATA[<blockquote>
 </blockquote>
@@ -5611,7 +5782,7 @@ End 	Fn + →
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@MapperScan(basePackages = &quot;com.example.dao.main&quot;, sqlSessionTemplateRef = &quot;mainSqlSessionTemplate&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainDataSourceConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;mainDataSource&quot;)</span></span><br><span class="line">    <span class="meta">@Primary</span></span><br><span class="line">    <span class="meta">@ConfigurationProperties(prefix = &quot;spring.datasource.main&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> DataSourceBuilder.create().build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;mainSqlSessionFactory&quot;)</span></span><br><span class="line">    <span class="meta">@Primary</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionFactory <span class="title function_">sqlSessionFactory</span><span class="params">(<span class="meta">@Qualifier(&quot;mainDataSource&quot;)</span> DataSource dataSource)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">SqlSessionFactoryBean</span> <span class="variable">sessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">        sessionFactory.setDataSource(dataSource);</span><br><span class="line">        sessionFactory.setMapperLocations(<span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>().getResources(<span class="string">&quot;classpath*:mapper/main/*.xml&quot;</span>));</span><br><span class="line">        sessionFactory.setTypeAliasesPackage(<span class="string">&quot;com.example.entity&quot;</span>);</span><br><span class="line"></span><br><span class="line">        org.apache.ibatis.session.<span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">org</span>.apache.ibatis.session.Configuration();</span><br><span class="line">        configuration.setJdbcTypeForNull(JdbcType.NULL);</span><br><span class="line">        configuration.setCallSettersOnNulls(<span class="literal">true</span>);</span><br><span class="line">        configuration.setLogImpl(StdOutImpl.class);</span><br><span class="line">        sessionFactory.setConfiguration(configuration);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sessionFactory.getObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;mainTransactionManager&quot;)</span></span><br><span class="line">    <span class="meta">@Primary</span></span><br><span class="line">    <span class="keyword">public</span> DataSourceTransactionManager <span class="title function_">dataSourceTransactionManager</span><span class="params">(<span class="meta">@Qualifier(&quot;mainDataSource&quot;)</span> DataSource dataSource)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(dataSource);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;mainSqlSessionTemplate&quot;)</span></span><br><span class="line">    <span class="meta">@Primary</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionTemplate <span class="title function_">sqlSessionTemplate</span><span class="params">(<span class="meta">@Qualifier(&quot;mainSqlSessionFactory&quot;)</span> SqlSessionFactory sqlSessionFactory)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SqlSessionTemplate</span>(sqlSessionFactory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>SecondaryDataSourceConfig.java</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@MapperScan(basePackages = &quot;com.example.dao.secondary&quot;, sqlSessionTemplateRef = &quot;secondarySqlSessionTemplate&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecondaryDataSourceConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.datasource.driverClassName&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String driverClassName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.datasource.secondary.url&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.datasource.secondary.username&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String user;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.datasource.secondary.password&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;secondaryDataSource&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span> &#123;</span><br><span class="line">        DataSourceBuilder&lt;?&gt; dataSourceBuilder = DataSourceBuilder.create();</span><br><span class="line">        dataSourceBuilder.driverClassName(driverClassName);</span><br><span class="line">        dataSourceBuilder.url(url);</span><br><span class="line">        dataSourceBuilder.password(password);</span><br><span class="line">        dataSourceBuilder.username(user);</span><br><span class="line">        <span class="keyword">return</span> dataSourceBuilder.build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;secondarySqlSessionFactory&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionFactory <span class="title function_">sqlSessionFactory</span><span class="params">(<span class="meta">@Qualifier(&quot;secondaryDataSource&quot;)</span> DataSource dataSource)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">SqlSessionFactoryBean</span> <span class="variable">sessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">        sessionFactory.setDataSource(dataSource);</span><br><span class="line">        sessionFactory.setMapperLocations(<span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>().getResources(<span class="string">&quot;classpath*:mapper/secondary/*.xml&quot;</span>));</span><br><span class="line">        sessionFactory.setTypeAliasesPackage(<span class="string">&quot;com.example.entity&quot;</span>);</span><br><span class="line"></span><br><span class="line">        org.apache.ibatis.session.<span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">org</span>.apache.ibatis.session.Configuration();</span><br><span class="line">        configuration.setJdbcTypeForNull(JdbcType.NULL);</span><br><span class="line">        configuration.setCallSettersOnNulls(<span class="literal">true</span>);</span><br><span class="line">        configuration.setLogImpl(StdOutImpl.class);</span><br><span class="line">        sessionFactory.setConfiguration(configuration);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sessionFactory.getObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;secondaryTransactionManager&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> DataSourceTransactionManager <span class="title function_">dataSourceTransactionManager</span><span class="params">(<span class="meta">@Qualifier(&quot;secondaryDataSource&quot;)</span> DataSource dataSource)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(dataSource);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;secondarySqlSessionTemplate&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionTemplate <span class="title function_">sqlSessionTemplate</span><span class="params">(<span class="meta">@Qualifier(&quot;secondarySqlSessionFactory&quot;)</span> SqlSessionFactory sqlSessionFactory)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SqlSessionTemplate</span>(sqlSessionFactory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@MapperScan(basePackages = &quot;com.example.dao.secondary&quot;, sqlSessionTemplateRef = &quot;secondarySqlSessionTemplate&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecondaryDataSourceConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.datasource.driverClassName&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String driverClassName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.datasource.secondary.url&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.datasource.secondary.username&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String user;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;spring.datasource.secondary.password&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;secondaryDataSource&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span> &#123;</span><br><span class="line">        DataSourceBuilder&lt;?&gt; dataSourceBuilder = DataSourceBuilder.create();</span><br><span class="line">        dataSourceBuilder.driverClassName(driverClassName);</span><br><span class="line">        dataSourceBuilder.url(url);</span><br><span class="line">        dataSourceBuilder.password(password);</span><br><span class="line">        dataSourceBuilder.username(user);</span><br><span class="line">        <span class="keyword">return</span> dataSourceBuilder.build();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 或者使用 DriverManagerDataSource</span></span><br><span class="line">        <span class="comment">// DriverManagerDataSource dataSource = new DriverManagerDataSource();</span></span><br><span class="line">        <span class="comment">// dataSource.setDriverClassName(driverClassName);</span></span><br><span class="line">        <span class="comment">// dataSource.setUrl(url);</span></span><br><span class="line">        <span class="comment">// dataSource.setUsername(user);</span></span><br><span class="line">        <span class="comment">// dataSource.setPassword(password);</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">// return dataSource;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;secondarySqlSessionFactory&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionFactory <span class="title function_">sqlSessionFactory</span><span class="params">(<span class="meta">@Qualifier(&quot;secondaryDataSource&quot;)</span> DataSource dataSource)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">SqlSessionFactoryBean</span> <span class="variable">sessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">        sessionFactory.setDataSource(dataSource);</span><br><span class="line">        sessionFactory.setMapperLocations(<span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>().getResources(<span class="string">&quot;classpath*:mapper/secondary/*.xml&quot;</span>));</span><br><span class="line">        sessionFactory.setTypeAliasesPackage(<span class="string">&quot;com.example.entity&quot;</span>);</span><br><span class="line"></span><br><span class="line">        org.apache.ibatis.session.<span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">org</span>.apache.ibatis.session.Configuration();</span><br><span class="line">        configuration.setJdbcTypeForNull(JdbcType.NULL);</span><br><span class="line">        configuration.setCallSettersOnNulls(<span class="literal">true</span>);</span><br><span class="line">        configuration.setLogImpl(StdOutImpl.class);</span><br><span class="line">        sessionFactory.setConfiguration(configuration);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sessionFactory.getObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;secondaryTransactionManager&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> DataSourceTransactionManager <span class="title function_">dataSourceTransactionManager</span><span class="params">(<span class="meta">@Qualifier(&quot;secondaryDataSource&quot;)</span> DataSource dataSource)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(dataSource);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;secondarySqlSessionTemplate&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionTemplate <span class="title function_">sqlSessionTemplate</span><span class="params">(<span class="meta">@Qualifier(&quot;secondarySqlSessionFactory&quot;)</span> SqlSessionFactory sqlSessionFactory)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SqlSessionTemplate</span>(sqlSessionFactory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>配置要点</strong></p>
 <ul>

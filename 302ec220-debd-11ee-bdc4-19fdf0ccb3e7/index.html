@@ -23,28 +23,26 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
-<meta property="og:title" content="将-VSCode-添加到右键菜单">
-<meta property="og:url" content="http://www.dcheng.site/58868360-2a1e-11ee-846a-89c1529ebdf1/index.html">
+<meta property="og:title" content="Spring Boot 注解之 @ConditionalOnProperty">
+<meta property="og:url" content="http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/index.html">
 <meta property="og:site_name" content="Notebook">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://www.dcheng.site/58868360-2a1e-11ee-846a-89c1529ebdf1/1.png">
-<meta property="og:image" content="http://www.dcheng.site/58868360-2a1e-11ee-846a-89c1529ebdf1/2.png">
-<meta property="article:published_time" content="2022-12-07T02:15:35.000Z">
-<meta property="article:modified_time" content="2024-03-10T09:24:43.809Z">
+<meta property="article:published_time" content="2024-03-09T02:45:20.000Z">
+<meta property="article:modified_time" content="2024-03-10T09:24:43.797Z">
 <meta property="article:author" content="Mr.Dcheng">
-<meta property="article:tag" content="vscode">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.dcheng.site/58868360-2a1e-11ee-846a-89c1529ebdf1/1.png">
 
 
-<link rel="canonical" href="http://www.dcheng.site/58868360-2a1e-11ee-846a-89c1529ebdf1/">
+<link rel="canonical" href="http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/58868360-2a1e-11ee-846a-89c1529ebdf1/","path":"58868360-2a1e-11ee-846a-89c1529ebdf1/","title":"将-VSCode-添加到右键菜单"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/","path":"302ec220-debd-11ee-bdc4-19fdf0ccb3e7/","title":"Spring Boot 注解之 @ConditionalOnProperty"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>将-VSCode-添加到右键菜单 | Notebook</title>
+<title>Spring Boot 注解之 @ConditionalOnProperty | Notebook</title>
   
 
 
@@ -147,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-10-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">Windows 10 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%B7%BB%E5%8A%A0%E8%87%B3%E6%96%87%E4%BB%B6%E7%9A%84%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95"><span class="nav-text">1、添加至文件的右键菜单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%B7%BB%E5%8A%A0%E8%87%B3%E7%9B%AE%E5%BD%95%E7%9A%84%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95"><span class="nav-text">2、添加至目录的右键菜单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%B7%BB%E5%8A%A0%E8%87%B3%E6%A1%8C%E9%9D%A2%EF%BC%88%E7%9B%AE%E5%BD%95%E5%86%85%EF%BC%89%E7%9A%84%E7%A9%BA%E7%99%BD%E4%BD%8D%E7%BD%AE%E7%9A%84%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95"><span class="nav-text">3、添加至桌面（目录内）的空白位置的右键菜单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#macOS-10-14-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">macOS 10.14 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%89%93%E5%BC%80%E8%87%AA%E5%8A%A8%E6%93%8D%E4%BD%9C%EF%BC%8C%E6%96%87%E7%A8%BF%E7%B1%BB%E5%9E%8B%E9%80%89%E5%8F%96-%E5%BF%AB%E9%80%9F%E6%93%8D%E4%BD%9C"><span class="nav-text">1、打开自动操作，文稿类型选取 快速操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%B7%A6%E4%BE%A7%E8%B5%84%E6%BA%90%E5%BA%93%E9%80%89%E6%8B%A9-%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E5%AF%B9%E5%BA%94%E5%85%B6%E5%8F%B3%E4%BE%A7%E5%AD%90%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%8F%8C%E5%87%BB-%E6%89%93%E5%BC%80%E8%AE%BF%E8%BE%BE%E9%A1%B9%E7%9B%AE%EF%BC%8C"><span class="nav-text">2、左侧资源库选择 文件和文件夹，对应其右侧子菜单栏双击 打开访达项目，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%9C%A8-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%94%B6%E5%88%B0%E5%BD%93%E5%89%8D-%E9%80%89%E6%8B%A9-%E6%96%87%E4%BB%B6%E6%88%96%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E4%BD%8D%E4%BA%8E-%E9%80%89%E6%8B%A9-%E8%AE%BF%E8%BE%BE"><span class="nav-text">3、在 工作流程收到当前 选择 文件或文件夹，位于 选择 访达</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%9C%A8-%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F-%E6%89%BE%E5%88%B0-Visual-Studio-Code-app"><span class="nav-text">4、在 打开方式 找到 Visual Studio Code.app</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E5%AE%8C%E6%88%90%E4%BB%A5%E4%B8%8A%E8%AE%BE%E7%BD%AE%E5%90%8E%EF%BC%8Ccmd-S-%E5%B0%86%E8%AF%A5%E5%BF%AB%E9%80%9F%E6%93%8D%E4%BD%9C%E4%BF%9D%E5%AD%98%E4%B8%BA-Open-with-VSCode-%E5%8D%B3%E5%8F%AF"><span class="nav-text">5、完成以上设置后，cmd+S 将该快速操作保存为 Open with VSCode 即可</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E4%BD%BF%E7%94%A8%E6%83%85%E6%99%AF"><span class="nav-text">1、使用情景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8%E8%AF%A6%E6%83%85"><span class="nav-text">2、使用详情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E6%A1%88%E4%BE%8B"><span class="nav-text">3、案例</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -213,7 +211,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/58868360-2a1e-11ee-846a-89c1529ebdf1/">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -226,12 +224,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="将-VSCode-添加到右键菜单 | Notebook">
+      <meta itemprop="name" content="Spring Boot 注解之 @ConditionalOnProperty | Notebook">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header" style="margin-bottom:0">
         <h1 class="post-title" itemprop="name headline" style="text-align:left">
-          将-VSCode-添加到右键菜单
+          Spring Boot 注解之 @ConditionalOnProperty
         </h1>
 
         <div class="post-meta-container">
@@ -242,7 +240,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-12-07 10:15:35" itemprop="dateCreated datePublished" datetime="2022-12-07T10:15:35+08:00">2022-12-07</time>
+      <time title="Created: 2024-03-09 10:45:20" itemprop="dateCreated datePublished" datetime="2024-03-09T10:45:20+08:00">2024-03-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -257,7 +255,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">系统和工具配置</span></a>
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">后端技术</span></a>
         </span>
     </span>
 
@@ -282,29 +280,86 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Windows 10 或 macOS 10.14 下安装 VSCode 后，右键快速打开选项并没有快捷启动。</p>
-<h2 id="Windows-10-解决方案"><a href="#Windows-10-解决方案" class="headerlink" title="Windows 10 解决方案"></a>Windows 10 解决方案</h2><p>通过注册表添加三个位置的快速打开选项：文件、目录、桌面（目录内）的空白位置。</p>
-<h3 id="1、添加至文件的右键菜单"><a href="#1、添加至文件的右键菜单" class="headerlink" title="1、添加至文件的右键菜单"></a>1、添加至文件的右键菜单</h3><p>定位注册表中如下位置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT\*\shell</span><br></pre></td></tr></table></figure>
+<h2 id="1、使用情景"><a href="#1、使用情景" class="headerlink" title="1、使用情景"></a>1、使用情景</h2><p>1）根据配置属性有条件地创建 Bean</p>
+<p>2）可以用在类及方法上：标有 <code>@Configuration</code> 的类以及标有 <code>@Bean</code> 的方法</p>
+<p>3）当属性满足时才会使标有该注解的类或方法生效</p>
+<h2 id="2、使用详情"><a href="#2、使用详情" class="headerlink" title="2、使用详情"></a>2、使用详情</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>配置项</th>
+<th>having</th>
+<th>是否创建 Bean</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>config-test.property.action: true</td>
+<td>havingValue&#x3D;”true”</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>2</td>
+<td>config-test.property.action: false</td>
+<td>havingValue&#x3D;”false”</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>3</td>
+<td>config-test.property.action: enable</td>
+<td>havingValue&#x3D;”enable”</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>4</td>
+<td>config-test.property.action: no</td>
+<td>havingValue&#x3D;”enable”</td>
+<td><strong>不创建</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>config-test.property.action: true</td>
+<td>不配置</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>6</td>
+<td>config-test.property.action: false</td>
+<td>不配置</td>
+<td><strong>不创建</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>config-test.property.action: enable</td>
+<td>不配置</td>
+<td>创建</td>
+</tr>
+<tr>
+<td>8</td>
+<td>config-test.property.action: no</td>
+<td>不配置</td>
+<td>创建</td>
+</tr>
+</tbody></table>
+<h2 id="3、案例"><a href="#3、案例" class="headerlink" title="3、案例"></a>3、案例</h2><p>1）创建一个 Cake 类，getKind 方法返回当前蛋糕的口味：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Cake</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> String kind;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getKind</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> kind;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>参考以下结构，在 shell 下新建一个项 Open with VSCode</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">├── Open with VSCode</span><br><span class="line">    ├── (默认)（在右键菜单显示的名称）</span><br><span class="line">    ├── Icon（在右键菜单显示的图标路径）</span><br><span class="line">    └── command</span><br><span class="line">        └── (默认)（执行的命令行及应用路径）</span><br></pre></td></tr></table></figure>
+<p>2）创建两个子类 PineappleCake、StrawberryCake，表示不同口味的蛋糕：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PineappleCake</span> <span class="keyword">extends</span> <span class="title class_">Cake</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PineappleCake</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.kind = <span class="string">&quot;PineappleCake&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StrawberryCake</span> <span class="keyword">extends</span> <span class="title class_">Cake</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">StrawberryCake</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.kind = <span class="string">&quot;StrawberryCake&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>添加相应字符串值即可实现点击文件的右键菜单进入 VSCode。导出内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Open with VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open with VSCode&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\*\shell\Open with VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%1\&quot;&quot;</span><br></pre></td></tr></table></figure>
+<p>3）创建 Config 类，其中使用 <code>@ConditionalOnProperty</code> 注解根据配置文件指定的口味创建相应的 Bean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Config</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;customCake&quot;)</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty(prefix = &quot;cake.property&quot;, name = &quot;kind&quot;, havingValue = &quot;PineappleCake&quot;)</span>-</span><br><span class="line">    <span class="keyword">public</span> Cake <span class="title function_">pineappleCake</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">PineappleCake</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean(name = &quot;customCake&quot;)</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty(prefix = &quot;cake.property&quot;, name = &quot;kind&quot;, havingValue = &quot;StrawberryCake&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Cake <span class="title function_">strawberryCake</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">StrawberryCake</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2、添加至目录的右键菜单"><a href="#2、添加至目录的右键菜单" class="headerlink" title="2、添加至目录的右键菜单"></a>2、添加至目录的右键菜单</h3><p>定位至 <code>HKEY_CLASSES_ROOT\Directory\shell</code>，按照相同结构设置即可实现点击目录的右键菜单进入 VSCode。导出内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open Folder as VSCode Project&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\shell\VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%1\&quot;&quot;</span><br></pre></td></tr></table></figure>
+<p>4）单元测试用例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestSpringBootApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">ApplicationContextRunner</span> <span class="variable">contextRunner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ApplicationContextRunner</span>();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.contextRunner.withPropertyValues(<span class="string">&quot;cake.property.kind=PineappleCake&quot;</span>)</span><br><span class="line">                .withUserConfiguration(Config.class)</span><br><span class="line">                .run(context -&gt; &#123;</span><br><span class="line">                    assertThat(context).hasBean(<span class="string">&quot;customCake&quot;</span>);</span><br><span class="line">                    <span class="type">Cake</span> <span class="variable">cake</span> <span class="operator">=</span> context.getBean(PineappleCake.class);</span><br><span class="line">                    assertThat(cake.getKind()).isEqualTo(<span class="string">&quot;PineappleCake&quot;</span>);</span><br><span class="line">                    assertThat(context).doesNotHaveBean(<span class="string">&quot;StrawberryCake&quot;</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3、添加至桌面（目录内）的空白位置的右键菜单"><a href="#3、添加至桌面（目录内）的空白位置的右键菜单" class="headerlink" title="3、添加至桌面（目录内）的空白位置的右键菜单"></a>3、添加至桌面（目录内）的空白位置的右键菜单</h3><p>定位至 <code>HKEY_CLASSES_ROOT\Directory\Background\shell</code>，按照相同结构设置即可实现点击桌面（目录内）的空白位置的右键菜单进入 VSCode。导出内容如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode]</span><br><span class="line">&quot;Icon&quot;=&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe&quot;</span><br><span class="line">@=&quot;Open Folder as VSCode Project&quot;</span><br><span class="line"></span><br><span class="line">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command]</span><br><span class="line">@=&quot;\&quot;C:\\MyProject\\Microsoft VS Code\\Code.exe\&quot; \&quot;%V\&quot;&quot;</span><br></pre></td></tr></table></figure>
+<p>5）使用案例</p>
+<p>配置文件 <code>application.yml</code> 添加如下属性：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cake:</span></span><br><span class="line">  <span class="attr">property:</span></span><br><span class="line">    <span class="attr">kind:</span> <span class="string">PineappleCake</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="macOS-10-14-解决方案"><a href="#macOS-10-14-解决方案" class="headerlink" title="macOS 10.14 解决方案"></a>macOS 10.14 解决方案</h2><p>通过快速操作添加两个位置的快速打开选项：文件、目录。</p>
-<h3 id="1、打开自动操作，文稿类型选取-快速操作"><a href="#1、打开自动操作，文稿类型选取-快速操作" class="headerlink" title="1、打开自动操作，文稿类型选取 快速操作"></a>1、打开自动操作，文稿类型选取 <code>快速操作</code></h3><img src="/58868360-2a1e-11ee-846a-89c1529ebdf1/1.png" class="">
+<p>按名称注入，获得的 kind 值与配置文件相同</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestSpringBootApplicationTests</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;customCake&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Cake cake;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">contextLoads2</span><span class="params">()</span> &#123;</span><br><span class="line">        assertThat(cake.getKind()).isEqualTo(<span class="string">&quot;PineappleCake&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，"><a href="#2、左侧资源库选择-文件和文件夹，对应其右侧子菜单栏双击-打开访达项目，" class="headerlink" title="2、左侧资源库选择 文件和文件夹，对应其右侧子菜单栏双击 打开访达项目，"></a>2、左侧资源库选择 <code>文件和文件夹</code>，对应其右侧子菜单栏双击 <code>打开访达项目</code>，</h3><h3 id="3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达"><a href="#3、在-工作流程收到当前-选择-文件或文件夹，位于-选择-访达" class="headerlink" title="3、在 工作流程收到当前 选择 文件或文件夹，位于 选择 访达"></a>3、在 <code>工作流程收到当前</code> 选择 <code>文件或文件夹</code>，<code>位于</code> 选择 <code>访达</code></h3><h3 id="4、在-打开方式-找到-Visual-Studio-Code-app"><a href="#4、在-打开方式-找到-Visual-Studio-Code-app" class="headerlink" title="4、在 打开方式 找到 Visual Studio Code.app"></a>4、在 <code>打开方式</code> 找到 <code>Visual Studio Code.app</code></h3><img src="/58868360-2a1e-11ee-846a-89c1529ebdf1/2.png" class="">
-
-<h3 id="5、完成以上设置后，cmd-S-将该快速操作保存为-Open-with-VSCode-即可"><a href="#5、完成以上设置后，cmd-S-将该快速操作保存为-Open-with-VSCode-即可" class="headerlink" title="5、完成以上设置后，cmd+S 将该快速操作保存为 Open with VSCode 即可"></a>5、完成以上设置后，<code>cmd+S</code> 将该快速操作保存为 <code>Open with VSCode</code> 即可</h3>
     </div>
 
     
@@ -333,20 +388,21 @@
           async>
         </script>
           <div class="post-tags">
-              <a href="/tags/vscode/" rel="tag"># vscode</a>
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/springboot/" rel="tag"># springboot</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/5885c011-2a1e-11ee-846a-89c1529ebdf1/" rel="prev" title="MacOS-或-Win-环境下问题杂烩及备忘">
-                  <i class="fa fa-chevron-left"></i> MacOS-或-Win-环境下问题杂烩及备忘
+                <a href="/e37eb230-cd6b-11ee-b21c-118c995770df/" rel="prev" title="jackson 2.x 解析 json 案例">
+                  <i class="fa fa-chevron-left"></i> jackson 2.x 解析 json 案例
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/5886f891-2a1e-11ee-846a-89c1529ebdf1/" rel="next" title="使用-Navicat-远程连接阿里云服务器的-MySQL-数据库">
-                  使用-Navicat-远程连接阿里云服务器的-MySQL-数据库 <i class="fa fa-chevron-right"></i>
+                <a href="/302e9b10-debd-11ee-bdc4-19fdf0ccb3e7/" rel="next" title="VMware15 安装 win11">
+                  VMware15 安装 win11 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
