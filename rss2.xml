@@ -15,8 +15,98 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 10 Mar 2024 09:24:43 GMT</pubDate>
+    <pubDate>Thu, 14 Mar 2024 14:59:49 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>spring 之 ServletUriComponentsBuilder</title>
+      <link>http://www.dcheng.site/3c6aeb01-e213-11ee-8578-cb8bdeddad57/</link>
+      <guid>http://www.dcheng.site/3c6aeb01-e213-11ee-8578-cb8bdeddad57/</guid>
+      <pubDate>Thu, 14 Mar 2024 14:47:14 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
+      
+      
+      <comments>http://www.dcheng.site/3c6aeb01-e213-11ee-8578-cb8bdeddad57/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>spring 之 FileSystemResource</title>
+      <link>http://www.dcheng.site/3c6aeb00-e213-11ee-8578-cb8bdeddad57/</link>
+      <guid>http://www.dcheng.site/3c6aeb00-e213-11ee-8578-cb8bdeddad57/</guid>
+      <pubDate>Thu, 14 Mar 2024 14:11:36 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
+      
+      
+      <comments>http://www.dcheng.site/3c6aeb00-e213-11ee-8578-cb8bdeddad57/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>springboot 服务运行时读取目录下文件</title>
+      <link>http://www.dcheng.site/3c6aeb02-e213-11ee-8578-cb8bdeddad57/</link>
+      <guid>http://www.dcheng.site/3c6aeb02-e213-11ee-8578-cb8bdeddad57/</guid>
+      <pubDate>Thu, 14 Mar 2024 10:56:15 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
+      
+      
+      <comments>http://www.dcheng.site/3c6aeb02-e213-11ee-8578-cb8bdeddad57/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Guide to ApplicationContextRunner in Spring Boot</title>
+      <link>http://www.dcheng.site/3c6a9ce0-e213-11ee-8578-cb8bdeddad57/</link>
+      <guid>http://www.dcheng.site/3c6a9ce0-e213-11ee-8578-cb8bdeddad57/</guid>
+      <pubDate>Sun, 10 Mar 2024 10:25:55 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/">文献翻译</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/">java</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
+      
+      
+      <comments>http://www.dcheng.site/3c6a9ce0-e213-11ee-8578-cb8bdeddad57/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>VMware15 安装 win11</title>
@@ -55,9 +145,9 @@
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/java/">java</category>
-      
       <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
       
       
       <comments>http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/#disqus_thread</comments>
@@ -215,9 +305,9 @@
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/java/">java</category>
-      
       <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
       
       
       <comments>http://www.dcheng.site/d27a8f70-9bfe-11ee-a92b-05e08d68d559/#disqus_thread</comments>

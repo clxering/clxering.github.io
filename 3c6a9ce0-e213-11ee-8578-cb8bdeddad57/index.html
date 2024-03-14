@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Guide to ApplicationContextRunner in Spring Boot">
+<meta property="og:url" content="http://www.dcheng.site/3c6a9ce0-e213-11ee-8578-cb8bdeddad57/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-10T10:25:55.000Z">
+<meta property="article:modified_time" content="2024-03-14T14:59:49.393Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="springboot">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/3c6a9ce0-e213-11ee-8578-cb8bdeddad57/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/3c6a9ce0-e213-11ee-8578-cb8bdeddad57/","path":"3c6a9ce0-e213-11ee-8578-cb8bdeddad57/","title":"Guide to ApplicationContextRunner in Spring Boot"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Guide to ApplicationContextRunner in Spring Boot | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Overview"><span class="nav-text">1 Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Test-Auto-Configuration-Scenarios"><span class="nav-text">2 Test Auto-Configuration Scenarios</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Test-Class-Condition"><span class="nav-text">2.1 Test Class Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Test-Bean-Condition"><span class="nav-text">2.2 Test Bean Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Test-Property-Condition"><span class="nav-text">2.3 Test Property Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Conclusion"><span class="nav-text">3 Conclusion</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/3c6a9ce0-e213-11ee-8578-cb8bdeddad57/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Guide to ApplicationContextRunner in Spring Boot | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          Guide to ApplicationContextRunner in Spring Boot
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-10 18:25:55" itemprop="dateCreated datePublished" datetime="2024-03-10T18:25:55+08:00">2024-03-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-03-14 22:59:49" itemprop="dateModified" datetime="2024-03-14T22:59:49+08:00">2024-03-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">文献翻译</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<blockquote>
+<p>转译自：<a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-boot-context-runner">https://www.baeldung.com/spring-boot-context-runner</a></p>
+</blockquote>
+<h2 id="1-Overview"><a href="#1-Overview" class="headerlink" title="1 Overview"></a>1 Overview</h2><p>It’s well known that auto-configuration is one of the key features in Spring Boot, but testing auto-configuration scenarios can be tricky.</p>
+<p>In the following sections, we’ll show how ApplicationContextRunner simplifies auto-configuration testing.</p>
+<h2 id="2-Test-Auto-Configuration-Scenarios"><a href="#2-Test-Auto-Configuration-Scenarios" class="headerlink" title="2 Test Auto-Configuration Scenarios"></a>2 Test Auto-Configuration Scenarios</h2><p>ApplicationContextRunner is a utility class which runs the ApplicationContext and provides AssertJ style assertions. It’s best used as a field in test class for shared configuration and we make customizations in each test afterward:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="type">ApplicationContextRunner</span> <span class="variable">contextRunner</span></span><br><span class="line">    <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ApplicationContextRunner</span>();</span><br></pre></td></tr></table></figure>
+
+<p>Let’s move on to show its magic by testing a few cases.</p>
+<h2 id="2-1-Test-Class-Condition"><a href="#2-1-Test-Class-Condition" class="headerlink" title="2.1 Test Class Condition"></a>2.1 Test Class Condition</h2><p>In this section, we’re going to test some auto-configuration classes which use @ConditionalOnClass and @ConditionalOnMissingClass annotations:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnClass(ConditionalOnClassIntegrationTest.class)</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">ConditionalOnClassConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">created</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This is created when ConditionalOnClassIntegrationTest &quot;</span></span><br><span class="line">               + <span class="string">&quot;is present on the classpath&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnMissingClass(</span></span><br><span class="line"><span class="meta">    &quot;com.baeldung.autoconfiguration.ConditionalOnClassIntegrationTest&quot;</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">ConditionalOnMissingClassConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">missed</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This is missed when ConditionalOnClassIntegrationTest &quot;</span></span><br><span class="line">               + <span class="string">&quot;is present on the classpath&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>We’d like to test whether the auto-configuration properly instantiates or skips the created and missed beans given expected conditions.</p>
+<p>ApplicationContextRunner gives us the withUserConfiguration method where we can provide an auto-configuration on demand to customize the ApplicationContext for each test.</p>
+<p>The run method takes a ContextConsumer as a parameter which applies the assertions to the context. The ApplicationContext will be closed automatically when the test exits:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">whenDependentClassIsPresent_thenBeanCreated</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.contextRunner.withUserConfiguration(ConditionalOnClassConfiguration.class)</span><br><span class="line">        .run(context -&gt; &#123;</span><br><span class="line">            assertThat(context).hasBean(<span class="string">&quot;created&quot;</span>);</span><br><span class="line">            assertThat(context.getBean(<span class="string">&quot;created&quot;</span>))</span><br><span class="line">              .isEqualTo(<span class="string">&quot;This is created when ConditionalOnClassIntegrationTest &quot;</span></span><br><span class="line">                         + <span class="string">&quot;is present on the classpath&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">whenDependentClassIsPresent_thenBeanMissing</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.contextRunner.withUserConfiguration(ConditionalOnMissingClassConfiguration.class)</span><br><span class="line">        .run(context -&gt; &#123;</span><br><span class="line">            assertThat(context).doesNotHaveBean(<span class="string">&quot;missed&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Through the preceding example, we see the simpleness of testing the scenarios in which a certain class is present on the classpath. But how are we going to test the converse, when the class is absent on the classpath?</p>
+<p>This is where FilteredClassLoader kicks in. It’s used to filter specified classes on the classpath at runtime:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">whenDependentClassIsNotPresent_thenBeanMissing</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.contextRunner.withUserConfiguration(ConditionalOnClassConfiguration.class)</span><br><span class="line">        .withClassLoader(<span class="keyword">new</span> <span class="title class_">FilteredClassLoader</span>(ConditionalOnClassIntegrationTest.class))</span><br><span class="line">        .run((context) -&gt; &#123;</span><br><span class="line">            assertThat(context).doesNotHaveBean(<span class="string">&quot;created&quot;</span>);</span><br><span class="line">            assertThat(context).doesNotHaveBean(ConditionalOnClassIntegrationTest.class);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">whenDependentClassIsNotPresent_thenBeanCreated</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.contextRunner.withUserConfiguration(ConditionalOnMissingClassConfiguration.class)</span><br><span class="line">        .withClassLoader(<span class="keyword">new</span> <span class="title class_">FilteredClassLoader</span>(ConditionalOnClassIntegrationTest.class))</span><br><span class="line">        .run((context) -&gt; &#123;</span><br><span class="line">            assertThat(context).hasBean(<span class="string">&quot;missed&quot;</span>);</span><br><span class="line">            assertThat(context).getBean(<span class="string">&quot;missed&quot;</span>)</span><br><span class="line">              .isEqualTo(<span class="string">&quot;This is missed when ConditionalOnClassIntegrationTest &quot;</span></span><br><span class="line">                         + <span class="string">&quot;is present on the classpath&quot;</span>);</span><br><span class="line">            assertThat(context).doesNotHaveBean(ConditionalOnClassIntegrationTest.class);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-Test-Bean-Condition"><a href="#2-2-Test-Bean-Condition" class="headerlink" title="2.2 Test Bean Condition"></a>2.2 Test Bean Condition</h2><p>We’ve just looked at testing @ConditionalOnClass and @ConditionalOnMissingClass annotations, now let’s see what things look like when we are using @ConditionalOnBean and @ConditionalOnMissingBean annotations.</p>
+<p>To make a start, we similarly need a few auto-configuration classes:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">BasicConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">created</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This is always created&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnBean(name = &quot;created&quot;)</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">ConditionalOnBeanConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">createOnBean</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This is created when bean (name=created) is present&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ConditionalOnMissingBean(name = &quot;created&quot;)</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">ConditionalOnMissingBeanConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">createOnMissingBean</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This is created when bean (name=created) is missing&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Then, we’d call the withUserConfiguration method like the preceding section and send in our custom configuration class to test if the auto-configuration appropriately instantiates or skips createOnBean or createOnMissingBean beans in different conditions:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">whenDependentBeanIsPresent_thenConditionalBeanCreated</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.contextRunner.withUserConfiguration(</span><br><span class="line">        BasicConfiguration.class,</span><br><span class="line">        ConditionalOnBeanConfiguration.class</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// ommitted for brevity</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">whenDependentBeanIsNotPresent_thenConditionalMissingBeanCreated</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.contextRunner.withUserConfiguration(ConditionalOnMissingBeanConfiguration.class)</span><br><span class="line">    <span class="comment">// ommitted for brevity</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-Test-Property-Condition"><a href="#2-3-Test-Property-Condition" class="headerlink" title="2.3 Test Property Condition"></a>2.3 Test Property Condition</h2><p>In this section, let’s test the auto-configuration classes which use @ConditionalOnProperty annotations.</p>
+<p>First, we need a property for this test:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com.baeldung.service=custom</span><br></pre></td></tr></table></figure>
+
+<p>After that, we write nested auto-configuration classes to create beans based on the preceding property:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@TestPropertySource(&quot;classpath:ConditionalOnPropertyTest.properties&quot;)</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">SimpleServiceConfiguration</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty(name = &quot;com.baeldung.service&quot;, havingValue = &quot;default&quot;)</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    <span class="keyword">public</span> DefaultService <span class="title function_">defaultService</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DefaultService</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConditionalOnProperty(name = &quot;com.baeldung.service&quot;, havingValue = &quot;custom&quot;)</span></span><br><span class="line">    <span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line">    <span class="keyword">public</span> CustomService <span class="title function_">customService</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">CustomService</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, we’re calling the withPropertyValues method to override the property value in each test:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">whenGivenCustomPropertyValue_thenCustomServiceCreated</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.contextRunner.withPropertyValues(<span class="string">&quot;com.baeldung.service=custom&quot;</span>)</span><br><span class="line">        .withUserConfiguration(SimpleServiceConfiguration.class)</span><br><span class="line">        .run(context -&gt; &#123;</span><br><span class="line">            assertThat(context).hasBean(<span class="string">&quot;customService&quot;</span>);</span><br><span class="line">            <span class="type">SimpleService</span> <span class="variable">simpleService</span> <span class="operator">=</span> context.getBean(CustomService.class);</span><br><span class="line">            assertThat(simpleService.serve()).isEqualTo(<span class="string">&quot;Custom Service&quot;</span>);</span><br><span class="line">            assertThat(context).doesNotHaveBean(<span class="string">&quot;defaultService&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">whenGivenDefaultPropertyValue_thenDefaultServiceCreated</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.contextRunner.withPropertyValues(<span class="string">&quot;com.baeldung.service=default&quot;</span>)</span><br><span class="line">        .withUserConfiguration(SimpleServiceConfiguration.class)</span><br><span class="line">        .run(context -&gt; &#123;</span><br><span class="line">            assertThat(context).hasBean(<span class="string">&quot;defaultService&quot;</span>);</span><br><span class="line">            <span class="type">SimpleService</span> <span class="variable">simpleService</span> <span class="operator">=</span> context.getBean(DefaultService.class);</span><br><span class="line">            assertThat(simpleService.serve()).isEqualTo(<span class="string">&quot;Default Service&quot;</span>);</span><br><span class="line">            assertThat(context).doesNotHaveBean(<span class="string">&quot;customService&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Conclusion"><a href="#3-Conclusion" class="headerlink" title="3 Conclusion"></a>3 Conclusion</h2><p>To sum up, this tutorial just showed how to use ApplicationContextRunner to run the ApplicationContext with customizations and apply assertions.</p>
+<p>We covered the most frequently used scenarios in here instead of an exhaustive list of how to customize the ApplicationContext.</p>
+<p>In the meantime, please bear in mind that the ApplicationConetxtRunner is for non-web applications, so consider WebApplicationContextRunner for servlet-based web applications and ReactiveWebApplicationContextRunner for reactive web applications.</p>
+<p>The source code for this tutorial can be found over on <a target="_blank" rel="noopener" href="https://github.com/eugenp/tutorials/tree/master/spring-boot-modules/spring-boot-autoconfiguration">GitHub</a>.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/springboot/" rel="tag"># springboot</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/302e9b10-debd-11ee-bdc4-19fdf0ccb3e7/" rel="prev" title="VMware15 安装 win11">
+                  <i class="fa fa-chevron-left"></i> VMware15 安装 win11
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/3c6aeb02-e213-11ee-8578-cb8bdeddad57/" rel="next" title="springboot 服务运行时读取目录下文件">
+                  springboot 服务运行时读取目录下文件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
