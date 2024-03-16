@@ -3594,8 +3594,10 @@ End 	Fn + →
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Windows</span> <span class="title class_">Registry</span> <span class="title class_">Editor</span> <span class="title class_">Version</span> <span class="number">5.00</span></span><br><span class="line"></span><br><span class="line">[<span class="variable constant_">HKEY_CURRENT_USER</span>\<span class="variable constant_">SOFTWARE</span>\<span class="title class_">Microsoft</span>\<span class="title class_">Windows</span>\<span class="title class_">CurrentVersion</span>\<span class="title class_">Run</span>]</span><br><span class="line"><span class="string">&quot;BaiduYunDetect&quot;</span>=<span class="string">&quot;\&quot;C:\\Users\\pro\\AppData\\Roaming\\baidu\\BaiduNetdisk\\YunDetectService.exe\&quot;&quot;</span></span><br><span class="line"><span class="string">&quot;Steam&quot;</span>=<span class="string">&quot;\&quot;C:\\pro\\Steam\\steam.exe\&quot; -silent&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>上述两种路径分别对应系统全局启动项和用户启动项。根据参考内容的格式，增加新「字符串值」，填入脚本路径即可。输入路径要用半角双引号，如：<code>&quot;C:\pro\Steam\steam.exe&quot;</code></p>
-<h2 id="4、计划任务"><a href="#4、计划任务" class="headerlink" title="4、计划任务"></a>4、计划任务</h2><p>1）win+R 呼出运行栏后输入 <code>control</code> 进入控制面板，进入「管理工具」，进入「任务计划程序」</p>
-<p>2）「创建基本任务」，依次填写信息、选择执行触发器、操作、脚本路径。</p>
+<h2 id="4、计划任务"><a href="#4、计划任务" class="headerlink" title="4、计划任务"></a>4、计划任务</h2><p>1）win+R 呼出运行栏后输入 <code>control</code> 进入控制面板，进入「管理工具」，进入「任务计划程序」，右键「计划任务程序库」选择「创建任务」；</p>
+<p>2）在「常规」选项卡填写任务名称、描述（可选），选择「不管用户是否登录都要运行」，弹出验证框输入密码即可；勾选「使用最高权限运行」；</p>
+<p>3）在「触发器」选项卡点击「新建」，指定启动时机</p>
+<p>4）在「操作」选项卡选择要执行的脚本路径，「起始于」填写脚本所在目录</p>
 <h2 id="5、组策略添加启动脚本"><a href="#5、组策略添加启动脚本" class="headerlink" title="5、组策略添加启动脚本"></a>5、组策略添加启动脚本</h2><p>1）win+R 呼出运行栏后输入 <code>gpedit.msc</code> 进入本地组策略</p>
 <p>2）依次进入「计算机配置」→「Windows设置」→「脚本（启动&#x2F;关机）」，双击进入右侧「启动」，添加脚本路径。</p>
 ]]></content>
@@ -3628,6 +3630,29 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>win</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10-powershell-禁止运行脚本的问题</title>
+    <url>/ed0e8970-441c-11ee-bc1a-25c3478a32d1/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h2><p>使用 vscode 或 powershell 控制台时，由于默认执行策略是 Restricted，执行一些命令会提示报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo : 无法加载文件 D:\node-v18.17.1-win-x64\node-global\hexo.ps1，因为在此系统上禁止运行脚本。</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h2><p>1）执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br></pre></td></tr></table></figure>
+
+<p>2）重启应用或控制台</p>
+<h2 id="3、其他"><a href="#3、其他" class="headerlink" title="3、其他"></a>3、其他</h2><p>查看当前策略：<code>get-executionpolicy</code></p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>powershell</tag>
       </tags>
   </entry>
   <entry>
@@ -4001,29 +4026,6 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>JavaWeb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>win10-powershell-禁止运行脚本的问题</title>
-    <url>/ed0e8970-441c-11ee-bc1a-25c3478a32d1/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h2><p>使用 vscode 或 powershell 控制台时，由于默认执行策略是 Restricted，执行一些命令会提示报错：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo : 无法加载文件 D:\node-v18.17.1-win-x64\node-global\hexo.ps1，因为在此系统上禁止运行脚本。</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h2><p>1）执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br></pre></td></tr></table></figure>
-
-<p>2）重启应用或控制台</p>
-<h2 id="3、其他"><a href="#3、其他" class="headerlink" title="3、其他"></a>3、其他</h2><p>查看当前策略：<code>get-executionpolicy</code></p>
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>powershell</tag>
       </tags>
   </entry>
   <entry>
