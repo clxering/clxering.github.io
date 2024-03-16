@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>原生js实现ajax请求</title>
+    <url>/8a9d69d0-e38d-11ee-8d05-110f62540784/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-XMLHttpRequest-对象"><a href="#1-XMLHttpRequest-对象" class="headerlink" title="1 XMLHttpRequest 对象"></a>1 XMLHttpRequest 对象</h2><p>XMLHttpRequest 对象是 ajax 的基础,XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。目前所有浏览器都支持 XMLHttpRequest</p>
+<table>
+<thead>
+<tr>
+<th align="center">方 法</th>
+<th align="center">描 述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">abort()</td>
+<td align="center">停止当前请求</td>
+</tr>
+<tr>
+<td align="center">getAllResponseHeaders()</td>
+<td align="center">把 HTTP 请求的所有响应首部作为键&#x2F;值对返回</td>
+</tr>
+<tr>
+<td align="center">getResponseHeader(“header”)</td>
+<td align="center">返回指定首部的串值</td>
+</tr>
+<tr>
+<td align="center">open(“method”,”URL”,[asyncFlag],[“userName”],[“password”])</td>
+<td align="center">建立对服务器的调用。method 参数可以是 GET、POST 或 PUT。url 参数可以是相对 URL 或绝对 URL。这个方法还包括 3 个可选的参数，是否异步，用户名，密码</td>
+</tr>
+<tr>
+<td align="center">send(content)</td>
+<td align="center">向服务器发送请求</td>
+</tr>
+<tr>
+<td align="center">setRequestHeader(“header”, “value”)</td>
+<td align="center">把指定首部设置为所提供的值。在设置任何首部之前必须先调用 open()。设置 header 并和请求一起发送 (‘post’方法一定要 )</td>
+</tr>
+</tbody></table>
+<h2 id="2-案例"><a href="#2-案例" class="headerlink" title="2 案例"></a>2 案例</h2><p>1）get 请求：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建异步对象</span></span><br><span class="line"><span class="keyword">var</span> ajax = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line"><span class="comment">// 设置请求的url参数，参数一是请求的类型，参数二是请求的url，可带参数传递到服务端</span></span><br><span class="line">ajax.<span class="title function_">open</span>(<span class="string">&quot;get&quot;</span>, <span class="string">&quot;getStar.php?starName=&quot;</span> + name);</span><br><span class="line"><span class="comment">// 发送请求</span></span><br><span class="line">ajax.<span class="title function_">send</span>();</span><br><span class="line"><span class="comment">// 注册事件 onreadystatechange</span></span><br><span class="line">ajax.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (ajax.<span class="property">readyState</span> == <span class="number">4</span> &amp;&amp; ajax.<span class="property">status</span> == <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="comment">// 正常响应，输出</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(ajax.<span class="property">responseText</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>2）post 请求：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建异步对象</span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line"><span class="comment">// 设置请求的类型及url，post请求一定要添加请求头</span></span><br><span class="line">xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&quot;Content-type&quot;</span>, <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>);</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&quot;post&quot;</span>, <span class="string">&quot;02.post.php&quot;</span>);</span><br><span class="line"><span class="comment">// 发送请求</span></span><br><span class="line">xhr.<span class="title function_">send</span>(<span class="string">&quot;name=fox&amp;age=18&quot;</span>);</span><br><span class="line">xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 正常响应，输出</span></span><br><span class="line">  <span class="keyword">if</span> (xhr.<span class="property">readyState</span> == <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> == <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(xhr.<span class="property">responseText</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
+      <tags>
+        <tag>未标记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>3-things-every-java-developer-should-stop-doing</title>
     <url>/5886d182-2a1e-11ee-846a-89c1529ebdf1/</url>
     <content><![CDATA[<blockquote>
@@ -3578,29 +3631,6 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>win10-powershell-禁止运行脚本的问题</title>
-    <url>/ed0e8970-441c-11ee-bc1a-25c3478a32d1/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h2><p>使用 vscode 或 powershell 控制台时，由于默认执行策略是 Restricted，执行一些命令会提示报错：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo : 无法加载文件 D:\node-v18.17.1-win-x64\node-global\hexo.ps1，因为在此系统上禁止运行脚本。</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h2><p>1）执行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br></pre></td></tr></table></figure>
-
-<p>2）重启应用或控制台</p>
-<h2 id="3、其他"><a href="#3、其他" class="headerlink" title="3、其他"></a>3、其他</h2><p>查看当前策略：<code>get-executionpolicy</code></p>
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>powershell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>云服务器部署-JavaWeb-环境</title>
     <url>/bf93b0d0-446f-11ee-90e9-49c3e96e9425/</url>
     <content><![CDATA[<blockquote>
@@ -3971,6 +4001,29 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>JavaWeb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10-powershell-禁止运行脚本的问题</title>
+    <url>/ed0e8970-441c-11ee-bc1a-25c3478a32d1/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h2><p>使用 vscode 或 powershell 控制台时，由于默认执行策略是 Restricted，执行一些命令会提示报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo : 无法加载文件 D:\node-v18.17.1-win-x64\node-global\hexo.ps1，因为在此系统上禁止运行脚本。</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h2><p>1）执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br></pre></td></tr></table></figure>
+
+<p>2）重启应用或控制台</p>
+<h2 id="3、其他"><a href="#3、其他" class="headerlink" title="3、其他"></a>3、其他</h2><p>查看当前策略：<code>get-executionpolicy</code></p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>powershell</tag>
       </tags>
   </entry>
   <entry>
@@ -5543,6 +5596,30 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>jackson 将 json 串转成 List 或 Map 等集合</title>
+    <url>/8a9db7f1-e38d-11ee-8d05-110f62540784/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、需求描述"><a href="#1、需求描述" class="headerlink" title="1、需求描述"></a>1、需求描述</h2><p>jackson 将 json 串转成 List、Map 等集合时，需要保证集合内的元素泛型不能丢失。</p>
+<h2 id="2、案例"><a href="#2、案例" class="headerlink" title="2、案例"></a>2、案例</h2><p>1）需要构建 TypeReference 参数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">json2Obj</span><span class="params">(String json, TypeReference&lt;T&gt; type)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> objectMapper.readValue(json, type);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">json2Obj(json, <span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;List&lt;String&gt;&gt;()&#123;&#125;);</span><br><span class="line">json2Obj(json, <span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;Map&lt;String, String&gt;&gt;()&#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>2）collectionType</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> JavaType <span class="title function_">collectionType</span><span class="params">(Class&lt;?&gt; collectionClz, Class&lt;?&gt; ...elementClz)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> om.getTypeFactory().constructParametricType(collectionClz, elementClz);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;T&gt; <span class="title function_">json2List</span><span class="params">(String json, Class&lt;T&gt; elementClz)</span> &#123;</span><br><span class="line">    objectMapper.readValue(json, collectionType(List.class, clz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;T&gt; <span class="title function_">json2Map</span><span class="params">(String json, Class&lt;T&gt; valueClz)</span> &#123;</span><br><span class="line">    objectMapper.readValue(json, collectionType(Map.class, String.class, clz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">json2List(json, String.class);</span><br><span class="line">json2Map(json. String.class);</span><br></pre></td></tr></table></figure>
+
+<p>3）其他方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">JsonUtils</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">ObjectMapper</span> <span class="variable">jackson</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 把json转为键值对map</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> jsonStr</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Map <span class="title function_">jsonToMap</span><span class="params">(String jsonStr)</span> &#123;</span><br><span class="line">    <span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String,Object&gt;();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      map = jackson.readValue(jsonStr, HashMap.class);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 把json转为List</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> jsonStr</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> List <span class="title function_">jsonToList</span><span class="params">(String jsonStr)</span> &#123;</span><br><span class="line">    <span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      list = jackson.readValue(jsonStr,ArrayList.class);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java-建立定时任务</title>
     <url>/58863540-2a1e-11ee-846a-89c1529ebdf1/</url>
     <content><![CDATA[<blockquote>
@@ -5948,6 +6025,35 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>Anaconda 下修改 Jupyter 的默认路径</title>
+    <url>/8a9db7f0-e38d-11ee-8d05-110f62540784/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、解决步骤"><a href="#1、解决步骤" class="headerlink" title="1、解决步骤"></a>1、解决步骤</h2><p>1）建立要更改的目录，如 <code>D:\Desktop\jupyterDir</code></p>
+<p>2）打开 Anaconda Prompt，输入以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该命令将生成 Jupyter 配置文件，如果提示是否覆盖，确认覆盖即可。</p>
+</blockquote>
+<p>3）根据上述路径找到 <code>jupyter_notebook_config.py</code>，搜索 <code>c.NotebookApp.notebook_dir</code>，删除 <code>#</code> 取消注释，将路径填入：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c.NotebookApp.notebook_dir = r<span class="string">&#x27;D:\Desktop\jupyterDir&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">c.NotebookApp.notebook_dir = <span class="string">&#x27;D:\\Desktop\\jupyterDir&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>4）找到 Jupyter 快捷方式，将 <code>目标</code> 最后面的 <code>%USERPROFILE%</code> 删除。</p>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python 的字符串前缀</title>
     <url>/97816df0-a133-11ee-9970-39bf61dae061/</url>
     <content><![CDATA[<blockquote>
@@ -6187,6 +6293,75 @@ End 	Fn + →
         <category>后端技术</category>
       </categories>
       <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>oracle、postgresql、mysql行转列的内置函数</title>
+    <url>/8a9db7f2-e38d-11ee-8d05-110f62540784/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、需求描述"><a href="#1、需求描述" class="headerlink" title="1、需求描述"></a>1、需求描述</h2><p>查询人员的年龄</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> t.age,t.name <span class="keyword">from</span> table_name t <span class="keyword">where</span> t.age <span class="operator">=</span> <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">age</th>
+<th align="center">name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">16</td>
+<td align="center">Jack</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">Jones</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">Mark</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">Lucy</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">Adams</td>
+</tr>
+</tbody></table>
+<p>要达到的效果：</p>
+<table>
+<thead>
+<tr>
+<th align="center">age</th>
+<th align="center">names</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">16</td>
+<td align="center">Jack,Jones,Mark,Lucy,Adams</td>
+</tr>
+</tbody></table>
+<h2 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h2><p>1）oracle：listagg() within group()</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> t.age, <span class="built_in">listagg</span>(t.name, <span class="string">&#x27;,&#x27;</span>) <span class="keyword">within</span> <span class="keyword">group</span> (<span class="keyword">order</span> <span class="keyword">by</span> t.name) names</span><br><span class="line"><span class="keyword">from</span> table_name t</span><br><span class="line"><span class="keyword">where</span> t.age <span class="operator">=</span> <span class="number">20</span> <span class="keyword">group</span> <span class="keyword">by</span> t.age</span><br></pre></td></tr></table></figure>
+
+<p>2） postgresql：string_agg()</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> t.age, string_agg(t.name, <span class="string">&#x27;,&#x27;</span>) <span class="keyword">as</span> names</span><br><span class="line"><span class="keyword">from</span> table_name t</span><br><span class="line"><span class="keyword">where</span> t.age <span class="operator">=</span> <span class="number">20</span> <span class="keyword">group</span> <span class="keyword">by</span> t.age</span><br></pre></td></tr></table></figure>
+
+<p>3） mysql：group_concat()</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> t.age, group_concat(t.name <span class="keyword">order</span> <span class="keyword">by</span> t.name separator <span class="string">&#x27;,&#x27;</span>) <span class="keyword">as</span> names</span><br><span class="line"><span class="keyword">from</span> table_name t</span><br><span class="line"><span class="keyword">where</span> t.age <span class="operator">=</span> <span class="number">20</span> <span class="keyword">group</span> <span class="keyword">by</span> t.age</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>postgresql</tag>
         <tag>oracle</tag>
       </tags>
   </entry>
