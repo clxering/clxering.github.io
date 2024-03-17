@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Cookie 使用总结">
+<meta property="og:url" content="http://www.dcheng.site/931d8cd0-e409-11ee-86b7-fb4c7634711e/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-16T23:23:16.000Z">
+<meta property="article:modified_time" content="2024-03-17T02:56:35.992Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="cookie">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/931d8cd0-e409-11ee-86b7-fb4c7634711e/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/931d8cd0-e409-11ee-86b7-fb4c7634711e/","path":"931d8cd0-e409-11ee-86b7-fb4c7634711e/","title":"Cookie 使用总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Cookie 使用总结 | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%8F%8A%E6%8F%8F%E8%BF%B0"><span class="nav-text">1 常用属性及描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Cookie-%E7%9A%84%E6%9C%89%E6%95%88%E6%9C%9F"><span class="nav-text">2 Cookie 的有效期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Cookie-%E7%9A%84%E4%BF%AE%E6%94%B9%E3%80%81%E5%88%A0%E9%99%A4"><span class="nav-text">3 Cookie 的修改、删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Cookie-%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="nav-text">4 Cookie 的域名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Cookie-%E7%9A%84%E8%B7%AF%E5%BE%84"><span class="nav-text">5 Cookie 的路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Cookie-%E7%9A%84%E5%AE%89%E5%85%A8%E5%B1%9E%E6%80%A7"><span class="nav-text">6 Cookie 的安全属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-JavaScript-%E6%93%8D%E4%BD%9C-Cookie"><span class="nav-text">7 JavaScript 操作 Cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E5%9C%A8-Java-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F"><span class="nav-text">8 在 Java 服务端使用注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E5%9C%A8%E5%89%8D%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F"><span class="nav-text">9 在前端使用注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-fetch-%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E6%90%BA%E5%B8%A6-cookie-%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="nav-text">10 fetch 发送请求携带 cookie 的设置</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/931d8cd0-e409-11ee-86b7-fb4c7634711e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Cookie 使用总结 | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          Cookie 使用总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-17 07:23:16 / Modified: 10:56:35" itemprop="dateCreated datePublished" datetime="2024-03-17T07:23:16+08:00">2024-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">前端技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-常用属性及描述"><a href="#1-常用属性及描述" class="headerlink" title="1 常用属性及描述"></a>1 常用属性及描述</h2><ul>
+<li>name，Cookie 的名称，Cookie 一旦创建，名称便不可更改</li>
+<li>value，Cookie 的值。如果值为 Unicode 字符，需要为字符编码。如果值为二进制数据，则需要使用 BASE64 编码</li>
+<li>maxAge，Cookie 失效的时间，单位秒。如果为正数，则该 Cookie 在 maxAge 秒之后失效。如果为负数，该 Cookie 为临时 Cookie，关闭浏览器即失效，浏览器也不会以任何形式保存该 Cookie。如果为 0，表示删除该 Cookie。默认为 -1。</li>
+<li>secure，该 Cookie 是否仅被使用安全协议传输。安全协议。安全协议有 HTTPS，SSL 等，在网络上传输数据之前先将数据加密。默认为 false。</li>
+<li>path，Cookie 的使用路径。如果设置为 <code>/sessionWeb/</code>，则只有 contextPath 为 <code>/sessionWeb</code> 的程序可以访问该 Cookie。如果设置为 <code>/</code>，则本域名下 contextPath 都可以访问该 Cookie。<blockquote>
+<p>注意：最后一个字符必须为 <code>/</code></p>
+</blockquote>
+</li>
+<li>domain，可以访问该 Cookie 的域名。如果设置为 <code>.google.com</code>，则所有以 <code>google.com</code> 结尾的域名都可以访问该 Cookie<blockquote>
+<p>注意：第一个字符必须为 <code>.</code></p>
+</blockquote>
+</li>
+<li>comment，该 Cookie 的用处说明，浏览器显示 Cookie 信息的时候显示该说明。</li>
+<li>version，Cookie 使用的版本号，0 表示遵循 Netscape 的 Cookie 规范，1 表示遵循 W3C 的 RFC 2109 规范</li>
+</ul>
+<h2 id="2-Cookie-的有效期"><a href="#2-Cookie-的有效期" class="headerlink" title="2 Cookie 的有效期"></a>2 Cookie 的有效期</h2><p>Cookie 的 maxAge 决定着 Cookie 的有效期，单位为秒（Second）。Cookie 中通过 <code>getMaxAge()</code> 方法与 <code>setMaxAge(int maxAge)</code> 方法来读写 maxAge 属性。</p>
+<p>如果 maxAge 属性为正数，则表示该 Cookie 会在 maxAge 秒之后自动失效。浏览器会将 maxAge 为正数的 Cookie 持久化，即写到对应的 Cookie 文件中。无论客户关闭了浏览器还是电脑，只要还在 maxAge 秒之前，登录网站时该 Cookie 仍然有效。下面代码中的 Cookie 信息将永远有效。</p>
+<p>如果 maxAge 为负数，则表示该 Cookie 仅在本浏览器窗口以及本窗口打开的子窗口内有效，关闭窗口后该 Cookie 即失效。maxAge 为负数的 Cookie，为临时性 Cookie，不会被持久化，不会被写到 Cookie 文件中。Cookie 信息保存在浏览器内存中，因此关闭浏览器该 Cookie 就消失了。Cookie 默认的 maxAge 值为-1。</p>
+<p>如果 maxAge 为 0，则表示删除该 Cookie。Cookie 机制没有提供删除 Cookie 的方法，因此通过设置该 Cookie 即时失效实现删除 Cookie 的效果。失效的 Cookie 会被浏览器从 Cookie 文件或者内存中删除，</p>
+<p>response 对象提供的 Cookie 操作方法只有一个添加操作 <code>add(Cookie cookie)</code></p>
+<p>要想修改 Cookie 只能使用一个同名的 Cookie 来覆盖原来的 Cookie，达到修改的目的。删除时只需要把 maxAge 修改为 0 即可。</p>
+<p>从客户端读取 Cookie 时，包括 maxAge 在内的其他属性都是不可读的，也不会被提交。浏览器提交 Cookie 时只会提交 name 与 value 属性。maxAge 属性只被浏览器用来判断 Cookie 是否过期。</p>
+<h2 id="3-Cookie-的修改、删除"><a href="#3-Cookie-的修改、删除" class="headerlink" title="3 Cookie 的修改、删除"></a>3 Cookie 的修改、删除</h2><p>Cookie 并不提供修改、删除操作。如果要修改某个 Cookie，只需要新建一个同名的 Cookie，添加到 response 中覆盖原来的 Cookie。</p>
+<p>如果要删除某个 Cookie，只需要新建一个同名的 Cookie，并将 maxAge 设置为 0，并添加到 response 中覆盖原来的 Cookie。</p>
+<blockquote>
+<p>注意：修改、删除 Cookie 时，新建的 Cookie 除 value、maxAge 之外的所有属性，例如 name、path、domain 等，都要与原 Cookie 完全一样。否则，浏览器将视为两个不同的 Cookie 不予覆盖，导致修改、删除失败。</p>
+</blockquote>
+<h2 id="4-Cookie-的域名"><a href="#4-Cookie-的域名" class="headerlink" title="4 Cookie 的域名"></a>4 Cookie 的域名</h2><p>Cookie 是不可跨域名的。域名 <code>www.google.com</code> 颁发的 Cookie 不会被提交到域名 <code>www.baidu.com</code>。这是由 Cookie 的隐私安全机制决定的。隐私安全机制能够禁止网站非法获取其他网站的 Cookie。</p>
+<p>正常情况下，同一个一级域名下的两个二级域名如 <code>www.baidu.com</code> 和 <code>p_w_picpaths.baidu.com</code> 也不能交互使用 Cookie，因为二者的域名并不严格相同。如果想所有 <code>baidu.com</code> 名下的二级域名都可以使用该 Cookie，需要设置 Cookie 的 domain 参数为 <code>.baidu.com</code></p>
+<p>可以修改本机 <code>C:\WINDOWS\system32\drivers\etc</code> 下的 hosts 文件来配置多个临时域名来验证 domain 属性。</p>
+<blockquote>
+<p>注意：domain 参数必须以点（<code>.</code>）开始。另外，name 相同但 domain 不同的两个 Cookie 是两个不同的 Cookie。如果想要两个域名完全不同的网站共有 Cookie，可以生成两个 Cookie，domain 属性分别为两个域名，输出到客户端。</p>
+</blockquote>
+<h2 id="5-Cookie-的路径"><a href="#5-Cookie-的路径" class="headerlink" title="5 Cookie 的路径"></a>5 Cookie 的路径</h2><p>domain 属性决定运行访问 Cookie 的域名，而 path 属性决定允许访问 Cookie 的路径（ContextPath）。例如，如果只允许 <code>/sessionWeb/</code> 下的程序使用 Cookie，可以这么写 <code>cookie.setPath(&quot;/session/&quot;);</code></p>
+<p>设置为 <code>/</code> 时允许所有路径使用 Cookie。path 属性需要使用符号 <code>/</code> 结尾。name 相同但 domain 相同的两个 Cookie 也是两个不同的 Cookie。</p>
+<p>页面只能获取它属于的 Path 的 Cookie。例如 <code>/session/test/a.jsp</code> 不能获取到路径为 <code>/session/abc/</code> 的 Cookie。</p>
+<h2 id="6-Cookie-的安全属性"><a href="#6-Cookie-的安全属性" class="headerlink" title="6 Cookie 的安全属性"></a>6 Cookie 的安全属性</h2><p>HTTP 协议不仅是无状态的，而且是不安全的。使用 HTTP 协议的数据不经过任何加密就直接在网络上传播，有被截获的可能。使用 HTTP 协议传输很机密的内容是一种隐患。如果不希望 Cookie 在 HTTP 等非安全协议中传输，可以设置 Cookie 的 secure 属性为 true。浏览器只会在 HTTPS 和 SSL 等安全协议中传输此类 Cookie。设置 secure 属性为 true 的代码是 <code>cookie.setSecure(true);</code></p>
+<p>secure 属性并不能对 Cookie 内容加密，因而不能保证绝对的安全性。如果需要高安全性，需要在程序中对 Cookie 内容加密、解密，以防泄密。</p>
+<h2 id="7-JavaScript-操作-Cookie"><a href="#7-JavaScript-操作-Cookie" class="headerlink" title="7 JavaScript 操作 Cookie"></a>7 JavaScript 操作 Cookie</h2><p>Cookie 是保存在浏览器端的，因此浏览器具有操作 Cookie 的先决条件。浏览器可以使用脚本程序如 JavaScript 或者 VBScript 等操作 Cookie。这里以 JavaScript 为例介绍常用的 Cookie 操作。例如下面的代码会输出本页面所有的 Cookie。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>由于 JavaScript 能够任意地读写 Cookie，给网站带来安全隐患，W3C 标准的浏览器会阻止 JavaScript 读写任何不属于自己网站的 Cookie。换句话说，A 网站的 JavaScript 程序读写 B 网站的 Cookie 不会有任何结果。</p>
+<p>部分浏览器支持设置 HttpOnly 属性，如果在 cookie 中设置了 HttpOnly 属性，那么通过 js 脚本将无法读取到 cookie 信息，这样能有效的防止 XSS</p>
+<h2 id="8-在-Java-服务端使用注意"><a href="#8-在-Java-服务端使用注意" class="headerlink" title="8 在 Java 服务端使用注意"></a>8 在 Java 服务端使用注意</h2><p>不能直接使用逗号这种特殊符号（对 cookie 0 版本标准而言，新版本 cookie 1 没问题）作为 cookie 的内容。而新版本的 Cookie（参见 RFC 2109）目前还不被 Javax.servlet.http.Cookie 包所支持。Cookie Version 0 中，某些特殊的字符，例如：空格，方括号，圆括号，等于号，逗号，双引号，斜杠，问号，@符号，冒号，分号都不能作为 Cookie 的内容。</p>
+<h2 id="9-在前端使用注意"><a href="#9-在前端使用注意" class="headerlink" title="9 在前端使用注意"></a>9 在前端使用注意</h2><p>前端请求如果携带 cookie 信息，那么后端 <code>Access-Control-Allow-Origin</code> 不能为 <code>*</code>，否则该请求会失败，在 <code>Options</code> 预请求时会被拦截下来。可参见 MDN 文档 ：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS%EF%BC%8C">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS，</a> 在 springboot 中，可以增加 <code>.allowCredentials(true)</code> 设置，如下代码所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> &#123;</span><br><span class="line">        registry.addMapping(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                .allowedHeaders(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                .allowedMethods(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                .maxAge(<span class="number">1800</span>)</span><br><span class="line">                .allowedOrigins(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                <span class="comment">// 允许携带cookie</span></span><br><span class="line">                .allowCredentials(<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-fetch-发送请求携带-cookie-的设置"><a href="#10-fetch-发送请求携带-cookie-的设置" class="headerlink" title="10 fetch 发送请求携带 cookie 的设置"></a>10 fetch 发送请求携带 cookie 的设置</h2><p>fetch 发送请求默认是不发送 cookie 的，不管是同域还是跨域；对于那些需要权限验证的请求就可能无法正常获取数据，这时需要设置 fetch 的第二个参数，即 credentials：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(url, &#123; <span class="attr">credentials</span>: <span class="string">&quot;include&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>credentials 有 3 个可选值：</p>
+<ul>
+<li>omit: 忽略 cookie 的发送</li>
+<li>same-origin: 表示 cookie 只能同域发送，不能跨域发送</li>
+<li>include: cookie 既可以同域发送，也可以跨域发送</li>
+</ul>
+<p>fetch 默认对服务端通过 Set-Cookie 头设置的 cookie 也会忽略，若想选择接受来自服务端的 cookie 信息，也必须要配置 credentials 选项。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/cookie/" rel="tag"># cookie</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/8a9d69d0-e38d-11ee-8d05-110f62540784/" rel="prev" title="原生js实现ajax请求">
+                  <i class="fa fa-chevron-left"></i> 原生js实现ajax请求
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/931db3e0-e409-11ee-86b7-fb4c7634711e/" rel="next" title="create-react-app 脚手架引入 SCSS">
+                  create-react-app 脚手架引入 SCSS <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
