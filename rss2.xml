@@ -15,8 +15,56 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 17 Mar 2024 02:56:36 GMT</pubDate>
+    <pubDate>Sun, 31 Mar 2024 12:23:44 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>修复 idea 使用 gradle 构建出错时乱码</title>
+      <link>http://www.dcheng.site/d2d3cb00-ef58-11ee-9bca-69dcfb906dc3/</link>
+      <guid>http://www.dcheng.site/d2d3cb00-ef58-11ee-9bca-69dcfb906dc3/</guid>
+      <pubDate>Sun, 31 Mar 2024 04:14:39 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/idea/">idea</category>
+      
+      <category domain="http://www.dcheng.site/tags/gradle/">gradle</category>
+      
+      
+      <comments>http://www.dcheng.site/d2d3cb00-ef58-11ee-9bca-69dcfb906dc3/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>SpringBoot 整合 Aop</title>
+      <link>http://www.dcheng.site/d2d3a3f0-ef58-11ee-9bca-69dcfb906dc3/</link>
+      <guid>http://www.dcheng.site/d2d3a3f0-ef58-11ee-9bca-69dcfb906dc3/</guid>
+      <pubDate>Sun, 31 Mar 2024 00:39:20 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
+      
+      <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
+      
+      
+      <comments>http://www.dcheng.site/d2d3a3f0-ef58-11ee-9bca-69dcfb906dc3/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>修改 mac 的 MAC 地址</title>
@@ -98,10 +146,10 @@
       
       
       
-      <category domain="http://www.dcheng.site/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</category>
+      <category domain="http://www.dcheng.site/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/">前端技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/%E6%9C%AA%E6%A0%87%E8%AE%B0/">未标记</category>
+      <category domain="http://www.dcheng.site/tags/nodejs/">nodejs</category>
       
       
       <comments>http://www.dcheng.site/931ddaf3-e409-11ee-86b7-fb4c7634711e/#disqus_thread</comments>
@@ -461,9 +509,9 @@
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
-      
       <category domain="http://www.dcheng.site/tags/java/">java</category>
+      
+      <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
       
       
       <comments>http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/#disqus_thread</comments>
@@ -621,9 +669,9 @@
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
-      
       <category domain="http://www.dcheng.site/tags/java/">java</category>
+      
+      <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
       
       
       <comments>http://www.dcheng.site/d27a8f70-9bfe-11ee-a92b-05e08d68d559/#disqus_thread</comments>
