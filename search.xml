@@ -1,136 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SpringBoot 整合 Aop</title>
-    <url>/d2d3a3f0-ef58-11ee-9bca-69dcfb906dc3/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>1）环境</p>
-<ul>
-<li>gradle-8.5</li>
-<li>Amazon Corretto 17.0.4_9</li>
-<li><code>id &#39;org.springframework.boot&#39; version &#39;3.2.3&#39;</code></li>
-<li><code>id &#39;io.spring.dependency-management&#39; version &#39;1.1.4&#39;</code></li>
-</ul>
-<p>2）添加依赖</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;org.springframework.boot:spring-boot-starter-aop&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-理论概念"><a href="#2-理论概念" class="headerlink" title="2 理论概念"></a>2 理论概念</h2><ul>
-<li>切面（Aspect）：切入点和通知的集合</li>
-<li>连接点（Joinpoint）：目标对象中可以被增强的所有方法</li>
-<li>通知（Advice）：增强的代码（逻辑），分为前置，后置，最终，异常，环绕</li>
-<li>切入点（Pointcut）：目标对象中经过匹配最终增强的方法</li>
-<li>引入（Introduction）：动态的为某个类增加和减少方法</li>
-<li>目标对象（Target Object）：被代理的对象</li>
-<li>AOP 代理对象（AOP Proxy）：AOP 框架创建的代理对象，用于实现切面，调用方法</li>
-<li>织入（Weaving）：将通知应用到切入点的过程</li>
-</ul>
-<p>@Pointcut 注解是 Spring AOP（面向切面编程）中的一个关键组成部分，它允许开发人员定义可重用的切入点表达式，这些表达式可以被多个通知（Advice）引用。</p>
-<p>1）定义切入点表达式： 在包含 @Aspect 注解的类内部，使用 @Pointcut 注解定义一个方法，并在注解值中提供一个切入点表达式。这个表达式用于匹配满足特定条件的方法执行点。</p>
-<p>2）定义通知（Advice）： 在包含 @Aspect 注解的类内部，使用 @Before、@After、@AfterReturning、@AfterThrowing、@Around 注解定义一个通知（Advice），并在注解值中提供一个切入点表达式。通知（Advice）用于在方法执行前、后、返回值、异常抛出时执行特定的代码。</p>
-<p>3）通知类型：</p>
-<ul>
-<li>@Before(前置通知)： 在目标方法执行前执行的通知。</li>
-<li>@After(最终通知)： 不管目标方法是否正常执行完成（即无论是否有异常抛出），都会在目标方法执行后执行的通知。</li>
-<li>@AfterReturning (后置通知&#x2F;正常返回通知)： 在目标方法正常执行完毕并返回后执行的通知。可以访问到方法的返回值。</li>
-<li>@AfterThrowing(抛出异常通知)： 当目标方法抛出异常后执行的通知，可以访问到抛出的异常对象。</li>
-<li>@Around (环绕通知)： 最强大的通知类型，它可以完全控制目标方法的执行流程。可以在方法调用前后插入自定义行为，并决定何时以及是否执行目标方法。</li>
-</ul>
-<p>4）切入点表达式语法：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Pointcut(&quot;execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern?)&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">myPointcutDefinition</span><span class="params">()</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>execution 切点表达式使用较多，支持的通配符：</p>
-<ul>
-<li><code>*</code>：匹配所有</li>
-<li><code>..</code>：匹配多级包或者多个参数</li>
-<li><code>+</code>表示类以及子类</li>
-</ul>
-<p>其他部分：</p>
-<ul>
-<li>execution: 关键字，表示这是一个执行切点表达式。</li>
-<li>modifiers-pattern: 可选，方法的修饰符，比如 public、protected、<code>*</code>（任意修饰符）等。</li>
-<li>return-type-pattern: 必须，方法的返回类型，可以是具体的类型，也可以是通配符 <code>*</code>（表示任意类型）或 ..（表示任意数量的任意类型参数）。</li>
-<li>declaring-type-pattern: 可选，方法所在的类或接口的全限定名，可以使用 <code>*</code> 或 .. 通配符。</li>
-<li>method-name-pattern: 必须，方法名称，可以是具体的名称，也可以使用通配符 <code>*</code> 匹配任意名称。</li>
-<li>param-pattern: 必须，方法的参数列表，格式为 (paramType1, paramType2, …)，每个参数类型可以是具体类型、<code>*</code> 或 ..。</li>
-<li>throws-pattern: 可选，方法声明抛出的异常类型列表，格式为 throws ExceptionType1, ExceptionType2, …。</li>
-</ul>
-<p>例子：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 匹配 com.example包及其子包下所有类的公共方法</span></span><br><span class="line"><span class="meta">@Pointcut(&quot;execution(public * com.example..*(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">anyPublicMethodInComExample</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 匹配 com.example.service包下的 UserService 类的所有方法</span></span><br><span class="line"><span class="meta">@Pointcut(&quot;execution(* com.example.service.UserService.*(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">userServiceMethods</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 匹配返回类型为void且方法名为process的任意方法</span></span><br><span class="line"><span class="meta">@Pointcut(&quot;execution(void process(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">voidProcessMethods</span><span class="params">()</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其他切点表达式：</p>
-<ul>
-<li><p>within - 匹配方法所在的包或者类</p>
-</li>
-<li><p>this - 用于向通知方法中传入代理对象的引用</p>
-</li>
-<li><p>target - 用于向通知方法中传入目标对象的引用</p>
-</li>
-<li><p>args - 用于向通知方法中传入参数，并且匹配参数个数</p>
-</li>
-<li><p>@args - 和 args 都是匹配参数，但是@args 要求传入切入点的参数必须标注指定注解，且不能是 SOURCE 源码注解，比如 Lombok 的</p>
-</li>
-<li><p>@within - 匹配加了某个注解的类中的所有方法</p>
-</li>
-<li><p>@target - 与@within 类似，但是要求标注到类上的注解，必须为 RUNTIME 的</p>
-</li>
-<li><p>@annotation - 匹配加了某个注解的方法</p>
-</li>
-<li><p>bean 通过 spring 容器中的 beName 匹配，可以使用通配符*来标识以什么开头，以什么结尾</p>
-</li>
-</ul>
-<p>5）通知（Advice）执行顺序：</p>
-<ul>
-<li>@Before：先执行 @Before 通知，再执行切入点表达式匹配的方法。</li>
-<li>@AfterReturning：先执行切入点表达式匹配的方法，再执行 @AfterReturning 通知。</li>
-<li>@AfterThrowing：先执行切入点表达式匹配的方法，再执行 @AfterThrowing 通知。</li>
-<li>@After：先执行切入点表达式匹配的方法，再执行 @After 通知。</li>
-<li>@Around：先执行 @Around 通知，再执行切入点表达式匹配的方法，最后执行 @After 通知。</li>
-</ul>
-<h2 id="3-案例"><a href="#3-案例" class="headerlink" title="3 案例"></a>3 案例</h2><h3 id="3-1-日志记录功能"><a href="#3-1-日志记录功能" class="headerlink" title="3.1 日志记录功能"></a>3.1 日志记录功能</h3><p>实现一个日志记录功能，要求记录用户的所有请求信息，包括请求方法、请求路径、请求参数、请求体、请求头、响应状态码、响应体等。</p>
-<p>1）创建日志记录切面类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">LOGGER</span> <span class="operator">=</span> LoggerFactory.getLogger(LogAspect.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(public * com.example.controller.*.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">logPointcut</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(&quot;logPointcut()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doBefore</span><span class="params">(JoinPoint joinPoint)</span> &#123;</span><br><span class="line">        LOGGER.info(<span class="string">&quot;Request: &#123;&#125; &#123;&#125;&quot;</span>, joinPoint.getSignature().getName(), joinPoint.getArgs());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterReturning(pointcut = &quot;logPointcut()&quot;, returning = &quot;result&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterReturning</span><span class="params">(Object result)</span> &#123;</span><br><span class="line">        LOGGER.info(<span class="string">&quot;Response: &#123;&#125;&quot;</span>, result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterThrowing(pointcut = &quot;logPointcut()&quot;, throwing = &quot;e&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterThrowing</span><span class="params">(Throwable e)</span> &#123;</span><br><span class="line">        LOGGER.error(<span class="string">&quot;Exception: &#123;&#125;&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2）配置日志记录切面类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAspectJAutoProxy</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogConfig</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3）测试</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/test&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;test&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-2-运行时间统计"><a href="#3-2-运行时间统计" class="headerlink" title="3.2 运行时间统计"></a>3.2 运行时间统计</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RunTimeAop</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义切入点，匹配所有Service层的方法</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* server.services..*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">businessServiceMethods</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在方法执行前记录开始计时</span></span><br><span class="line">    <span class="meta">@Around(&quot;businessServiceMethods()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">logTime</span><span class="params">(ProceedingJoinPoint pjp)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取方法签名和参数</span></span><br><span class="line">        <span class="type">MethodSignature</span> <span class="variable">signature</span> <span class="operator">=</span> (MethodSignature) pjp.getSignature();</span><br><span class="line">        <span class="type">Method</span> <span class="variable">method</span> <span class="operator">=</span> signature.getMethod();</span><br><span class="line">        Object[] args = pjp.getArgs();</span><br><span class="line"></span><br><span class="line">        <span class="type">StopWatch</span> <span class="variable">stopWatch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StopWatch</span>();</span><br><span class="line">        stopWatch.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 执行目标方法</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> pjp.proceed();</span><br><span class="line"></span><br><span class="line">        stopWatch.stop();</span><br><span class="line"></span><br><span class="line">        Spliterator&lt;Object&gt; spliterator = Arrays.spliterator(args);</span><br><span class="line">        Stream&lt;Object&gt; stream = StreamSupport.stream(spliterator, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (args.length &gt; <span class="number">0</span> &amp;&amp; !Objects.isNull(result)) &#123;</span><br><span class="line">            <span class="comment">// 合并参数</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">combinedJsonString</span> <span class="operator">=</span> stream.flatMap(element -&gt; &#123;</span><br><span class="line">                        <span class="keyword">if</span> (element <span class="keyword">instanceof</span> Map) &#123;</span><br><span class="line">                            Map&lt;String, String&gt; map = (Map&lt;String, String&gt;) element;</span><br><span class="line">                            <span class="keyword">return</span> map.entrySet().stream()</span><br><span class="line">                                    .map(entry -&gt; <span class="string">&quot;\&quot;&quot;</span> + entry.getKey() + <span class="string">&quot;\&quot;: \&quot;&quot;</span> + entry.getValue() + <span class="string">&quot;\&quot;&quot;</span>);</span><br><span class="line">                        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                            <span class="keyword">return</span> Stream.of(<span class="string">&quot;\&quot;&quot;</span> + element + <span class="string">&quot;\&quot;&quot;</span>);</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="keyword">return</span> Stream.empty();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .collect(Collectors.joining(<span class="string">&quot;,&quot;</span>, <span class="string">&quot;[&quot;</span>, <span class="string">&quot;]&quot;</span>));</span><br><span class="line"></span><br><span class="line">            System.out.printf(<span class="string">&quot;%s实际执行时间= %sms 随机时间= %sms 参数列表：%s%n&quot;</span>, method.getName(), stopWatch.getTotalTimeMillis(), result, combinedJsonString);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%s实际执行时间= %sms%n&quot;</span>, method.getName(), stopWatch.getTotalTimeMillis());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AopServiceIntMapParams</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">readFakeData</span><span class="params">(Map&lt;String, String&gt; params,String type)</span> <span class="keyword">throws</span> InterruptedException, JsonProcessingException &#123;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">timeout</span> <span class="operator">=</span> random.nextInt(<span class="number">701</span>) + <span class="number">50</span>;</span><br><span class="line">        TimeUnit.MILLISECONDS.sleep(timeout);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">jsonString</span> <span class="operator">=</span> objectMapper.writeValueAsString(params);</span><br><span class="line">        System.out.println(jsonString);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> timeout;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AopServiceVoidNoParams</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readFakeData2</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, JsonProcessingException &#123;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">timeout</span> <span class="operator">=</span> random.nextInt(<span class="number">701</span>) + <span class="number">50</span>;</span><br><span class="line">        TimeUnit.MILLISECONDS.sleep(timeout);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>后端技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修复 idea 使用 gradle 构建出错时乱码</title>
-    <url>/d2d3cb00-ef58-11ee-9bca-69dcfb906dc3/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<p>依次进入：菜单栏「Help」 -&gt;「Edit Custom VM Options」 -&gt; 追加 <code>-Dfile.encoding=UTF-8</code> 到末尾 -&gt; 重启 IDEA</p>
-]]></content>
-      <categories>
-        <category>通用技术</category>
-      </categories>
-      <tags>
-        <tag>idea</tag>
-        <tag>gradle</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Cookie 使用总结</title>
     <url>/931d8cd0-e409-11ee-86b7-fb4c7634711e/</url>
     <content><![CDATA[<blockquote>
@@ -3520,6 +3390,23 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>修复 idea 使用 gradle 构建出错时乱码</title>
+    <url>/d2d3cb00-ef58-11ee-9bca-69dcfb906dc3/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<p>依次进入：菜单栏「Help」 -&gt;「Edit Custom VM Options」 -&gt; 追加 <code>-Dfile.encoding=UTF-8</code> 到末尾 -&gt; 重启 IDEA</p>
+]]></content>
+      <categories>
+        <category>通用技术</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>有关-Payload-在维基百科的释义</title>
     <url>/58868361-2a1e-11ee-846a-89c1529ebdf1/</url>
     <content><![CDATA[<blockquote>
@@ -4332,6 +4219,25 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>win</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>win10 mstsc 远程连接失败</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-确保远程连接功能已启用"><a href="#1-确保远程连接功能已启用" class="headerlink" title="1 确保远程连接功能已启用"></a>1 确保远程连接功能已启用</h2><p>1）按下 Win+R 键打开运行窗口，输入「sysdm.cpl」打开「系统属性」窗口。</p>
+<p>2）在该窗口的「远程」选项卡下，确保「允许远程协助连接到此计算机」和&#x2F;或「允许远程桌面服务连接到此计算机」的复选框被勾选上。如果没有勾选，则勾选上并点击「应用」和「确定」按钮。</p>
+<h2 id="2-检查防火墙设置"><a href="#2-检查防火墙设置" class="headerlink" title="2 检查防火墙设置"></a>2 检查防火墙设置</h2><p>1）按下 Win+R 键打开运行窗口，输入「control firewall.cpl」并按 Enter 键，打开「Windows Defender 防火墙」窗口。</p>
+<p>2）在该窗口的「高级设置」选项卡下，确保「入站规则」中有一个允许 mstsc.exe 的规则。如果没有该规则，点击「新建规则」按钮，按照向导创建一个新的规则，允许 mstsc.exe 的入站连接。</p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>mstsc</tag>
       </tags>
   </entry>
   <entry>
@@ -5425,6 +5331,787 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>VBA 案例片段合集</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="调整行高"><a href="#调整行高" class="headerlink" title="调整行高"></a>调整行高</h2><figure class="highlight vb"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Macro1()</span><br><span class="line">    <span class="keyword">Dim</span> arr, rng <span class="keyword">As</span> Range, i&amp;</span><br><span class="line">    Application.ScreenUpdating = <span class="literal">False</span></span><br><span class="line">    t = Timer</span><br><span class="line">    arr = Range(<span class="string">&quot;A1&quot;</span>).CurrentRegion</span><br><span class="line">    <span class="keyword">For</span> i = <span class="number">1</span> <span class="keyword">To</span> UBound(arr)</span><br><span class="line">        <span class="keyword">If</span> Rows(i).RowHeight &gt; <span class="number">10</span> <span class="keyword">Then</span></span><br><span class="line">            <span class="keyword">If</span> rng <span class="built_in">Is</span> <span class="literal">Nothing</span> <span class="keyword">Then</span></span><br><span class="line">                <span class="keyword">Set</span> rng = Cells(i, <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">Else</span></span><br><span class="line">                <span class="keyword">Set</span> rng = Union(rng, Cells(i, <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">    <span class="keyword">Next</span></span><br><span class="line">    <span class="keyword">If</span> <span class="built_in">Not</span> rng <span class="built_in">Is</span> <span class="literal">Nothing</span> <span class="keyword">Then</span></span><br><span class="line">        rng.EntireRow.RowHeight = <span class="number">10</span></span><br><span class="line">    Application.ScreenUpdating = <span class="literal">True</span></span><br><span class="line">    MsgBox Timer - t</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>释义：遍历 A 列中不为空的行，将行高设置为 10。</p>
+</blockquote>
+<p>细节说明：</p>
+<ul>
+<li><code>Application.ScreenUpdating = False</code>，关闭视图跟随</li>
+<li><code>t = Timer</code>，获取当前时间（非本案例必须）</li>
+<li><code>UBound(arr)</code>，返回引用区域的上限值</li>
+</ul>
+<h2 id="获取行数和列数"><a href="#获取行数和列数" class="headerlink" title="获取行数和列数"></a>获取行数和列数</h2><p>1、方式一：</p>
+<figure class="highlight vb"><table><tr><td class="code"><pre><span class="line">ActiveSheet.UsedRange.Rows.Count</span><br><span class="line">ActiveSheet.UsedRange.Columns.Count</span><br></pre></td></tr></table></figure>
+
+<p>注意事项：该方式结果可能会大于现有数量，原因曾经删除过行（或列），而且是非整行或整列删除。该语句仍返回未删除前的值，这部分行虽然已经删除，但是也记录在内。</p>
+<p>2、方式二：</p>
+<figure class="highlight vb"><table><tr><td class="code"><pre><span class="line">ActiveSheet.Range(<span class="string">&quot;A65535&quot;</span>).<span class="keyword">End</span>(xlUp).Row</span><br><span class="line">ActiveSheet.Range(<span class="string">&quot;IV1&quot;</span>).<span class="keyword">End</span>(xlToLeft).Column</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight vb"><table><tr><td class="code"><pre><span class="line">ActiveSheet.[A65536].<span class="keyword">End</span>(xlUp).Row</span><br><span class="line">ActiveSheet.[IV1].<span class="keyword">End</span>(xlToLeft).Column</span><br></pre></td></tr></table></figure>
+
+<p>注意事项：只能计算出一列（行）的最后一个单元格所在的行（列）数。本例返回 A 列最后一个单元格所占的行数。</p>
+<p>3、方式三：</p>
+<figure class="highlight vb"><table><tr><td class="code"><pre><span class="line">Application.CountA(ActiveSheet.Range(<span class="string">&quot;A:A&quot;</span>))</span><br><span class="line">Application.CountA(ActiveSheet.Range(<span class="string">&quot;1:1&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight vb"><table><tr><td class="code"><pre><span class="line">Application.CountA(ActiveSheet.Columns(<span class="number">1</span>))</span><br><span class="line">Application.CountA(ActiveSheet.Columns(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<p>注意事项：只能统计一列（行）的实际使用情况，得到的不一定是最后一行（列）的位置。方式二的数值比此方式大时，说明在 A 列的数据间有空白未填写的单元格。</p>
+<h2 id="判断文件是否打开"><a href="#判断文件是否打开" class="headerlink" title="判断文件是否打开"></a>判断文件是否打开</h2><figure class="highlight vb"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Function</span> isOpen(strName <span class="keyword">As</span> <span class="type">String</span>) <span class="keyword">As</span> <span class="type">Boolean</span></span><br><span class="line">    <span class="keyword">Dim</span> w <span class="keyword">As</span> Workbook</span><br><span class="line">    <span class="keyword">For</span> <span class="keyword">Each</span> w <span class="keyword">In</span> Application.Workbooks</span><br><span class="line">        <span class="keyword">If</span> w.Name = strName <span class="keyword">Then</span></span><br><span class="line">            isOpen = <span class="literal">True</span>: <span class="keyword">Exit</span> <span class="keyword">Function</span></span><br><span class="line">        <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">    <span class="keyword">Next</span></span><br><span class="line">    isOpen = <span class="literal">False</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Function</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="清除工作表中所有无内容空行"><a href="#清除工作表中所有无内容空行" class="headerlink" title="清除工作表中所有无内容空行"></a>清除工作表中所有无内容空行</h2><figure class="highlight vb"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> 删除空行()</span><br><span class="line">    <span class="comment">&#x27;关闭视图跟随</span></span><br><span class="line">    Application.ScreenUpdating = <span class="literal">False</span></span><br><span class="line">    <span class="comment">&#x27;定义变量</span></span><br><span class="line">    <span class="keyword">Dim</span> sheet <span class="keyword">As</span> Worksheet</span><br><span class="line">    <span class="comment">&#x27;最大行数</span></span><br><span class="line">    <span class="keyword">Dim</span> maxLineNum</span><br><span class="line">    <span class="comment">&#x27;循环变量</span></span><br><span class="line">    <span class="keyword">Dim</span> index <span class="keyword">As</span> <span class="type">Integer</span></span><br><span class="line">    <span class="comment">&#x27;内容为空的最小行号</span></span><br><span class="line">    <span class="keyword">Dim</span> minLineNum <span class="keyword">As</span> <span class="type">Integer</span>: minLineNum = <span class="number">0</span></span><br><span class="line">    <span class="comment">&#x27;遍历所有工作表</span></span><br><span class="line">    <span class="keyword">For</span> <span class="keyword">Each</span> sheet <span class="keyword">In</span> Sheets</span><br><span class="line">        <span class="comment">&#x27;清零</span></span><br><span class="line">        minLineNum = <span class="number">0</span></span><br><span class="line">        <span class="comment">&#x27;激活要操作的工作表</span></span><br><span class="line">        sheet.Activate</span><br><span class="line">        <span class="comment">&#x27;解锁（必须要解锁工作表才能够删除行）</span></span><br><span class="line">        sheet.Unprotect Password:=<span class="number">123456</span></span><br><span class="line">        <span class="comment">&#x27;获取最大行数</span></span><br><span class="line">        maxLineNum = sheet.[A65536].<span class="keyword">End</span>(xlUp).Row</span><br><span class="line">        <span class="comment">&#x27;逆序删除（删除行或列均需要逆序删除）</span></span><br><span class="line">        <span class="keyword">For</span> index = maxLineNum <span class="keyword">To</span> <span class="number">3</span> <span class="keyword">Step</span> -<span class="number">1</span></span><br><span class="line">            <span class="comment">&#x27;B 列内容为空则判为无内容空行</span></span><br><span class="line">            <span class="keyword">If</span> sheet.Range(<span class="string">&quot;B&quot;</span> &amp; Trim(Str(index))).Value = <span class="string">&quot;&quot;</span> <span class="keyword">Then</span></span><br><span class="line">                minLineNum = index</span><br><span class="line">            <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">        <span class="keyword">Next</span></span><br><span class="line">        <span class="keyword">If</span> minLineNum &gt; <span class="number">0</span> <span class="keyword">Then</span></span><br><span class="line">            sheet.Range(sheet.Rows(minLineNum), sheet.Rows(maxLineNum - <span class="number">1</span>)).Delete</span><br><span class="line">        <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">        <span class="comment">&#x27;执行完毕后恢复加锁状态</span></span><br><span class="line">        sheet.Protect Password:=<span class="number">123456</span></span><br><span class="line">    <span class="keyword">Next</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="筛选二维数组重复元素"><a href="#筛选二维数组重复元素" class="headerlink" title="筛选二维数组重复元素"></a>筛选二维数组重复元素</h2><p>以二维数组为例</p>
+<figure class="highlight vb"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> RemovingDuplication()</span><br><span class="line">    <span class="comment">&#x27;临时变量</span></span><br><span class="line">    <span class="keyword">Dim</span> indexRow, indexA, indexB <span class="keyword">As</span> <span class="type">Integer</span></span><br><span class="line">    <span class="comment">&#x27;无重复元素动态一维数组</span></span><br><span class="line">    <span class="keyword">Dim</span> resultTempArray()</span><br><span class="line">    <span class="keyword">ReDim</span> resultTempArray(<span class="number">1</span> <span class="keyword">To</span> <span class="number">1</span>)</span><br><span class="line">    <span class="comment">&#x27;筛选中间元素数组</span></span><br><span class="line">    <span class="keyword">Dim</span> tempArray()</span><br><span class="line">    <span class="keyword">Dim</span> tempSplit() <span class="keyword">As</span> <span class="type">String</span></span><br><span class="line">    <span class="keyword">Dim</span> Temp <span class="keyword">As</span> <span class="type">String</span></span><br><span class="line">    <span class="comment">&#x27;遍历二维数组每行</span></span><br><span class="line">    <span class="keyword">For</span> indexRow = <span class="number">1</span> <span class="keyword">To</span> <span class="number">2</span></span><br><span class="line">        <span class="comment">&#x27;取第 n 行</span></span><br><span class="line">        tempArray = Application.index(dataArray, indexRow, <span class="number">0</span>)</span><br><span class="line">        <span class="comment">&#x27;重复元素用 @ 替代</span></span><br><span class="line">        <span class="keyword">For</span> indexA = <span class="number">1</span> <span class="keyword">To</span> UBound(tempArray)</span><br><span class="line">            <span class="keyword">For</span> indexB = indexA + <span class="number">1</span> <span class="keyword">To</span> UBound(tempArray)</span><br><span class="line">                <span class="keyword">If</span> tempArray(indexA) = tempArray(indexB) <span class="keyword">Then</span> tempArray(indexB) = <span class="string">&quot;@&quot;</span></span><br><span class="line">            <span class="keyword">Next</span></span><br><span class="line">        <span class="keyword">Next</span></span><br><span class="line">        <span class="comment">&#x27;分隔 tempArray，消除 @ 标记，用空白字符串代替，获得无重复元素字符串</span></span><br><span class="line">        Temp = Replace(<span class="keyword">Join</span>(tempArray, <span class="string">&quot;,&quot;</span>), <span class="string">&quot;@&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="comment">&#x27;将无重复元素字符串重新按逗号分隔</span></span><br><span class="line">        tempSplit = Split(Temp, <span class="string">&quot;,&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">For</span> indexA = LBound(tempSplit) <span class="keyword">To</span> UBound(tempSplit)</span><br><span class="line">            <span class="comment">&#x27;将不为空字符串的元素存入动态一维数组</span></span><br><span class="line">            <span class="keyword">If</span> tempSplit(indexA) &lt;&gt; <span class="string">&quot;&quot;</span> <span class="keyword">Then</span></span><br><span class="line">                resultTempArray(UBound(resultTempArray)) = tempSplit(indexA)</span><br><span class="line">                <span class="keyword">ReDim</span> <span class="keyword">Preserve</span> resultTempArray(<span class="number">1</span> <span class="keyword">To</span> UBound(resultTempArray) + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">        <span class="keyword">Next</span></span><br><span class="line">        <span class="comment">&#x27;清空，构建结果字符串，格式为：（序号）元素名称，间隔为空格</span></span><br><span class="line">        Temp = <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">For</span> indexA = <span class="number">1</span> <span class="keyword">To</span> UBound(resultTempArray) - <span class="number">1</span></span><br><span class="line">            Temp = Temp + <span class="string">&quot;(&quot;</span> + Trim(Str(indexA)) + <span class="string">&quot;)&quot;</span> + resultTempArray(indexA)</span><br><span class="line">            <span class="keyword">If</span> indexA &lt;&gt; UBound(resultTempArray) - <span class="number">1</span> <span class="keyword">Then</span></span><br><span class="line">                Temp = Temp + <span class="string">&quot; &quot;</span></span><br><span class="line">            <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">        <span class="keyword">Next</span></span><br><span class="line">        <span class="comment">&#x27;写入结果</span></span><br><span class="line">        <span class="keyword">With</span> Worksheets(<span class="string">&quot;样品数据&quot;</span>)</span><br><span class="line">            <span class="comment">&#x27;根据下标来依次填写结果到单元格，本例共两个类别</span></span><br><span class="line">            .Range(<span class="string">&quot;类别&quot;</span> &amp; Trim(Str(indexRow))).Value = UBound(resultTempArray) - <span class="number">1</span></span><br><span class="line">            .Range(<span class="string">&quot;详细&quot;</span> &amp; Trim(Str(indexRow))).Value = Temp</span><br><span class="line">        <span class="keyword">End</span> <span class="keyword">With</span></span><br><span class="line">        <span class="comment">&#x27;每次统计下个类别前都清空</span></span><br><span class="line">        <span class="keyword">ReDim</span> resultTempArray(<span class="number">1</span> <span class="keyword">To</span> <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">Next</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="实现将指定内容跨文件复制"><a href="#实现将指定内容跨文件复制" class="headerlink" title="实现将指定内容跨文件复制"></a>实现将指定内容跨文件复制</h2><p>将 workBook1.xlsm 所有工作表的指定区域复制到 workBook2.xlsx，更新标题，工作表名称不变，并设置打印信息。</p>
+<figure class="highlight vb"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> CopyRangeAcrossFile()</span><br><span class="line">    <span class="comment">&#x27;关闭视图跟随</span></span><br><span class="line">    Application.ScreenUpdating = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">Dim</span> desSheet, desTitle, bottomTitle, sheet <span class="keyword">As</span> Worksheet</span><br><span class="line">    <span class="comment">&#x27;最大行数</span></span><br><span class="line">    <span class="keyword">Dim</span> maxLineNum</span><br><span class="line">    <span class="keyword">Set</span> desSheet = Workbooks.Open(ThisWorkbook.Path &amp; <span class="string">&quot;\&quot;</span> &amp; <span class="string">&quot;workBook2.xlsx&quot;</span>)</span><br><span class="line">    <span class="keyword">For</span> <span class="keyword">Each</span> sheet <span class="keyword">In</span> Sheets</span><br><span class="line">        <span class="comment">&#x27;获取第一列的长度（包含无内容空行）</span></span><br><span class="line">        maxLineNum = WorksheetFunction.CountA(sheet.Columns(<span class="number">1</span>))</span><br><span class="line">        <span class="comment">&#x27;激活要复制的工作表（重要，否则无法复制）</span></span><br><span class="line">        sheet.Activate</span><br><span class="line">        <span class="comment">&#x27;指定复制区域</span></span><br><span class="line">        sheet.Range(<span class="string">&quot;A1:M&quot;</span> &amp; Trim(Str(maxLineNum))).<span class="keyword">Select</span></span><br><span class="line">        Selection.Copy</span><br><span class="line">        <span class="comment">&#x27;激活要粘贴的工作表（注意：workBook2.xlsx 至少有一个空表，否则无法粘贴）</span></span><br><span class="line">        desSheet.Sheets(<span class="number">1</span>).Activate</span><br><span class="line">        <span class="comment">&#x27;新建工作表，名称与原工作表相同</span></span><br><span class="line">        desSheet.Worksheets.Add().Name = sheet.Name</span><br><span class="line">        <span class="comment">&#x27;选择新工作表中要粘贴的区域</span></span><br><span class="line">        desSheet.Sheets(sheet.Name).Range(<span class="string">&quot;A1&quot;</span>).<span class="keyword">Select</span></span><br><span class="line">        <span class="comment">&#x27;不运算粘贴、不跳过空格、不转置</span></span><br><span class="line">        Selection.PasteSpecial Paste:=xlPasteAll, Operation:=xlNone, SkipBlanks:=<span class="literal">False</span>, Transpose:=<span class="literal">False</span></span><br><span class="line">        <span class="comment">&#x27;更新新工作表标题</span></span><br><span class="line">        desSheet.Sheets(sheet.Name).Range(<span class="string">&quot;A1&quot;</span>).Value = <span class="string">&quot;new&quot;</span> &amp; sheet.Range(<span class="string">&quot;A1&quot;</span>).Value</span><br><span class="line">        <span class="comment">&#x27;设置新工作表标题字体</span></span><br><span class="line">        desSheet.Sheets(sheet.Name).Range(<span class="string">&quot;A1&quot;</span>).Font.Size = <span class="number">14</span></span><br><span class="line">        <span class="comment">&#x27;设置新工作表行高（全部行）</span></span><br><span class="line">        desSheet.Sheets(sheet.Name).Cells.RowHeight = <span class="number">28</span></span><br><span class="line">        <span class="comment">&#x27;独立设置新工作表标题行高</span></span><br><span class="line">        desSheet.Sheets(sheet.Name).Rows(<span class="number">1</span>).RowHeight = <span class="number">50</span></span><br><span class="line">        <span class="comment">&#x27;设置新工作表 A 列列宽</span></span><br><span class="line">        desSheet.Sheets(sheet.Name).Columns(<span class="string">&quot;A&quot;</span>).ColumnWidth = <span class="number">3</span></span><br><span class="line">        <span class="comment">&#x27;设置新工作表打印信息</span></span><br><span class="line">        <span class="keyword">With</span> desSheet.Sheets(sheet.Name).PageSetup</span><br><span class="line">            <span class="comment">&#x27;设置页面的方向。xlPortrait 纵向；xlLandscape 横向</span></span><br><span class="line">            .Orientation = xlLandscape</span><br><span class="line">            <span class="comment">&#x27;左右页边距</span></span><br><span class="line">            .LeftMargin = Application.InchesToPoints(<span class="number">1</span>)</span><br><span class="line">            .RightMargin = Application.InchesToPoints(<span class="number">1</span>)</span><br><span class="line">            <span class="comment">&#x27;设置打印区域</span></span><br><span class="line">            .PrintArea = <span class="string">&quot;A1:L&quot;</span> &amp; Trim(Str(maxLineNum + <span class="number">4</span>))</span><br><span class="line">        <span class="keyword">End</span> <span class="keyword">With</span></span><br><span class="line">    <span class="keyword">Next</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-ReDim-实现二维动态数组"><a href="#使用-ReDim-实现二维动态数组" class="headerlink" title="使用 ReDim 实现二维动态数组"></a>使用 ReDim 实现二维动态数组</h2><figure class="highlight vb"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> DynamicArray()</span><br><span class="line">    <span class="keyword">Dim</span> cellType, rowIndex, sheet <span class="keyword">As</span> Worksheet</span><br><span class="line">    <span class="comment">&#x27;定义数组</span></span><br><span class="line">    <span class="keyword">Dim</span> dataArray()</span><br><span class="line">    <span class="comment">&#x27;改变大小（必须要在使用前定好基础大小，初始为 2 行 1 列）</span></span><br><span class="line">    <span class="keyword">ReDim</span> dataArray(<span class="number">1</span> <span class="keyword">To</span> <span class="number">2</span>, <span class="number">1</span> <span class="keyword">To</span> <span class="number">1</span>)</span><br><span class="line">    <span class="comment">&#x27;遍历所有工作表</span></span><br><span class="line">    <span class="keyword">For</span> <span class="keyword">Each</span> sheet <span class="keyword">In</span> Sheets</span><br><span class="line">        <span class="comment">&#x27;遍历行</span></span><br><span class="line">        <span class="keyword">For</span> rowIndex = <span class="number">1</span> <span class="keyword">To</span> <span class="number">65535</span></span><br><span class="line">            <span class="comment">&#x27;获取 O 列单元格的值</span></span><br><span class="line">            cellType = sheet.Range(<span class="string">&quot;O&quot;</span> &amp; Trim(Str(rowIndex))).Value</span><br><span class="line">            <span class="comment">&#x27;遇到内容为空的行意味着到达结尾，退出循环</span></span><br><span class="line">            <span class="keyword">If</span> cellType = <span class="string">&quot;&quot;</span> <span class="keyword">Then</span></span><br><span class="line">                <span class="keyword">Exit</span> <span class="keyword">For</span></span><br><span class="line">            <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">            <span class="comment">&#x27;根据内容分类存入数组</span></span><br><span class="line">            <span class="keyword">If</span> cellType = <span class="string">&quot;苹果&quot;</span> <span class="keyword">Then</span></span><br><span class="line">                <span class="comment">&#x27;获取当前数组的列数上限所在位置，存入</span></span><br><span class="line">                dataArray(<span class="number">1</span>, UBound(dataArray, <span class="number">2</span>)) = cellName</span><br><span class="line">                <span class="comment">&#x27;改变大小，本列增加 1 个存储位置</span></span><br><span class="line">                <span class="keyword">ReDim</span> <span class="keyword">Preserve</span> dataArray(<span class="number">1</span> <span class="keyword">To</span> <span class="number">11</span>, <span class="number">1</span> <span class="keyword">To</span> UBound(dataArray, <span class="number">2</span>) + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">ElseIf</span> cellType = <span class="string">&quot;荔枝&quot;</span> <span class="keyword">Then</span></span><br><span class="line">                dataArray(<span class="number">2</span>, UBound(dataArray, <span class="number">2</span>)) = cellName</span><br><span class="line">                <span class="keyword">ReDim</span> <span class="keyword">Preserve</span> dataArray(<span class="number">1</span> <span class="keyword">To</span> <span class="number">11</span>, <span class="number">1</span> <span class="keyword">To</span> UBound(dataArray, <span class="number">2</span>) + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">        <span class="keyword">Next</span></span><br><span class="line">    <span class="keyword">Next</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="VBA-在工作表插入新行"><a href="#VBA-在工作表插入新行" class="headerlink" title="VBA 在工作表插入新行"></a>VBA 在工作表插入新行</h2><figure class="highlight vb"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> InsertRow()</span><br><span class="line">    <span class="keyword">Dim</span> currentSheet <span class="keyword">As</span> Worksheet</span><br><span class="line">    <span class="comment">&#x27;激活当前工作表</span></span><br><span class="line">    <span class="keyword">Set</span> currentSheet = ActiveSheet</span><br><span class="line">    <span class="comment">&#x27;限制不能插入行的工作表</span></span><br><span class="line">    <span class="keyword">If</span> currentSheet.Name = <span class="string">&quot;Sheet1&quot;</span> <span class="built_in">Or</span> currentSheet.Name = <span class="string">&quot;Sheet2&quot;</span> <span class="keyword">Then</span></span><br><span class="line">        MsgBox <span class="string">&quot;该表格不允许添加行！&quot;</span></span><br><span class="line">        <span class="keyword">Exit</span> <span class="keyword">Sub</span></span><br><span class="line">    <span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">    <span class="comment">&#x27;获取当前激活工作表的最大行数（）</span></span><br><span class="line">    <span class="keyword">Dim</span> maxLineNum</span><br><span class="line">    <span class="comment">&#x27;对话框确定插入行数</span></span><br><span class="line">    <span class="keyword">Dim</span> insertNum <span class="keyword">As</span> <span class="type">Integer</span></span><br><span class="line">    insertNum = InputBox(<span class="string">&quot;输入要插入的行数！&quot;</span>, <span class="string">&quot;输入行数&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="comment">&#x27;解锁（必须要解锁工作表才能够增加行）</span></span><br><span class="line">    currentSheet.Unprotect Password:=<span class="number">123456</span></span><br><span class="line">    <span class="comment">&#x27;循环变量</span></span><br><span class="line">    <span class="keyword">Dim</span> index <span class="keyword">As</span> <span class="type">Integer</span></span><br><span class="line">    <span class="comment">&#x27;循环，在当前激活工作表末尾插入新行</span></span><br><span class="line">    <span class="keyword">For</span> index = <span class="number">1</span> <span class="keyword">To</span> insertNum</span><br><span class="line">        <span class="comment">&#x27;获取当前激活工作表有效行数上限（不含无内容空行）</span></span><br><span class="line">        maxLineNum = WorksheetFunction.CountA(currentSheet.Columns(<span class="number">1</span>))</span><br><span class="line">        currentSheet.Rows(maxLineNum).Insert shift:=xlShiftDown</span><br><span class="line">    <span class="keyword">Next</span></span><br><span class="line">    <span class="comment">&#x27;执行完毕后恢复加锁状态</span></span><br><span class="line">    currentSheet.Protect Password:=<span class="number">123456</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>其他分类</category>
+        <category>Excel</category>
+      </categories>
+      <tags>
+        <tag>VBA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>公式案例合集</title>
+    <url>/undefined/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="INDIRECT-通过字符串或变量引用单元格和区域"><a href="#INDIRECT-通过字符串或变量引用单元格和区域" class="headerlink" title="INDIRECT 通过字符串或变量引用单元格和区域"></a>INDIRECT 通过字符串或变量引用单元格和区域</h2><p><code>INDIRECT(ref_text, [a1])</code></p>
+<blockquote>
+<p>释义：返回由文本字符串指定的引用，可以是单元格，也可以是区域。</p>
+</blockquote>
+<p>参数说明：</p>
+<ul>
+<li>Ref_text，必需。对包含 A1 样式及 R1C1 样式的引用、定义为引用的名称或对单元格的引用作为文本字符串的单元格的引用。如果 <code>ref_text</code> 不是有效的单元格引用, 则间接返回 <code>#REF!</code>；如果 <code>ref_text</code> 引用另一个工作簿（外部引用），则必须打开另一个工作簿。如果源工作簿未打开, 则间接返回 <code>#REF!</code>。注意：Excel Web App 中不支持外部引用；如果 <code>ref_text</code> 引用的单元格区域超出 1048576 的行限制或列限制 16384（XFD）, 则间接返回 <code>#REF!</code> 错误。此行为不同于早于 Microsoft Office Excel 2007 的 Excel 版本, 这将忽略超过的限制并返回值。</li>
+<li>A1，可选。一个逻辑值，用于指定包含在单元格 <code>ref_text</code> 中的引用的类型。如果 a1 为 TRUE 或省略，<code>ref_text</code> 被解释为 A1-样式的引用；如果 a1 为 FALSE，则将 <code>ref_text</code> 解释为 R1C1 样式的引用。</li>
+</ul>
+<p>使用案例：</p>
+<ul>
+<li>可通过变量来构造表名，设 A3 值为 1，C3 值为 sheet，要返回名称 <code>sheet1</code> 表中 <code>E3:E200</code> 区域的引用：<code>=INDIRECT(C3&amp;A3&quot;!E3:E200&quot;)</code>；返回单元格：<code>=INDIRECT(C3&amp;A3&quot;!B1&quot;)</code></li>
+</ul>
+<h2 id="ISNUMBER-判断单元格内容是否为数字"><a href="#ISNUMBER-判断单元格内容是否为数字" class="headerlink" title="ISNUMBER 判断单元格内容是否为数字"></a>ISNUMBER 判断单元格内容是否为数字</h2><p><code>ISNUMBER()</code></p>
+<blockquote>
+<p>释义：如果目标单元格为数值则返回 TRUE，否则 FALSE。</p>
+</blockquote>
+<p>使用案例：</p>
+<ul>
+<li>结合 IF 函数，可使用公式判断单元格值：<code>=IF(ISNUMBER(A1),&quot;是&quot;,&quot;否&quot;)</code></li>
+<li>若要判定文本型数值，需要利用 VALUE() 函数对内容进行数值转换，如果转换成功说明确实为数值；如果出错则说明不是数值。上述公式改为：<code>=IF(ISERROR(VALUE(A1)),&quot;否&quot;,&quot;是&quot;)</code></li>
+</ul>
+<h2 id="LOOKUP-函数中-0-含义解读"><a href="#LOOKUP-函数中-0-含义解读" class="headerlink" title="LOOKUP 函数中 0/ 含义解读"></a>LOOKUP 函数中 <code>0/</code> 含义解读</h2><table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">H</th>
+<th align="center">I</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">编号</td>
+<td align="center">姓名</td>
+<td align="center">销量</td>
+<td align="center">姓名</td>
+<td align="center">销量</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">王东</td>
+<td align="center">66</td>
+<td align="center">王东</td>
+<td align="center">？</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">张三</td>
+<td align="center">56</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">李四</td>
+<td align="center">67</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">王五</td>
+<td align="center">56</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">5</td>
+<td align="center">二三</td>
+<td align="center">33</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">6</td>
+<td align="center">西西</td>
+<td align="center">57</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">7</td>
+<td align="center">南北</td>
+<td align="center">20</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>查询王东的销量，在 I3 输入公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LOOKUP(1,0/(B3:B9=H3),C3:C9)</span><br></pre></td></tr></table></figure>
+
+<p><strong>公式解读</strong></p>
+<p><strong><code>B3:B9=H3</code> 的运算结果</strong></p>
+<ul>
+<li><p>如果 <code>A=B</code>，会返回结果 TRUE，TRUE 在运算中相当于数字 1</p>
+</li>
+<li><p>如果 <code>A&lt;&gt;B</code>，会返回结果 FALSE，FALSE 在运算中相当于数字 0</p>
+</li>
+</ul>
+<p>所以：<code>B3:B9=H3</code> 的运算结果是有 TRUE 和 FALSE 构成的一组值，结果如下图：</p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
+<th align="center">K</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">编号</td>
+<td align="center">姓名</td>
+<td align="center">销量</td>
+<td align="center">姓名</td>
+<td align="center">销量</td>
+<td align="center">(B3:B9&#x3D;H3)的运算结果</td>
+<td align="center">0&#x2F;(B3:B9&#x3D;H3)</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">王东</td>
+<td align="center">66</td>
+<td align="center">王东</td>
+<td align="center">？</td>
+<td align="center">TRUE</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">张三</td>
+<td align="center">56</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">#DIV&#x2F;0!</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">李四</td>
+<td align="center">67</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">#DIV&#x2F;0!</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">王五</td>
+<td align="center">56</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">#DIV&#x2F;0!</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">5</td>
+<td align="center">二三</td>
+<td align="center">33</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">#DIV&#x2F;0!</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">6</td>
+<td align="center">西西</td>
+<td align="center">57</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">#DIV&#x2F;0!</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">7</td>
+<td align="center">南北</td>
+<td align="center">20</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">#DIV&#x2F;0!</td>
+</tr>
+</tbody></table>
+<p><code>0/(B3:B9=H3)</code> 的结果如上图。</p>
+<p><strong>提取所需值原理</strong></p>
+<ul>
+<li><p>LOOKUP 函数查找时可以忽略错误值且，这样一组数值忽略后只剩下一个值 0。</p>
+</li>
+<li><p>LOOKUP 函数当查找的值不存在时，按照小于此值的最大值进行匹配。故设置查找值为 1，从而实现查询的目的。</p>
+</li>
+</ul>
+<blockquote>
+<p>备注：<code>0/</code> 的目的就是把符合条件的值变为 0，不符合条件的变为错误，利用 LOOKUP 函数的特征查找到符合条件的值。</p>
+</blockquote>
+<p><strong>多条件查询</strong></p>
+<p>查询销售员在相应地区的销售额。</p>
+<p>方法：</p>
+<p>在目标单元格中输入公式：<code>=IFERROR(LOOKUP(1,0/((B3:B9=H3)*(E3:E9=I3)),C3:C9),&quot;&quot;)</code></p>
+<p>释义：</p>
+<p>1、原理和单条件查询是一样的。</p>
+<p>2、<code>TRUE*TRUE=1</code>，<code>TRUE*FALSE=0</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
+<th align="center">J</th>
+<th align="center">K</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">编号</td>
+<td align="center">姓名</td>
+<td align="center">销量</td>
+<td align="center">性别</td>
+<td align="center">地区</td>
+<td align="center">姓名</td>
+<td align="center">地区</td>
+<td align="center">销量</td>
+<td align="center">(B3:B9&#x3D;H3)运算结果</td>
+<td align="center">(E3:E9&#x3D;I3)运算结果</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">王东</td>
+<td align="center">66</td>
+<td align="center">男</td>
+<td align="center">北京</td>
+<td align="center">王东</td>
+<td align="center">北京</td>
+<td align="center">？</td>
+<td align="center">TRUE</td>
+<td align="center">TRUE</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">张三</td>
+<td align="center">56</td>
+<td align="center">男</td>
+<td align="center">上海</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">FALSE</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">3</td>
+<td align="center">李四</td>
+<td align="center">67</td>
+<td align="center">女</td>
+<td align="center">苏州</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">FALSE</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">4</td>
+<td align="center">王五</td>
+<td align="center">56</td>
+<td align="center">女</td>
+<td align="center">上海</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">FALSE</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">5</td>
+<td align="center">二三</td>
+<td align="center">33</td>
+<td align="center">男</td>
+<td align="center">天津</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">FALSE</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">6</td>
+<td align="center">西西</td>
+<td align="center">57</td>
+<td align="center">女</td>
+<td align="center">上海</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">FALSE</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">7</td>
+<td align="center">南北</td>
+<td align="center">20</td>
+<td align="center">男</td>
+<td align="center">上海</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">FALSE</td>
+<td align="center">FALSE</td>
+</tr>
+</tbody></table>
+<h2 id="MATCH"><a href="#MATCH" class="headerlink" title="MATCH"></a>MATCH</h2><p><strong>运算方式</strong></p>
+<p>这个函数有三个参数：第一个参数是查找对象，第二参数指定查找的范围或是数组，第三参数为查找的匹配方式。<br>第三参数有三个选项：0、1、-1，分别表示精确匹配、升序查找、降序查找模式。</p>
+<p>例 1：以下公式返回 2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=MATCH(“A”,&#123;“C”,”A”,”B”,”A”,”D”&#125;,0)</span><br></pre></td></tr></table></figure>
+
+<p>第三参数使用 0，表示在第 2 个参数的数组中精确字母 A 第一次出现的位置为 2，不考虑第 2 次出现位置，且第 2 个参数无需排序。</p>
+<p>例 2：以下公式返回 3</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=MATCH(6,&#123;1,3,5,7&#125;,1)</span><br></pre></td></tr></table></figure>
+
+<p>第三参数使用 1，（也可省略），其中第 2 个参数的数组要求按升序排列，并查找出小于或等于 6 的最大值（即数组中的 5）在第 3 个元素位置。</p>
+<p>例 3：以下公式返回 2。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=MATCH(8,&#123;11,9,6,5,3,1&#125;,-1)</span><br></pre></td></tr></table></figure>
+
+<p>其中第 2 个参数的数组要求按降序排列，并查找出大于或等于 8 的最小值（即数组中的 9）在第 2 个元素位置。</p>
+<p><strong>MATCH 函数与 INDEX</strong></p>
+<p>函数逆向查询</p>
+<p>由于实际应用中，只要求返回位置的问题不多，好像 MATCH 函数一时派不上用场了。其实这个函数更多的时候，是与其他引用类函数组合应用，最典型的使用是与 INDEX 函数组合，能够完成类似 VLOOKUP 函数和 HLOOKUP 函数的查找功能，并且可以实现逆向查询，即从左向右或是从下向上查询。</p>
+<p>如下图所示，需要根据 E 列的姓名在 A 列查询对应的部门。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">部门</td>
+<td align="center">姓名</td>
+<td align="center"></td>
+<td align="center">部门</td>
+<td align="center">姓名</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">财务部</td>
+<td align="center">小兰</td>
+<td align="center"></td>
+<td align="center">？</td>
+<td align="center">小美</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">销售部</td>
+<td align="center">小翠</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">采购部</td>
+<td align="center">小美</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">人资部</td>
+<td align="center">小花</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">安监部</td>
+<td align="center">小青</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">质保部</td>
+<td align="center">小丽</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">仓储部</td>
+<td align="center">小芳</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>这种逆向查询的数据可以使用 LOOKUP 函数，用 INDEX+MATCH 函数实现的方法。D2 单元格输入以下公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=INDEX(A:A,MATCH(E2,B:B,))</span><br></pre></td></tr></table></figure>
+
+<p>返回查询结果为采购部。</p>
+<p>INDEX 函数是常用的引用类函数之一，可以在一个区域引用或数组范围中，根据指定的行号和列号来返回一个值。</p>
+<p><code>MATCH(E2,B:B,)</code> 部分，第三参数简写，表示使用 0，即精确匹配方式查询 E2 单元格姓名 <code>小美</code> 在 B 列的位置，结果为 4。计算结果用作 INDEX 函数的参数，INDEX 函数再根据指定的行号返回 A 列中对应的值。</p>
+<p>使用 INDEX 函数和 MATCH 函数的组合应用来查询数据，公式看似相对复杂一些，但在实际应用中，更加灵活多变。</p>
+<p><strong>1、查找首次出现的位置</strong></p>
+<p>除了使用特定的值作为查询参数，也可以使用逻辑值进行查询。以下图为例，是某公司的销售数据。需要查询首次超过平均销售额的月份。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">月份</td>
+<td align="center">销售额</td>
+<td align="center"></td>
+<td align="center">首次超过平均销售额的月份</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">一月</td>
+<td align="center">855</td>
+<td align="center"></td>
+<td align="center">？</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">二月</td>
+<td align="center">827</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">三月</td>
+<td align="center">893</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">四月</td>
+<td align="center">899</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">五月</td>
+<td align="center">895</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">六月</td>
+<td align="center">921</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">七月</td>
+<td align="center">897</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">八月</td>
+<td align="center">932</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">九月</td>
+<td align="center">943</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">十月</td>
+<td align="center">910</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">十一月</td>
+<td align="center">821</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">十二月</td>
+<td align="center">951</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>D2 单元格使用以下数组公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=INDEX(A2:A13,MATCH(TRUE,B2:B13&gt;AVERAGE(B2:B13),))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>数组公式要按 Shift+Ctrl+Enter 组合键</p>
+</blockquote>
+<p>计算过程：</p>
+<ul>
+<li><code>AVERAGE(B2:B13)</code>部分，用来计算出 <code>B2:B13</code> 单元格的平均值 895.33。</li>
+<li><code>B2:B13&gt;AVERAGE(B2:B13)</code>部分，用 <code>B2:B13</code> 与平均值分别作比较，得到由逻辑值 TRUE 或是 FALSE 组成的内存数组：<code>&#123;FALSE;FALSE;FALSE;TRUE;FALSE;FALSE;TRUE;FALSE;TRUE;TRUE;TRUE;TRUE;FALSE;TRUE&#125;</code></li>
+<li>MATCH 函数第一参数使用逻辑值 TRUE，使用精确匹配方式查询 TRUE 在数组中第一次出现的位置，结果为 4。本例中的第一参数也可以写成 <code>1=1</code>，返回逻辑值 TRUE，与直接使用 TRUE 效果相同。</li>
+<li>MATCH 函数的计算结果用作 INDEX 函数的参数，INDEX 函数再根据指定的行号返回 A 列中对应的月份。</li>
+</ul>
+<p><strong>2、查找最后一次出现的位置</strong></p>
+<p>除了查询首次出现的位置，MATCH 函数还可以查询最后一次出现的位置。以下图为例，需要查询最后次超过平均销售额的月份。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">月份</td>
+<td align="center">销售额</td>
+<td align="center"></td>
+<td align="center">最后一次超过平均销售额的月份</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">一月</td>
+<td align="center">855</td>
+<td align="center"></td>
+<td align="center">？</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">二月</td>
+<td align="center">827</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">三月</td>
+<td align="center">893</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">四月</td>
+<td align="center">899</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">五月</td>
+<td align="center">895</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">六月</td>
+<td align="center">921</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">七月</td>
+<td align="center">897</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">八月</td>
+<td align="center">932</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">九月</td>
+<td align="center">892</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">十月</td>
+<td align="center">864</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">十一月</td>
+<td align="center">821</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">十二月</td>
+<td align="center">843</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>D2 单元格使用以下数组公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=INDEX(A2:A13,MATCH(1,0/(B2:B13&gt;AVERAGE(B2:B13))))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>数组公式要按 Shift+Ctrl+Enter 组合键</p>
+</blockquote>
+<p>计算过程：</p>
+<ul>
+<li>先使用 AVERAGE 函数计算出 <code>B2:B13</code> 单元格的平均值。</li>
+<li>再用 <code>B2:B13</code> 与平均值分别作比较，得到由逻辑值 TRUE 或是 FALSE 组成的内存数组。用 0 除以这个内存数组，返回以下结果：&#96;</li>
+</ul>
+]]></content>
+      <categories>
+        <category>其他分类</category>
+        <category>Excel</category>
+      </categories>
+      <tags>
+        <tag>公式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AtomicInteger-用法</title>
     <url>/ef12ce01-4937-11ee-861d-b3cf05b530a5/</url>
     <content><![CDATA[<blockquote>
@@ -6109,8 +6796,121 @@ End 	Fn + →
         <category>后端技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>springboot</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot 整合 Aop</title>
+    <url>/d2d3a3f0-ef58-11ee-9bca-69dcfb906dc3/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><p>1）环境</p>
+<ul>
+<li>gradle-8.5</li>
+<li>Amazon Corretto 17.0.4_9</li>
+<li><code>id &#39;org.springframework.boot&#39; version &#39;3.2.3&#39;</code></li>
+<li><code>id &#39;io.spring.dependency-management&#39; version &#39;1.1.4&#39;</code></li>
+</ul>
+<p>2）添加依赖</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">implementation <span class="string">&#x27;org.springframework.boot:spring-boot-starter-aop&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-理论概念"><a href="#2-理论概念" class="headerlink" title="2 理论概念"></a>2 理论概念</h2><ul>
+<li>切面（Aspect）：切入点和通知的集合</li>
+<li>连接点（Joinpoint）：目标对象中可以被增强的所有方法</li>
+<li>通知（Advice）：增强的代码（逻辑），分为前置，后置，最终，异常，环绕</li>
+<li>切入点（Pointcut）：目标对象中经过匹配最终增强的方法</li>
+<li>引入（Introduction）：动态的为某个类增加和减少方法</li>
+<li>目标对象（Target Object）：被代理的对象</li>
+<li>AOP 代理对象（AOP Proxy）：AOP 框架创建的代理对象，用于实现切面，调用方法</li>
+<li>织入（Weaving）：将通知应用到切入点的过程</li>
+</ul>
+<p>@Pointcut 注解是 Spring AOP（面向切面编程）中的一个关键组成部分，它允许开发人员定义可重用的切入点表达式，这些表达式可以被多个通知（Advice）引用。</p>
+<p>1）定义切入点表达式： 在包含 @Aspect 注解的类内部，使用 @Pointcut 注解定义一个方法，并在注解值中提供一个切入点表达式。这个表达式用于匹配满足特定条件的方法执行点。</p>
+<p>2）定义通知（Advice）： 在包含 @Aspect 注解的类内部，使用 @Before、@After、@AfterReturning、@AfterThrowing、@Around 注解定义一个通知（Advice），并在注解值中提供一个切入点表达式。通知（Advice）用于在方法执行前、后、返回值、异常抛出时执行特定的代码。</p>
+<p>3）通知类型：</p>
+<ul>
+<li>@Before(前置通知)： 在目标方法执行前执行的通知。</li>
+<li>@After(最终通知)： 不管目标方法是否正常执行完成（即无论是否有异常抛出），都会在目标方法执行后执行的通知。</li>
+<li>@AfterReturning (后置通知&#x2F;正常返回通知)： 在目标方法正常执行完毕并返回后执行的通知。可以访问到方法的返回值。</li>
+<li>@AfterThrowing(抛出异常通知)： 当目标方法抛出异常后执行的通知，可以访问到抛出的异常对象。</li>
+<li>@Around (环绕通知)： 最强大的通知类型，它可以完全控制目标方法的执行流程。可以在方法调用前后插入自定义行为，并决定何时以及是否执行目标方法。</li>
+</ul>
+<p>4）切入点表达式语法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Pointcut(&quot;execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern?)&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">myPointcutDefinition</span><span class="params">()</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>execution 切点表达式使用较多，支持的通配符：</p>
+<ul>
+<li><code>*</code>：匹配所有</li>
+<li><code>..</code>：匹配多级包或者多个参数</li>
+<li><code>+</code>表示类以及子类</li>
+</ul>
+<p>其他部分：</p>
+<ul>
+<li>execution: 关键字，表示这是一个执行切点表达式。</li>
+<li>modifiers-pattern: 可选，方法的修饰符，比如 public、protected、<code>*</code>（任意修饰符）等。</li>
+<li>return-type-pattern: 必须，方法的返回类型，可以是具体的类型，也可以是通配符 <code>*</code>（表示任意类型）或 ..（表示任意数量的任意类型参数）。</li>
+<li>declaring-type-pattern: 可选，方法所在的类或接口的全限定名，可以使用 <code>*</code> 或 .. 通配符。</li>
+<li>method-name-pattern: 必须，方法名称，可以是具体的名称，也可以使用通配符 <code>*</code> 匹配任意名称。</li>
+<li>param-pattern: 必须，方法的参数列表，格式为 (paramType1, paramType2, …)，每个参数类型可以是具体类型、<code>*</code> 或 ..。</li>
+<li>throws-pattern: 可选，方法声明抛出的异常类型列表，格式为 throws ExceptionType1, ExceptionType2, …。</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 匹配 com.example包及其子包下所有类的公共方法</span></span><br><span class="line"><span class="meta">@Pointcut(&quot;execution(public * com.example..*(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">anyPublicMethodInComExample</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 匹配 com.example.service包下的 UserService 类的所有方法</span></span><br><span class="line"><span class="meta">@Pointcut(&quot;execution(* com.example.service.UserService.*(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">userServiceMethods</span><span class="params">()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 匹配返回类型为void且方法名为process的任意方法</span></span><br><span class="line"><span class="meta">@Pointcut(&quot;execution(void process(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">voidProcessMethods</span><span class="params">()</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其他切点表达式：</p>
+<ul>
+<li><p>within - 匹配方法所在的包或者类</p>
+</li>
+<li><p>this - 用于向通知方法中传入代理对象的引用</p>
+</li>
+<li><p>target - 用于向通知方法中传入目标对象的引用</p>
+</li>
+<li><p>args - 用于向通知方法中传入参数，并且匹配参数个数</p>
+</li>
+<li><p>@args - 和 args 都是匹配参数，但是@args 要求传入切入点的参数必须标注指定注解，且不能是 SOURCE 源码注解，比如 Lombok 的</p>
+</li>
+<li><p>@within - 匹配加了某个注解的类中的所有方法</p>
+</li>
+<li><p>@target - 与@within 类似，但是要求标注到类上的注解，必须为 RUNTIME 的</p>
+</li>
+<li><p>@annotation - 匹配加了某个注解的方法</p>
+</li>
+<li><p>bean 通过 spring 容器中的 beName 匹配，可以使用通配符*来标识以什么开头，以什么结尾</p>
+</li>
+</ul>
+<p>5）通知（Advice）执行顺序：</p>
+<ul>
+<li>@Before：先执行 @Before 通知，再执行切入点表达式匹配的方法。</li>
+<li>@AfterReturning：先执行切入点表达式匹配的方法，再执行 @AfterReturning 通知。</li>
+<li>@AfterThrowing：先执行切入点表达式匹配的方法，再执行 @AfterThrowing 通知。</li>
+<li>@After：先执行切入点表达式匹配的方法，再执行 @After 通知。</li>
+<li>@Around：先执行 @Around 通知，再执行切入点表达式匹配的方法，最后执行 @After 通知。</li>
+</ul>
+<h2 id="3-案例"><a href="#3-案例" class="headerlink" title="3 案例"></a>3 案例</h2><h3 id="3-1-日志记录功能"><a href="#3-1-日志记录功能" class="headerlink" title="3.1 日志记录功能"></a>3.1 日志记录功能</h3><p>实现一个日志记录功能，要求记录用户的所有请求信息，包括请求方法、请求路径、请求参数、请求体、请求头、响应状态码、响应体等。</p>
+<p>1）创建日志记录切面类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogAspect</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">LOGGER</span> <span class="operator">=</span> LoggerFactory.getLogger(LogAspect.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(public * com.example.controller.*.*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">logPointcut</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(&quot;logPointcut()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doBefore</span><span class="params">(JoinPoint joinPoint)</span> &#123;</span><br><span class="line">        LOGGER.info(<span class="string">&quot;Request: &#123;&#125; &#123;&#125;&quot;</span>, joinPoint.getSignature().getName(), joinPoint.getArgs());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterReturning(pointcut = &quot;logPointcut()&quot;, returning = &quot;result&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterReturning</span><span class="params">(Object result)</span> &#123;</span><br><span class="line">        LOGGER.info(<span class="string">&quot;Response: &#123;&#125;&quot;</span>, result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterThrowing(pointcut = &quot;logPointcut()&quot;, throwing = &quot;e&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterThrowing</span><span class="params">(Throwable e)</span> &#123;</span><br><span class="line">        LOGGER.error(<span class="string">&quot;Exception: &#123;&#125;&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2）配置日志记录切面类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAspectJAutoProxy</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogConfig</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3）测试</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/test&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;test&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-运行时间统计"><a href="#3-2-运行时间统计" class="headerlink" title="3.2 运行时间统计"></a>3.2 运行时间统计</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RunTimeAop</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义切入点，匹配所有Service层的方法</span></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(* server.services..*(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">businessServiceMethods</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在方法执行前记录开始计时</span></span><br><span class="line">    <span class="meta">@Around(&quot;businessServiceMethods()&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">logTime</span><span class="params">(ProceedingJoinPoint pjp)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取方法签名和参数</span></span><br><span class="line">        <span class="type">MethodSignature</span> <span class="variable">signature</span> <span class="operator">=</span> (MethodSignature) pjp.getSignature();</span><br><span class="line">        <span class="type">Method</span> <span class="variable">method</span> <span class="operator">=</span> signature.getMethod();</span><br><span class="line">        Object[] args = pjp.getArgs();</span><br><span class="line"></span><br><span class="line">        <span class="type">StopWatch</span> <span class="variable">stopWatch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StopWatch</span>();</span><br><span class="line">        stopWatch.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 执行目标方法</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> pjp.proceed();</span><br><span class="line"></span><br><span class="line">        stopWatch.stop();</span><br><span class="line"></span><br><span class="line">        Spliterator&lt;Object&gt; spliterator = Arrays.spliterator(args);</span><br><span class="line">        Stream&lt;Object&gt; stream = StreamSupport.stream(spliterator, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (args.length &gt; <span class="number">0</span> &amp;&amp; !Objects.isNull(result)) &#123;</span><br><span class="line">            <span class="comment">// 合并参数</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">combinedJsonString</span> <span class="operator">=</span> stream.flatMap(element -&gt; &#123;</span><br><span class="line">                        <span class="keyword">if</span> (element <span class="keyword">instanceof</span> Map) &#123;</span><br><span class="line">                            Map&lt;String, String&gt; map = (Map&lt;String, String&gt;) element;</span><br><span class="line">                            <span class="keyword">return</span> map.entrySet().stream()</span><br><span class="line">                                    .map(entry -&gt; <span class="string">&quot;\&quot;&quot;</span> + entry.getKey() + <span class="string">&quot;\&quot;: \&quot;&quot;</span> + entry.getValue() + <span class="string">&quot;\&quot;&quot;</span>);</span><br><span class="line">                        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                            <span class="keyword">return</span> Stream.of(<span class="string">&quot;\&quot;&quot;</span> + element + <span class="string">&quot;\&quot;&quot;</span>);</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="keyword">return</span> Stream.empty();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .collect(Collectors.joining(<span class="string">&quot;,&quot;</span>, <span class="string">&quot;[&quot;</span>, <span class="string">&quot;]&quot;</span>));</span><br><span class="line"></span><br><span class="line">            System.out.printf(<span class="string">&quot;%s实际执行时间= %sms 随机时间= %sms 参数列表：%s%n&quot;</span>, method.getName(), stopWatch.getTotalTimeMillis(), result, combinedJsonString);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%s实际执行时间= %sms%n&quot;</span>, method.getName(), stopWatch.getTotalTimeMillis());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AopServiceIntMapParams</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">readFakeData</span><span class="params">(Map&lt;String, String&gt; params,String type)</span> <span class="keyword">throws</span> InterruptedException, JsonProcessingException &#123;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">timeout</span> <span class="operator">=</span> random.nextInt(<span class="number">701</span>) + <span class="number">50</span>;</span><br><span class="line">        TimeUnit.MILLISECONDS.sleep(timeout);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">jsonString</span> <span class="operator">=</span> objectMapper.writeValueAsString(params);</span><br><span class="line">        System.out.println(jsonString);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> timeout;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AopServiceVoidNoParams</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readFakeData2</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, JsonProcessingException &#123;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">timeout</span> <span class="operator">=</span> random.nextInt(<span class="number">701</span>) + <span class="number">50</span>;</span><br><span class="line">        TimeUnit.MILLISECONDS.sleep(timeout);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>springboot</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -6718,8 +7518,8 @@ End 	Fn + →
         <category>后端技术</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>springboot</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>

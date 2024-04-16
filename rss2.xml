@@ -15,8 +15,78 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 31 Mar 2024 12:23:44 GMT</pubDate>
+    <pubDate>Tue, 16 Apr 2024 08:47:05 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>公式案例合集</title>
+      <link>http://www.dcheng.site/undefined/</link>
+      <guid>http://www.dcheng.site/undefined/</guid>
+      <pubDate>Tue, 16 Apr 2024 08:40:59 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%85%B6%E4%BB%96%E5%88%86%E7%B1%BB/">其他分类</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%85%B6%E4%BB%96%E5%88%86%E7%B1%BB/Excel/">Excel</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/%E5%85%AC%E5%BC%8F/">公式</category>
+      
+      
+      <comments>http://www.dcheng.site/undefined/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>VBA 案例片段合集</title>
+      <link>http://www.dcheng.site/undefined/</link>
+      <guid>http://www.dcheng.site/undefined/</guid>
+      <pubDate>Tue, 16 Apr 2024 08:37:17 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%85%B6%E4%BB%96%E5%88%86%E7%B1%BB/">其他分类</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%85%B6%E4%BB%96%E5%88%86%E7%B1%BB/Excel/">Excel</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/VBA/">VBA</category>
+      
+      
+      <comments>http://www.dcheng.site/undefined/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>win10 mstsc 远程连接失败</title>
+      <link>http://www.dcheng.site/undefined/</link>
+      <guid>http://www.dcheng.site/undefined/</guid>
+      <pubDate>Tue, 16 Apr 2024 06:44:52 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/mstsc/">mstsc</category>
+      
+      
+      <comments>http://www.dcheng.site/undefined/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>修复 idea 使用 gradle 构建出错时乱码</title>
@@ -33,9 +103,9 @@
       <category domain="http://www.dcheng.site/categories/%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">通用技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/idea/">idea</category>
-      
       <category domain="http://www.dcheng.site/tags/gradle/">gradle</category>
+      
+      <category domain="http://www.dcheng.site/tags/idea/">idea</category>
       
       
       <comments>http://www.dcheng.site/d2d3cb00-ef58-11ee-9bca-69dcfb906dc3/#disqus_thread</comments>
@@ -57,9 +127,9 @@
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/java/">java</category>
-      
       <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
       
       
       <comments>http://www.dcheng.site/d2d3a3f0-ef58-11ee-9bca-69dcfb906dc3/#disqus_thread</comments>
@@ -509,9 +579,9 @@
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/java/">java</category>
-      
       <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
       
       
       <comments>http://www.dcheng.site/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/#disqus_thread</comments>
@@ -669,9 +739,9 @@
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
       
-      <category domain="http://www.dcheng.site/tags/java/">java</category>
-      
       <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
+      
+      <category domain="http://www.dcheng.site/tags/java/">java</category>
       
       
       <comments>http://www.dcheng.site/d27a8f70-9bfe-11ee-a92b-05e08d68d559/#disqus_thread</comments>
