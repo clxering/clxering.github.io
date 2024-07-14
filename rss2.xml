@@ -15,8 +15,30 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 07 Jul 2024 08:18:56 GMT</pubDate>
+    <pubDate>Sun, 14 Jul 2024 00:43:24 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>微软输入法直接输出方括号等标点符号</title>
+      <link>http://www.dcheng.site/e176eb10-4179-11ef-95e8-1935eab13c7a/</link>
+      <guid>http://www.dcheng.site/e176eb10-4179-11ef-95e8-1935eab13c7a/</guid>
+      <pubDate>Sun, 14 Jul 2024 00:27:50 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/">系统和工具配置</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      
+      <comments>http://www.dcheng.site/e176eb10-4179-11ef-95e8-1935eab13c7a/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>win11 右键菜单风格修改</title>

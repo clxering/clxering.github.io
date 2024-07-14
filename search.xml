@@ -2621,6 +2621,27 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>微软输入法直接输出方括号等标点符号</title>
+    <url>/e176eb10-4179-11ef-95e8-1935eab13c7a/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>以直角引号 <code>「」</code> 为例：</p>
+<p>1）确定 <code>u模式</code> 开启：设置 → 时间和语言 → 语言和区域 → 中文(简体, 中国) → 语言选项 → 键盘 → 微软拼音 → 键盘选项 → 高级 → U 模式输入</p>
+<p>2）在中文状态下键入 <code>uu</code>，此时弹出提示框内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">U模式输入。支持符号(uudw:单位，uuxh:序号，uuts:特殊，uubd:标点，uusx:数学，uujh:几何，uuzm:字母)输入。</span><br></pre></td></tr></table></figure>
+
+<p>3）根据提示继续输入 <code>bd</code> 构成 <code>uubd</code>，即可进入选择，翻页找到直角引号 <code>「」</code></p>
+]]></content>
+      <categories>
+        <category>系统和工具配置</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GitHub 中使用 issues 模版和 pull request 模版</title>
     <url>/2d5fb050-cd69-11ee-be69-4dedf56c58bd/</url>
     <content><![CDATA[<blockquote>
@@ -3348,23 +3369,6 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>修复 idea 使用 gradle 构建出错时乱码</title>
-    <url>/d2d3cb00-ef58-11ee-9bca-69dcfb906dc3/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<p>依次进入：菜单栏「Help」 -&gt;「Edit Custom VM Options」 -&gt; 追加 <code>-Dfile.encoding=UTF-8</code> 到末尾 -&gt; 重启 IDEA</p>
-]]></content>
-      <categories>
-        <category>通用技术</category>
-      </categories>
-      <tags>
-        <tag>gradle</tag>
-        <tag>idea</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用多个-SSH-公钥连接多个-GitHub-远程仓库</title>
     <url>/58865c53-2a1e-11ee-846a-89c1529ebdf1/</url>
     <content><![CDATA[<blockquote>
@@ -3426,6 +3430,23 @@ End 	Fn + →
       <tags>
         <tag>github</tag>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修复 idea 使用 gradle 构建出错时乱码</title>
+    <url>/d2d3cb00-ef58-11ee-9bca-69dcfb906dc3/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<p>依次进入：菜单栏「Help」 -&gt;「Edit Custom VM Options」 -&gt; 追加 <code>-Dfile.encoding=UTF-8</code> 到末尾 -&gt; 重启 IDEA</p>
+]]></content>
+      <categories>
+        <category>通用技术</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+        <tag>idea</tag>
       </tags>
   </entry>
   <entry>
@@ -4286,149 +4307,6 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>使用-github+Action-部署-Hexo-博客</title>
-    <url>/5886f892-2a1e-11ee-846a-89c1529ebdf1/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为便于叙述，统一说明如下：</p>
-<ul>
-<li>博客 github 源码仓库默认分支为 main，ssh 地址：<code>git@github.com:username/blog.git</code></li>
-<li><code>username.github.io</code>：博客部署仓库，默认分支为 main</li>
-<li><code>hexo_deploy</code>：本地私钥文件</li>
-<li>&#96;hexo_deploy.pub：本地公钥文件</li>
-<li>主题以 NexT 8.13.2 为例</li>
-</ul>
-<blockquote>
-<p>本地 hexo 安装、主题部署流程较简单，步骤省略。</p>
-</blockquote>
-<h2 id="1、配置本地博客源代码库"><a href="#1、配置本地博客源代码库" class="headerlink" title="1、配置本地博客源代码库"></a>1、配置本地博客源代码库</h2><p>在本地博客源代码仓库根目录 <code>_config.yml</code> 文件中增加如下部署配置：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：github 目前仅允许 ssh 提交，部署仓库必须为 ssh 地址</p>
-</blockquote>
-<h2 id="2、配置专用密钥对"><a href="#2、配置专用密钥对" class="headerlink" title="2、配置专用密钥对"></a>2、配置专用密钥对</h2><p>本地重新生成一组密钥对，如 <code>hexo_deploy.pub</code> 与 <code>hexo_deploy</code>。私钥配置到 github 源码仓库的 <code>repository secret</code>，公钥配置到 <code>username.github.io</code> 部署仓库的 <code>Deploy keys</code>。该密钥对专用于「源码仓库」与「部署仓库」之间的 Action 自动部署。</p>
-<blockquote>
-<p>github 源码库新建后即可配置：依次进入 <code>Settings -&gt; Secrets -&gt; Actions -&gt; New repository secret</code>，名称取 <code>HEXO_DEPLOY_SECRET</code>，值取自 <code>hexo_deploy</code> 内容；<code>username.github.io.git</code> 部署仓库配置步骤略。</p>
-</blockquote>
-<p>也可以拿用户公钥 <code>SSH keys</code>（可访问全部仓库）及其对应的私钥完成该步骤，但是用户公钥不一致时（比如办公室和家里使用的用户公钥不同，除非复制同一份密钥对），Action 自动部署的私钥也要更改，使用专用密钥对可避免这个问题。</p>
-<h2 id="3、创建-Action"><a href="#3、创建-Action" class="headerlink" title="3、创建 Action"></a>3、创建 Action</h2><p>在本地博客源代码库根目录下创建 <code>.github/workflows/deploy.yml</code> 文件，参考内容如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">hexo-blog-deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">username</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="string">username@gmail.com</span></span><br><span class="line">  <span class="attr">DEPLOY_REPO:</span> <span class="string">username/username.github.io</span></span><br><span class="line">  <span class="attr">DEPLOY_BRANCH:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build</span> <span class="string">on</span> <span class="string">node</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span> <span class="string">and</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.os</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">os:</span> [<span class="string">ubuntu-latest</span>]</span><br><span class="line">        <span class="attr">node_version:</span> [<span class="number">19.</span><span class="string">x</span>]</span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">deploy</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configuration</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_SECRET:</span> <span class="string">$&#123;&#123;secrets.HEXO_DEPLOY_SECRET&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sudo timedatectl set-timezone &quot;Asia/Shanghai&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">          <span class="comment"># 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).</span></span><br><span class="line">          <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;$HEXO_DEPLOY_SECRET&quot;</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 设置用户名和邮箱，否则提示 Please tell me who you are.</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">$GIT_USER</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">$GIT_EMAIL</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string">          npm install hexo-deployer-git --save</span></span><br><span class="line"><span class="string">          # 全局搜索插件</span></span><br><span class="line"><span class="string">          npm install hexo-generator-searchdb --save</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4、常用命令"><a href="#4、常用命令" class="headerlink" title="4、常用命令"></a>4、常用命令</h2><ul>
-<li>本地启动：<code>hexo s</code></li>
-<li>清除缓存：<code>hexo clean</code></li>
-<li>新建草稿：<code>hexo new draft &lt;filename&gt;</code></li>
-<li>发布草稿：<code>hexo publish [layout] &lt;filename&gt;</code></li>
-</ul>
-<h2 id="5、其他"><a href="#5、其他" class="headerlink" title="5、其他"></a>5、其他</h2><h2 id="（可选）部署留言栏-Utterances"><a href="#（可选）部署留言栏-Utterances" class="headerlink" title="（可选）部署留言栏 Utterances"></a>（可选）部署留言栏 Utterances</h2><p>安装 github 应用： <code>https://github.com/apps/utterances</code></p>
-<p>next 最新版本已经集成 Utterances，因此不需要复制安装完成后的模板，直接在主题文件根目录下设置 <code>_config.yml</code> 文件即可：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">username/username.github.io</span> <span class="comment"># Github repository owner and name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">pathname</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="（可选）部署留言栏-giscus"><a href="#（可选）部署留言栏-giscus" class="headerlink" title="（可选）部署留言栏 giscus"></a>（可选）部署留言栏 giscus</h2><p>进入官网（<code>https://giscus.app/</code>）可拿到一段已经填充配置内容的 <code>&lt;script&gt;</code> 标签：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;https://giscus.app/client.js&quot;</span><br><span class="line">    data-repo=&quot;[在此输入仓库]&quot;</span><br><span class="line">    data-repo-id=&quot;[在此输入仓库 ID]&quot;</span><br><span class="line">    data-category=&quot;[在此输入分类名]&quot;</span><br><span class="line">    data-category-id=&quot;[在此输入分类 ID]&quot;</span><br><span class="line">    data-mapping=&quot;pathname&quot;</span><br><span class="line">    data-strict=&quot;0&quot;</span><br><span class="line">    data-reactions-enabled=&quot;1&quot;</span><br><span class="line">    data-emit-metadata=&quot;0&quot;</span><br><span class="line">    data-input-position=&quot;bottom&quot;</span><br><span class="line">    data-theme=&quot;preferred_color_scheme&quot;</span><br><span class="line">    data-lang=&quot;zh-CN&quot;</span><br><span class="line">    crossorigin=&quot;anonymous&quot;</span><br><span class="line">    async&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果要在每一篇文章后添加评论功能，以 next 主题为例，仅供参考。进入 <code>themes/next/layout/_macro/post.njk</code> 文件，找到模板中「文章末尾」（注释标志为 <code>END POST BODY</code>，如下所示），将上述片段加入。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;#####################&#125;</span><br><span class="line">&#123;### <span class="variable constant_">END</span> <span class="variable constant_">POST</span> <span class="variable constant_">BODY</span> ###&#125;</span><br><span class="line">&#123;#####################&#125;</span><br><span class="line">&lt;footer <span class="keyword">class</span>=<span class="string">&quot;post-footer&quot;</span>&gt;</span><br><span class="line">  &#123;%- <span class="keyword">if</span> is_index %&#125;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-eof&quot;</span> style=<span class="string">&quot;margin:20px auto 20px;width:100%;background: transparent;border-top: 1px solid #e2e0e0&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;&#123;- <span class="title function_">next_inject</span>(<span class="string">&#x27;postBodyEnd&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">reward_settings</span>.<span class="property">enable</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-reward.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">creative_commons</span>.<span class="property">license</span> and theme.<span class="property">creative_commons</span>.<span class="property">post</span> and post.<span class="property">copyright</span> !== <span class="literal">false</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-copyright.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">follow_me</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-followme.njk&#x27;</span>, &#123;&#125;, &#123;<span class="attr">cache</span>: theme.<span class="property">cache</span>.<span class="property">enable</span>&#125;) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line">    &#123;###   add giscus  ###&#125;</span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line"></span><br><span class="line">    &lt;script src=<span class="string">&quot;https://giscus.app/client.js&quot;</span></span><br><span class="line">        data-repo=<span class="string">&quot;[在此输入仓库]&quot;</span></span><br><span class="line">        data-repo-id=<span class="string">&quot;[在此输入仓库 ID]&quot;</span></span><br><span class="line">        data-category=<span class="string">&quot;[在此输入分类名]&quot;</span></span><br><span class="line">        data-category-id=<span class="string">&quot;[在此输入分类 ID]&quot;</span></span><br><span class="line">        data-mapping=<span class="string">&quot;pathname&quot;</span></span><br><span class="line">        data-strict=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-reactions-enabled=<span class="string">&quot;1&quot;</span></span><br><span class="line">        data-emit-metadata=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-input-position=<span class="string">&quot;bottom&quot;</span></span><br><span class="line">        data-theme=<span class="string">&quot;preferred_color_scheme&quot;</span></span><br><span class="line">        data-lang=<span class="string">&quot;zh-CN&quot;</span></span><br><span class="line">        crossorigin=<span class="string">&quot;anonymous&quot;</span></span><br><span class="line">        <span class="keyword">async</span>&gt;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">tags</span> and post.<span class="property">tags</span>.<span class="property">length</span> %&#125;</span><br><span class="line">      &#123;%- set tag_indicate = <span class="string">&#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;</span> <span class="keyword">if</span> theme.<span class="property">tag_icon</span> <span class="keyword">else</span> <span class="string">&#x27;#&#x27;</span> %&#125;</span><br><span class="line">      &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-tags&quot;</span>&gt;</span><br><span class="line">        &#123;%- <span class="keyword">for</span> tag <span class="keyword">in</span> post.<span class="property">tags</span>.<span class="title function_">toArray</span>() %&#125;</span><br><span class="line">          &lt;a href=<span class="string">&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot;</span> rel=<span class="string">&quot;tag&quot;</span>&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.<span class="property">name</span> &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="（可选）部署域名"><a href="#（可选）部署域名" class="headerlink" title="（可选）部署域名"></a>（可选）部署域名</h2><p>参考官方文档：<a href="%60https://docs.github.com/cn/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages%60">验证用户站点的域</a></p>
-<blockquote>
-<p>注意：需要在 blog 源代码库 source 目录下放置 CNAME 文件。之后步骤按官方文档进行</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改 mac 的 MAC 地址</title>
-    <url>/931e2910-e409-11ee-86b7-fb4c7634711e/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="1-解决方案"><a href="#1-解决方案" class="headerlink" title="1 解决方案"></a>1 解决方案</h2><p>1）打开终端，输入 <code>openssl rand -hex 6 | sed &#39;s/\(..\)/\1:/g; s/.$//&#39;</code> 生成一个 MAC 地址</p>
-<p>2）断开网卡连接，会要求输入密码。</p>
-<p><code>sudo /System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -z</code></p>
-<p>3）修改网卡地址，例如 en0：<code>sudo ifconfig en0 ether xx:xx:xx:xx:xx:xx</code></p>
-<p>4）重连网卡，可能会要求输入密码：<code>networksetup -detectnewhardware</code></p>
-<p>5）验证 MAC 地址是否修改成功：<code>ifconfig</code></p>
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>mac</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在win10+vscode+anaconda3+python3.11.3独立环境部署pytorch2.0.1+cuda11.8</title>
-    <url>/148d4630-44e0-11ee-bc05-f9725afef782/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<p>该方式不用提前安装 vs2015_runtime 运行时以及 cuda、cudnn，在执行 pytorch 官网的命令后已经全部带有。因此，可在独立环境中同时存在多个版本的 cuda 或者 pytorch cpu 版本。</p>
-<h2 id="1、确定可支持-CUDA-版本"><a href="#1、确定可支持-CUDA-版本" class="headerlink" title="1、确定可支持 CUDA 版本"></a>1、确定可支持 CUDA 版本</h2><p>打开 NVIDIA Control Panel（NVIDIA 控制面板），点击左下角「系统信息」，在「组件」标签页查看支持的最高版本，如图所示：</p>
-<p><img src="/148d4630-44e0-11ee-bc05-f9725afef782/%E5%9B%BE1-%E7%A1%AE%E5%AE%9A%E5%8F%AF%E6%94%AF%E6%8C%81CUDA%E7%89%88%E6%9C%AC.png" alt="图1-确定可支持CUDA版本"></p>
-<h2 id="2、在-https-pytorch-org-查看-pytorch-支持的最高-CUDA-版本"><a href="#2、在-https-pytorch-org-查看-pytorch-支持的最高-CUDA-版本" class="headerlink" title="2、在 https://pytorch.org/ 查看 pytorch 支持的最高 CUDA 版本"></a>2、在 <a href="https://pytorch.org/">https://pytorch.org/</a> 查看 pytorch 支持的最高 CUDA 版本</h2><p><img src="/148d4630-44e0-11ee-bc05-f9725afef782/%E5%9B%BE2-%E6%9F%A5%E7%9C%8Bpytorch%E6%94%AF%E6%8C%81%E7%9A%84%E6%9C%80%E9%AB%98CUDA%E7%89%88%E6%9C%AC.png" alt="图2-查看pytorch支持的最高CUDA版本"></p>
-<h2 id="3、执行部署"><a href="#3、执行部署" class="headerlink" title="3、执行部署"></a>3、执行部署</h2><p>1）确保 anaconda3（python3.11.3）在 vscode 能够正常使用，相关部署参考 <a href="https://www.dcheng.site/148d4631-44e0-11ee-bc05-f9725afef782/">部署win10+vscode+anaconda3环境</a></p>
-<p>2）执行下列命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：全部安装均采用默认源，其中 libcublas 包的安装比较费时。</p>
-</blockquote>
-<p>3）验证</p>
-<p>执行如下代码：</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># cuda是否可用</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br><span class="line"><span class="comment"># 获取GPU信息</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;GPU=&quot;</span>, torch.cuda.get_device_name(torch.device(<span class="string">&quot;cuda:0&quot;</span>)))</span><br><span class="line"><span class="comment"># 获取pytorch版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pytorch version=&quot;</span>, torch.__version__)</span><br><span class="line"><span class="comment"># 获取cuda版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;cuda Version=&quot;</span>, torch.version.cuda)</span><br><span class="line"><span class="comment"># 获取cudnn版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;cudnn version=&quot;</span>, torch.backends.cudnn.version())</span><br></pre></td></tr></table></figure>
-
-<p>输出如下结果，表明全部组件安装成功：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">True</span><br><span class="line">GPU= NVIDIA GeForce RTX 4070</span><br><span class="line">pytorch version= 2.0.1</span><br><span class="line">cuda Version= 11.8</span><br><span class="line">cudnn version= 8700</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>cuda</tag>
-        <tag>pytorch</tag>
-        <tag>python3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</title>
-    <url>/5886f891-2a1e-11ee-846a-89c1529ebdf1/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>使用 Navicat 连接阿里云远程 MySQL 数据库。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1、开放权限"><a href="#1、开放权限" class="headerlink" title="1、开放权限"></a>1、开放权限</h3><p>登录 MySql，此时用命令指定用户名 root 可以通过密码 123456 访问所有数据库，之后刷新权限。相应的命令及结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27; WITH GRANT OPTION;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、设置服务器安全组的端口放行规则"><a href="#2、设置服务器安全组的端口放行规则" class="headerlink" title="2、设置服务器安全组的端口放行规则"></a>2、设置服务器安全组的端口放行规则</h3><p><strong>ECS 云服务器安全组设置如下：</strong></p>
-<img src="/5886f891-2a1e-11ee-846a-89c1529ebdf1/1.png" class="">
-
-<p><strong>轻量应用服务器防火墙设置如下：</strong></p>
-<img src="/5886f891-2a1e-11ee-846a-89c1529ebdf1/2.png" class="">
-
-<h3 id="3、设置-Navicat"><a href="#3、设置-Navicat" class="headerlink" title="3、设置 Navicat"></a>3、设置 Navicat</h3><p>进入 Navicat，新建连接，在「常规」选项卡中输入开放权限时的信息，用户名：root；密码：123456</p>
-<img src="/5886f891-2a1e-11ee-846a-89c1529ebdf1/3.png" class="">
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>云服务器部署-JavaWeb-环境</title>
     <url>/bf93b0d0-446f-11ee-90e9-49c3e96e9425/</url>
     <content><![CDATA[<blockquote>
@@ -4802,6 +4680,149 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</title>
+    <url>/5886f891-2a1e-11ee-846a-89c1529ebdf1/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>使用 Navicat 连接阿里云远程 MySQL 数据库。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1、开放权限"><a href="#1、开放权限" class="headerlink" title="1、开放权限"></a>1、开放权限</h3><p>登录 MySql，此时用命令指定用户名 root 可以通过密码 123456 访问所有数据库，之后刷新权限。相应的命令及结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27; WITH GRANT OPTION;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、设置服务器安全组的端口放行规则"><a href="#2、设置服务器安全组的端口放行规则" class="headerlink" title="2、设置服务器安全组的端口放行规则"></a>2、设置服务器安全组的端口放行规则</h3><p><strong>ECS 云服务器安全组设置如下：</strong></p>
+<img src="/5886f891-2a1e-11ee-846a-89c1529ebdf1/1.png" class="">
+
+<p><strong>轻量应用服务器防火墙设置如下：</strong></p>
+<img src="/5886f891-2a1e-11ee-846a-89c1529ebdf1/2.png" class="">
+
+<h3 id="3、设置-Navicat"><a href="#3、设置-Navicat" class="headerlink" title="3、设置 Navicat"></a>3、设置 Navicat</h3><p>进入 Navicat，新建连接，在「常规」选项卡中输入开放权限时的信息，用户名：root；密码：123456</p>
+<img src="/5886f891-2a1e-11ee-846a-89c1529ebdf1/3.png" class="">
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用-github+Action-部署-Hexo-博客</title>
+    <url>/5886f892-2a1e-11ee-846a-89c1529ebdf1/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为便于叙述，统一说明如下：</p>
+<ul>
+<li>博客 github 源码仓库默认分支为 main，ssh 地址：<code>git@github.com:username/blog.git</code></li>
+<li><code>username.github.io</code>：博客部署仓库，默认分支为 main</li>
+<li><code>hexo_deploy</code>：本地私钥文件</li>
+<li>&#96;hexo_deploy.pub：本地公钥文件</li>
+<li>主题以 NexT 8.13.2 为例</li>
+</ul>
+<blockquote>
+<p>本地 hexo 安装、主题部署流程较简单，步骤省略。</p>
+</blockquote>
+<h2 id="1、配置本地博客源代码库"><a href="#1、配置本地博客源代码库" class="headerlink" title="1、配置本地博客源代码库"></a>1、配置本地博客源代码库</h2><p>在本地博客源代码仓库根目录 <code>_config.yml</code> 文件中增加如下部署配置：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：github 目前仅允许 ssh 提交，部署仓库必须为 ssh 地址</p>
+</blockquote>
+<h2 id="2、配置专用密钥对"><a href="#2、配置专用密钥对" class="headerlink" title="2、配置专用密钥对"></a>2、配置专用密钥对</h2><p>本地重新生成一组密钥对，如 <code>hexo_deploy.pub</code> 与 <code>hexo_deploy</code>。私钥配置到 github 源码仓库的 <code>repository secret</code>，公钥配置到 <code>username.github.io</code> 部署仓库的 <code>Deploy keys</code>。该密钥对专用于「源码仓库」与「部署仓库」之间的 Action 自动部署。</p>
+<blockquote>
+<p>github 源码库新建后即可配置：依次进入 <code>Settings -&gt; Secrets -&gt; Actions -&gt; New repository secret</code>，名称取 <code>HEXO_DEPLOY_SECRET</code>，值取自 <code>hexo_deploy</code> 内容；<code>username.github.io.git</code> 部署仓库配置步骤略。</p>
+</blockquote>
+<p>也可以拿用户公钥 <code>SSH keys</code>（可访问全部仓库）及其对应的私钥完成该步骤，但是用户公钥不一致时（比如办公室和家里使用的用户公钥不同，除非复制同一份密钥对），Action 自动部署的私钥也要更改，使用专用密钥对可避免这个问题。</p>
+<h2 id="3、创建-Action"><a href="#3、创建-Action" class="headerlink" title="3、创建 Action"></a>3、创建 Action</h2><p>在本地博客源代码库根目录下创建 <code>.github/workflows/deploy.yml</code> 文件，参考内容如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">hexo-blog-deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">username</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="string">username@gmail.com</span></span><br><span class="line">  <span class="attr">DEPLOY_REPO:</span> <span class="string">username/username.github.io</span></span><br><span class="line">  <span class="attr">DEPLOY_BRANCH:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build</span> <span class="string">on</span> <span class="string">node</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span> <span class="string">and</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.os</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">os:</span> [<span class="string">ubuntu-latest</span>]</span><br><span class="line">        <span class="attr">node_version:</span> [<span class="number">19.</span><span class="string">x</span>]</span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">deploy</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configuration</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_SECRET:</span> <span class="string">$&#123;&#123;secrets.HEXO_DEPLOY_SECRET&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sudo timedatectl set-timezone &quot;Asia/Shanghai&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">          <span class="comment"># 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).</span></span><br><span class="line">          <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;$HEXO_DEPLOY_SECRET&quot;</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 设置用户名和邮箱，否则提示 Please tell me who you are.</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">$GIT_USER</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">$GIT_EMAIL</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string">          npm install hexo-deployer-git --save</span></span><br><span class="line"><span class="string">          # 全局搜索插件</span></span><br><span class="line"><span class="string">          npm install hexo-generator-searchdb --save</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4、常用命令"><a href="#4、常用命令" class="headerlink" title="4、常用命令"></a>4、常用命令</h2><ul>
+<li>本地启动：<code>hexo s</code></li>
+<li>清除缓存：<code>hexo clean</code></li>
+<li>新建草稿：<code>hexo new draft &lt;filename&gt;</code></li>
+<li>发布草稿：<code>hexo publish [layout] &lt;filename&gt;</code></li>
+</ul>
+<h2 id="5、其他"><a href="#5、其他" class="headerlink" title="5、其他"></a>5、其他</h2><h2 id="（可选）部署留言栏-Utterances"><a href="#（可选）部署留言栏-Utterances" class="headerlink" title="（可选）部署留言栏 Utterances"></a>（可选）部署留言栏 Utterances</h2><p>安装 github 应用： <code>https://github.com/apps/utterances</code></p>
+<p>next 最新版本已经集成 Utterances，因此不需要复制安装完成后的模板，直接在主题文件根目录下设置 <code>_config.yml</code> 文件即可：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">username/username.github.io</span> <span class="comment"># Github repository owner and name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">pathname</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="（可选）部署留言栏-giscus"><a href="#（可选）部署留言栏-giscus" class="headerlink" title="（可选）部署留言栏 giscus"></a>（可选）部署留言栏 giscus</h2><p>进入官网（<code>https://giscus.app/</code>）可拿到一段已经填充配置内容的 <code>&lt;script&gt;</code> 标签：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;https://giscus.app/client.js&quot;</span><br><span class="line">    data-repo=&quot;[在此输入仓库]&quot;</span><br><span class="line">    data-repo-id=&quot;[在此输入仓库 ID]&quot;</span><br><span class="line">    data-category=&quot;[在此输入分类名]&quot;</span><br><span class="line">    data-category-id=&quot;[在此输入分类 ID]&quot;</span><br><span class="line">    data-mapping=&quot;pathname&quot;</span><br><span class="line">    data-strict=&quot;0&quot;</span><br><span class="line">    data-reactions-enabled=&quot;1&quot;</span><br><span class="line">    data-emit-metadata=&quot;0&quot;</span><br><span class="line">    data-input-position=&quot;bottom&quot;</span><br><span class="line">    data-theme=&quot;preferred_color_scheme&quot;</span><br><span class="line">    data-lang=&quot;zh-CN&quot;</span><br><span class="line">    crossorigin=&quot;anonymous&quot;</span><br><span class="line">    async&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果要在每一篇文章后添加评论功能，以 next 主题为例，仅供参考。进入 <code>themes/next/layout/_macro/post.njk</code> 文件，找到模板中「文章末尾」（注释标志为 <code>END POST BODY</code>，如下所示），将上述片段加入。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;#####################&#125;</span><br><span class="line">&#123;### <span class="variable constant_">END</span> <span class="variable constant_">POST</span> <span class="variable constant_">BODY</span> ###&#125;</span><br><span class="line">&#123;#####################&#125;</span><br><span class="line">&lt;footer <span class="keyword">class</span>=<span class="string">&quot;post-footer&quot;</span>&gt;</span><br><span class="line">  &#123;%- <span class="keyword">if</span> is_index %&#125;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-eof&quot;</span> style=<span class="string">&quot;margin:20px auto 20px;width:100%;background: transparent;border-top: 1px solid #e2e0e0&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;&#123;- <span class="title function_">next_inject</span>(<span class="string">&#x27;postBodyEnd&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">reward_settings</span>.<span class="property">enable</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-reward.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">creative_commons</span>.<span class="property">license</span> and theme.<span class="property">creative_commons</span>.<span class="property">post</span> and post.<span class="property">copyright</span> !== <span class="literal">false</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-copyright.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">follow_me</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-followme.njk&#x27;</span>, &#123;&#125;, &#123;<span class="attr">cache</span>: theme.<span class="property">cache</span>.<span class="property">enable</span>&#125;) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line">    &#123;###   add giscus  ###&#125;</span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line"></span><br><span class="line">    &lt;script src=<span class="string">&quot;https://giscus.app/client.js&quot;</span></span><br><span class="line">        data-repo=<span class="string">&quot;[在此输入仓库]&quot;</span></span><br><span class="line">        data-repo-id=<span class="string">&quot;[在此输入仓库 ID]&quot;</span></span><br><span class="line">        data-category=<span class="string">&quot;[在此输入分类名]&quot;</span></span><br><span class="line">        data-category-id=<span class="string">&quot;[在此输入分类 ID]&quot;</span></span><br><span class="line">        data-mapping=<span class="string">&quot;pathname&quot;</span></span><br><span class="line">        data-strict=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-reactions-enabled=<span class="string">&quot;1&quot;</span></span><br><span class="line">        data-emit-metadata=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-input-position=<span class="string">&quot;bottom&quot;</span></span><br><span class="line">        data-theme=<span class="string">&quot;preferred_color_scheme&quot;</span></span><br><span class="line">        data-lang=<span class="string">&quot;zh-CN&quot;</span></span><br><span class="line">        crossorigin=<span class="string">&quot;anonymous&quot;</span></span><br><span class="line">        <span class="keyword">async</span>&gt;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">tags</span> and post.<span class="property">tags</span>.<span class="property">length</span> %&#125;</span><br><span class="line">      &#123;%- set tag_indicate = <span class="string">&#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;</span> <span class="keyword">if</span> theme.<span class="property">tag_icon</span> <span class="keyword">else</span> <span class="string">&#x27;#&#x27;</span> %&#125;</span><br><span class="line">      &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-tags&quot;</span>&gt;</span><br><span class="line">        &#123;%- <span class="keyword">for</span> tag <span class="keyword">in</span> post.<span class="property">tags</span>.<span class="title function_">toArray</span>() %&#125;</span><br><span class="line">          &lt;a href=<span class="string">&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot;</span> rel=<span class="string">&quot;tag&quot;</span>&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.<span class="property">name</span> &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="（可选）部署域名"><a href="#（可选）部署域名" class="headerlink" title="（可选）部署域名"></a>（可选）部署域名</h2><p>参考官方文档：<a href="%60https://docs.github.com/cn/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages%60">验证用户站点的域</a></p>
+<blockquote>
+<p>注意：需要在 blog 源代码库 source 目录下放置 CNAME 文件。之后步骤按官方文档进行</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改 mac 的 MAC 地址</title>
+    <url>/931e2910-e409-11ee-86b7-fb4c7634711e/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-解决方案"><a href="#1-解决方案" class="headerlink" title="1 解决方案"></a>1 解决方案</h2><p>1）打开终端，输入 <code>openssl rand -hex 6 | sed &#39;s/\(..\)/\1:/g; s/.$//&#39;</code> 生成一个 MAC 地址</p>
+<p>2）断开网卡连接，会要求输入密码。</p>
+<p><code>sudo /System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -z</code></p>
+<p>3）修改网卡地址，例如 en0：<code>sudo ifconfig en0 ether xx:xx:xx:xx:xx:xx</code></p>
+<p>4）重连网卡，可能会要求输入密码：<code>networksetup -detectnewhardware</code></p>
+<p>5）验证 MAC 地址是否修改成功：<code>ifconfig</code></p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在win10+vscode+anaconda3+python3.11.3独立环境部署pytorch2.0.1+cuda11.8</title>
+    <url>/148d4630-44e0-11ee-bc05-f9725afef782/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<p>该方式不用提前安装 vs2015_runtime 运行时以及 cuda、cudnn，在执行 pytorch 官网的命令后已经全部带有。因此，可在独立环境中同时存在多个版本的 cuda 或者 pytorch cpu 版本。</p>
+<h2 id="1、确定可支持-CUDA-版本"><a href="#1、确定可支持-CUDA-版本" class="headerlink" title="1、确定可支持 CUDA 版本"></a>1、确定可支持 CUDA 版本</h2><p>打开 NVIDIA Control Panel（NVIDIA 控制面板），点击左下角「系统信息」，在「组件」标签页查看支持的最高版本，如图所示：</p>
+<p><img src="/148d4630-44e0-11ee-bc05-f9725afef782/%E5%9B%BE1-%E7%A1%AE%E5%AE%9A%E5%8F%AF%E6%94%AF%E6%8C%81CUDA%E7%89%88%E6%9C%AC.png" alt="图1-确定可支持CUDA版本"></p>
+<h2 id="2、在-https-pytorch-org-查看-pytorch-支持的最高-CUDA-版本"><a href="#2、在-https-pytorch-org-查看-pytorch-支持的最高-CUDA-版本" class="headerlink" title="2、在 https://pytorch.org/ 查看 pytorch 支持的最高 CUDA 版本"></a>2、在 <a href="https://pytorch.org/">https://pytorch.org/</a> 查看 pytorch 支持的最高 CUDA 版本</h2><p><img src="/148d4630-44e0-11ee-bc05-f9725afef782/%E5%9B%BE2-%E6%9F%A5%E7%9C%8Bpytorch%E6%94%AF%E6%8C%81%E7%9A%84%E6%9C%80%E9%AB%98CUDA%E7%89%88%E6%9C%AC.png" alt="图2-查看pytorch支持的最高CUDA版本"></p>
+<h2 id="3、执行部署"><a href="#3、执行部署" class="headerlink" title="3、执行部署"></a>3、执行部署</h2><p>1）确保 anaconda3（python3.11.3）在 vscode 能够正常使用，相关部署参考 <a href="https://www.dcheng.site/148d4631-44e0-11ee-bc05-f9725afef782/">部署win10+vscode+anaconda3环境</a></p>
+<p>2）执行下列命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：全部安装均采用默认源，其中 libcublas 包的安装比较费时。</p>
+</blockquote>
+<p>3）验证</p>
+<p>执行如下代码：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># cuda是否可用</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br><span class="line"><span class="comment"># 获取GPU信息</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;GPU=&quot;</span>, torch.cuda.get_device_name(torch.device(<span class="string">&quot;cuda:0&quot;</span>)))</span><br><span class="line"><span class="comment"># 获取pytorch版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pytorch version=&quot;</span>, torch.__version__)</span><br><span class="line"><span class="comment"># 获取cuda版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;cuda Version=&quot;</span>, torch.version.cuda)</span><br><span class="line"><span class="comment"># 获取cudnn版本</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;cudnn version=&quot;</span>, torch.backends.cudnn.version())</span><br></pre></td></tr></table></figure>
+
+<p>输出如下结果，表明全部组件安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">True</span><br><span class="line">GPU= NVIDIA GeForce RTX 4070</span><br><span class="line">pytorch version= 2.0.1</span><br><span class="line">cuda Version= 11.8</span><br><span class="line">cudnn version= 8700</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>cuda</tag>
+        <tag>pytorch</tag>
+        <tag>python3</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>树莓派-ubuntu-环境下-mariadb-部署</title>
     <url>/ef12ce00-4937-11ee-861d-b3cf05b530a5/</url>
     <content><![CDATA[<blockquote>
@@ -4956,6 +4977,49 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>部署 Office LTSC 2021 批量授权版本</title>
+    <url>/53337b91-4f8d-11ee-9eaf-09d2cd19d790/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>本文仅提炼总结关键步骤，详情可见官网文档：<a href="https://learn.microsoft.com/zh-cn/deployoffice/ltsc2021/deploy?cid=kerryherger">https://learn.microsoft.com/zh-cn/deployoffice/ltsc2021/deploy?cid=kerryherger</a></p>
+<h2 id="1、建立安装目录"><a href="#1、建立安装目录" class="headerlink" title="1、建立安装目录"></a>1、建立安装目录</h2><p>新建任意名称的目录 <code>C:\Users\abc\Desktop\officefiles</code>，用于归档部署过程中产生的文件。</p>
+<h2 id="2、下载-Office-部署工具"><a href="#2、下载-Office-部署工具" class="headerlink" title="2、下载 Office 部署工具"></a>2、下载 Office 部署工具</h2><p>1）下载部署工具到 <code>officefiles</code> 目录，官网地址：<a href="https://www.microsoft.com/download/details.aspx?id=49117">https://www.microsoft.com/download/details.aspx?id=49117</a></p>
+<p>2）双击 <code>officedeploymenttool.exe</code> 可执行文件，选择提取文件路径，也直接放在 <code>officefiles</code> 目录</p>
+<h2 id="3、创建-configuration-xml-文件"><a href="#3、创建-configuration-xml-文件" class="headerlink" title="3、创建 configuration.xml 文件"></a>3、创建 <code>configuration.xml</code> 文件</h2><p>1）使用 Office 自定义工具创建 <code>configuration.xml</code> 文件，工具地址：<a href="https://config.office.com/deploymentsettings">https://config.office.com/deploymentsettings</a></p>
+<p>2）根据需求选择 office 套件、语言，大多数选项保持默认即可。配置完成后导出，放在 <code>officefiles</code> 目录</p>
+<blockquote>
+<p>注意：配置文件名称必须是 <code>configuration.xml</code></p>
+</blockquote>
+<h2 id="3、下载-Office-LTSC-2021-安装文件"><a href="#3、下载-Office-LTSC-2021-安装文件" class="headerlink" title="3、下载 Office LTSC 2021 安装文件"></a>3、下载 Office LTSC 2021 安装文件</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
+<p>2）执行 <code>setup /download configuration.xml</code>，此时在 <code>officefiles</code> 中会包含名为 Data 的新目录。</p>
+<h2 id="4、安装-Office-LTSC-2021"><a href="#4、安装-Office-LTSC-2021" class="headerlink" title="4、安装 Office LTSC 2021"></a>4、安装 Office LTSC 2021</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
+<p>2）执行 <code>setup /configure configuration.xml</code>，安装完成后，将返回到命令提示符</p>
+<blockquote>
+<p>安装路径默认在 <code>C:\Program Files\Microsoft Office</code></p>
+</blockquote>
+<h2 id="5、激活"><a href="#5、激活" class="headerlink" title="5、激活"></a>5、激活</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Program Files\Microsoft Office\Office16</code></p>
+<p>2）假设已部署的 kms 服务器 ip 为 <code>192.168.1.5</code>，执行 <code>cscript ospp.vbs /sethst:192.168.1.5</code> 设置 kms 服务器地址。出现以下提示说明配置成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Successfully applied setting.</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可参考 <a href="https://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/">部署 kms 服务器</a> 的内容建立 kms 服务器</p>
+</blockquote>
+<p>3）执行 <code>cscript ospp.vbs /act</code> 激活。出现以下提示说明配置成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Microsoft (R) Windows Script Host Version 5.812</span><br><span class="line">版权所有(C) Microsoft Corporation。保留所有权利。</span><br><span class="line"></span><br><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fb61ac9a-1688-45d2-8f6b-0674dbffa33c</span><br><span class="line">LICENSE NAME: Office 21, Office21VisioPro2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: K2HT4</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fbdb3e18-a8ef-4fb3-9183-dffd60bd0984</span><br><span class="line">LICENSE NAME: Office 21, Office21ProPlus2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: 6F7TH</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、其他"><a href="#6、其他" class="headerlink" title="6、其他"></a>6、其他</h2><p>官方提供了上述使用到的 GVLK 列表（使用 Office 自定义工具创建 <code>configuration.xml</code> 文件时已经自动填写），详见：<a href="https://learn.microsoft.com/zh-cn/deployoffice/vlactivation/gvlks">用于 KMS 和基于 Active Directory 的 Office、Project 和 Visio 激活的 GVLK</a></p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+        <tag>office</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>部署 Windows Server 2022 Datacenter</title>
     <url>/077ca5b0-4ec4-11ee-86e1-a907f23a1148/</url>
     <content><![CDATA[<blockquote>
@@ -5003,49 +5067,6 @@ End 	Fn + →
       <tags>
         <tag>win</tag>
         <tag>server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>部署 Office LTSC 2021 批量授权版本</title>
-    <url>/53337b91-4f8d-11ee-9eaf-09d2cd19d790/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><p>本文仅提炼总结关键步骤，详情可见官网文档：<a href="https://learn.microsoft.com/zh-cn/deployoffice/ltsc2021/deploy?cid=kerryherger">https://learn.microsoft.com/zh-cn/deployoffice/ltsc2021/deploy?cid=kerryherger</a></p>
-<h2 id="1、建立安装目录"><a href="#1、建立安装目录" class="headerlink" title="1、建立安装目录"></a>1、建立安装目录</h2><p>新建任意名称的目录 <code>C:\Users\abc\Desktop\officefiles</code>，用于归档部署过程中产生的文件。</p>
-<h2 id="2、下载-Office-部署工具"><a href="#2、下载-Office-部署工具" class="headerlink" title="2、下载 Office 部署工具"></a>2、下载 Office 部署工具</h2><p>1）下载部署工具到 <code>officefiles</code> 目录，官网地址：<a href="https://www.microsoft.com/download/details.aspx?id=49117">https://www.microsoft.com/download/details.aspx?id=49117</a></p>
-<p>2）双击 <code>officedeploymenttool.exe</code> 可执行文件，选择提取文件路径，也直接放在 <code>officefiles</code> 目录</p>
-<h2 id="3、创建-configuration-xml-文件"><a href="#3、创建-configuration-xml-文件" class="headerlink" title="3、创建 configuration.xml 文件"></a>3、创建 <code>configuration.xml</code> 文件</h2><p>1）使用 Office 自定义工具创建 <code>configuration.xml</code> 文件，工具地址：<a href="https://config.office.com/deploymentsettings">https://config.office.com/deploymentsettings</a></p>
-<p>2）根据需求选择 office 套件、语言，大多数选项保持默认即可。配置完成后导出，放在 <code>officefiles</code> 目录</p>
-<blockquote>
-<p>注意：配置文件名称必须是 <code>configuration.xml</code></p>
-</blockquote>
-<h2 id="3、下载-Office-LTSC-2021-安装文件"><a href="#3、下载-Office-LTSC-2021-安装文件" class="headerlink" title="3、下载 Office LTSC 2021 安装文件"></a>3、下载 Office LTSC 2021 安装文件</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
-<p>2）执行 <code>setup /download configuration.xml</code>，此时在 <code>officefiles</code> 中会包含名为 Data 的新目录。</p>
-<h2 id="4、安装-Office-LTSC-2021"><a href="#4、安装-Office-LTSC-2021" class="headerlink" title="4、安装 Office LTSC 2021"></a>4、安装 Office LTSC 2021</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
-<p>2）执行 <code>setup /configure configuration.xml</code>，安装完成后，将返回到命令提示符</p>
-<blockquote>
-<p>安装路径默认在 <code>C:\Program Files\Microsoft Office</code></p>
-</blockquote>
-<h2 id="5、激活"><a href="#5、激活" class="headerlink" title="5、激活"></a>5、激活</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Program Files\Microsoft Office\Office16</code></p>
-<p>2）假设已部署的 kms 服务器 ip 为 <code>192.168.1.5</code>，执行 <code>cscript ospp.vbs /sethst:192.168.1.5</code> 设置 kms 服务器地址。出现以下提示说明配置成功：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Successfully applied setting.</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>可参考 <a href="https://www.dcheng.site/faef3d90-4ea4-11ee-addd-c161ce22f848/">部署 kms 服务器</a> 的内容建立 kms 服务器</p>
-</blockquote>
-<p>3）执行 <code>cscript ospp.vbs /act</code> 激活。出现以下提示说明配置成功：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Microsoft (R) Windows Script Host Version 5.812</span><br><span class="line">版权所有(C) Microsoft Corporation。保留所有权利。</span><br><span class="line"></span><br><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fb61ac9a-1688-45d2-8f6b-0674dbffa33c</span><br><span class="line">LICENSE NAME: Office 21, Office21VisioPro2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: K2HT4</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fbdb3e18-a8ef-4fb3-9183-dffd60bd0984</span><br><span class="line">LICENSE NAME: Office 21, Office21ProPlus2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: 6F7TH</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
-
-<h2 id="6、其他"><a href="#6、其他" class="headerlink" title="6、其他"></a>6、其他</h2><p>官方提供了上述使用到的 GVLK 列表（使用 Office 自定义工具创建 <code>configuration.xml</code> 文件时已经自动填写），详见：<a href="https://learn.microsoft.com/zh-cn/deployoffice/vlactivation/gvlks">用于 KMS 和基于 Active Directory 的 Office、Project 和 Visio 激活的 GVLK</a></p>
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>win</tag>
-        <tag>office</tag>
       </tags>
   </entry>
   <entry>
@@ -6651,6 +6672,83 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>Java8-Map-新增方法</title>
+    <url>/ef12f511-4937-11ee-861d-b3cf05b530a5/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+
+<p>在 Java 8 中的 Map.Entry 接口中增加了 comparingByKey, comparingByValue 方法，它们都返回 <code>Comparator&lt;Map.Entry&lt;K,V&gt;&gt;</code>, Comparator 是一个函数接口，主要是方便 Lambda 表达式的使用。</p>
+<p>在 Java 8 中的 Map 接口增加了一些 default 方法，提升了对 key，value 操作的便利性。下面是基本数据的定义，通过这些数据说明新增的一些方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">map.put(<span class="number">1</span>, <span class="string">&quot;a&quot;</span>);</span><br><span class="line">map.put(<span class="number">2</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line">map.put(<span class="number">3</span>, <span class="string">&quot;c&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="getOrDefault-方法"><a href="#getOrDefault-方法" class="headerlink" title="getOrDefault 方法"></a>getOrDefault 方法</h2><p>如果指定的 key 存在，则返回该 key 对应的 value，如果不存在，则返回指定的值。例子如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// key为4不存在，输出 d</span></span><br><span class="line">System.out.println(map.getOrDefault(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="forEach-方法"><a href="#forEach-方法" class="headerlink" title="forEach 方法"></a>forEach 方法</h2><p>遍历 Map 中的所有 Entry, 对 key, value 进行处理， 接收参数 (K, V) -&gt; void, 例子如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 输出1a, 2b, 3c</span></span><br><span class="line">map.forEach((key, value) -&gt; System.out.println(key + value));</span><br></pre></td></tr></table></figure>
+
+<h2 id="replaceAll-方法"><a href="#replaceAll-方法" class="headerlink" title="replaceAll 方法"></a>replaceAll 方法</h2><p>替换 Map 中所有 Entry 的 value 值，这个值由旧的 key 和 value 计算得出，接收参数 <code>(K, V) -&gt; V</code>, 类似如下代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Map.Entry&lt;K, V&gt; entry : map.entrySet())</span><br><span class="line">    entry.setValue(function.apply(entry.getKey(), entry.getValue()));</span><br></pre></td></tr></table></figure>
+
+<p>例如如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.replaceAll((key, value) -&gt; (key + <span class="number">1</span>) + value);</span><br><span class="line"><span class="comment">// 输出 12a 23b 34c</span></span><br><span class="line">map.forEach((key, value) -&gt; System.out.println(key + value));</span><br></pre></td></tr></table></figure>
+
+<h2 id="putIfAbsent-方法"><a href="#putIfAbsent-方法" class="headerlink" title="putIfAbsent 方法"></a>putIfAbsent 方法</h2><p>如果 key 关联的 value 不存在，则关联新的 value 值，返回 key 关联的旧的值，类似如下代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">V</span> <span class="variable">v</span> <span class="operator">=</span> map.get(key);</span><br><span class="line"><span class="keyword">if</span> (v == <span class="literal">null</span>)</span><br><span class="line">    v = map.put(key, value);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> v;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.putIfAbsent(<span class="number">3</span>, <span class="string">&quot;d&quot;</span>);</span><br><span class="line">map.putIfAbsent(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>);</span><br><span class="line"><span class="comment">// 输出 c</span></span><br><span class="line">System.out.println(map.get(<span class="number">3</span>));</span><br><span class="line"><span class="comment">// 输出 d</span></span><br><span class="line">System.out.println(map.get(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="remove-方法"><a href="#remove-方法" class="headerlink" title="remove 方法"></a>remove 方法</h2><p>接收 2 个参数，key 和 value，如果 key 关联的 value 值与指定的 value 值相等（equals），则删除这个元素，类似代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.containsKey(key) &amp;&amp; Objects.equals(map.get(key), value)) &#123;</span><br><span class="line">    map.remove(key);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.remove(<span class="number">1</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">// 未删除成功， 输出 a</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">map.remove(<span class="number">2</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">// 删除成功，输出 null</span></span><br><span class="line">System.out.println(map.get(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="replace-K-key-V-oldValue-V-newValue-方法"><a href="#replace-K-key-V-oldValue-V-newValue-方法" class="headerlink" title="replace(K key, V oldValue, V newValue) 方法"></a>replace(K key, V oldValue, V newValue) 方法</h2><p>如果 key 关联的值与指定的 oldValue 的值相等，则替换成新的 newValue，类似代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.containsKey(key) &amp;&amp; Objects.equals(map.get(key), value)) &#123;</span><br><span class="line">    map.put(key, newValue);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.replace(<span class="number">3</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;z&quot;</span>);</span><br><span class="line"><span class="comment">// 未替换成功，输出 c</span></span><br><span class="line">System.out.println(map.get(<span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">map.replace(<span class="number">1</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;z&quot;</span>);</span><br><span class="line"><span class="comment">// 替换成功， 输出 z</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="replace-K-key-V-value-方法"><a href="#replace-K-key-V-value-方法" class="headerlink" title="replace(K key, V value) 方法"></a>replace(K key, V value) 方法</h2><p>如果 map 中存在 key，则替换成 value 值，否则返回 null, 类似代码如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.containsKey(key)) &#123;</span><br><span class="line">    <span class="keyword">return</span> map.put(key, value);</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 输出旧的值， a</span></span><br><span class="line">System.out.println(map.replace(<span class="number">1</span>, <span class="string">&quot;aa&quot;</span>));</span><br><span class="line"><span class="comment">// 替换成功，输出新的值， aa</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不存在key为4， 输出 null</span></span><br><span class="line">System.out.println(map.replace(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>));</span><br><span class="line"><span class="comment">// 不存在key为4， 输出 null</span></span><br><span class="line">System.out.println(map.get(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="computeIfAbsent-方法"><a href="#computeIfAbsent-方法" class="headerlink" title="computeIfAbsent 方法"></a>computeIfAbsent 方法</h2><p>如果指定的 key 不存在，则通过指定的 <code>K -&gt; V</code> 计算出新的值设置为 key 的值，类似代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.get(key) == <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="type">V</span> <span class="variable">newValue</span> <span class="operator">=</span> mappingFunction.apply(key);</span><br><span class="line">    <span class="keyword">if</span> (newValue != <span class="literal">null</span>)</span><br><span class="line">        map.put(key, newValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.computeIfAbsent(<span class="number">1</span>, key -&gt; key + <span class="string">&quot; computed&quot;</span>);</span><br><span class="line"><span class="comment">// 存在key为1，则不进行计算，输出值 a</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">map.computeIfAbsent(<span class="number">4</span>, key -&gt; key + <span class="string">&quot; computed&quot;</span>);</span><br><span class="line"><span class="comment">// 不存在key为4，则进行计算，输出值 4 computed</span></span><br><span class="line">System.out.println(map.get(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="computeIfPresent-方法"><a href="#computeIfPresent-方法" class="headerlink" title="computeIfPresent 方法"></a>computeIfPresent 方法</h2><p>如果指定的 key 存在，则根据旧的 key 和 value 计算新的值 newValue, 如果 newValue 不为 null，则设置 key 新的值为 newValue, 如果 newValue 为 null, 则删除该 key 的值，类似代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.get(key) != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="type">V</span> <span class="variable">oldValue</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">    <span class="type">V</span> <span class="variable">newValue</span> <span class="operator">=</span> remappingFunction.apply(key, oldValue);</span><br><span class="line">    <span class="keyword">if</span> (newValue != <span class="literal">null</span>)</span><br><span class="line">        map.put(key, newValue);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        map.remove(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.computeIfPresent(<span class="number">1</span>, (key, value) -&gt; (key + <span class="number">1</span>) + value);</span><br><span class="line"><span class="comment">// 存在key为1， 则根据旧的key和value计算新的值，输出 2a</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">map.computeIfPresent(<span class="number">2</span>, (key, value) -&gt; <span class="literal">null</span>);</span><br><span class="line"><span class="comment">// 存在key为2， 根据旧的key和value计算得到null，删除该值，输出 null</span></span><br><span class="line">System.out.println(map.get(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="compute-方法"><a href="#compute-方法" class="headerlink" title="compute 方法"></a>compute 方法</h2><p>compute 方法是 computeIfAbsent 与 computeIfPresent 的综合体。</p>
+<h2 id="merge-方法"><a href="#merge-方法" class="headerlink" title="merge 方法"></a>merge 方法</h2><p>构造</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">merge(K key, V value, BiFunction&lt;? <span class="built_in">super</span> V, ? <span class="built_in">super</span> V, ? <span class="keyword">extends</span> <span class="title class_">V</span>&gt; remappingFunction)</span><br></pre></td></tr></table></figure>
+
+<p>如果指定的 key 不存在，则设置指定的 value 值，否则根据 key 的旧的值 oldvalue，value 计算出新的值 newValue, 如果 newValue 为 null, 则删除该 key，否则设置 key 的新值 newValue。类似如下代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">V</span> <span class="variable">oldValue</span> <span class="operator">=</span> map.get(key);</span><br><span class="line"><span class="type">V</span> <span class="variable">newValue</span> <span class="operator">=</span> (oldValue == <span class="literal">null</span>) ? value :</span><br><span class="line">        remappingFunction.apply(oldValue, value);</span><br><span class="line"><span class="keyword">if</span> (newValue == <span class="literal">null</span>)</span><br><span class="line">    map.remove(key);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    map.put(key, newValue);</span><br></pre></td></tr></table></figure>
+
+<p>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 存在key为1， 输出 a merge</span></span><br><span class="line">System.out.println(map.merge(<span class="number">1</span>, <span class="string">&quot; merge&quot;</span>, (oldValue, newValue) -&gt; oldValue + newValue));</span><br><span class="line"><span class="comment">// 新值为null，删除key，输出 null</span></span><br><span class="line">System.out.println(map.merge(<span class="number">1</span>, <span class="string">&quot; merge&quot;</span>, (oldValue, newValue) -&gt; <span class="literal">null</span>));</span><br><span class="line"><span class="comment">// 输出 &quot; merge&quot;</span></span><br><span class="line">System.out.println(map.merge(<span class="number">4</span>, <span class="string">&quot; merge&quot;</span>, (oldValue, newValue) -&gt; oldValue + newValue));</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring Boot 注解之 @ConditionalOnProperty</title>
     <url>/302ec220-debd-11ee-bdc4-19fdf0ccb3e7/</url>
     <content><![CDATA[<blockquote>
@@ -6742,83 +6840,6 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>springboot</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java8-Map-新增方法</title>
-    <url>/ef12f511-4937-11ee-861d-b3cf05b530a5/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-
-<p>在 Java 8 中的 Map.Entry 接口中增加了 comparingByKey, comparingByValue 方法，它们都返回 <code>Comparator&lt;Map.Entry&lt;K,V&gt;&gt;</code>, Comparator 是一个函数接口，主要是方便 Lambda 表达式的使用。</p>
-<p>在 Java 8 中的 Map 接口增加了一些 default 方法，提升了对 key，value 操作的便利性。下面是基本数据的定义，通过这些数据说明新增的一些方法。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">map.put(<span class="number">1</span>, <span class="string">&quot;a&quot;</span>);</span><br><span class="line">map.put(<span class="number">2</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line">map.put(<span class="number">3</span>, <span class="string">&quot;c&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="getOrDefault-方法"><a href="#getOrDefault-方法" class="headerlink" title="getOrDefault 方法"></a>getOrDefault 方法</h2><p>如果指定的 key 存在，则返回该 key 对应的 value，如果不存在，则返回指定的值。例子如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// key为4不存在，输出 d</span></span><br><span class="line">System.out.println(map.getOrDefault(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="forEach-方法"><a href="#forEach-方法" class="headerlink" title="forEach 方法"></a>forEach 方法</h2><p>遍历 Map 中的所有 Entry, 对 key, value 进行处理， 接收参数 (K, V) -&gt; void, 例子如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 输出1a, 2b, 3c</span></span><br><span class="line">map.forEach((key, value) -&gt; System.out.println(key + value));</span><br></pre></td></tr></table></figure>
-
-<h2 id="replaceAll-方法"><a href="#replaceAll-方法" class="headerlink" title="replaceAll 方法"></a>replaceAll 方法</h2><p>替换 Map 中所有 Entry 的 value 值，这个值由旧的 key 和 value 计算得出，接收参数 <code>(K, V) -&gt; V</code>, 类似如下代码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Map.Entry&lt;K, V&gt; entry : map.entrySet())</span><br><span class="line">    entry.setValue(function.apply(entry.getKey(), entry.getValue()));</span><br></pre></td></tr></table></figure>
-
-<p>例如如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.replaceAll((key, value) -&gt; (key + <span class="number">1</span>) + value);</span><br><span class="line"><span class="comment">// 输出 12a 23b 34c</span></span><br><span class="line">map.forEach((key, value) -&gt; System.out.println(key + value));</span><br></pre></td></tr></table></figure>
-
-<h2 id="putIfAbsent-方法"><a href="#putIfAbsent-方法" class="headerlink" title="putIfAbsent 方法"></a>putIfAbsent 方法</h2><p>如果 key 关联的 value 不存在，则关联新的 value 值，返回 key 关联的旧的值，类似如下代码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">V</span> <span class="variable">v</span> <span class="operator">=</span> map.get(key);</span><br><span class="line"><span class="keyword">if</span> (v == <span class="literal">null</span>)</span><br><span class="line">    v = map.put(key, value);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> v;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.putIfAbsent(<span class="number">3</span>, <span class="string">&quot;d&quot;</span>);</span><br><span class="line">map.putIfAbsent(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>);</span><br><span class="line"><span class="comment">// 输出 c</span></span><br><span class="line">System.out.println(map.get(<span class="number">3</span>));</span><br><span class="line"><span class="comment">// 输出 d</span></span><br><span class="line">System.out.println(map.get(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="remove-方法"><a href="#remove-方法" class="headerlink" title="remove 方法"></a>remove 方法</h2><p>接收 2 个参数，key 和 value，如果 key 关联的 value 值与指定的 value 值相等（equals），则删除这个元素，类似代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.containsKey(key) &amp;&amp; Objects.equals(map.get(key), value)) &#123;</span><br><span class="line">    map.remove(key);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.remove(<span class="number">1</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">// 未删除成功， 输出 a</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">map.remove(<span class="number">2</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line"><span class="comment">// 删除成功，输出 null</span></span><br><span class="line">System.out.println(map.get(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="replace-K-key-V-oldValue-V-newValue-方法"><a href="#replace-K-key-V-oldValue-V-newValue-方法" class="headerlink" title="replace(K key, V oldValue, V newValue) 方法"></a>replace(K key, V oldValue, V newValue) 方法</h2><p>如果 key 关联的值与指定的 oldValue 的值相等，则替换成新的 newValue，类似代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.containsKey(key) &amp;&amp; Objects.equals(map.get(key), value)) &#123;</span><br><span class="line">    map.put(key, newValue);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码如下</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.replace(<span class="number">3</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;z&quot;</span>);</span><br><span class="line"><span class="comment">// 未替换成功，输出 c</span></span><br><span class="line">System.out.println(map.get(<span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">map.replace(<span class="number">1</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;z&quot;</span>);</span><br><span class="line"><span class="comment">// 替换成功， 输出 z</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="replace-K-key-V-value-方法"><a href="#replace-K-key-V-value-方法" class="headerlink" title="replace(K key, V value) 方法"></a>replace(K key, V value) 方法</h2><p>如果 map 中存在 key，则替换成 value 值，否则返回 null, 类似代码如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.containsKey(key)) &#123;</span><br><span class="line">    <span class="keyword">return</span> map.put(key, value);</span><br><span class="line">&#125; <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 输出旧的值， a</span></span><br><span class="line">System.out.println(map.replace(<span class="number">1</span>, <span class="string">&quot;aa&quot;</span>));</span><br><span class="line"><span class="comment">// 替换成功，输出新的值， aa</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不存在key为4， 输出 null</span></span><br><span class="line">System.out.println(map.replace(<span class="number">4</span>, <span class="string">&quot;d&quot;</span>));</span><br><span class="line"><span class="comment">// 不存在key为4， 输出 null</span></span><br><span class="line">System.out.println(map.get(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="computeIfAbsent-方法"><a href="#computeIfAbsent-方法" class="headerlink" title="computeIfAbsent 方法"></a>computeIfAbsent 方法</h2><p>如果指定的 key 不存在，则通过指定的 <code>K -&gt; V</code> 计算出新的值设置为 key 的值，类似代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.get(key) == <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="type">V</span> <span class="variable">newValue</span> <span class="operator">=</span> mappingFunction.apply(key);</span><br><span class="line">    <span class="keyword">if</span> (newValue != <span class="literal">null</span>)</span><br><span class="line">        map.put(key, newValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.computeIfAbsent(<span class="number">1</span>, key -&gt; key + <span class="string">&quot; computed&quot;</span>);</span><br><span class="line"><span class="comment">// 存在key为1，则不进行计算，输出值 a</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">map.computeIfAbsent(<span class="number">4</span>, key -&gt; key + <span class="string">&quot; computed&quot;</span>);</span><br><span class="line"><span class="comment">// 不存在key为4，则进行计算，输出值 4 computed</span></span><br><span class="line">System.out.println(map.get(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="computeIfPresent-方法"><a href="#computeIfPresent-方法" class="headerlink" title="computeIfPresent 方法"></a>computeIfPresent 方法</h2><p>如果指定的 key 存在，则根据旧的 key 和 value 计算新的值 newValue, 如果 newValue 不为 null，则设置 key 新的值为 newValue, 如果 newValue 为 null, 则删除该 key 的值，类似代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (map.get(key) != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="type">V</span> <span class="variable">oldValue</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">    <span class="type">V</span> <span class="variable">newValue</span> <span class="operator">=</span> remappingFunction.apply(key, oldValue);</span><br><span class="line">    <span class="keyword">if</span> (newValue != <span class="literal">null</span>)</span><br><span class="line">        map.put(key, newValue);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        map.remove(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>示例代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.computeIfPresent(<span class="number">1</span>, (key, value) -&gt; (key + <span class="number">1</span>) + value);</span><br><span class="line"><span class="comment">// 存在key为1， 则根据旧的key和value计算新的值，输出 2a</span></span><br><span class="line">System.out.println(map.get(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">map.computeIfPresent(<span class="number">2</span>, (key, value) -&gt; <span class="literal">null</span>);</span><br><span class="line"><span class="comment">// 存在key为2， 根据旧的key和value计算得到null，删除该值，输出 null</span></span><br><span class="line">System.out.println(map.get(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="compute-方法"><a href="#compute-方法" class="headerlink" title="compute 方法"></a>compute 方法</h2><p>compute 方法是 computeIfAbsent 与 computeIfPresent 的综合体。</p>
-<h2 id="merge-方法"><a href="#merge-方法" class="headerlink" title="merge 方法"></a>merge 方法</h2><p>构造</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">merge(K key, V value, BiFunction&lt;? <span class="built_in">super</span> V, ? <span class="built_in">super</span> V, ? <span class="keyword">extends</span> <span class="title class_">V</span>&gt; remappingFunction)</span><br></pre></td></tr></table></figure>
-
-<p>如果指定的 key 不存在，则设置指定的 value 值，否则根据 key 的旧的值 oldvalue，value 计算出新的值 newValue, 如果 newValue 为 null, 则删除该 key，否则设置 key 的新值 newValue。类似如下代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">V</span> <span class="variable">oldValue</span> <span class="operator">=</span> map.get(key);</span><br><span class="line"><span class="type">V</span> <span class="variable">newValue</span> <span class="operator">=</span> (oldValue == <span class="literal">null</span>) ? value :</span><br><span class="line">        remappingFunction.apply(oldValue, value);</span><br><span class="line"><span class="keyword">if</span> (newValue == <span class="literal">null</span>)</span><br><span class="line">    map.remove(key);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    map.put(key, newValue);</span><br></pre></td></tr></table></figure>
-
-<p>示例代码如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 存在key为1， 输出 a merge</span></span><br><span class="line">System.out.println(map.merge(<span class="number">1</span>, <span class="string">&quot; merge&quot;</span>, (oldValue, newValue) -&gt; oldValue + newValue));</span><br><span class="line"><span class="comment">// 新值为null，删除key，输出 null</span></span><br><span class="line">System.out.println(map.merge(<span class="number">1</span>, <span class="string">&quot; merge&quot;</span>, (oldValue, newValue) -&gt; <span class="literal">null</span>));</span><br><span class="line"><span class="comment">// 输出 &quot; merge&quot;</span></span><br><span class="line">System.out.println(map.merge(<span class="number">4</span>, <span class="string">&quot; merge&quot;</span>, (oldValue, newValue) -&gt; oldValue + newValue));</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>后端技术</category>
-      </categories>
-      <tags>
         <tag>java</tag>
       </tags>
   </entry>
@@ -7020,30 +7041,6 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>jackson 将 json 串转成 List 或 Map 等集合</title>
-    <url>/8a9db7f1-e38d-11ee-8d05-110f62540784/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="1、需求描述"><a href="#1、需求描述" class="headerlink" title="1、需求描述"></a>1、需求描述</h2><p>jackson 将 json 串转成 List、Map 等集合时，需要保证集合内的元素泛型不能丢失。</p>
-<h2 id="2、案例"><a href="#2、案例" class="headerlink" title="2、案例"></a>2、案例</h2><p>1）需要构建 TypeReference 参数</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">json2Obj</span><span class="params">(String json, TypeReference&lt;T&gt; type)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> objectMapper.readValue(json, type);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">json2Obj(json, <span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;List&lt;String&gt;&gt;()&#123;&#125;);</span><br><span class="line">json2Obj(json, <span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;Map&lt;String, String&gt;&gt;()&#123;&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>2）collectionType</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> JavaType <span class="title function_">collectionType</span><span class="params">(Class&lt;?&gt; collectionClz, Class&lt;?&gt; ...elementClz)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> om.getTypeFactory().constructParametricType(collectionClz, elementClz);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;T&gt; <span class="title function_">json2List</span><span class="params">(String json, Class&lt;T&gt; elementClz)</span> &#123;</span><br><span class="line">    objectMapper.readValue(json, collectionType(List.class, clz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;T&gt; <span class="title function_">json2Map</span><span class="params">(String json, Class&lt;T&gt; valueClz)</span> &#123;</span><br><span class="line">    objectMapper.readValue(json, collectionType(Map.class, String.class, clz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">json2List(json, String.class);</span><br><span class="line">json2Map(json. String.class);</span><br></pre></td></tr></table></figure>
-
-<p>3）其他方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">JsonUtils</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">ObjectMapper</span> <span class="variable">jackson</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 把json转为键值对map</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> jsonStr</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Map <span class="title function_">jsonToMap</span><span class="params">(String jsonStr)</span> &#123;</span><br><span class="line">    <span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String,Object&gt;();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      map = jackson.readValue(jsonStr, HashMap.class);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 把json转为List</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> jsonStr</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> List <span class="title function_">jsonToList</span><span class="params">(String jsonStr)</span> &#123;</span><br><span class="line">    <span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      list = jackson.readValue(jsonStr,ArrayList.class);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>后端技术</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>jackson 2.x 解析 json 案例</title>
     <url>/e37eb230-cd6b-11ee-b21c-118c995770df/</url>
     <content><![CDATA[<blockquote>
@@ -7164,6 +7161,30 @@ End 	Fn + →
         <tag>java</tag>
         <tag>json</tag>
         <tag>jackson</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jackson 将 json 串转成 List 或 Map 等集合</title>
+    <url>/8a9db7f1-e38d-11ee-8d05-110f62540784/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、需求描述"><a href="#1、需求描述" class="headerlink" title="1、需求描述"></a>1、需求描述</h2><p>jackson 将 json 串转成 List、Map 等集合时，需要保证集合内的元素泛型不能丢失。</p>
+<h2 id="2、案例"><a href="#2、案例" class="headerlink" title="2、案例"></a>2、案例</h2><p>1）需要构建 TypeReference 参数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">json2Obj</span><span class="params">(String json, TypeReference&lt;T&gt; type)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> objectMapper.readValue(json, type);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">json2Obj(json, <span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;List&lt;String&gt;&gt;()&#123;&#125;);</span><br><span class="line">json2Obj(json, <span class="keyword">new</span> <span class="title class_">TypeReference</span>&lt;Map&lt;String, String&gt;&gt;()&#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>2）collectionType</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> JavaType <span class="title function_">collectionType</span><span class="params">(Class&lt;?&gt; collectionClz, Class&lt;?&gt; ...elementClz)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> om.getTypeFactory().constructParametricType(collectionClz, elementClz);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;T&gt; <span class="title function_">json2List</span><span class="params">(String json, Class&lt;T&gt; elementClz)</span> &#123;</span><br><span class="line">    objectMapper.readValue(json, collectionType(List.class, clz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;T&gt; <span class="title function_">json2Map</span><span class="params">(String json, Class&lt;T&gt; valueClz)</span> &#123;</span><br><span class="line">    objectMapper.readValue(json, collectionType(Map.class, String.class, clz));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">json2List(json, String.class);</span><br><span class="line">json2Map(json. String.class);</span><br></pre></td></tr></table></figure>
+
+<p>3）其他方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">JsonUtils</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">ObjectMapper</span> <span class="variable">jackson</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 把json转为键值对map</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> jsonStr</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Map <span class="title function_">jsonToMap</span><span class="params">(String jsonStr)</span> &#123;</span><br><span class="line">    <span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String,Object&gt;();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      map = jackson.readValue(jsonStr, HashMap.class);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 把json转为List</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> jsonStr</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> List <span class="title function_">jsonToList</span><span class="params">(String jsonStr)</span> &#123;</span><br><span class="line">    <span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      list = jackson.readValue(jsonStr,ArrayList.class);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -7810,27 +7831,6 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>mariadb 报错 The total number of locks exceeds the lock table size 的解决</title>
-    <url>/d0d9c500-5563-11ee-b900-f9a67c785a37/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h2><p>修改表某字段 <code>decimal(10,2)</code> 类型为 <code>decimal(10,3)</code>，该表数据量约 2 亿行。执行时报如题错误。</p>
-<h2 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h2><p>1）执行 <code>show variables like &quot;%_buffer%&quot;;</code> 查看当前 <code>innodb_buffer_pool_size</code> 参数，默认为 134217728（128M）</p>
-<p>2）执行 <code>SET GLOBAL innodb_buffer_pool_size= 1073741824</code>，临时设置参数值为 1G</p>
-<h2 id="3、参考文献"><a href="#3、参考文献" class="headerlink" title="3、参考文献"></a>3、参考文献</h2><ul>
-<li><a href="https://www.cnblogs.com/innocenter/p/14948857.html">https://www.cnblogs.com/innocenter/p/14948857.html</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>后端技术</category>
-      </categories>
-      <tags>
-        <tag>mariadb</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL 使用存储过程批量建表</title>
     <url>/ef131c21-4937-11ee-861d-b3cf05b530a5/</url>
     <content><![CDATA[<blockquote>
@@ -7852,6 +7852,27 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mariadb 报错 The total number of locks exceeds the lock table size 的解决</title>
+    <url>/d0d9c500-5563-11ee-b900-f9a67c785a37/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、问题描述"><a href="#1、问题描述" class="headerlink" title="1、问题描述"></a>1、问题描述</h2><p>修改表某字段 <code>decimal(10,2)</code> 类型为 <code>decimal(10,3)</code>，该表数据量约 2 亿行。执行时报如题错误。</p>
+<h2 id="2、解决方案"><a href="#2、解决方案" class="headerlink" title="2、解决方案"></a>2、解决方案</h2><p>1）执行 <code>show variables like &quot;%_buffer%&quot;;</code> 查看当前 <code>innodb_buffer_pool_size</code> 参数，默认为 134217728（128M）</p>
+<p>2）执行 <code>SET GLOBAL innodb_buffer_pool_size= 1073741824</code>，临时设置参数值为 1G</p>
+<h2 id="3、参考文献"><a href="#3、参考文献" class="headerlink" title="3、参考文献"></a>3、参考文献</h2><ul>
+<li><a href="https://www.cnblogs.com/innocenter/p/14948857.html">https://www.cnblogs.com/innocenter/p/14948857.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+      </categories>
+      <tags>
+        <tag>mariadb</tag>
       </tags>
   </entry>
   <entry>
