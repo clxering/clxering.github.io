@@ -4987,19 +4987,31 @@ End 	Fn + →
 <h2 id="1、建立安装目录"><a href="#1、建立安装目录" class="headerlink" title="1、建立安装目录"></a>1、建立安装目录</h2><p>新建任意名称的目录 <code>C:\Users\abc\Desktop\officefiles</code>，用于归档部署过程中产生的文件。</p>
 <h2 id="2、下载-Office-部署工具"><a href="#2、下载-Office-部署工具" class="headerlink" title="2、下载 Office 部署工具"></a>2、下载 Office 部署工具</h2><p>1）下载部署工具到 <code>officefiles</code> 目录，官网地址：<a href="https://www.microsoft.com/download/details.aspx?id=49117">https://www.microsoft.com/download/details.aspx?id=49117</a></p>
 <p>2）双击 <code>officedeploymenttool.exe</code> 可执行文件，选择提取文件路径，也直接放在 <code>officefiles</code> 目录</p>
-<h2 id="3、创建-configuration-xml-文件"><a href="#3、创建-configuration-xml-文件" class="headerlink" title="3、创建 configuration.xml 文件"></a>3、创建 <code>configuration.xml</code> 文件</h2><p>1）使用 Office 自定义工具创建 <code>configuration.xml</code> 文件，工具地址：<a href="https://config.office.com/deploymentsettings">https://config.office.com/deploymentsettings</a></p>
-<p>2）根据需求选择 office 套件、语言，大多数选项保持默认即可。配置完成后导出，放在 <code>officefiles</code> 目录</p>
+<h2 id="3、创建-configuration-xml-文件"><a href="#3、创建-configuration-xml-文件" class="headerlink" title="3、创建 configuration.xml 文件"></a>3、创建 <code>configuration.xml</code> 文件</h2><p>使用 Office 自定义工具创建 <code>configuration.xml</code> 文件，工具地址：<a href="https://config.office.com/deploymentsettings">https://config.office.com/deploymentsettings</a>，导出文件前要填写系列信息：</p>
+<p>1）<code>体系结构</code> 一般选择 64 位</p>
+<p>2）<code>产品</code> 中根据需求选择 office 套件和应用程序</p>
+<ul>
+<li><p><code>Office 套件</code> 选择 <code>Office LTSC 专业增强版 2021 – 批量许可证</code></p>
+</li>
+<li><p>如果需要 Visio，则 <code>Visio</code> 选择 <code>Visio LTSC 专业版 2021 - 批量许可证</code>，不需要则留空</p>
+</li>
+<li><p><code>Project</code> 与 <code>其他产品</code> 如无需要则留空</p>
+</li>
+</ul>
+<p>3）<code>应用</code> 中根据需要选择组件，如：Word、PowerPoint、Access 等</p>
+<p>4）<code>更新频道</code> 不用动，下一步</p>
+<p>5）<code>语言</code> 选择 <code>简体中文(中国)</code></p>
+<p>6）之后其他选项保持默认即可。完成后导出配置文件，选择 <code>Office Open XML格式</code>，放在 <code>officefiles</code> 目录</p>
 <blockquote>
 <p>注意：配置文件名称必须是 <code>configuration.xml</code></p>
 </blockquote>
-<h2 id="3、下载-Office-LTSC-2021-安装文件"><a href="#3、下载-Office-LTSC-2021-安装文件" class="headerlink" title="3、下载 Office LTSC 2021 安装文件"></a>3、下载 Office LTSC 2021 安装文件</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
+<h2 id="4、下载-Office-LTSC-2021-安装文件"><a href="#4、下载-Office-LTSC-2021-安装文件" class="headerlink" title="4、下载 Office LTSC 2021 安装文件"></a>4、下载 Office LTSC 2021 安装文件</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
 <p>2）执行 <code>setup /download configuration.xml</code>，此时在 <code>officefiles</code> 中会包含名为 Data 的新目录。</p>
-<h2 id="4、安装-Office-LTSC-2021"><a href="#4、安装-Office-LTSC-2021" class="headerlink" title="4、安装 Office LTSC 2021"></a>4、安装 Office LTSC 2021</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Users\abc\Desktop\officefiles</code></p>
-<p>2）执行 <code>setup /configure configuration.xml</code>，安装完成后，将返回到命令提示符</p>
+<h2 id="5、安装-Office-LTSC-2021"><a href="#5、安装-Office-LTSC-2021" class="headerlink" title="5、安装 Office LTSC 2021"></a>5、安装 Office LTSC 2021</h2><p>1）在目录 <code>C:\Users\abc\Desktop\officefiles</code> 中继续执行 <code>setup /configure configuration.xml</code>，安装完成后，将返回到命令提示符</p>
 <blockquote>
 <p>安装路径默认在 <code>C:\Program Files\Microsoft Office</code></p>
 </blockquote>
-<h2 id="5、激活"><a href="#5、激活" class="headerlink" title="5、激活"></a>5、激活</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Program Files\Microsoft Office\Office16</code></p>
+<h2 id="6、激活"><a href="#6、激活" class="headerlink" title="6、激活"></a>6、激活</h2><p>1）以管理员身份打开 cmd，进入目录 <code>C:\Program Files\Microsoft Office\Office16</code></p>
 <p>2）假设已部署的 kms 服务器 ip 为 <code>192.168.1.5</code>，执行 <code>cscript ospp.vbs /sethst:192.168.1.5</code> 设置 kms 服务器地址。出现以下提示说明配置成功：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Successfully applied setting.</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
 
@@ -5009,7 +5021,7 @@ End 	Fn + →
 <p>3）执行 <code>cscript ospp.vbs /act</code> 激活。出现以下提示说明配置成功：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Microsoft (R) Windows Script Host Version 5.812</span><br><span class="line">版权所有(C) Microsoft Corporation。保留所有权利。</span><br><span class="line"></span><br><span class="line">---Processing--------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fb61ac9a-1688-45d2-8f6b-0674dbffa33c</span><br><span class="line">LICENSE NAME: Office 21, Office21VisioPro2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: K2HT4</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">Installed product key detected - attempting to activate the following product:</span><br><span class="line">SKU ID: fbdb3e18-a8ef-4fb3-9183-dffd60bd0984</span><br><span class="line">LICENSE NAME: Office 21, Office21ProPlus2021VL_KMS_Client_AE edition</span><br><span class="line">LICENSE DESCRIPTION: Office 21, VOLUME_KMSCLIENT channel</span><br><span class="line">Last 5 characters of installed product key: 6F7TH</span><br><span class="line">&lt;Product activation successful&gt;</span><br><span class="line">---------------------------------------</span><br><span class="line">---------------------------------------</span><br><span class="line">---Exiting-----------------------------</span><br></pre></td></tr></table></figure>
 
-<h2 id="6、其他"><a href="#6、其他" class="headerlink" title="6、其他"></a>6、其他</h2><p>官方提供了上述使用到的 GVLK 列表（使用 Office 自定义工具创建 <code>configuration.xml</code> 文件时已经自动填写），详见：<a href="https://learn.microsoft.com/zh-cn/deployoffice/vlactivation/gvlks">用于 KMS 和基于 Active Directory 的 Office、Project 和 Visio 激活的 GVLK</a></p>
+<h2 id="7、其他"><a href="#7、其他" class="headerlink" title="7、其他"></a>7、其他</h2><p>官方提供了上述使用到的 GVLK 列表（使用 Office 自定义工具创建 <code>configuration.xml</code> 文件时已经自动填写），详见：<a href="https://learn.microsoft.com/zh-cn/deployoffice/vlactivation/gvlks">用于 KMS 和基于 Active Directory 的 Office、Project 和 Visio 激活的 GVLK</a></p>
 ]]></content>
       <categories>
         <category>部署和安装</category>
