@@ -6167,6 +6167,38 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>公众号添加数学公式</title>
+    <url>/cb6aa8e0-4cf8-11ef-b554-2b6cf9b62df3/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、SVG-图片"><a href="#1、SVG-图片" class="headerlink" title="1、SVG 图片"></a>1、SVG 图片</h2><p>1）可以使用 Office PowerPoint 插入公式后，使用右键菜单的「另存为图片」-&gt;「保存类型」选择「可缩放的向量图形(*.svg)」</p>
+<blockquote>
+<p>WPS 截至目前无此功能。</p>
+</blockquote>
+<p>2）浏览器打开图片，获取源码后使用可编辑公众号源码的插件，Edge 中安装如「壹伴 · 小插件」，插入源码，调整行内样式。</p>
+<h2 id="2、插入-LaTeX-公式"><a href="#2、插入-LaTeX-公式" class="headerlink" title="2、插入 LaTeX 公式"></a>2、插入 LaTeX 公式</h2><p>1）使用在线 LaTeX 公式编辑器：<a href="https://products.aspose.app/tex/zh/equation-editor/svg%EF%BC%8C%E7%BC%96%E8%BE%91%E5%AE%8C%E6%88%90%E5%90%8E%E5%A4%8D%E5%88%B6">https://products.aspose.app/tex/zh/equation-editor/svg，编辑完成后复制</a> <code>\begin&#123;equation*&#125;</code> 和 <code>\end&#123;equation*&#125;</code> 之间的内容。</p>
+<p>2）进入 mdnice 编辑器：<a href="https://editor.mdnice.com/?outId=4c8e49095bbc44f1b2136d96d680bdf4%EF%BC%8C%E5%B0%86%E4%B8%8A%E4%B8%AA%E6%AD%A5%E9%AA%A4%E5%A4%8D%E5%88%B6%E5%86%85%E5%AE%B9%E6%8C%89%E4%B8%8B%E5%88%97%E6%A0%BC%E5%BC%8F%E7%B2%98%E8%B4%B4%E3%80%82">https://editor.mdnice.com/?outId=4c8e49095bbc44f1b2136d96d680bdf4，将上个步骤复制内容按下列格式粘贴。</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">行内公式：$\ce&#123;Hg^2+ -&gt;[I-] HgI2 -&gt;[I-] [Hg^&#123;II&#125;I4]^2-&#125;$</span><br><span class="line"></span><br><span class="line">块公式：$$H(D_2) = -\left(\frac&#123;2&#125;&#123;4&#125;\log_2 \frac&#123;2&#125;&#123;4&#125; + \frac&#123;2&#125;&#123;4&#125;\log_2 \frac&#123;2&#125;&#123;4&#125;\right) = 1$$</span><br></pre></td></tr></table></figure>
+
+<p>展示效果如下：</p>
+<img src="/cb6aa8e0-4cf8-11ef-b554-2b6cf9b62df3/%E5%9B%BE1-LaTeX%E5%85%AC%E5%BC%8F%E5%B1%95%E7%A4%BA.png" class="">
+
+<p>2）在 mdnice 编辑器右侧菜单点击「复制到公众号」，前往公众号粘贴即可</p>
+<blockquote>
+<p>如果要使用行内效果，前后的文字也在编辑器中敲好。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>其他分类</category>
+        <category>公众号</category>
+      </categories>
+      <tags>
+        <tag>公众号</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AtomicInteger-用法</title>
     <url>/ef12ce01-4937-11ee-861d-b3cf05b530a5/</url>
     <content><![CDATA[<blockquote>
