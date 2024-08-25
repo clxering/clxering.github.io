@@ -15,8 +15,32 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 28 Jul 2024 15:53:53 GMT</pubDate>
+    <pubDate>Sun, 25 Aug 2024 03:48:24 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>React 有关计时器和数组状态的问题</title>
+      <link>http://www.dcheng.site/bff79390-6294-11ef-9fbd-1b8fc76b8368/</link>
+      <guid>http://www.dcheng.site/bff79390-6294-11ef-9fbd-1b8fc76b8368/</guid>
+      <pubDate>Sun, 25 Aug 2024 03:32:24 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/">前端技术</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/react/">react</category>
+      
+      <category domain="http://www.dcheng.site/tags/hooks/">hooks</category>
+      
+      
+      <comments>http://www.dcheng.site/bff79390-6294-11ef-9fbd-1b8fc76b8368/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>公众号添加数学公式</title>

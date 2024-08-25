@@ -74,6 +74,39 @@
       </tags>
   </entry>
   <entry>
+    <title>React 有关计时器和数组状态的问题</title>
+    <url>/bff79390-6294-11ef-9fbd-1b8fc76b8368/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、useState-为数组"><a href="#1、useState-为数组" class="headerlink" title="1、useState 为数组"></a>1、useState 为数组</h2><p>1）反例</p>
+<p>定义一个 useState 和生成数据的方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [rows, setRows] = <span class="title class_">React</span>.<span class="title function_">useState</span>([]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createData</span>(<span class="params">column1, column2, column3, column4</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> column5 = column3 / column4;</span><br><span class="line">  <span class="keyword">return</span> &#123; column1, column2, column3, column4, column5 &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按照常规，试图增加元素时，使用以下代码是不生效的：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">setRows</span>([...rows, <span class="title function_">createData</span>(column1, column2, column3, column4)]);</span><br></pre></td></tr></table></figure>
+
+<p>如果取 rows 遍历，发现数组只会有最后更新的元素</p>
+<p>2）正例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">setRows</span>(<span class="function">(<span class="params">prevRows</span>) =&gt;</span> [...prevRows,<span class="title function_">createData</span>(column1, column2, column3, column4),]);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、-useEffect-中使用定时器所产生的闭包陷阱"><a href="#2、-useEffect-中使用定时器所产生的闭包陷阱" class="headerlink" title="2、 useEffect 中使用定时器所产生的闭包陷阱"></a>2、 useEffect 中使用定时器所产生的闭包陷阱</h2><p>1）反例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">callBack</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    ……</span><br><span class="line"></span><br><span class="line">    <span class="title function_">setRows</span>(<span class="function">(<span class="params">prevRows</span>) =&gt;</span> [...prevRows, <span class="title function_">createData</span>(column1, column2, column3, column4)])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> intervalId = <span class="built_in">setInterval</span>(&#123;</span><br><span class="line">        ……</span><br><span class="line">        <span class="title function_">setRows</span>(<span class="function">(<span class="params">prevRows</span>) =&gt;</span> [...prevRows, <span class="title function_">createData</span>(column1, column2, column3, column4)])</span><br><span class="line">    &#125;, <span class="number">5000</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;intervalId=&#x27;</span> + intervalId)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearInterval</span>(intervalId)</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure>
+
+<p>运行后观察控制台，会不断输出计时器 id，说明每次执行间隔就创建一次。有关说明可见文章：<a href="https://github.com/gaearon/overreacted.io/blob/main/public/making-setinterval-declarative-with-react-hooks/index.md">making-setinterval-declarative-with-react-hooks</a></p>
+<p>2）正例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> intervalRef = <span class="title function_">useRef</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">callBack</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    ……</span><br><span class="line"></span><br><span class="line">    <span class="title function_">setRows</span>(<span class="function">(<span class="params">prevRows</span>) =&gt;</span> [...prevRows, <span class="title function_">createData</span>(column1, column2, column3, column4)])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    intervalRef.<span class="property">current</span> = callBack</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">tick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">        intervalRef.<span class="title function_">current</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> intervalId = <span class="built_in">setInterval</span>(tick, <span class="number">5000</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;intervalId=&#x27;</span> + intervalId)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearInterval</span>(intervalId)</span><br><span class="line">&#125;, [])</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>前端技术</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+        <tag>hooks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>create-react-app 脚手架引入 SCSS</title>
     <url>/931db3e0-e409-11ee-86b7-fb4c7634711e/</url>
     <content><![CDATA[<blockquote>
