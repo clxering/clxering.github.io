@@ -30,7 +30,7 @@
 <meta property="og:description" content="前端技术 Cookie 使用总结 React 有关计时器和数组状态的问题 create-react-app 脚手架引入 SCSS exports、module.exports、export 和 export default 的案例和原理解析 jsonp 技术的原理及案例 webpack 打包 ES6 扩展运算符时出错 webpack 配置 vue 基础环境的笔记 修改 nodejs 默认的全局安">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-07-11T00:16:02.000Z">
-<meta property="article:modified_time" content="2024-08-25T03:48:24.730Z">
+<meta property="article:modified_time" content="2024-10-07T03:27:24.051Z">
 <meta property="article:author" content="Mr.Dcheng">
 <meta property="article:tag" content="未标记">
 <meta name="twitter:card" content="summary">
@@ -161,18 +161,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -289,22 +289,23 @@
 <li><a href="/0255ad61-4353-11ee-bed6-3d33eaf7fa7a">win、ubuntu 环境安装 postgresql 15</a></li>
 <li><a href="/3a21e150-815b-11ee-8ef0-c118c637cb12">win 删除服务</a></li>
 <li><a href="/bf9389c0-446f-11ee-90e9-49c3e96e9425">win-本地部署-mariadb</a></li>
+<li><a href="/327f6eb0-845a-11ef-97a5-ef015341acb0">win 环境部署 FastAPI 应用为服务</a></li>
 <li><a href="/2d5ffe70-cd69-11ee-be69-4dedf56c58bd">win 配置开机启动时执行脚本</a></li>
 <li><a href="/3a220860-815b-11ee-8ef0-c118c637cb12">win 防火墙配置允许回显请求</a></li>
 <li><a href="/eaa99ea0-3c36-11ef-91e1-efd3d29ea494">win10 mstsc 远程连接失败</a></li>
 <li><a href="/ed0e8970-441c-11ee-bc1a-25c3478a32d1">win10-powershell-禁止运行脚本的问题</a></li>
 <li><a href="/bf93b0d0-446f-11ee-90e9-49c3e96e9425">云服务器部署-JavaWeb-环境</a></li>
 <li><a href="/5886f891-2a1e-11ee-846a-89c1529ebdf1">使用-Navicat-远程连接阿里云服务器的-MySQL-数据库</a></li>
-<li><a href="/5886f892-2a1e-11ee-846a-89c1529ebdf1">使用-github+Action-部署-Hexo-博客</a></li>
 <li><a href="/931e2910-e409-11ee-86b7-fb4c7634711e">修改 mac 的 MAC 地址</a></li>
 <li><a href="/148d4630-44e0-11ee-bc05-f9725afef782">在win10+vscode+anaconda3+python3.11.3独立环境部署pytorch2.0.1+cuda11.8</a></li>
 <li><a href="/ef12ce00-4937-11ee-861d-b3cf05b530a5">树莓派-ubuntu-环境下-mariadb-部署</a></li>
 <li><a href="/53337b90-4f8d-11ee-9eaf-09d2cd19d790">激活 win10&#x2F;11 pro</a></li>
 <li><a href="/53337b91-4f8d-11ee-9eaf-09d2cd19d790">部署 Office LTSC 2021 批量授权版本</a></li>
+<li><a href="/5886f892-2a1e-11ee-846a-89c1529ebdf1">使用-github+Action-部署-Hexo-博客</a></li>
 <li><a href="/077ca5b0-4ec4-11ee-86e1-a907f23a1148">部署 Windows Server 2022 Datacenter</a></li>
-<li><a href="/faef3d90-4ea4-11ee-addd-c161ce22f848">部署 kms 服务器</a></li>
 <li><a href="/58871fa0-2a1e-11ee-846a-89c1529ebdf1">部署-ubuntu-服务器</a></li>
 <li><a href="/148d4631-44e0-11ee-bc05-f9725afef782">部署win10+vscode+anaconda3环境</a></li>
+<li><a href="/faef3d90-4ea4-11ee-addd-c161ce22f848">部署 kms 服务器</a></li>
 </ul>
 </li>
 <li>其他分类<ul>
@@ -320,6 +321,7 @@
 </ul>
 </li>
 <li>后端技术<ul>
+<li>java<ul>
 <li><a href="/ef12ce01-4937-11ee-861d-b3cf05b530a5">AtomicInteger-用法</a></li>
 <li><a href="/58871fa1-2a1e-11ee-846a-89c1529ebdf1">CompletableFuture-异步处理任务</a></li>
 <li><a href="/588746b0-2a1e-11ee-846a-89c1529ebdf1">CompletionService-及时获取任务返回值</a></li>
@@ -336,15 +338,23 @@
 <li><a href="/d27a8f70-9bfe-11ee-a92b-05e08d68d559">springboot 数据源配置</a></li>
 <li><a href="/3c6aeb02-e213-11ee-8578-cb8bdeddad57">springboot 服务运行时读取目录下文件</a></li>
 <li><a href="/931e2911-e409-11ee-86b7-fb4c7634711e">前端无法获取响应头 Content-disposition</a></li>
+</ul>
+</li>
+<li>python<ul>
 <li><a href="/8a9db7f0-e38d-11ee-8d05-110f62540784">Anaconda 下修改 Jupyter 的默认路径</a></li>
 <li><a href="/97816df0-a133-11ee-9970-39bf61dae061">python 的字符串前缀</a></li>
 <li><a href="/97819500-a133-11ee-9970-39bf61dae061">使用 poetry 进行依赖管理</a></li>
+</ul>
+</li>
+<li>数据库<ul>
 <li><a href="/ef12f513-4937-11ee-861d-b3cf05b530a5">MySQL-8.x-问题处理汇总</a></li>
-<li><a href="/ef131c21-4937-11ee-861d-b3cf05b530a5">MySQL 使用存储过程批量建表</a></li>
 <li><a href="/d0d9c500-5563-11ee-b900-f9a67c785a37">mariadb 报错 The total number of locks exceeds the lock table size 的解决</a></li>
+<li><a href="/ef131c21-4937-11ee-861d-b3cf05b530a5">MySQL 使用存储过程批量建表</a></li>
 <li><a href="/ef12f514-4937-11ee-861d-b3cf05b530a5">oracle 12c 使用 WM_CONCAT 函数提示标识符无效</a></li>
 <li><a href="/8a9db7f2-e38d-11ee-8d05-110f62540784">oracle、postgresql、mysql行转列的内置函数</a></li>
 <li><a href="/ef131c20-4937-11ee-861d-b3cf05b530a5">触发器案例（MySQL）</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

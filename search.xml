@@ -4238,6 +4238,47 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>win 环境部署 FastAPI 应用为服务</title>
+    <url>/327f6eb0-845a-11ef-97a5-ef015341acb0/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="0、环境"><a href="#0、环境" class="headerlink" title="0、环境"></a>0、环境</h2><p>1）win 10&#x2F;11 或 win server</p>
+<p>2）python 3.11.9</p>
+<p>3）nssm 2.24</p>
+<h2 id="1、导出项目依赖"><a href="#1、导出项目依赖" class="headerlink" title="1、导出项目依赖"></a>1、导出项目依赖</h2><p>1）默认使用 poetry 进行依赖管理。执行 <code>poetry export -f requirements.txt --without-hashes &gt; requirements.txt</code></p>
+<blockquote>
+<p><code>requirements.txt</code> 文件第一行可更改安装源，首选 <code>https://mirrors.aliyun.com/pypi/simple/</code></p>
+</blockquote>
+<h2 id="2、安装依赖"><a href="#2、安装依赖" class="headerlink" title="2、安装依赖"></a>2、安装依赖</h2><p>1）在服务端自定义安装 <code>python 3.11.9</code>，路径尽量简单，便于查找选择；</p>
+<p>2）执行 <code>pip install -r requirements.txt</code>，安装依赖到全局</p>
+<h2 id="3、使用-nssm"><a href="#3、使用-nssm" class="headerlink" title="3、使用 nssm"></a>3、使用 nssm</h2><blockquote>
+<p>官网下载地址：<a href="https://nssm.cc/download">https://nssm.cc/download</a></p>
+</blockquote>
+<p>1）使用 cmd 或 powershell 进入 <code>nssm\win64</code> 目录</p>
+<p>2）执行配置。cmd 执行<code>nssm install</code>；powershell 执行 <code>.\nssm install</code></p>
+<p>3）在弹出对话框 Application 选项卡依次配置以下内容后点击 <code>Install service</code></p>
+<img src="/327f6eb0-845a-11ef-97a5-ef015341acb0/1-nssm%E9%85%8D%E7%BD%AE.jpg" class="">
+
+<ul>
+<li><code>Path</code>，python 执行器，选择安装的 <code>python 3.11.9</code> 路径，示例路径：<code>C:\Python311\python.exe</code></li>
+<li><code>Startup directory</code>，项目根目录，示例：<code>C:\test-deploy-fastapi\</code></li>
+<li><code>Arguments</code>，执行参数，填入程序入口文件名，示例：<code>main.py</code></li>
+<li><code>Service name</code>，服务名称，自定义：<code>FastApi</code></li>
+</ul>
+<p>4）启动服务即可</p>
+<h2 id="4、其他"><a href="#4、其他" class="headerlink" title="4、其他"></a>4、其他</h2><p>该项目的 <code>main.py</code> 文件参考如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> uvicorn</span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">root</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello World&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&#123;item_id&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">read_item</span>(<span class="params">item_id: <span class="built_in">int</span></span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;item_id&quot;</span>: item_id&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    config = uvicorn.Config(<span class="string">&#x27;main:app&#x27;</span>, host=<span class="string">&#x27;0.0.0.0&#x27;</span>, port=<span class="number">8000</span>)</span><br><span class="line">    server = uvicorn.Server(config)</span><br><span class="line">    server.run()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>FastAPI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>win 配置开机启动时执行脚本</title>
     <url>/2d5ffe70-cd69-11ee-be69-4dedf56c58bd/</url>
     <content><![CDATA[<blockquote>
@@ -4740,67 +4781,6 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
-    <title>使用-github+Action-部署-Hexo-博客</title>
-    <url>/5886f892-2a1e-11ee-846a-89c1529ebdf1/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为便于叙述，统一说明如下：</p>
-<ul>
-<li>博客 github 源码仓库默认分支为 main，ssh 地址：<code>git@github.com:username/blog.git</code></li>
-<li><code>username.github.io</code>：博客部署仓库，默认分支为 main</li>
-<li><code>hexo_deploy</code>：本地私钥文件</li>
-<li>&#96;hexo_deploy.pub：本地公钥文件</li>
-<li>主题以 NexT 8.13.2 为例</li>
-</ul>
-<blockquote>
-<p>本地 hexo 安装、主题部署流程较简单，步骤省略。</p>
-</blockquote>
-<h2 id="1、配置本地博客源代码库"><a href="#1、配置本地博客源代码库" class="headerlink" title="1、配置本地博客源代码库"></a>1、配置本地博客源代码库</h2><p>在本地博客源代码仓库根目录 <code>_config.yml</code> 文件中增加如下部署配置：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：github 目前仅允许 ssh 提交，部署仓库必须为 ssh 地址</p>
-</blockquote>
-<h2 id="2、配置专用密钥对"><a href="#2、配置专用密钥对" class="headerlink" title="2、配置专用密钥对"></a>2、配置专用密钥对</h2><p>本地重新生成一组密钥对，如 <code>hexo_deploy.pub</code> 与 <code>hexo_deploy</code>。私钥配置到 github 源码仓库的 <code>repository secret</code>，公钥配置到 <code>username.github.io</code> 部署仓库的 <code>Deploy keys</code>。该密钥对专用于「源码仓库」与「部署仓库」之间的 Action 自动部署。</p>
-<blockquote>
-<p>github 源码库新建后即可配置：依次进入 <code>Settings -&gt; Secrets -&gt; Actions -&gt; New repository secret</code>，名称取 <code>HEXO_DEPLOY_SECRET</code>，值取自 <code>hexo_deploy</code> 内容；<code>username.github.io.git</code> 部署仓库配置步骤略。</p>
-</blockquote>
-<p>也可以拿用户公钥 <code>SSH keys</code>（可访问全部仓库）及其对应的私钥完成该步骤，但是用户公钥不一致时（比如办公室和家里使用的用户公钥不同，除非复制同一份密钥对），Action 自动部署的私钥也要更改，使用专用密钥对可避免这个问题。</p>
-<h2 id="3、创建-Action"><a href="#3、创建-Action" class="headerlink" title="3、创建 Action"></a>3、创建 Action</h2><p>在本地博客源代码库根目录下创建 <code>.github/workflows/deploy.yml</code> 文件，参考内容如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">hexo-blog-deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">username</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="string">username@gmail.com</span></span><br><span class="line">  <span class="attr">DEPLOY_REPO:</span> <span class="string">username/username.github.io</span></span><br><span class="line">  <span class="attr">DEPLOY_BRANCH:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build</span> <span class="string">on</span> <span class="string">node</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span> <span class="string">and</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.os</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">os:</span> [<span class="string">ubuntu-latest</span>]</span><br><span class="line">        <span class="attr">node_version:</span> [<span class="number">19.</span><span class="string">x</span>]</span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">deploy</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configuration</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_SECRET:</span> <span class="string">$&#123;&#123;secrets.HEXO_DEPLOY_SECRET&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sudo timedatectl set-timezone &quot;Asia/Shanghai&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">          <span class="comment"># 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).</span></span><br><span class="line">          <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;$HEXO_DEPLOY_SECRET&quot;</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 设置用户名和邮箱，否则提示 Please tell me who you are.</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">$GIT_USER</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">$GIT_EMAIL</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string">          npm install hexo-deployer-git --save</span></span><br><span class="line"><span class="string">          # 全局搜索插件</span></span><br><span class="line"><span class="string">          npm install hexo-generator-searchdb --save</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4、常用命令"><a href="#4、常用命令" class="headerlink" title="4、常用命令"></a>4、常用命令</h2><ul>
-<li>本地启动：<code>hexo s</code></li>
-<li>清除缓存：<code>hexo clean</code></li>
-<li>新建草稿：<code>hexo new draft &lt;filename&gt;</code></li>
-<li>发布草稿：<code>hexo publish [layout] &lt;filename&gt;</code></li>
-</ul>
-<h2 id="5、其他"><a href="#5、其他" class="headerlink" title="5、其他"></a>5、其他</h2><h2 id="（可选）部署留言栏-Utterances"><a href="#（可选）部署留言栏-Utterances" class="headerlink" title="（可选）部署留言栏 Utterances"></a>（可选）部署留言栏 Utterances</h2><p>安装 github 应用： <code>https://github.com/apps/utterances</code></p>
-<p>next 最新版本已经集成 Utterances，因此不需要复制安装完成后的模板，直接在主题文件根目录下设置 <code>_config.yml</code> 文件即可：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">username/username.github.io</span> <span class="comment"># Github repository owner and name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">pathname</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="（可选）部署留言栏-giscus"><a href="#（可选）部署留言栏-giscus" class="headerlink" title="（可选）部署留言栏 giscus"></a>（可选）部署留言栏 giscus</h2><p>进入官网（<code>https://giscus.app/</code>）可拿到一段已经填充配置内容的 <code>&lt;script&gt;</code> 标签：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;https://giscus.app/client.js&quot;</span><br><span class="line">    data-repo=&quot;[在此输入仓库]&quot;</span><br><span class="line">    data-repo-id=&quot;[在此输入仓库 ID]&quot;</span><br><span class="line">    data-category=&quot;[在此输入分类名]&quot;</span><br><span class="line">    data-category-id=&quot;[在此输入分类 ID]&quot;</span><br><span class="line">    data-mapping=&quot;pathname&quot;</span><br><span class="line">    data-strict=&quot;0&quot;</span><br><span class="line">    data-reactions-enabled=&quot;1&quot;</span><br><span class="line">    data-emit-metadata=&quot;0&quot;</span><br><span class="line">    data-input-position=&quot;bottom&quot;</span><br><span class="line">    data-theme=&quot;preferred_color_scheme&quot;</span><br><span class="line">    data-lang=&quot;zh-CN&quot;</span><br><span class="line">    crossorigin=&quot;anonymous&quot;</span><br><span class="line">    async&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果要在每一篇文章后添加评论功能，以 next 主题为例，仅供参考。进入 <code>themes/next/layout/_macro/post.njk</code> 文件，找到模板中「文章末尾」（注释标志为 <code>END POST BODY</code>，如下所示），将上述片段加入。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;#####################&#125;</span><br><span class="line">&#123;### <span class="variable constant_">END</span> <span class="variable constant_">POST</span> <span class="variable constant_">BODY</span> ###&#125;</span><br><span class="line">&#123;#####################&#125;</span><br><span class="line">&lt;footer <span class="keyword">class</span>=<span class="string">&quot;post-footer&quot;</span>&gt;</span><br><span class="line">  &#123;%- <span class="keyword">if</span> is_index %&#125;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-eof&quot;</span> style=<span class="string">&quot;margin:20px auto 20px;width:100%;background: transparent;border-top: 1px solid #e2e0e0&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;&#123;- <span class="title function_">next_inject</span>(<span class="string">&#x27;postBodyEnd&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">reward_settings</span>.<span class="property">enable</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-reward.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">creative_commons</span>.<span class="property">license</span> and theme.<span class="property">creative_commons</span>.<span class="property">post</span> and post.<span class="property">copyright</span> !== <span class="literal">false</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-copyright.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">follow_me</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-followme.njk&#x27;</span>, &#123;&#125;, &#123;<span class="attr">cache</span>: theme.<span class="property">cache</span>.<span class="property">enable</span>&#125;) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line">    &#123;###   add giscus  ###&#125;</span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line"></span><br><span class="line">    &lt;script src=<span class="string">&quot;https://giscus.app/client.js&quot;</span></span><br><span class="line">        data-repo=<span class="string">&quot;[在此输入仓库]&quot;</span></span><br><span class="line">        data-repo-id=<span class="string">&quot;[在此输入仓库 ID]&quot;</span></span><br><span class="line">        data-category=<span class="string">&quot;[在此输入分类名]&quot;</span></span><br><span class="line">        data-category-id=<span class="string">&quot;[在此输入分类 ID]&quot;</span></span><br><span class="line">        data-mapping=<span class="string">&quot;pathname&quot;</span></span><br><span class="line">        data-strict=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-reactions-enabled=<span class="string">&quot;1&quot;</span></span><br><span class="line">        data-emit-metadata=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-input-position=<span class="string">&quot;bottom&quot;</span></span><br><span class="line">        data-theme=<span class="string">&quot;preferred_color_scheme&quot;</span></span><br><span class="line">        data-lang=<span class="string">&quot;zh-CN&quot;</span></span><br><span class="line">        crossorigin=<span class="string">&quot;anonymous&quot;</span></span><br><span class="line">        <span class="keyword">async</span>&gt;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">tags</span> and post.<span class="property">tags</span>.<span class="property">length</span> %&#125;</span><br><span class="line">      &#123;%- set tag_indicate = <span class="string">&#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;</span> <span class="keyword">if</span> theme.<span class="property">tag_icon</span> <span class="keyword">else</span> <span class="string">&#x27;#&#x27;</span> %&#125;</span><br><span class="line">      &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-tags&quot;</span>&gt;</span><br><span class="line">        &#123;%- <span class="keyword">for</span> tag <span class="keyword">in</span> post.<span class="property">tags</span>.<span class="title function_">toArray</span>() %&#125;</span><br><span class="line">          &lt;a href=<span class="string">&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot;</span> rel=<span class="string">&quot;tag&quot;</span>&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.<span class="property">name</span> &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="（可选）部署域名"><a href="#（可选）部署域名" class="headerlink" title="（可选）部署域名"></a>（可选）部署域名</h2><p>参考官方文档：<a href="%60https://docs.github.com/cn/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages%60">验证用户站点的域</a></p>
-<blockquote>
-<p>注意：需要在 blog 源代码库 source 目录下放置 CNAME 文件。之后步骤按官方文档进行</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>修改 mac 的 MAC 地址</title>
     <url>/931e2910-e409-11ee-86b7-fb4c7634711e/</url>
     <content><![CDATA[<blockquote>
@@ -5065,6 +5045,67 @@ End 	Fn + →
       </tags>
   </entry>
   <entry>
+    <title>使用-github+Action-部署-Hexo-博客</title>
+    <url>/5886f892-2a1e-11ee-846a-89c1529ebdf1/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为便于叙述，统一说明如下：</p>
+<ul>
+<li>博客 github 源码仓库默认分支为 main，ssh 地址：<code>git@github.com:username/blog.git</code></li>
+<li><code>username.github.io</code>：博客部署仓库，默认分支为 main</li>
+<li><code>hexo_deploy</code>：本地私钥文件</li>
+<li>&#96;hexo_deploy.pub：本地公钥文件</li>
+<li>主题以 NexT 8.13.2 为例</li>
+</ul>
+<blockquote>
+<p>本地 hexo 安装、主题部署流程较简单，步骤省略。</p>
+</blockquote>
+<h2 id="1、配置本地博客源代码库"><a href="#1、配置本地博客源代码库" class="headerlink" title="1、配置本地博客源代码库"></a>1、配置本地博客源代码库</h2><p>在本地博客源代码仓库根目录 <code>_config.yml</code> 文件中增加如下部署配置：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：github 目前仅允许 ssh 提交，部署仓库必须为 ssh 地址</p>
+</blockquote>
+<h2 id="2、配置专用密钥对"><a href="#2、配置专用密钥对" class="headerlink" title="2、配置专用密钥对"></a>2、配置专用密钥对</h2><p>本地重新生成一组密钥对，如 <code>hexo_deploy.pub</code> 与 <code>hexo_deploy</code>。私钥配置到 github 源码仓库的 <code>repository secret</code>，公钥配置到 <code>username.github.io</code> 部署仓库的 <code>Deploy keys</code>。该密钥对专用于「源码仓库」与「部署仓库」之间的 Action 自动部署。</p>
+<blockquote>
+<p>github 源码库新建后即可配置：依次进入 <code>Settings -&gt; Secrets -&gt; Actions -&gt; New repository secret</code>，名称取 <code>HEXO_DEPLOY_SECRET</code>，值取自 <code>hexo_deploy</code> 内容；<code>username.github.io.git</code> 部署仓库配置步骤略。</p>
+</blockquote>
+<p>也可以拿用户公钥 <code>SSH keys</code>（可访问全部仓库）及其对应的私钥完成该步骤，但是用户公钥不一致时（比如办公室和家里使用的用户公钥不同，除非复制同一份密钥对），Action 自动部署的私钥也要更改，使用专用密钥对可避免这个问题。</p>
+<h2 id="3、创建-Action"><a href="#3、创建-Action" class="headerlink" title="3、创建 Action"></a>3、创建 Action</h2><p>在本地博客源代码库根目录下创建 <code>.github/workflows/deploy.yml</code> 文件，参考内容如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">hexo-blog-deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">username</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="string">username@gmail.com</span></span><br><span class="line">  <span class="attr">DEPLOY_REPO:</span> <span class="string">username/username.github.io</span></span><br><span class="line">  <span class="attr">DEPLOY_BRANCH:</span> <span class="string">main</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build</span> <span class="string">on</span> <span class="string">node</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span> <span class="string">and</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.os</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">os:</span> [<span class="string">ubuntu-latest</span>]</span><br><span class="line">        <span class="attr">node_version:</span> [<span class="number">19.</span><span class="string">x</span>]</span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">deploy</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configuration</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_SECRET:</span> <span class="string">$&#123;&#123;secrets.HEXO_DEPLOY_SECRET&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sudo timedatectl set-timezone &quot;Asia/Shanghai&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">          <span class="comment"># 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).</span></span><br><span class="line">          <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;$HEXO_DEPLOY_SECRET&quot;</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 设置用户名和邮箱，否则提示 Please tell me who you are.</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">$GIT_USER</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">$GIT_EMAIL</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npm install</span></span><br><span class="line"><span class="string">          npm install hexo-deployer-git --save</span></span><br><span class="line"><span class="string">          # 全局搜索插件</span></span><br><span class="line"><span class="string">          npm install hexo-generator-searchdb --save</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4、常用命令"><a href="#4、常用命令" class="headerlink" title="4、常用命令"></a>4、常用命令</h2><ul>
+<li>本地启动：<code>hexo s</code></li>
+<li>清除缓存：<code>hexo clean</code></li>
+<li>新建草稿：<code>hexo new draft &lt;filename&gt;</code></li>
+<li>发布草稿：<code>hexo publish [layout] &lt;filename&gt;</code></li>
+</ul>
+<h2 id="5、其他"><a href="#5、其他" class="headerlink" title="5、其他"></a>5、其他</h2><h2 id="（可选）部署留言栏-Utterances"><a href="#（可选）部署留言栏-Utterances" class="headerlink" title="（可选）部署留言栏 Utterances"></a>（可选）部署留言栏 Utterances</h2><p>安装 github 应用： <code>https://github.com/apps/utterances</code></p>
+<p>next 最新版本已经集成 Utterances，因此不需要复制安装完成后的模板，直接在主题文件根目录下设置 <code>_config.yml</code> 文件即可：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Utterances</span></span><br><span class="line"><span class="comment"># For more information: https://utteranc.es</span></span><br><span class="line"><span class="attr">utterances:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">username/username.github.io</span> <span class="comment"># Github repository owner and name</span></span><br><span class="line">  <span class="comment"># Available values: pathname | url | title | og:title</span></span><br><span class="line">  <span class="attr">issue_term:</span> <span class="string">pathname</span></span><br><span class="line">  <span class="comment"># Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light</span></span><br><span class="line">  <span class="attr">theme:</span> <span class="string">github-light</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="（可选）部署留言栏-giscus"><a href="#（可选）部署留言栏-giscus" class="headerlink" title="（可选）部署留言栏 giscus"></a>（可选）部署留言栏 giscus</h2><p>进入官网（<code>https://giscus.app/</code>）可拿到一段已经填充配置内容的 <code>&lt;script&gt;</code> 标签：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;https://giscus.app/client.js&quot;</span><br><span class="line">    data-repo=&quot;[在此输入仓库]&quot;</span><br><span class="line">    data-repo-id=&quot;[在此输入仓库 ID]&quot;</span><br><span class="line">    data-category=&quot;[在此输入分类名]&quot;</span><br><span class="line">    data-category-id=&quot;[在此输入分类 ID]&quot;</span><br><span class="line">    data-mapping=&quot;pathname&quot;</span><br><span class="line">    data-strict=&quot;0&quot;</span><br><span class="line">    data-reactions-enabled=&quot;1&quot;</span><br><span class="line">    data-emit-metadata=&quot;0&quot;</span><br><span class="line">    data-input-position=&quot;bottom&quot;</span><br><span class="line">    data-theme=&quot;preferred_color_scheme&quot;</span><br><span class="line">    data-lang=&quot;zh-CN&quot;</span><br><span class="line">    crossorigin=&quot;anonymous&quot;</span><br><span class="line">    async&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果要在每一篇文章后添加评论功能，以 next 主题为例，仅供参考。进入 <code>themes/next/layout/_macro/post.njk</code> 文件，找到模板中「文章末尾」（注释标志为 <code>END POST BODY</code>，如下所示），将上述片段加入。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;#####################&#125;</span><br><span class="line">&#123;### <span class="variable constant_">END</span> <span class="variable constant_">POST</span> <span class="variable constant_">BODY</span> ###&#125;</span><br><span class="line">&#123;#####################&#125;</span><br><span class="line">&lt;footer <span class="keyword">class</span>=<span class="string">&quot;post-footer&quot;</span>&gt;</span><br><span class="line">  &#123;%- <span class="keyword">if</span> is_index %&#125;</span><br><span class="line">    &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-eof&quot;</span> style=<span class="string">&quot;margin:20px auto 20px;width:100%;background: transparent;border-top: 1px solid #e2e0e0&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">  &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;&#123;- <span class="title function_">next_inject</span>(<span class="string">&#x27;postBodyEnd&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">reward_settings</span>.<span class="property">enable</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-reward.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">creative_commons</span>.<span class="property">license</span> and theme.<span class="property">creative_commons</span>.<span class="property">post</span> and post.<span class="property">copyright</span> !== <span class="literal">false</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-copyright.njk&#x27;</span>) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    &#123;%- <span class="keyword">if</span> theme.<span class="property">follow_me</span> %&#125;</span><br><span class="line">      &#123;&#123; <span class="title function_">partial</span>(<span class="string">&#x27;_partials/post/post-followme.njk&#x27;</span>, &#123;&#125;, &#123;<span class="attr">cache</span>: theme.<span class="property">cache</span>.<span class="property">enable</span>&#125;) &#125;&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line">    &#123;###   add giscus  ###&#125;</span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line"></span><br><span class="line">    &lt;script src=<span class="string">&quot;https://giscus.app/client.js&quot;</span></span><br><span class="line">        data-repo=<span class="string">&quot;[在此输入仓库]&quot;</span></span><br><span class="line">        data-repo-id=<span class="string">&quot;[在此输入仓库 ID]&quot;</span></span><br><span class="line">        data-category=<span class="string">&quot;[在此输入分类名]&quot;</span></span><br><span class="line">        data-category-id=<span class="string">&quot;[在此输入分类 ID]&quot;</span></span><br><span class="line">        data-mapping=<span class="string">&quot;pathname&quot;</span></span><br><span class="line">        data-strict=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-reactions-enabled=<span class="string">&quot;1&quot;</span></span><br><span class="line">        data-emit-metadata=<span class="string">&quot;0&quot;</span></span><br><span class="line">        data-input-position=<span class="string">&quot;bottom&quot;</span></span><br><span class="line">        data-theme=<span class="string">&quot;preferred_color_scheme&quot;</span></span><br><span class="line">        data-lang=<span class="string">&quot;zh-CN&quot;</span></span><br><span class="line">        crossorigin=<span class="string">&quot;anonymous&quot;</span></span><br><span class="line">        <span class="keyword">async</span>&gt;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">    &#123;%- <span class="keyword">if</span> post.<span class="property">tags</span> and post.<span class="property">tags</span>.<span class="property">length</span> %&#125;</span><br><span class="line">      &#123;%- set tag_indicate = <span class="string">&#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27;</span> <span class="keyword">if</span> theme.<span class="property">tag_icon</span> <span class="keyword">else</span> <span class="string">&#x27;#&#x27;</span> %&#125;</span><br><span class="line">      &lt;div <span class="keyword">class</span>=<span class="string">&quot;post-tags&quot;</span>&gt;</span><br><span class="line">        &#123;%- <span class="keyword">for</span> tag <span class="keyword">in</span> post.<span class="property">tags</span>.<span class="title function_">toArray</span>() %&#125;</span><br><span class="line">          &lt;a href=<span class="string">&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot;</span> rel=<span class="string">&quot;tag&quot;</span>&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.<span class="property">name</span> &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="（可选）部署域名"><a href="#（可选）部署域名" class="headerlink" title="（可选）部署域名"></a>（可选）部署域名</h2><p>参考官方文档：<a href="%60https://docs.github.com/cn/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages%60">验证用户站点的域</a></p>
+<blockquote>
+<p>注意：需要在 blog 源代码库 source 目录下放置 CNAME 文件。之后步骤按官方文档进行</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>部署 Windows Server 2022 Datacenter</title>
     <url>/077ca5b0-4ec4-11ee-86e1-a907f23a1148/</url>
     <content><![CDATA[<blockquote>
@@ -5112,56 +5153,6 @@ End 	Fn + →
       <tags>
         <tag>win</tag>
         <tag>server</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>部署 kms 服务器</title>
-    <url>/faef3d90-4ea4-11ee-addd-c161ce22f848/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="1、环境"><a href="#1、环境" class="headerlink" title="1、环境"></a>1、环境</h2><ul>
-<li>Windows 10 专业版 22H2</li>
-<li>Ubuntu 22.04.2 LTS (GNU&#x2F;Linux 5.19.0-35-generic x86_64)</li>
-</ul>
-<blockquote>
-<p>建议在 ubuntu 环境下部署。win 环境容易促使杀毒软件报警；如果使用虚拟机部署，要让同一局域网其他设备访问，应设置虚拟网络为桥接模式</p>
-</blockquote>
-<h2 id="2、Ubuntu-部署"><a href="#2、Ubuntu-部署" class="headerlink" title="2、Ubuntu 部署"></a>2、Ubuntu 部署</h2><p>1）执行下载 <code>wget https://github.com/Wind4/vlmcsd/releases/download/svn1113/binaries.tar.gz</code></p>
-<blockquote>
-<p>可到部署工具远程仓库查看最新版本：<a href="https://github.com/Wind4/vlmcsd/releases">https://github.com/Wind4/vlmcsd/releases</a></p>
-</blockquote>
-<p>2）执行解压 <code>tar -zxvf binaries.tar.gz</code></p>
-<p>3）进入目录 <code>cd binaries/Linux/intel/static</code>，执行 <code>./vlmcsdmulti-x64-musl-static vlmcsd</code></p>
-<blockquote>
-<p>注：如果重启或者关机，需要重新执行</p>
-</blockquote>
-<blockquote>
-<p>根据服务器系统和平台选择对应的文件，本文 ubuntu 环境为 x64，因此选用上述命令。其他可选：</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vlmcsdmulti-x64-musl-static          vlmcsd-x86-musl-static</span><br><span class="line">vlmcsdmulti-x86-musl-static          vlmcsd-x86-musl-static-threads</span><br><span class="line">vlmcsdmulti-x86-musl-static-threads  vlmcs-x64-musl-static</span><br><span class="line">vlmcsd-x64-musl-static               vlmcs-x86-musl-static</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：要开放 1688 端口</p>
-</blockquote>
-<p>4）验证进程，执行 <code>ps aux | grep vlmcsd</code>，包含如下结果说明部署成功</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ubuntu      2590  0.0  0.0    296     0 ?        S    20:45   0:00 ./vlmcsdmulti-x64-musl-static vlmcsd</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、win10-部署"><a href="#3、win10-部署" class="headerlink" title="3、win10 部署"></a>3、win10 部署</h2><p>1）下载部署文件，解压两次（<code>binaries.tar.gz</code> -&gt; <code>binaries.tar</code> -&gt; <code>binaries</code>）</p>
-<p>2）进入目录 <code>binaries\Windows\intel</code>，以管理员身份打开 cmd，执行 <code>vlmcsd-Windows-x64.exe -s</code> 安装服务</p>
-<blockquote>
-<p>注：<code>vlmcsd-Windows-x64.exe -S</code> 参数为大写 S 则移除服务</p>
-</blockquote>
-<p>3）在运行栏执行 <code>services.msc</code> 进入服务管理，找到 <code>Key Management Server</code>，启动该服务</p>
-]]></content>
-      <categories>
-        <category>部署和安装</category>
-      </categories>
-      <tags>
-        <tag>win</tag>
-        <tag>ubuntu</tag>
-        <tag>kms</tag>
       </tags>
   </entry>
   <entry>
@@ -5416,6 +5407,56 @@ End 	Fn + →
       </categories>
       <tags>
         <tag>anaconda</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>部署 kms 服务器</title>
+    <url>/faef3d90-4ea4-11ee-addd-c161ce22f848/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、环境"><a href="#1、环境" class="headerlink" title="1、环境"></a>1、环境</h2><ul>
+<li>Windows 10 专业版 22H2</li>
+<li>Ubuntu 22.04.2 LTS (GNU&#x2F;Linux 5.19.0-35-generic x86_64)</li>
+</ul>
+<blockquote>
+<p>建议在 ubuntu 环境下部署。win 环境容易促使杀毒软件报警；如果使用虚拟机部署，要让同一局域网其他设备访问，应设置虚拟网络为桥接模式</p>
+</blockquote>
+<h2 id="2、Ubuntu-部署"><a href="#2、Ubuntu-部署" class="headerlink" title="2、Ubuntu 部署"></a>2、Ubuntu 部署</h2><p>1）执行下载 <code>wget https://github.com/Wind4/vlmcsd/releases/download/svn1113/binaries.tar.gz</code></p>
+<blockquote>
+<p>可到部署工具远程仓库查看最新版本：<a href="https://github.com/Wind4/vlmcsd/releases">https://github.com/Wind4/vlmcsd/releases</a></p>
+</blockquote>
+<p>2）执行解压 <code>tar -zxvf binaries.tar.gz</code></p>
+<p>3）进入目录 <code>cd binaries/Linux/intel/static</code>，执行 <code>./vlmcsdmulti-x64-musl-static vlmcsd</code></p>
+<blockquote>
+<p>注：如果重启或者关机，需要重新执行</p>
+</blockquote>
+<blockquote>
+<p>根据服务器系统和平台选择对应的文件，本文 ubuntu 环境为 x64，因此选用上述命令。其他可选：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vlmcsdmulti-x64-musl-static          vlmcsd-x86-musl-static</span><br><span class="line">vlmcsdmulti-x86-musl-static          vlmcsd-x86-musl-static-threads</span><br><span class="line">vlmcsdmulti-x86-musl-static-threads  vlmcs-x64-musl-static</span><br><span class="line">vlmcsd-x64-musl-static               vlmcs-x86-musl-static</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：要开放 1688 端口</p>
+</blockquote>
+<p>4）验证进程，执行 <code>ps aux | grep vlmcsd</code>，包含如下结果说明部署成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ubuntu      2590  0.0  0.0    296     0 ?        S    20:45   0:00 ./vlmcsdmulti-x64-musl-static vlmcsd</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、win10-部署"><a href="#3、win10-部署" class="headerlink" title="3、win10 部署"></a>3、win10 部署</h2><p>1）下载部署文件，解压两次（<code>binaries.tar.gz</code> -&gt; <code>binaries.tar</code> -&gt; <code>binaries</code>）</p>
+<p>2）进入目录 <code>binaries\Windows\intel</code>，以管理员身份打开 cmd，执行 <code>vlmcsd-Windows-x64.exe -s</code> 安装服务</p>
+<blockquote>
+<p>注：<code>vlmcsd-Windows-x64.exe -S</code> 参数为大写 S 则移除服务</p>
+</blockquote>
+<p>3）在运行栏执行 <code>services.msc</code> 进入服务管理，找到 <code>Key Management Server</code>，启动该服务</p>
+]]></content>
+      <categories>
+        <category>部署和安装</category>
+      </categories>
+      <tags>
+        <tag>win</tag>
+        <tag>ubuntu</tag>
+        <tag>kms</tag>
       </tags>
   </entry>
   <entry>
@@ -6320,6 +6361,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -6702,6 +6744,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -6743,6 +6786,7 @@ End 	Fn + →
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=29ad9f36-<span class="number">2e25</span>-457a-8a50-40b2619ccd85, value=<span class="number">297.9894322218015</span>, rate=<span class="number">0.39525736986090654</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=<span class="number">72434730</span>-e52a-<span class="number">4819</span>-a249-25b1e8450c81, value=<span class="number">861.735810794833</span>, rate=<span class="number">0.0508273434713048</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=<span class="number">72434730</span>-e52a-<span class="number">4819</span>-a249-25b1e8450c81, value=<span class="number">861.735810794833</span>, rate=<span class="number">0.0508273434713048</span>] 提交到线程池</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=6f25d9e6-9f38-4d84-ac59-259324f800f1, value=<span class="number">931.5744113116666</span>, rate=<span class="number">0.8237427385465251</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=6e3de271-<span class="number">2169</span>-49c7-a425-9973304379a9, value=<span class="number">754.2015420496596</span>, rate=<span class="number">0.480198992823775</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=6e3de271-<span class="number">2169</span>-49c7-a425-9973304379a9, value=<span class="number">754.2015420496596</span>, rate=<span class="number">0.480198992823775</span>] 提交到线程池</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">1</span> 完成 TaskCallable[taskID=ffcb4a5e-603b-46dd-b4d0-02dc2bc7204c, value=<span class="number">259.60270090020333</span>, rate=<span class="number">0.404730459043419</span>] 入队</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=ffcb4a5e-603b-46dd-b4d0-02dc2bc7204c, value=<span class="number">259.60270090020333</span>, rate=<span class="number">0.404730459043419</span>] 提交到线程池</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=6f25d9e6-9f38-4d84-ac59-259324f800f1, value=<span class="number">931.5744113116666</span>, rate=<span class="number">0.8237427385465251</span>] 提交到线程池</span><br><span class="line">线程 ForkJoinPool.commonPool-worker-<span class="number">2</span> 将 TaskCallable[taskID=29ad9f36-<span class="number">2e25</span>-457a-8a50-40b2619ccd85, value=<span class="number">297.9894322218015</span>, rate=<span class="number">0.39525736986090654</span>] 提交到线程池</span><br><span class="line">taskID=&#123; <span class="number">72434730</span>-e52a-<span class="number">4819</span>-a249-25b1e8450c81 &#125; result=&#123; <span class="number">861.735810794833</span>*<span class="number">0.0508273434713048</span> -&gt; <span class="number">43.7997420367923</span> &#125;</span><br><span class="line">taskID=&#123; 6e3de271-<span class="number">2169</span>-49c7-a425-9973304379a9 &#125; result=&#123; <span class="number">754.2015420496596</span>*<span class="number">0.480198992823775</span> -&gt; <span class="number">362.1668208783845</span> &#125;</span><br><span class="line">taskID=&#123; ffcb4a5e-603b-46dd-b4d0-02dc2bc7204c &#125; result=&#123; <span class="number">259.60270090020333</span>*<span class="number">0.404730459043419</span> -&gt; <span class="number">105.06912030425069</span> &#125;</span><br><span class="line">taskID=&#123; 29ad9f36-<span class="number">2e25</span>-457a-8a50-40b2619ccd85 &#125; result=&#123; <span class="number">297.9894322218015</span>*<span class="number">0.39525736986090654</span> -&gt; <span class="number">117.78251922633414</span> &#125;</span><br><span class="line">taskID=&#123; 6f25d9e6-9f38-4d84-ac59-259324f800f1 &#125; result=&#123; <span class="number">931.5744113116666</span>*<span class="number">0.8237427385465251</span> -&gt; <span class="number">767.3776567337393</span> &#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -6820,6 +6864,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -6914,6 +6959,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>springboot</tag>
@@ -7027,6 +7073,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>springboot</tag>
@@ -7112,6 +7159,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -7233,6 +7281,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -7259,6 +7308,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -7318,6 +7368,7 @@ End 	Fn + →
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2023-06-25T22:27:40.868+08:00  INFO 8008 --- [           main] com.lab.snippet.SnippetApplication       : Started SnippetApplication in 1.142 seconds (process running for 1.386)</span><br><span class="line">定时任务开始=scheduling-1-2023-06-25T22:27:45.000486300</span><br><span class="line">任务&#123; 1 &#125;已完成，当前时间=&#123; 2023-06-25T22:27:47.005465 &#125;</span><br><span class="line">任务&#123; 2 &#125;已完成，当前时间=&#123; 2023-06-25T22:27:53.006984800 &#125;</span><br><span class="line">任务&#123; 3 &#125;已完成，当前时间=&#123; 2023-06-25T22:27:55.006056500 &#125;</span><br><span class="line">定时任务开始=scheduling-1-2023-06-25T22:27:55.007053500</span><br><span class="line">任务&#123; 1 &#125;已完成，当前时间=&#123; 2023-06-25T22:28:02.009497100 &#125;</span><br><span class="line">任务&#123; 2 &#125;已完成，当前时间=&#123; 2023-06-25T22:28:08.013432600 &#125;</span><br><span class="line">任务&#123; 3 &#125;已完成，当前时间=&#123; 2023-06-25T22:28:10.003280800 &#125;</span><br><span class="line">定时任务开始=scheduling-1-2023-06-25T22:28:10.003280800</span><br><span class="line">定时任务开始=scheduling-1-2023-06-25T22:28:15.000889200</span><br><span class="line">任务&#123; 1 &#125;已完成，当前时间=&#123; 2023-06-25T22:28:17.005103900 &#125;</span><br><span class="line">任务&#123; 2 &#125;已完成，当前时间=&#123; 2023-06-25T22:28:23.004417100 &#125;</span><br><span class="line">任务&#123; 3 &#125;已完成，当前时间=&#123; 2023-06-25T22:28:25.002408 &#125;</span><br><span class="line">定时任务开始=scheduling-1-2023-06-25T22:28:25.002408</span><br><span class="line">定时任务开始=scheduling-1-2023-06-25T22:28:30.000387200</span><br><span class="line">任务&#123; 1 &#125;已完成，当前时间=&#123; 2023-06-25T22:28:32.016138300 &#125;</span><br><span class="line">任务&#123; 2 &#125;已完成，当前时间=&#123; 2023-06-25T22:28:38.003692100 &#125;</span><br><span class="line">任务&#123; 3 &#125;已完成，当前时间=&#123; 2023-06-25T22:28:40.002122500 &#125;</span><br><span class="line">定时任务开始=scheduling-1-2023-06-25T22:28:40.002122500</span><br><span class="line">定时任务开始=scheduling-1-2023-06-25T22:28:45.001217</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -7528,6 +7579,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -7552,6 +7604,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -7575,6 +7628,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -7636,6 +7690,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>springboot</tag>
@@ -7664,6 +7719,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -7699,6 +7755,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -7728,9 +7785,11 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>python</category>
       </categories>
       <tags>
-        <tag>python</tag>
+        <tag>Anaconda</tag>
+        <tag>Jupyter</tag>
       </tags>
   </entry>
   <entry>
@@ -7752,6 +7811,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>python</category>
       </categories>
       <tags>
         <tag>python</tag>
@@ -7834,11 +7894,11 @@ End 	Fn + →
 <p>虚拟环境在项目目录时，注意添加 <code>.venv</code> 到 <code>.gitignore</code></p>
 </blockquote>
 <p>2）增加下载源</p>
-<p>使用默认源有时会出现连接超时的情况，可执行 <code>poetry source add &lt;source_name&gt; &lt;source_url&gt;</code> 添加国内源解决这个问题：</p>
+<p>使用默认源有时会出现连接超时的情况，可执行 <code>poetry source add &lt;source_name&gt; &lt;source_url&gt;</code> 添加任一国内源解决这个问题：</p>
 <ul>
-<li>执行 <code>poetry source add tsinghua https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/</code>，添加清华源</li>
-<li>或 <code>poetry source add tencent https://mirrors.cloud.tencent.com/pypi/simple/</code>，添加腾讯源</li>
-<li>或 <code>poetry source add aliyun https://mirrors.aliyun.com/pypi/simple/</code>，添加阿里源</li>
+<li><code>poetry source add aliyun https://mirrors.aliyun.com/pypi/simple/</code>，添加阿里源【首选】</li>
+<li><code>poetry source add tsinghua https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/</code>，添加清华源</li>
+<li><code>poetry source add tencent https://mirrors.cloud.tencent.com/pypi/simple/</code>，添加腾讯源</li>
 </ul>
 <blockquote>
 <p>命令参数可见 <a href="https://python-poetry.org/docs/cli#source">https://python-poetry.org/docs/cli#source</a></p>
@@ -7850,9 +7910,10 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>python</category>
       </categories>
       <tags>
-        <tag>python</tag>
+        <tag>poetry</tag>
       </tags>
   </entry>
   <entry>
@@ -7902,30 +7963,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL 使用存储过程批量建表</title>
-    <url>/ef131c21-4937-11ee-861d-b3cf05b530a5/</url>
-    <content><![CDATA[<blockquote>
-</blockquote>
-<span id="more"></span>
-
-
-<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>建立 data_0 开始，到 data_9 共 10 张表，各表的字段结构、数据引擎、编码方式等均相同。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>使用如下存储过程：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">DELIMITER <span class="operator">/</span><span class="operator">/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> create_table()</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> `<span class="variable">@i</span>` <span class="type">INT</span>(<span class="number">11</span>);</span><br><span class="line"><span class="keyword">DECLARE</span> `<span class="variable">@sqlstr</span>` <span class="type">VARCHAR</span>(<span class="number">2560</span>);</span><br><span class="line"><span class="keyword">SET</span> `<span class="variable">@i</span>`<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line">WHILE `<span class="variable">@i</span>` <span class="operator">&lt;</span> <span class="number">10</span> DO</span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@sqlstr</span> <span class="operator">=</span> CONCAT(</span><br><span class="line">&quot;CREATE TABLE data_&quot;,</span><br><span class="line"></span><br><span class="line">`<span class="variable">@i</span>`,</span><br><span class="line"></span><br><span class="line">&quot;(</span><br><span class="line">`ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `field1` VARCHAR(6) NOT NULL,</span><br><span class="line">  `field2` VARCHAR(10) NOT NULL,</span><br><span class="line">  `field3` VARCHAR(10) NOT NULL,</span><br><span class="line">  `field4` VARCHAR(10) NOT NULL,</span><br><span class="line">  `field5` VARCHAR(10) NOT NULL,</span><br><span class="line">  PRIMARY KEY (`ID`)</span><br><span class="line">) ENGINE=INNODB DEFAULT CHARSET=utf8 &quot;</span><br><span class="line">);</span><br><span class="line"><span class="keyword">PREPARE</span> stmt <span class="keyword">FROM</span> <span class="variable">@sqlstr</span>;</span><br><span class="line"><span class="keyword">EXECUTE</span> stmt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> `<span class="variable">@i</span>` <span class="operator">=</span> `<span class="variable">@i</span>` <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">END</span> WHILE;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
-
-<p>执行存储过程，执行后删除存储过程并恢复默认命令结束符：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CALL</span> create_table();</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> create_table;</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>创建存储过程时，若采用命令行的方式，要先修改默认命令结束符，这样将 CREATE 到 END 之间的代码当是一条语句来执行。例如上述代码中的 <code>DELIMITER //</code>，将命令结束符修改为 <code>//</code>，执行结束后再修改回 <code>;</code>。</p>
-]]></content>
-      <categories>
-        <category>后端技术</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>mysql</tag>
@@ -7947,9 +7985,35 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>mariadb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL 使用存储过程批量建表</title>
+    <url>/ef131c21-4937-11ee-861d-b3cf05b530a5/</url>
+    <content><![CDATA[<blockquote>
+</blockquote>
+<span id="more"></span>
+
+
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>建立 data_0 开始，到 data_9 共 10 张表，各表的字段结构、数据引擎、编码方式等均相同。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>使用如下存储过程：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">DELIMITER <span class="operator">/</span><span class="operator">/</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> create_table()</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">DECLARE</span> `<span class="variable">@i</span>` <span class="type">INT</span>(<span class="number">11</span>);</span><br><span class="line"><span class="keyword">DECLARE</span> `<span class="variable">@sqlstr</span>` <span class="type">VARCHAR</span>(<span class="number">2560</span>);</span><br><span class="line"><span class="keyword">SET</span> `<span class="variable">@i</span>`<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line">WHILE `<span class="variable">@i</span>` <span class="operator">&lt;</span> <span class="number">10</span> DO</span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@sqlstr</span> <span class="operator">=</span> CONCAT(</span><br><span class="line">&quot;CREATE TABLE data_&quot;,</span><br><span class="line"></span><br><span class="line">`<span class="variable">@i</span>`,</span><br><span class="line"></span><br><span class="line">&quot;(</span><br><span class="line">`ID` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `field1` VARCHAR(6) NOT NULL,</span><br><span class="line">  `field2` VARCHAR(10) NOT NULL,</span><br><span class="line">  `field3` VARCHAR(10) NOT NULL,</span><br><span class="line">  `field4` VARCHAR(10) NOT NULL,</span><br><span class="line">  `field5` VARCHAR(10) NOT NULL,</span><br><span class="line">  PRIMARY KEY (`ID`)</span><br><span class="line">) ENGINE=INNODB DEFAULT CHARSET=utf8 &quot;</span><br><span class="line">);</span><br><span class="line"><span class="keyword">PREPARE</span> stmt <span class="keyword">FROM</span> <span class="variable">@sqlstr</span>;</span><br><span class="line"><span class="keyword">EXECUTE</span> stmt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> `<span class="variable">@i</span>` <span class="operator">=</span> `<span class="variable">@i</span>` <span class="operator">+</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">END</span> WHILE;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>执行存储过程，执行后删除存储过程并恢复默认命令结束符：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CALL</span> create_table();</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span> create_table;</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>创建存储过程时，若采用命令行的方式，要先修改默认命令结束符，这样将 CREATE 到 END 之间的代码当是一条语句来执行。例如上述代码中的 <code>DELIMITER //</code>，将命令结束符修改为 <code>//</code>，执行结束后再修改回 <code>;</code>。</p>
+]]></content>
+      <categories>
+        <category>后端技术</category>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -7971,6 +8035,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>oracle</tag>
@@ -8038,6 +8103,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>mysql</tag>
@@ -8118,6 +8184,7 @@ End 	Fn + →
 ]]></content>
       <categories>
         <category>后端技术</category>
+        <category>数据库</category>
       </categories>
       <tags>
         <tag>mysql</tag>

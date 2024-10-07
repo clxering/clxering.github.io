@@ -15,8 +15,30 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 25 Aug 2024 03:48:24 GMT</pubDate>
+    <pubDate>Mon, 07 Oct 2024 03:27:24 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>win 环境部署 FastAPI 应用为服务</title>
+      <link>http://www.dcheng.site/327f6eb0-845a-11ef-97a5-ef015341acb0/</link>
+      <guid>http://www.dcheng.site/327f6eb0-845a-11ef-97a5-ef015341acb0/</guid>
+      <pubDate>Sun, 06 Oct 2024 14:33:40 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/FastAPI/">FastAPI</category>
+      
+      
+      <comments>http://www.dcheng.site/327f6eb0-845a-11ef-97a5-ef015341acb0/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>React 有关计时器和数组状态的问题</title>
@@ -218,6 +240,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
+      
       
       <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
       
@@ -287,6 +311,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
       
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
@@ -488,6 +514,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
       
       <category domain="http://www.dcheng.site/tags/mysql/">mysql</category>
       
@@ -514,6 +542,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
+      
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
       
@@ -536,8 +566,12 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/python/">python</category>
       
-      <category domain="http://www.dcheng.site/tags/python/">python</category>
+      
+      <category domain="http://www.dcheng.site/tags/Anaconda/">Anaconda</category>
+      
+      <category domain="http://www.dcheng.site/tags/Jupyter/">Jupyter</category>
       
       
       <comments>http://www.dcheng.site/8a9db7f0-e38d-11ee-8d05-110f62540784/#disqus_thread</comments>
@@ -557,6 +591,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
       
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
@@ -580,6 +616,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
+      
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
       
@@ -601,6 +639,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
       
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
@@ -670,6 +710,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
+      
       
       <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
       
@@ -693,6 +735,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
       
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
@@ -786,6 +830,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/python/">python</category>
+      
       
       <category domain="http://www.dcheng.site/tags/python/">python</category>
       
@@ -808,8 +854,10 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/python/">python</category>
       
-      <category domain="http://www.dcheng.site/tags/python/">python</category>
+      
+      <category domain="http://www.dcheng.site/tags/poetry/">poetry</category>
       
       
       <comments>http://www.dcheng.site/97819500-a133-11ee-9970-39bf61dae061/#disqus_thread</comments>
@@ -829,6 +877,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
       
       
       <category domain="http://www.dcheng.site/tags/springboot/">springboot</category>
@@ -897,6 +947,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
       
       
       <category domain="http://www.dcheng.site/tags/mariadb/">mariadb</category>
@@ -1484,6 +1536,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
+      
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
       
@@ -1505,6 +1559,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
       
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
@@ -1528,6 +1584,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
+      
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
       
@@ -1549,6 +1607,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
       
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
@@ -1572,6 +1632,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
+      
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
       
@@ -1594,6 +1656,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
+      
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
       
@@ -1615,6 +1679,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
       
       
       <category domain="http://www.dcheng.site/tags/mysql/">mysql</category>
@@ -1660,6 +1726,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
       
       <category domain="http://www.dcheng.site/tags/oracle/">oracle</category>
       
@@ -1681,6 +1749,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
       
       
       <category domain="http://www.dcheng.site/tags/mysql/">mysql</category>
@@ -1704,6 +1774,8 @@
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
       
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
       
       <category domain="http://www.dcheng.site/tags/mysql/">mysql</category>
       
@@ -1725,6 +1797,8 @@
       
       
       <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      
+      <category domain="http://www.dcheng.site/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/java/">java</category>
       
       
       <category domain="http://www.dcheng.site/tags/java/">java</category>
