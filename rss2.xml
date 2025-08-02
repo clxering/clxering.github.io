@@ -15,8 +15,30 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 28 Jan 2025 04:51:26 GMT</pubDate>
+    <pubDate>Sat, 02 Aug 2025 22:31:23 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>彻底关闭Win10自动更新</title>
+      <link>http://www.dcheng.site/undefined/</link>
+      <guid>http://www.dcheng.site/undefined/</guid>
+      <pubDate>Sat, 02 Aug 2025 04:15:32 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E7%B3%BB%E7%BB%9F%E5%92%8C%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/">系统和工具配置</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      
+      <comments>http://www.dcheng.site/undefined/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>win 环境部署 FastAPI 应用为服务</title>
