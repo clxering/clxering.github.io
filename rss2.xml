@@ -15,13 +15,35 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sat, 02 Aug 2025 22:31:23 GMT</pubDate>
+    <pubDate>Sat, 27 Dec 2025 09:57:33 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
+      <title>Win Server 环境部署 FastAPI</title>
+      <link>http://www.dcheng.site/107cfc50-e30a-11f0-af1e-179ad3eb71c8/</link>
+      <guid>http://www.dcheng.site/107cfc50-e30a-11f0-af1e-179ad3eb71c8/</guid>
+      <pubDate>Sat, 27 Dec 2025 04:05:39 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      
+      <comments>http://www.dcheng.site/107cfc50-e30a-11f0-af1e-179ad3eb71c8/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>彻底关闭Win10自动更新</title>
-      <link>http://www.dcheng.site/undefined/</link>
-      <guid>http://www.dcheng.site/undefined/</guid>
+      <link>http://www.dcheng.site/105d6660-e30a-11f0-af1e-179ad3eb71c8/</link>
+      <guid>http://www.dcheng.site/105d6660-e30a-11f0-af1e-179ad3eb71c8/</guid>
       <pubDate>Sat, 02 Aug 2025 04:15:32 GMT</pubDate>
       
       <description>&lt;blockquote&gt;
@@ -36,7 +58,7 @@
       <category domain="http://www.dcheng.site/tags/win/">win</category>
       
       
-      <comments>http://www.dcheng.site/undefined/#disqus_thread</comments>
+      <comments>http://www.dcheng.site/105d6660-e30a-11f0-af1e-179ad3eb71c8/#disqus_thread</comments>
       
     </item>
     

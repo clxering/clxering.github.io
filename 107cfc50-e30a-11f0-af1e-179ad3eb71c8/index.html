@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/avatar.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.dcheng.site","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.13.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Win Server 环境部署 FastAPI">
+<meta property="og:url" content="http://www.dcheng.site/107cfc50-e30a-11f0-af1e-179ad3eb71c8/index.html">
+<meta property="og:site_name" content="Notebook">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-12-27T04:05:39.000Z">
+<meta property="article:modified_time" content="2025-12-27T09:57:33.744Z">
+<meta property="article:author" content="Mr.Dcheng">
+<meta property="article:tag" content="win">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.dcheng.site/107cfc50-e30a-11f0-af1e-179ad3eb71c8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.dcheng.site/107cfc50-e30a-11f0-af1e-179ad3eb71c8/","path":"107cfc50-e30a-11f0-af1e-179ad3eb71c8/","title":"Win Server 环境部署 FastAPI"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Win Server 环境部署 FastAPI | Notebook</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/rss2.xml" title="Notebook" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container" style="background-image: linear-gradient(45deg, rgb(2, 0, 49) 0px, rgb(109, 51, 83) 70%);background-size: initial;background-position-x: initial;">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Notebook</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">温故而知新</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-rss"><a href="/rss2.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E9%83%A8%E7%BD%B2-python-%E7%8E%AF%E5%A2%83"><span class="nav-text">1、部署 python 环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%A4%8D%E5%88%B6%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6"><span class="nav-text">2、复制项目文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-text">3、启动服务端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WSGI-%E5%92%8C-ASGI"><span class="nav-text">WSGI 和 ASGI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Waitress"><span class="nav-text">Waitress</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%95%B0%E9%85%8D%E7%BD%AE%E7%AD%96%E7%95%A5"><span class="nav-text">线程数配置策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%9D%E6%8C%81%E8%BF%9E%E6%8E%A5%EF%BC%88Keep-Alive%EF%BC%89%E4%BC%98%E5%8C%96"><span class="nav-text">保持连接（Keep-Alive）优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E5%A4%A7%E5%B0%8F%E8%B0%83%E6%95%B4"><span class="nav-text">缓冲区大小调整</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-WSGI-Instead-of-ASGI"><span class="nav-text">Using WSGI Instead of ASGI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Incorrect-Server-Configuration"><span class="nav-text">Incorrect Server Configuration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deployment-on-Platforms-Requiring-WSGI"><span class="nav-text">Deployment on Platforms Requiring WSGI</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.Dcheng"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Mr.Dcheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+
+
+  <div class="links-of-author animated" style="display:none">
+      <span class="links-of-author-item">
+        <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.dcheng.site/107cfc50-e30a-11f0-af1e-179ad3eb71c8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Mr.Dcheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notebook">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Win Server 环境部署 FastAPI | Notebook">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header" style="margin-bottom:0">
+        <h1 class="post-title" itemprop="name headline" style="text-align:left">
+          Win Server 环境部署 FastAPI
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta" style="display:block;margin:0px;text-align:left">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-12-27 12:05:39 / Modified: 17:57:33" itemprop="dateCreated datePublished" datetime="2025-12-27T12:05:39+08:00">2025-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">部署和安装</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1、部署-python-环境"><a href="#1、部署-python-环境" class="headerlink" title="1、部署 python 环境"></a>1、部署 python 环境</h2><p>1）下载 <a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.14.2/python-3.14.2-embed-amd64.zip">python-3.14.2-embed-amd64.zip</a></p>
+<p>2）解压后将 <code>python-3.14.2-embed-amd64</code> 目录放置到服务器。</p>
+<p>3）获取 <code>get-pip.py</code>。前往 <a target="_blank" rel="noopener" href="https://pip.pypa.io/en/stable/installation/">https://pip.pypa.io/en/stable/installation/</a> 找到 Download the script, from <a target="_blank" rel="noopener" href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a>.</p>
+<p>4）安装 pip，在 <code>python-3.14.2-embed-amd64</code> 目录执行 <code>python get-pip.py</code>，此时多出 <code>Lib</code> 和 <code>Scripts</code> 目录。</p>
+<p>5）在 <code>python-3.14.2-embed-amd64</code> 目录找到 <code>python314._pth</code> 文件，移除 <code>#import site</code> 的注释，保存。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python314.<span class="built_in">zip</span></span><br><span class="line">.</span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment to run site.main() automatically</span></span><br><span class="line"><span class="keyword">import</span> site</span><br></pre></td></tr></table></figure>
+
+<p>6）设置环境变量：<code>python-3.14.2-embed-amd64\</code> 以及 <code>python-3.14.2-embed-amd64\Scripts\</code></p>
+<h2 id="2、复制项目文件"><a href="#2、复制项目文件" class="headerlink" title="2、复制项目文件"></a>2、复制项目文件</h2><p>1）服务器全局安装 poetry 进行依赖管理。</p>
+<p>2）项目文件保留 <code>poetry.lock</code> 和 <code>pyproject.toml</code></p>
+<p>3）恢复依赖可选择全局或项目目录中。</p>
+<h2 id="3、启动服务端"><a href="#3、启动服务端" class="headerlink" title="3、启动服务端"></a>3、启动服务端</h2><p>1）项目代码文件 <code>main.py</code> 如下</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_root</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Hello!&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/items/&#123;item_id&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_item</span>(<span class="params">item_id: <span class="built_in">int</span></span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;item_id&quot;</span>: item_id&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2）此处选择将依赖放置到项目中，执行 <code>poetry shell</code> 后，通过 <code>uvicorn --host 0.0.0.0 --port 8000 main:app</code> 启动。</p>
+<p>3）建立 powershell 脚本，便于执行或添加到计划任务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">start-server.ps1</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切换到项目目录</span></span><br><span class="line">Set-Location &quot;C:\Users\test\Desktop\py-play&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动项目。注意不要进入交互式shell</span></span><br><span class="line">poetry run uvicorn --host 0.0.0.0 --port 8000 main:app</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">暂停</span></span><br><span class="line">Write-Host &quot;按任意键继续...&quot;</span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">null = <span class="variable">$Host</span>.UI.RawUI.ReadKey(<span class="string">&quot;NoEcho,IncludeKeyDown&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="WSGI-和-ASGI"><a href="#WSGI-和-ASGI" class="headerlink" title="WSGI 和 ASGI"></a>WSGI 和 ASGI</h2><p>在 Web 开发领域，选择合适的服务器网关接口（Server Gateway Interface，简称 SGI）对于提高 Web 应用程序的性能和并发性至关重要。在 Python 中，有两种常见的 SGI：WSGI 和 ASGI。</p>
+<p>WSGI（Web Server Gateway Interface）是一种同步的网关接口，它使用线程来处理每个请求，通过简单的函数调用——一个可调用的对象（通常是一个函数）来处理 HTTP 请求，并返回 HTTP 响应。这意味着在一个请求被处理期间，其他请求必须等待。这种同步处理方式在处理大量并发请求时可能会导致性能问题，因此 WSGI 适用于处理低并发、IO 密集型的应用程序，在这种环境下，同步的请求处理足够高效。由于这种限制，WSGI 的典型实现包括 Gunicorn、uWSGI 和 mod_wsgi 等。</p>
+<p>随着异步编程概念的普及，出现了另一种网关接口——ASGI（Asynchronous Server Gateway Interface）。ASGI 是一种异步的网关接口，允许同时处理多个请求。通过使用事件循环和协程，ASGI 可以实现高并发性能，从而更好地应对大量并发请求。ASGI 的典型实现包括 Daphne、Uvicorn 和 Hypercorn 等。</p>
+<p>除了处理请求的方式不同，WSGI 和 ASGI 在支持的协议方面也存在差异。 WSGI 是基于 HTTP 协议模式开发的，不支持 WebSocket。这意味着使用 WSGI 的应用程序无法直接处理 WebSocket 连接，需要借助其他库或中间件来实现。</p>
+<p>相比之下，ASGI 不仅支持现有的 Web 开发中的一些新的协议标准，还支持原有模式和 WebSocket 的扩展。这使得使用 ASGI 的应用程序可以更灵活地适应不断变化的 Web 技术。</p>
+<p>WSGI 和 ASGI 在请求方面的差异，主要体现在同步和异步处理请求上。通过例子来进一步理解 WSGI 和 ASGI 之间的区别。假设有一个 Python Web 应用程序，它需要连接到 Web 服务器并处理来自客户端的请求。我们可以使用 WSGI 或 ASGI 来实现这个连接。</p>
+<p>使用 WSGI 的例子：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wsgiref.simple_server <span class="keyword">import</span> make_server</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">application</span>(<span class="params">environ, start_response</span>):</span><br><span class="line">    status = <span class="string">&#x27;200 OK&#x27;</span></span><br><span class="line">    headers = [(<span class="string">&#x27;Content-type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>)]</span><br><span class="line">    start_response(status, headers)</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">b&quot;Hello World&quot;</span>]</span><br><span class="line"></span><br><span class="line">httpd = make_server(<span class="string">&#x27;&#x27;</span>, <span class="number">8000</span>, application)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Serving on port 8000...&quot;</span>)</span><br><span class="line">httpd.serve_forever()</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，我们使用 WSGI 的典型实现之一——make_server 函数来创建了一个简单的 Web 服务器。我们直接访问 localhost:8000, 可以看到浏览器显示 Hello World 字样。</p>
+<p>这个函数接受三个参数：请求处理函数、服务器的地址和端口号。当客户端发送请求时，服务器将调用请求处理函数，并将请求的详细信息传递给它。请求处理函数可以返回一个响应，服务器将将其发送回客户端。</p>
+<p>使用 ASGI 的例子：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> asgiref.sync <span class="keyword">import</span> async_to_sync</span><br><span class="line"><span class="keyword">from</span> daphne <span class="keyword">import</span> Daphne</span><br><span class="line"><span class="keyword">from</span> http <span class="keyword">import</span> HTTPStatus <span class="keyword">import</span> HTTPStatus</span><br><span class="line"><span class="keyword">from</span> channels.layers <span class="keyword">import</span> get_channel_layer</span><br><span class="line"><span class="keyword">from</span> channels.routing <span class="keyword">import</span> ProtocolTypeRouter, URLRouter</span><br><span class="line"><span class="keyword">from</span> django.core.asgi <span class="keyword">import</span> get_asgi_application</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line">channel_layer = get_channel_layer()</span><br><span class="line">asgi_app = get_asgi_application()</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">application</span>(<span class="params">scope, receive, send</span>):</span><br><span class="line">    <span class="keyword">if</span> scope[<span class="string">&#x27;type&#x27;</span>] == <span class="string">&#x27;http&#x27;</span>:</span><br><span class="line">        <span class="keyword">await</span> asgi_app(scope, receive, send)</span><br><span class="line">    <span class="keyword">elif</span> scope[<span class="string">&#x27;type&#x27;</span>] == <span class="string">&#x27;websocket&#x27;</span>:</span><br><span class="line">        <span class="keyword">await</span> async_to_sync(channel_layer)(scope, receive, send)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">&#x27;Unknown scope type&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，我们使用 ASGI 的典型实现之一——Daphne 来创建了一个异步的 Web 服务器。Daphne 是一个 ASGI 服务器，它能够同时处理 HTTP 和 WebSocket 连接。在应用程序中，我们首先获取了一个 channel layer 对象和一个 ASGI 应用程序对象。然后，我们定义了一个异步的请求处理函数，它根据请求的类型选择使用 ASGI 应用程序或 channel layer 来处理请求。对于 HTTP 请求，我们直接调用 ASGI 应用程序；对于 WebSocket 请求，我们使用 channel layer 来处理。最后，我们将请求处理函数传递给 Daphne 服务器，让它来处理来自客户端的请求。</p>
+<p>通过这个例子，我们可以看到 WSGI 和 ASGI 的主要区别在于它们处理请求的方式和性能。WSGI 使用同步的方式处理请求，每个请求都需要在一个单独的线程中执行。而 ASGI 使用异步的方式处理请求，可以同时处理多个请求，并通过事件循环和协程实现高并发性能。因此，选择使用 WSGI 还是 ASGI 取决于你的应用程序的具体需求和性能要求。</p>
+<h2 id="Waitress"><a href="#Waitress" class="headerlink" title="Waitress"></a>Waitress</h2><p>Waitress 是一款基于 Python 的纯 Python 实现的 WSGI（Web Server Gateway Interface）应用服务器，专为处理 HTTP 请求设计。与 Nginx、Apache 等传统服务器不同，Waitress 以轻量级、易部署为核心优势，尤其适合中小型 Python Web 应用（如 Flask、Django）的本地开发测试或低流量生产环境。其核心特性包括：</p>
+<ul>
+<li>纯 Python 实现：无需依赖 C 扩展或外部库，跨平台兼容性强（Windows&#x2F;Linux&#x2F;macOS）。</li>
+<li>多线程架构：通过多线程处理并发请求，避免单线程阻塞问题。</li>
+<li>WSGI 标准兼容：严格遵循 PEP 3333 标准，无缝集成 Flask、Django 等框架。</li>
+<li>配置灵活：支持通过命令行参数或配置文件动态调整参数（如线程数、端口）。</li>
+</ul>
+<p>Waitress 的核心架构由请求处理器（Request Handler）、线程池（Thread Pool）和 WSGI 调用层（WSGI Invoker）三部分组成：</p>
+<ul>
+<li>请求处理器：监听指定端口（默认 8080），接收 HTTP 请求并解析头部信息。</li>
+<li>线程池管理：默认创建 4 个工作线程（可通过–threads 参数调整），每个线程独立处理请求生命周期（解析 → 路由 → 应用处理 → 响应）。</li>
+<li>WSGI 调用层：将 HTTP 请求转换为 WSGI 环境字典（environ），调用应用对象的 application 可调用对象，并捕获返回值生成 HTTP 响应。</li>
+</ul>
+<p>示例：通过 Flask 集成 Waitress</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> waitress <span class="keyword">import</span> serve</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello, Waitress!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    serve(app, host=<span class="string">&quot;0.0.0.0&quot;</span>, port=<span class="number">8000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>此示例中，Waitress 作为 WSGI 服务器直接运行 Flask 应用，无需额外配置。Waitress 仅支持 WSGI，若需运行 FastAPI 等 ASGI 应用，需通过适配器转换：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"><span class="keyword">from</span> waitress <span class="keyword">import</span> serve</span><br><span class="line"><span class="keyword">from</span> a2wsgi <span class="keyword">import</span> ASGIMiddleware</span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line">wsgi_app = ASGIMiddleware(app)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello, Waitress!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    serve(wsgi_app, host=<span class="string">&quot;0.0.0.0&quot;</span>, port=<span class="number">8000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>相关问题可参考文末 <code>__call__() missing 1 required positional argument: &#39;send&#39;</code> 的处理。上述依赖详见 <a target="_blank" rel="noopener" href="https://pypi.org/project/a2wsgi/">https://pypi.org/project/a2wsgi/</a></p>
+<h3 id="线程数配置策略"><a href="#线程数配置策略" class="headerlink" title="线程数配置策略"></a>线程数配置策略</h3><p>Waitress 的默认线程数（4）适用于低并发场景。对于高并发应用，需根据 CPU 核心数和请求类型调整：</p>
+<ul>
+<li>CPU 密集型任务：线程数 ≈CPU 核心数（避免过多线程导致上下文切换开销）。</li>
+<li>IO 密集型任务：线程数可增至 CPU 核心数的 2-4 倍（利用 IO 等待时间并行处理）。</li>
+</ul>
+<p>命令行调优示例：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">waitress-serve --threads=<span class="number">16</span> myapp:app</span><br></pre></td></tr></table></figure>
+
+<h3 id="保持连接（Keep-Alive）优化"><a href="#保持连接（Keep-Alive）优化" class="headerlink" title="保持连接（Keep-Alive）优化"></a>保持连接（Keep-Alive）优化</h3><p>Waitress 默认关闭 Keep-Alive 以减少资源占用。若应用需长期连接（如 WebSocket），可通过–connection-limit 参数限制单个连接的持续时间：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">waitress-serve --connection-limit=<span class="number">30</span> myapp:app  <span class="comment"># 30秒后关闭空闲连接</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="缓冲区大小调整"><a href="#缓冲区大小调整" class="headerlink" title="缓冲区大小调整"></a>缓冲区大小调整</h3><p>对于大文件传输（如视频流），增大–asyncore-loop-timeout 和–buffer-size 可避免数据截断：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">waitress-serve --buffer-size=<span class="number">65536</span> myapp:app  <span class="comment"># 设置64KB缓冲区</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/63424042/call-missing-1-required-positional-argument-send-fastapi-on-app-engine">https://stackoverflow.com/questions/63424042/call-missing-1-required-positional-argument-send-fastapi-on-app-engine</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fastapi/fastapi/discussions/7751">https://github.com/fastapi/fastapi/discussions/7751</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fastapi/fastapi/issues/1897">https://github.com/fastapi/fastapi/issues/1897</a></li>
+</ul>
+<p>The error TypeError: <code>__call__() missing 1 required positional argument: &#39;send&#39;</code> typically occurs when you try to run a FastAPI application using a WSGI server instead of an ASGI server. FastAPI is designed to work with ASGI servers like Uvicorn, Daphne, or Hypercorn.</p>
+<p>Example</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line">app = FastAPI()</span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_root</span>():</span><br><span class="line">   <span class="keyword">return</span> &#123;<span class="string">&quot;Hello&quot;</span>: <span class="string">&quot;World&quot;</span>&#125;</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">   <span class="keyword">import</span> uvicorn</span><br><span class="line">   uvicorn.run(<span class="string">&quot;main:app&quot;</span>, host=<span class="string">&quot;0.0.0.0&quot;</span>, port=<span class="number">8000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Common Causes and Solutions</p>
+<h3 id="Using-WSGI-Instead-of-ASGI"><a href="#Using-WSGI-Instead-of-ASGI" class="headerlink" title="Using WSGI Instead of ASGI"></a>Using WSGI Instead of ASGI</h3><p>FastAPI is an asynchronous web framework and is not compatible with WSGI servers like Gunicorn without an ASGI worker.</p>
+<p>Example:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn -w <span class="number">4</span> -k uvicorn.workers.UvicornWorker main:app</span><br></pre></td></tr></table></figure>
+
+<p>Solution: Ensure you are using an ASGI server or adding an ASGI worker to Gunicorn.</p>
+<h3 id="Incorrect-Server-Configuration"><a href="#Incorrect-Server-Configuration" class="headerlink" title="Incorrect Server Configuration"></a>Incorrect Server Configuration</h3><p>Ensure that your server configuration is set up correctly to use an ASGI server.</p>
+<p>Example:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uvicorn main:app --host <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> --port <span class="number">8000</span></span><br></pre></td></tr></table></figure>
+
+<p>Solution: Use Uvicorn directly or configure Gunicorn to use Uvicorn workers.</p>
+<h3 id="Deployment-on-Platforms-Requiring-WSGI"><a href="#Deployment-on-Platforms-Requiring-WSGI" class="headerlink" title="Deployment on Platforms Requiring WSGI"></a>Deployment on Platforms Requiring WSGI</h3><p>If deploying on platforms like Google App Engine, which requires WSGI, you can use a middleware to convert ASGI to WSGI.</p>
+<p>Example:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"><span class="keyword">from</span> a2wsgi <span class="keyword">import</span> ASGIMiddleware</span><br><span class="line">app = FastAPI()</span><br><span class="line">wsgi_app = ASGIMiddleware(app)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">   <span class="keyword">from</span> waitress <span class="keyword">import</span> serve</span><br><span class="line">   serve(wsgi_app, host=<span class="string">&quot;0.0.0.0&quot;</span>, port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Solution: Use ASGIMiddleware to wrap your FastAPI app for compatibility with WSGI servers.</p>
+<p>By following these steps, you can resolve <code>the __call__() missing 1 required positional argument: &#39;send&#39;</code> error and successfully run your FastAPI application.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+        
+        
+
+        <script src="https://giscus.app/client.js"
+          data-repo="clxering/clxering.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkxNDgzMDExMDk="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOCNblNc4CT1Cc"
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+          <div class="post-tags">
+              <a href="/tags/win/" rel="tag"># win</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/105d6660-e30a-11f0-af1e-179ad3eb71c8/" rel="prev" title="彻底关闭Win10自动更新">
+                  <i class="fa fa-chevron-left"></i> 彻底关闭Win10自动更新
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Dcheng</span>
+
+  
+  
+  
+    <div class="copyright">
+        <span class="author">
+          <a href="https://github.com/clxering" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;clxering" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        </span>
+        <span class="author">
+          <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg3OTczMDI3Mw==&scene=124#wechat_redirect" title="Weixin → https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;mp&#x2F;profile_ext?action&#x3D;home&amp;__biz&#x3D;Mzg3OTczMDI3Mw&#x3D;&#x3D;&amp;scene&#x3D;124#wechat_redirect" rel="noopener" target="_blank"><i class="fab fa-weixin fa-fw"></i>Weixin</a>
+        </span>
+    </div>
+
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
