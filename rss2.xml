@@ -15,8 +15,32 @@
     <atom:link href="http://www.dcheng.site/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 28 Jun 2026 13:20:19 GMT</pubDate>
+    <pubDate>Sun, 28 Jun 2026 14:14:04 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>部署 Python embeddable 包</title>
+      <link>http://www.dcheng.site/07dbf750-72fb-11f1-924f-437ed612e148/</link>
+      <guid>http://www.dcheng.site/07dbf750-72fb-11f1-924f-437ed612e148/</guid>
+      <pubDate>Sun, 28 Jun 2026 13:46:33 GMT</pubDate>
+      
+      <description>&lt;blockquote&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="http://www.dcheng.site/categories/%E9%83%A8%E7%BD%B2%E5%92%8C%E5%AE%89%E8%A3%85/">部署和安装</category>
+      
+      
+      <category domain="http://www.dcheng.site/tags/win/">win</category>
+      
+      <category domain="http://www.dcheng.site/tags/python/">python</category>
+      
+      
+      <comments>http://www.dcheng.site/07dbf750-72fb-11f1-924f-437ed612e148/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Win Server 环境部署 FastAPI</title>
