@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="Notebook">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-17T00:42:46.000Z">
-<meta property="article:modified_time" content="2026-05-22T04:00:17.383Z">
+<meta property="article:modified_time" content="2026-06-28T13:20:19.396Z">
 <meta property="article:author" content="Mr.Dcheng">
 <meta property="article:tag" content="poetry">
 <meta name="twitter:card" content="summary">
@@ -246,7 +246,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2026-05-22 12:00:17" itemprop="dateModified" datetime="2026-05-22T12:00:17+08:00">2026-05-22</time>
+      <time title="Modified: 2026-06-28 21:20:19" itemprop="dateModified" datetime="2026-06-28T21:20:19+08:00">2026-06-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -300,6 +300,9 @@
 </ul>
 <blockquote>
 <p>注意：poetry 2.0.0 后该命令变更为插件，需另外安装 <code>poetry self add poetry-plugin-shell</code>。详见 <a target="_blank" rel="noopener" href="https://github.com/python-poetry/poetry/issues/9962#issuecomment-2573088208">issues#9962</a></p>
+</blockquote>
+<blockquote>
+<p>注意：poetry 2.4.0 已经移除上述用法。进入虚拟环境改为执行 <code>poetry env activate</code>，之后根据提示再次执行 shell 命令。</p>
 </blockquote>
 <p>根据 <code>pyproject.toml</code> 文件来确定需要启动的虚拟环境。</p>
 <ul>
@@ -369,6 +372,24 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Warning: In a future version of Poetry, PyPI will be disabled automatically <span class="keyword">if</span> at least one custom primary <span class="built_in">source</span> is configured. In order to avoid a breaking change and make your pyproject.toml forward compatible, add PyPI explicitly via <span class="string">&#x27;poetry source add pypi&#x27;</span>. By the way, this has the advantage that you can <span class="built_in">set</span> the priority of PyPI as with any other <span class="built_in">source</span>.</span><br><span class="line"></span><br><span class="line">警告：在未来版本的 Poetry 中，如果配置了至少一个自定义主源，PyPI 将被自动禁用。为了避免破坏性更改并使 pyproject.toml 向前兼容，请通过 <span class="string">&#x27;poetry source add pypi&#x27;</span> 显式地添加 PyPI。顺便说一下，这样做的好处是你可以像使用任何其他源一样设置 PyPI 的优先级。</span><br></pre></td></tr></table></figure>
 
 <p>按照提示，执行 <code>poetry source add pypi</code> 即可。</p>
+<p>2）变更项目的 python 版本（默认 .venv 在项目中，其余情况以此类推）</p>
+<p>执行 <code>poetry env list</code>，查看当前激活的环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(py-pro-py3.10) PS C:\py-pro&gt; poetry <span class="built_in">env</span> list</span><br><span class="line">.venv (Activated)</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>poetry env remove --all</code>，删除旧环境，再执行 <code>exit</code> 退出旧虚拟环境。</p>
+<p>新建环境，并指定绝对路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poetry <span class="built_in">env</span> use <span class="string">&quot;D:\python-3.12.10-embed-amd64\python.exe&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：如果 <code>pyproject.toml</code> 指定了版本，需要对应修改。例如：<code>requires-python = &quot;&gt;=3.14&quot;</code></p>
+</blockquote>
+<p>成功则出现如下提示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Creating virtualenv py-pro <span class="keyword">in</span> C:\py-pro\.venv</span><br><span class="line">Using virtualenv: C:\py-pro\.venv</span><br></pre></td></tr></table></figure>
+
+<p>先执行 <code>poetry lock</code>，再执行 <code>poetry env activate</code> 激活环境，否则报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyproject.toml changed significantly since poetry.lock was last generated. Run `poetry lock` to fix the lock file.</span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>poetry install --no-root</code>，安装全部依赖。</p>
 
     </div>
 
